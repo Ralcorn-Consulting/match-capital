@@ -108,6 +108,12 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .type-angel{background:rgba(250,204,21,0.12);color:#fbbf24}
 .type-family-office{background:rgba(34,197,94,0.12);color:#4ade80}
 .type-corp-vc{background:rgba(168,85,247,0.12);color:#c084fc}
+.type-angel-group{background:rgba(251,146,60,0.12);color:#fb923c}
+/* Org avatar */
+.avatar-org{border-radius:var(--radius-sm) !important;background:linear-gradient(135deg,#6366f1,#8b5cf6) !important;font-size:0.7rem !important}
+.member-count-badge{display:inline-flex;align-items:center;gap:3px;font-size:0.7rem;color:var(--accent);background:rgba(59,130,246,0.08);padding:3px 8px;border-radius:12px;font-weight:600}
+.key-people-list{list-style:none;padding:0}
+.key-people-list li{padding:4px 0;font-size:0.85rem;color:var(--text-muted)}
 .investor-card .tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
 .tag{padding:3px 8px;border-radius:4px;font-size:0.7rem;font-weight:500;background:rgba(255,255,255,0.04);color:var(--text-dim)}
 .tag-stage{background:rgba(59,130,246,0.08);color:#93c5fd}
@@ -317,6 +323,12 @@ footer .links a:hover{color:var(--text)}
         <button class="chip" data-filter="type" data-value="Angel">Angel</button>
         <button class="chip" data-filter="type" data-value="Family Office">Family Office</button>
         <button class="chip" data-filter="type" data-value="Corp VC">Corp VC</button>
+        <button class="chip" data-filter="type" data-value="Angel Group">Angel Group</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Entity</span>
+        <button class="chip" data-filter="entity" data-value="individual">Individuals</button>
+        <button class="chip" data-filter="entity" data-value="organization">Organizations</button>
       </div>
       <div class="filter-row">
         <span class="filter-label">Geography</span>
@@ -399,7 +411,7 @@ footer .links a:hover{color:var(--text)}
 const SAMPLE_DATA=[];
 
 let investors=[];
-let activeFilters={stage:[],sector:[],type:[],geo:[]};
+let activeFilters={stage:[],sector:[],type:[],geo:[],entity:[]};
 const PAGE_SIZE=24;
 let displayedCount=PAGE_SIZE;
 let lastFiltered=[];
@@ -428,7 +440,7 @@ let compareIds=[];
 // ===== DATA NORMALIZATION =====
 const STAGE_MAP={seed:'Seed','pre-seed':'Pre-Seed','pre_seed':'Pre-Seed',series_a:'Series A',series_b:'Series B',growth:'Growth'};
 const SECTOR_MAP={saas:'SaaS',fintech:'Fintech',healthtech:'HealthTech',ai_ml:'AI/ML',consumer:'Consumer',enterprise:'Enterprise',climate:'Climate',crypto:'Crypto',biotech:'Biotech',deeptech:'DeepTech',edtech:'EdTech',hardware:'Hardware',marketplace:'Marketplace'};
-const TYPE_MAP={vc:'VC',angel:'Angel',family_office:'Family Office',corp_vc:'Corp VC'};
+const TYPE_MAP={vc:'VC',angel:'Angel',family_office:'Family Office',corp_vc:'Corp VC',angel_group:'Angel Group'};
 const GEO_MAP={us:'US',eu:'EU',asia:'Asia',global:'Global'};
 
 function normalizeInvestor(inv){
@@ -519,6 +531,7 @@ function filterInvestors(){
     if(activeFilters.sector.length&&!activeFilters.sector.some(s=>inv.sectors.includes(s)))return false;
     if(activeFilters.type.length&&!activeFilters.type.includes(inv.type))return false;
     if(activeFilters.geo.length&&!activeFilters.geo.some(g=>inv.geography.includes(g)))return false;
+    if(activeFilters.entity.length&&!activeFilters.entity.includes(inv.entity))return false;
     if(inv.checkSize.max<cMin||inv.checkSize.min>cMax)return false;
     if(actMonths!=='any'&&inv.lastActive){
       const cutoff=new Date();cutoff.setMonth(cutoff.getMonth()-parseInt(actMonths));
@@ -568,7 +581,7 @@ function loadMore(){
 }
 
 function clearAllFilters(){
-  activeFilters={stage:[],sector:[],type:[],geo:[]};
+  activeFilters={stage:[],sector:[],type:[],geo:[],entity:[]};
   document.querySelectorAll('.chip.active').forEach(c=>c.classList.remove('active'));
   checkMin.value=0;checkMax.value=25e6;updateCheckDisplay();
   document.getElementById('activityFilter').value='any';
@@ -581,16 +594,20 @@ function cardHTML(inv,idx){
   const sectorTags=inv.sectors.slice(0,3).map(s=>`<span class="tag-sector">${s}</span>`).join('');
   const overflow=inv.sectors.length>3?`<span class="tag-overflow">+${inv.sectors.length-3}</span>`:'';
   const delay=Math.min((idx||0)*0.05,0.8);
+  const isOrg=inv.entity==='organization';
+  const avatarClass=isOrg?'avatar avatar-org':'avatar';
+  const avatarContent=isOrg?'🏢':initials(inv.name);
+  const firmLine=isOrg?(inv.memberCount?`<div class="firm"><span class="member-count-badge">👥 ${inv.memberCount} members</span></div>`:''):`<div class="firm">${inv.firm||''}</div>`;
   return`<div class="investor-card" onclick="openProfile('${inv.id}')" style="animation-delay:${delay}s">
     <button class="compare-btn ${isCompared?'selected':''}" onclick="event.stopPropagation();toggleCompare('${inv.id}')" title="Compare">
       ${isCompared?'✓':'＋'}
     </button>
     <div class="card-header">
-      <div class="avatar">${initials(inv.name)}</div>
+      <div class="${avatarClass}">${avatarContent}</div>
       ${inv.activelyDeploying?'<div class="active-badge"><span class="dot"></span>Active</div>':''}
     </div>
     <div class="name">${inv.name}</div>
-    <div class="firm">${inv.firm}</div>
+    ${firmLine}
     <div class="sector-tags">${sectorTags}${overflow}</div>
     <span class="type-badge ${typeClass(inv.type)}">${inv.type}</span>
     <div class="card-thesis">${inv.thesis}</div>
@@ -660,13 +677,17 @@ function openProfile(id){
   const verified=false;
   const similar=findSimilarInvestors(inv);
 
+  const isOrg=inv.entity==='organization';
+  const modalAvatarClass=isOrg?'modal-avatar avatar-org':'modal-avatar';
+  const modalAvatarContent=isOrg?'🏢':initials(inv.name);
+  const firmLine=isOrg?(inv.title?`<div class="firm">${inv.title}</div>`:''):`<div class="firm">${inv.title} · ${inv.firm}</div>`;
   document.getElementById('modal').innerHTML=`
     <button class="modal-close" onclick="closeModal()">×</button>
     <div class="modal-header">
-      <div class="modal-avatar">${initials(inv.name)}</div>
+      <div class="${modalAvatarClass}">${modalAvatarContent}</div>
       <div class="modal-header-info">
         <h2>${inv.name}${verified?'<span class="verified-badge">✓ Verified</span>':''}</h2>
-        <div class="firm">${inv.title} · ${inv.firm}</div>
+        ${firmLine}
         <div class="badges">
           <span class="type-badge ${typeClass(inv.type)}">${inv.type}</span>
           <span style="display:flex;align-items:center;gap:5px;font-size:0.8rem;color:var(--text-muted)"><span class="activity-dot ${activity.color}"></span>${activity.label}</span>
@@ -686,6 +707,12 @@ function openProfile(id){
         <div class="proof-item">🌍 ${inv.geography.join(', ')}</div>
         ${inv.activelyDeploying?'<div class="proof-item" style="color:var(--green)">🟢 Actively Deploying</div>':''}
       </div>
+
+      ${isOrg&&(inv.keyPeople&&inv.keyPeople.length||inv.memberCount)?`
+      <div class="modal-section full-width">
+        ${inv.memberCount?`<div style="margin-bottom:8px"><span class="member-count-badge">👥 ${inv.memberCount} members</span></div>`:''}
+        ${inv.keyPeople&&inv.keyPeople.length?`<h3>Key People</h3><ul class="key-people-list">${inv.keyPeople.map(p=>'<li>'+p+'</li>').join('')}</ul>`:''}
+      </div>`:''}
 
       <div class="modal-section full-width"><h3>Investment Thesis</h3><p>${inv.thesis}</p></div>
 
@@ -883,7 +910,7 @@ function openCompare(){
   const invs=compareIds.map(id=>investors.find(i=>i.id===id));
   const cols=invs.length;
   const rows=[
-    {label:'',render:inv=>`<div class="compare-cell header"><div class="avatar" style="margin:0 auto;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">${initials(inv.name)}</div><div class="name">${inv.name}</div><div class="firm">${inv.title} · ${inv.firm}</div><span class="type-badge ${typeClass(inv.type)}" style="margin-top:6px">${inv.type}</span><br><button class="compare-remove" onclick="removeFromCompare('${inv.id}')">✕ Remove</button></div>`},
+    {label:'',render:inv=>{const io=inv.entity==='organization';return`<div class="compare-cell header"><div class="avatar${io?' avatar-org':''}" style="margin:0 auto;width:48px;height:48px;border-radius:${io?'8px':'50%'};background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">${io?'🏢':initials(inv.name)}</div><div class="name">${inv.name}</div><div class="firm">${io?(inv.title||''):(inv.title+' · '+inv.firm)}</div><span class="type-badge ${typeClass(inv.type)}" style="margin-top:6px">${inv.type}</span><br><button class="compare-remove" onclick="removeFromCompare('${inv.id}')">✕ Remove</button></div>`}},
     {label:'Thesis',render:inv=>`<div class="compare-cell">${inv.thesis}</div>`},
     {label:'Stages',render:inv=>`<div class="compare-cell">${inv.stages.map(s=>'<span class="tag tag-stage" style="margin:2px">'+s+'</span>').join('')}</div>`},
     {label:'Sectors',render:inv=>`<div class="compare-cell">${inv.sectors.map(s=>'<span class="tag tag-sector" style="margin:2px">'+s+'</span>').join('')}</div>`},

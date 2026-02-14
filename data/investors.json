@@ -54,7 +54,10 @@
     "linkedIn": null,
     "twitter": "@pmarca",
     "firmUrl": "https://a16z.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "alfred-lin-sequoia",
@@ -110,7 +113,10 @@
     "linkedIn": "https://linkedin.com/in/linalfred",
     "twitter": null,
     "firmUrl": "https://sequoiacap.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "bill-gurley-benchmark",
@@ -157,7 +163,10 @@
     "linkedIn": "https://linkedin.com/in/billgurley",
     "twitter": "@bgurley",
     "firmUrl": "https://benchmark.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "peter-fenton-benchmark",
@@ -209,7 +218,10 @@
     "linkedIn": "https://linkedin.com/in/peterfenton",
     "twitter": null,
     "firmUrl": "https://benchmark.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "mary-meeker-bond",
@@ -263,7 +275,10 @@
     "linkedIn": "https://linkedin.com/in/marymeeker",
     "twitter": null,
     "firmUrl": "https://bondcap.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "roelof-botha-sequoia",
@@ -319,7 +334,10 @@
     "linkedIn": "https://linkedin.com/in/roelofbotha",
     "twitter": null,
     "firmUrl": "https://sequoiacap.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "reid-hoffman-greylock",
@@ -375,7 +393,10 @@
     "linkedIn": "https://linkedin.com/in/reidhoffman",
     "twitter": "@reidhoffman",
     "firmUrl": "https://greylock.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "vinod-khosla-kv",
@@ -431,7 +452,10 @@
     "linkedIn": "https://linkedin.com/in/vinodkhosla",
     "twitter": "@vkhosla",
     "firmUrl": "https://khoslaventures.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "kirsten-green-forerunner",
@@ -483,7 +507,10 @@
     "linkedIn": "https://linkedin.com/in/kirstengreen",
     "twitter": "@kirstengreen",
     "firmUrl": "https://forerunnerventures.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "josh-kushner-thrive",
@@ -538,7 +565,10 @@
     "linkedIn": "https://linkedin.com/in/joshkushner",
     "twitter": "@JoshuaKushner",
     "firmUrl": "https://thrivecap.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "matt-turck-firstmark",
@@ -591,7 +621,10 @@
     "linkedIn": "https://linkedin.com/in/turck",
     "twitter": "@mattturck",
     "firmUrl": "https://firstmarkcap.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "sarah-guo-conviction",
@@ -642,7 +675,10 @@
     "linkedIn": "https://linkedin.com/in/sarahguo",
     "twitter": "@saranormous",
     "firmUrl": "https://conviction.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "elad-gil-angel",
@@ -695,7 +731,10 @@
     "linkedIn": "https://linkedin.com/in/eladgil",
     "twitter": "@eladgil",
     "firmUrl": "https://eladgil.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "naval-ravikant-angellist",
@@ -743,7 +782,10 @@
     "linkedIn": "https://linkedin.com/in/navalravikant",
     "twitter": "@naval",
     "firmUrl": "https://nav.al",
-    "location": "Austin, TX"
+    "location": "Austin, TX",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "jeff-clavier-uncork",
@@ -795,7 +837,10 @@
     "linkedIn": "https://linkedin.com/in/jeffclavier",
     "twitter": "@jeff",
     "firmUrl": "https://uncorkcapital.com",
-    "location": "Palo Alto, CA"
+    "location": "Palo Alto, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "jenny-lee-gvc",
@@ -851,7 +896,10 @@
     "linkedIn": "https://linkedin.com/in/jennylee",
     "twitter": null,
     "firmUrl": "https://ggvc.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "lee-fixel-addition",
@@ -905,7 +953,10 @@
     "linkedIn": "https://linkedin.com/in/leefixel",
     "twitter": null,
     "firmUrl": "https://addition.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "chris-dixon-a16z",
@@ -958,7 +1009,10 @@
     "linkedIn": "https://linkedin.com/in/chrisdixon",
     "twitter": "@cdixon",
     "firmUrl": "https://a16zcrypto.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "ann-miura-ko-floodgate",
@@ -1010,7 +1064,10 @@
     "linkedIn": "https://linkedin.com/in/annmiurako",
     "twitter": "@annimaniac",
     "firmUrl": "https://floodgate.com",
-    "location": "Palo Alto, CA"
+    "location": "Palo Alto, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "mike-maples-floodgate",
@@ -1057,7 +1114,10 @@
     "linkedIn": "https://linkedin.com/in/mikemaplesjr",
     "twitter": "@m2jr",
     "firmUrl": "https://floodgate.com",
-    "location": "Palo Alto, CA"
+    "location": "Palo Alto, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "josh-wolfe-lux",
@@ -1111,7 +1171,10 @@
     "linkedIn": "https://linkedin.com/in/joshwolfe",
     "twitter": "@wolfejosh",
     "firmUrl": "https://luxcapital.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "brian-singerman-founders-fund",
@@ -1166,7 +1229,10 @@
     "linkedIn": "https://linkedin.com/in/briansingerman",
     "twitter": null,
     "firmUrl": "https://foundersfund.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "keith-rabois-founders-fund",
@@ -1220,7 +1286,10 @@
     "linkedIn": "https://linkedin.com/in/keithrabois",
     "twitter": "@rabois",
     "firmUrl": "https://foundersfund.com",
-    "location": "Miami, FL"
+    "location": "Miami, FL",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "satya-patel-homebrew",
@@ -1272,7 +1341,10 @@
     "linkedIn": "https://linkedin.com/in/satyapatel",
     "twitter": "@satyapatel",
     "firmUrl": "https://homebrew.co",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "hunter-walk-homebrew",
@@ -1318,7 +1390,10 @@
     "linkedIn": "https://linkedin.com/in/hunterwalk",
     "twitter": "@hunterwalk",
     "firmUrl": "https://homebrew.co",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "mamoon-hamid-kleiner",
@@ -1369,7 +1444,10 @@
     "linkedIn": "https://linkedin.com/in/mamoonhamid",
     "twitter": "@mamoonha",
     "firmUrl": "https://kleinerperkins.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "ilya-fushman-kleiner",
@@ -1420,7 +1498,10 @@
     "linkedIn": "https://linkedin.com/in/ilyafushman",
     "twitter": null,
     "firmUrl": "https://kleinerperkins.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "jason-calacanis-launch",
@@ -1472,7 +1553,10 @@
     "linkedIn": "https://linkedin.com/in/jasoncalacanis",
     "twitter": "@Jason",
     "firmUrl": "https://launch.co",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "garry-tan-yc",
@@ -1529,7 +1613,10 @@
     "linkedIn": "https://linkedin.com/in/garrytan",
     "twitter": "@garrytan",
     "firmUrl": "https://ycombinator.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "dalton-caldwell-yc",
@@ -1576,7 +1663,10 @@
     "linkedIn": "https://linkedin.com/in/daltoncaldwell",
     "twitter": "@daltonc",
     "firmUrl": "https://ycombinator.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "brad-feld-foundry",
@@ -1623,7 +1713,10 @@
     "linkedIn": "https://linkedin.com/in/bradfeld",
     "twitter": "@bfeld",
     "firmUrl": "https://foundrygroup.com",
-    "location": "Boulder, CO"
+    "location": "Boulder, CO",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "fred-wilson-usv",
@@ -1677,7 +1770,10 @@
     "linkedIn": "https://linkedin.com/in/fredwilson",
     "twitter": "@fredwilson",
     "firmUrl": "https://usv.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "albert-wenger-usv",
@@ -1726,7 +1822,10 @@
     "linkedIn": "https://linkedin.com/in/albertwenger",
     "twitter": "@albertwenger",
     "firmUrl": "https://usv.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "semil-shah-haystack",
@@ -1777,7 +1876,10 @@
     "linkedIn": "https://linkedin.com/in/semilshah",
     "twitter": "@semil",
     "firmUrl": "https://haystack.vc",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "charles-hudson-precursor",
@@ -1828,7 +1930,10 @@
     "linkedIn": "https://linkedin.com/in/charleshudson",
     "twitter": "@chudson",
     "firmUrl": "https://precursorvc.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "pejman-nozad-pear",
@@ -1880,7 +1985,10 @@
     "linkedIn": "https://linkedin.com/in/pejmannozad",
     "twitter": "@pejmannozad",
     "firmUrl": "https://pear.vc",
-    "location": "Palo Alto, CA"
+    "location": "Palo Alto, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "aileen-lee-cowboy",
@@ -1932,7 +2040,10 @@
     "linkedIn": "https://linkedin.com/in/aileenwlee",
     "twitter": "@aileenlee",
     "firmUrl": "https://cowboy.vc",
-    "location": "Palo Alto, CA"
+    "location": "Palo Alto, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "cyan-banister-angel",
@@ -1984,7 +2095,10 @@
     "linkedIn": "https://linkedin.com/in/cyanbanister",
     "twitter": "@cyantist",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "alexis-ohanian-776",
@@ -2035,7 +2149,10 @@
     "linkedIn": "https://linkedin.com/in/alexisohanian",
     "twitter": "@alexisohanian",
     "firmUrl": "https://sevensevensix.com",
-    "location": "Miami, FL"
+    "location": "Miami, FL",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "li-jin-atelier",
@@ -2085,7 +2202,10 @@
     "linkedIn": "https://linkedin.com/in/lijin",
     "twitter": "@ljin18",
     "firmUrl": "https://atelier.ventures",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "sahil-lavingia-angel",
@@ -2136,7 +2256,10 @@
     "linkedIn": "https://linkedin.com/in/sahillavingia",
     "twitter": "@shl",
     "firmUrl": "https://sahillavingia.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "balaji-srinivasan-angel",
@@ -2182,7 +2305,10 @@
     "linkedIn": "https://linkedin.com/in/balajissrinivasan",
     "twitter": "@balajis",
     "firmUrl": "https://balajis.com",
-    "location": "Global / Remote"
+    "location": "Global / Remote",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "lachy-groom-angel",
@@ -2234,7 +2360,10 @@
     "linkedIn": "https://linkedin.com/in/lachygroom",
     "twitter": "@lachygroom",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "scott-belsky-angel",
@@ -2285,7 +2414,10 @@
     "linkedIn": "https://linkedin.com/in/scottbelsky",
     "twitter": "@scottbelsky",
     "firmUrl": null,
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "david-sacks-craft",
@@ -2339,7 +2471,10 @@
     "linkedIn": "https://linkedin.com/in/davidsacks",
     "twitter": "@DavidSacks",
     "firmUrl": "https://craftventures.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "chamath-palihapitiya-social",
@@ -2389,7 +2524,10 @@
     "linkedIn": "https://linkedin.com/in/chamath",
     "twitter": "@chamath",
     "firmUrl": "https://socialcapital.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "arlan-hamilton-backstage",
@@ -2440,7 +2578,10 @@
     "linkedIn": "https://linkedin.com/in/arlanhamilton",
     "twitter": "@ArlanWasHere",
     "firmUrl": "https://backstagecapital.com",
-    "location": "Los Angeles, CA"
+    "location": "Los Angeles, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "brian-armstrong-angel",
@@ -2491,7 +2632,10 @@
     "linkedIn": "https://linkedin.com/in/barmstrong",
     "twitter": "@brian_armstrong",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "nat-friedman-angel",
@@ -2542,7 +2686,10 @@
     "linkedIn": "https://linkedin.com/in/natfriedman",
     "twitter": "@natfriedman",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "daniel-gross-angel",
@@ -2594,7 +2741,10 @@
     "linkedIn": "https://linkedin.com/in/danielgross",
     "twitter": "@danielgross",
     "firmUrl": "https://pioneer.app",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "patrick-collison-angel",
@@ -2639,7 +2789,10 @@
     "linkedIn": "https://linkedin.com/in/patrickcollison",
     "twitter": "@patrickc",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "trae-stephens-founders-fund",
@@ -2691,7 +2844,10 @@
     "linkedIn": "https://linkedin.com/in/traestephens",
     "twitter": "@traestephens",
     "firmUrl": "https://foundersfund.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "andrew-chen-a16z",
@@ -2743,7 +2899,10 @@
     "linkedIn": "https://linkedin.com/in/andrewchen",
     "twitter": "@andrewchen",
     "firmUrl": "https://a16z.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "martin-casado-a16z",
@@ -2795,7 +2954,10 @@
     "linkedIn": "https://linkedin.com/in/martincasado",
     "twitter": "@martin_casado",
     "firmUrl": "https://a16z.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "haomiao-huang-a16z",
@@ -2849,7 +3011,10 @@
     "linkedIn": "https://linkedin.com/in/anjneymidha",
     "twitter": "@AnjneyMidha",
     "firmUrl": "https://a16z.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "tomasz-tunguz-theory",
@@ -2900,7 +3065,10 @@
     "linkedIn": "https://linkedin.com/in/tomasztunguz",
     "twitter": "@ttunguz",
     "firmUrl": "https://theory.ventures",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "jamin-ball-altimeter",
@@ -2954,7 +3122,10 @@
     "linkedIn": "https://linkedin.com/in/bradgerstner",
     "twitter": "@altcap",
     "firmUrl": "https://altimetercapital.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "david-george-a16z",
@@ -3005,7 +3176,10 @@
     "linkedIn": "https://linkedin.com/in/david-george-32211a6",
     "twitter": null,
     "firmUrl": "https://a16z.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "pat-grady-sequoia",
@@ -3057,7 +3231,10 @@
     "linkedIn": "https://linkedin.com/in/patgrady",
     "twitter": null,
     "firmUrl": "https://sequoiacap.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "mike-volpi-index",
@@ -3113,7 +3290,10 @@
     "linkedIn": "https://linkedin.com/in/mikevolpi",
     "twitter": null,
     "firmUrl": "https://indexventures.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "danny-rimer-index",
@@ -3168,7 +3348,10 @@
     "linkedIn": "https://linkedin.com/in/dannyrimer",
     "twitter": null,
     "firmUrl": "https://indexventures.com",
-    "location": "London, UK"
+    "location": "London, UK",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "luciana-lixandru-sequoia",
@@ -3222,7 +3405,10 @@
     "linkedIn": "https://linkedin.com/in/luciana-lixandru-11042875",
     "twitter": null,
     "firmUrl": "https://sequoiacap.com",
-    "location": "London, UK"
+    "location": "London, UK",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "neeraj-agrawal-battery",
@@ -3274,7 +3460,10 @@
     "linkedIn": "https://linkedin.com/in/neerajagrawal2000",
     "twitter": "@NeerajVC",
     "firmUrl": "https://battery.com",
-    "location": "Boston, MA"
+    "location": "Boston, MA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "byron-deeter-bessemer",
@@ -3328,7 +3517,10 @@
     "linkedIn": "https://linkedin.com/in/byrondeeter",
     "twitter": "@bdeeter",
     "firmUrl": "https://bvp.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "ethan-kurzweil-bessemer",
@@ -3381,7 +3573,10 @@
     "linkedIn": "https://linkedin.com/in/ethankurzweil",
     "twitter": null,
     "firmUrl": "https://bvp.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "ravi-gupta-sequoia",
@@ -3433,7 +3628,10 @@
     "linkedIn": "https://linkedin.com/in/ravigupta",
     "twitter": null,
     "firmUrl": "https://sequoiacap.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "peter-thiel-founders-fund",
@@ -3489,7 +3687,10 @@
     "linkedIn": "https://linkedin.com/in/peterthiel",
     "twitter": null,
     "firmUrl": "https://foundersfund.com",
-    "location": "Los Angeles, CA"
+    "location": "Los Angeles, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "john-doerr-kleiner",
@@ -3539,7 +3740,10 @@
     "linkedIn": "https://linkedin.com/in/johndoerr",
     "twitter": "@johndoerr",
     "firmUrl": "https://kleinerperkins.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "emily-weiss-angel",
@@ -3581,7 +3785,10 @@
     "linkedIn": "https://linkedin.com/in/emily-weiss-49014571",
     "twitter": "@emilyweiss",
     "firmUrl": null,
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "jess-lee-sequoia",
@@ -3631,7 +3838,10 @@
     "linkedIn": "https://linkedin.com/in/jesslee",
     "twitter": "@jessklee",
     "firmUrl": "https://sequoiacap.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "vasili-alvarado-ivp",
@@ -3683,7 +3893,10 @@
     "linkedIn": "https://linkedin.com/in/tomloverro",
     "twitter": "@tomloverro",
     "firmUrl": "https://ivp.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "meritech-capital-paul-madera",
@@ -3733,7 +3946,10 @@
     "linkedIn": "https://linkedin.com/in/paulmadera",
     "twitter": null,
     "firmUrl": "https://meritechcapital.com",
-    "location": "Palo Alto, CA"
+    "location": "Palo Alto, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "samir-kaji-conduit",
@@ -3775,7 +3991,10 @@
     "linkedIn": "https://linkedin.com/in/samirkaji",
     "twitter": "@samirkaji",
     "firmUrl": "https://conduit.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "nikhil-basu-trivedi-footwork",
@@ -3826,7 +4045,10 @@
     "linkedIn": "https://linkedin.com/in/nikhilbt",
     "twitter": "@nbt",
     "firmUrl": "https://footwork.vc",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "eric-bahn-hustle-fund",
@@ -3870,7 +4092,10 @@
     "linkedIn": "https://linkedin.com/in/ericbahn",
     "twitter": "@ericbahn",
     "firmUrl": "https://hustlefund.vc",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "elizabeth-yin-hustle-fund",
@@ -3914,7 +4139,10 @@
     "linkedIn": "https://linkedin.com/in/elizabethyin",
     "twitter": "@dunkhippo33",
     "firmUrl": "https://hustlefund.vc",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "jenny-fielding-everywhere",
@@ -3959,7 +4187,10 @@
     "linkedIn": "https://linkedin.com/in/jennyfielding",
     "twitter": "@jefielding",
     "firmUrl": "https://everywhere.vc",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "sunil-dhaliwal-amplify",
@@ -4010,7 +4241,10 @@
     "linkedIn": "https://linkedin.com/in/sunildhaliwal",
     "twitter": null,
     "firmUrl": "https://amplifypartners.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "logan-bartlett-redpoint",
@@ -4061,7 +4295,10 @@
     "linkedIn": "https://linkedin.com/in/loganbartlett",
     "twitter": "@loganbartlett",
     "firmUrl": "https://redpoint.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "masha-bucher-day-one",
@@ -4105,7 +4342,10 @@
     "linkedIn": "https://linkedin.com/in/mashadrokova",
     "twitter": "@mashadrokova",
     "firmUrl": "https://dayoneventures.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "kevin-hart-hartbeat",
@@ -4154,7 +4394,10 @@
     "linkedIn": null,
     "twitter": "@KevinHart4real",
     "firmUrl": "https://hartbeat.com",
-    "location": "Los Angeles, CA"
+    "location": "Los Angeles, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "nas-queensbridge",
@@ -4201,7 +4444,10 @@
     "linkedIn": null,
     "twitter": "@Nas",
     "firmUrl": null,
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "ashton-kutcher-sound",
@@ -4249,7 +4495,10 @@
     "linkedIn": "https://linkedin.com/in/ashton-kutcher-849288a2",
     "twitter": "@aplusk",
     "firmUrl": "https://soundventures.com",
-    "location": "Los Angeles, CA"
+    "location": "Los Angeles, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "jared-leto-angel",
@@ -4294,7 +4543,10 @@
     "linkedIn": null,
     "twitter": "@JaredLeto",
     "firmUrl": null,
-    "location": "Los Angeles, CA"
+    "location": "Los Angeles, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "marc-benioff-angel",
@@ -4346,7 +4598,10 @@
     "linkedIn": "https://linkedin.com/in/marcbenioff",
     "twitter": "@Benioff",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "satya-nadella-angel",
@@ -4401,7 +4656,10 @@
     "linkedIn": null,
     "twitter": "@JeffBezos",
     "firmUrl": null,
-    "location": "Miami, FL"
+    "location": "Miami, FL",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "esther-dyson-angel",
@@ -4448,7 +4706,10 @@
     "linkedIn": "https://linkedin.com/in/estherdyson",
     "twitter": "@edyson",
     "firmUrl": null,
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "sorenson-impact-jim",
@@ -4493,7 +4754,10 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://sorensonimpact.com",
-    "location": "Salt Lake City, UT"
+    "location": "Salt Lake City, UT",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "matt-turck-msft-m12",
@@ -4543,7 +4807,10 @@
     "linkedIn": "https://linkedin.com/in/turck",
     "twitter": "https://twitter.com/mattturck",
     "firmUrl": "https://m12.vc",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "gv-google-ventures-tyson-clark",
@@ -4596,7 +4863,10 @@
     "linkedIn": "https://linkedin.com/in/tysonclark",
     "twitter": null,
     "firmUrl": "https://gv.com",
-    "location": "Mountain View, CA"
+    "location": "Mountain View, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "salesforce-ventures-john-somorjai",
@@ -4649,7 +4919,10 @@
     "linkedIn": "https://linkedin.com/in/johnsomorjai",
     "twitter": null,
     "firmUrl": "https://salesforceventures.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "intel-capital-mark-rostick",
@@ -4704,7 +4977,10 @@
     "linkedIn": "https://linkedin.com/in/mrostick",
     "twitter": null,
     "firmUrl": "https://intelcapital.com",
-    "location": "Santa Clara, CA"
+    "location": "Santa Clara, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "nvidia-ventures-mohamed-siddeek",
@@ -4755,7 +5031,10 @@
     "linkedIn": "https://linkedin.com/in/mohamed-sid-siddeek-0b1718132",
     "twitter": null,
     "firmUrl": "https://nvidia.com",
-    "location": "Santa Clara, CA"
+    "location": "Santa Clara, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "samsung-next-sj-park",
@@ -4803,7 +5082,10 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://samsungnext.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "qualcomm-ventures-quinn-li",
@@ -4852,7 +5134,10 @@
     "linkedIn": "https://linkedin.com/in/liquinn",
     "twitter": null,
     "firmUrl": "https://qualcommventures.com",
-    "location": "San Diego, CA"
+    "location": "San Diego, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "amazon-alexa-fund-paul-bernard",
@@ -4898,7 +5183,10 @@
     "linkedIn": "https://linkedin.com/in/paul-bernard-0b81542",
     "twitter": null,
     "firmUrl": "https://developer.amazon.com/alexa/alexa-fund",
-    "location": "Seattle, WA"
+    "location": "Seattle, WA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "emerson-collective-laurene-powell-jobs",
@@ -4946,7 +5234,10 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://emersoncollective.com",
-    "location": "Palo Alto, CA"
+    "location": "Palo Alto, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "iconiq-capital-divesh-makan",
@@ -4998,7 +5289,10 @@
     "linkedIn": "https://linkedin.com/in/divesh-makan-237107",
     "twitter": null,
     "firmUrl": "https://iconiqcapital.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "bezos-expeditions-jeff-bezos",
@@ -5047,7 +5341,10 @@
     "linkedIn": null,
     "twitter": "https://twitter.com/JeffBezos",
     "firmUrl": "https://bezosexpeditions.com",
-    "location": "Miami, FL"
+    "location": "Miami, FL",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "mousse-partners-marc-benioff",
@@ -5094,7 +5391,10 @@
     "linkedIn": "https://linkedin.com/in/marcbenioff",
     "twitter": "https://twitter.com/Benioff",
     "firmUrl": "https://time.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "waltham-li-ka-shing-horizons",
@@ -5147,7 +5447,10 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://horizonsventures.com",
-    "location": "Hong Kong"
+    "location": "Hong Kong",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "motier-ventures-arnault-family",
@@ -5196,7 +5499,10 @@
     "linkedIn": "https://linkedin.com/in/alexandre-arnault-936758140",
     "twitter": "https://twitter.com/alexarnault",
     "firmUrl": "https://aglaeventures.com",
-    "location": "Paris, France"
+    "location": "Paris, France",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "novo-holdings-kasim-kutay",
@@ -5244,7 +5550,10 @@
     "linkedIn": "https://linkedin.com/in/kasim-kutay",
     "twitter": null,
     "firmUrl": "https://novoholdings.dk",
-    "location": "Copenhagen, Denmark"
+    "location": "Copenhagen, Denmark",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-elad-gil",
@@ -5296,7 +5605,10 @@
     "linkedIn": "https://linkedin.com/in/eladgil",
     "twitter": "https://twitter.com/eaborkin",
     "firmUrl": "https://blog.eladgil.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-scott-belsky",
@@ -5341,7 +5653,10 @@
     "linkedIn": "https://linkedin.com/in/scottbelsky",
     "twitter": "https://twitter.com/scottbelsky",
     "firmUrl": "https://scottbelsky.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-lachy-groom",
@@ -5393,7 +5708,10 @@
     "linkedIn": "https://linkedin.com/in/lachygroom",
     "twitter": "https://twitter.com/lfrg",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-alexis-ohanian",
@@ -5439,7 +5757,10 @@
     "linkedIn": "https://linkedin.com/in/alexisohanian",
     "twitter": "https://twitter.com/alexisohanian",
     "firmUrl": "https://sevensevensix.com",
-    "location": "Miami, FL"
+    "location": "Miami, FL",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-tina-sharkey",
@@ -5483,7 +5804,10 @@
     "linkedIn": "https://linkedin.com/in/tinasharkey",
     "twitter": "https://twitter.com/tinasharkey",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-cyan-banister",
@@ -5528,7 +5852,10 @@
     "linkedIn": "https://linkedin.com/in/cyanbanister",
     "twitter": "https://twitter.com/cyantist",
     "firmUrl": "https://longjourneyvc.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-garry-tan-angel",
@@ -5575,7 +5902,10 @@
     "linkedIn": "https://linkedin.com/in/garrytan",
     "twitter": "https://twitter.com/garrytan",
     "firmUrl": "https://ycombinator.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-cindy-bi",
@@ -5621,7 +5951,10 @@
     "linkedIn": "https://linkedin.com/in/cindyxbi",
     "twitter": "https://twitter.com/cbi",
     "firmUrl": null,
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-julia-lipton",
@@ -5664,7 +5997,10 @@
     "linkedIn": "https://linkedin.com/in/julialipton",
     "twitter": "https://twitter.com/juliahlipton",
     "firmUrl": "https://awesomepeopleventures.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-sahil-lavingia",
@@ -5708,7 +6044,10 @@
     "linkedIn": "https://linkedin.com/in/sahillavingia",
     "twitter": "https://twitter.com/shl",
     "firmUrl": "https://sahillavingia.com",
-    "location": "Provo, UT"
+    "location": "Provo, UT",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-arlan-hamilton",
@@ -5753,7 +6092,10 @@
     "linkedIn": "https://linkedin.com/in/arlanhamilton",
     "twitter": "https://twitter.com/ArlanWasHere",
     "firmUrl": "https://backstagecapital.com",
-    "location": "Los Angeles, CA"
+    "location": "Los Angeles, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "angel-immad-akhund",
@@ -5797,7 +6139,10 @@
     "linkedIn": "https://linkedin.com/in/iakhund",
     "twitter": "https://twitter.com/immaboringshit",
     "firmUrl": "https://mercury.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "atomico-niklas-zennstrom",
@@ -5845,7 +6190,10 @@
     "linkedIn": "https://linkedin.com/in/niklaszennstrom",
     "twitter": "https://twitter.com/naborx",
     "firmUrl": "https://atomico.com",
-    "location": "London, UK"
+    "location": "London, UK",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "index-ventures-martin-mignot",
@@ -5896,7 +6244,10 @@
     "linkedIn": "https://linkedin.com/in/martinmignot",
     "twitter": "https://twitter.com/martinmignot",
     "firmUrl": "https://indexventures.com",
-    "location": "London, UK"
+    "location": "London, UK",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "northzone-jessica-schultz",
@@ -5945,7 +6296,10 @@
     "linkedIn": "https://linkedin.com/in/jessica-schultz-37a22724",
     "twitter": null,
     "firmUrl": "https://northzone.com",
-    "location": "Stockholm, Sweden"
+    "location": "Stockholm, Sweden",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "softbank-vision-marcelo-claure",
@@ -5992,7 +6346,10 @@
     "linkedIn": "https://linkedin.com/in/marcelo-claure",
     "twitter": "https://twitter.com/marceloclaure",
     "firmUrl": "https://softbank.com",
-    "location": "Miami, FL"
+    "location": "Miami, FL",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "sequoia-india-shailendra-singh",
@@ -6041,7 +6398,10 @@
     "linkedIn": "https://linkedin.com/in/shailendraj1",
     "twitter": null,
     "firmUrl": "https://peakxv.com",
-    "location": "Mumbai, India"
+    "location": "Mumbai, India",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "global-founders-capital-jens-lapinski",
@@ -6091,7 +6451,10 @@
     "linkedIn": "https://linkedin.com/in/jenslapinski",
     "twitter": null,
     "firmUrl": "https://globalfounderscapital.com",
-    "location": "Berlin, Germany"
+    "location": "Berlin, Germany",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "accel-luciana-lixandru",
@@ -6139,7 +6502,10 @@
     "linkedIn": "https://linkedin.com/in/luciana-lixandru-11042875",
     "twitter": "https://twitter.com/lucianalixandru",
     "firmUrl": "https://accel.com",
-    "location": "London, UK"
+    "location": "London, UK",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "balderton-suranga-chandratillake",
@@ -6187,7 +6553,10 @@
     "linkedIn": "https://linkedin.com/in/suranga-chandratillake-6a839363",
     "twitter": "https://twitter.com/suranga",
     "firmUrl": "https://balderton.com",
-    "location": "London, UK"
+    "location": "London, UK",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "dst-global-yuri-milner",
@@ -6236,7 +6605,10 @@
     "linkedIn": "https://linkedin.com/in/yuri-milner",
     "twitter": "https://twitter.com/yaborskiy",
     "firmUrl": "https://dstglobal.com",
-    "location": "Hong Kong"
+    "location": "Hong Kong",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "kaszek-hernan-kazah",
@@ -6289,7 +6661,10 @@
     "linkedIn": "https://linkedin.com/in/hernan-kazah-95810",
     "twitter": null,
     "firmUrl": "https://kaszek.com",
-    "location": "Buenos Aires, Argentina"
+    "location": "Buenos Aires, Argentina",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "jungle-ventures-amit-anand",
@@ -6335,7 +6710,10 @@
     "linkedIn": "https://linkedin.com/in/amit-anand-6b72903",
     "twitter": null,
     "firmUrl": "https://jungleventures.com",
-    "location": "Singapore"
+    "location": "Singapore",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "creandum-simon-schmincke",
@@ -6380,7 +6758,10 @@
     "linkedIn": "https://linkedin.com/in/simonschmincke",
     "twitter": null,
     "firmUrl": "https://creandum.com",
-    "location": "Berlin, Germany"
+    "location": "Berlin, Germany",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "cathay-innovation-denis-barrier",
@@ -6429,7 +6810,10 @@
     "linkedIn": "https://linkedin.com/in/denisbarrier",
     "twitter": null,
     "firmUrl": "https://cathayinnovation.com",
-    "location": "Paris, France"
+    "location": "Paris, France",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "prosus-ventures-fabricio-bloisi",
@@ -6477,7 +6861,10 @@
     "linkedIn": "https://linkedin.com/in/fabriciobloisi",
     "twitter": null,
     "firmUrl": "https://prosus.com",
-    "location": "Amsterdam, Netherlands"
+    "location": "Amsterdam, Netherlands",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "cherry-ventures-christian-meermann",
@@ -6523,7 +6910,10 @@
     "linkedIn": "https://linkedin.com/in/christian-meermann",
     "twitter": null,
     "firmUrl": "https://cherry.vc",
-    "location": "Berlin, Germany"
+    "location": "Berlin, Germany",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "b-capital-raj-ganguly",
@@ -6570,7 +6960,10 @@
     "linkedIn": "https://linkedin.com/in/rajganguly",
     "twitter": null,
     "firmUrl": "https://bcapgroup.com",
-    "location": "Singapore"
+    "location": "Singapore",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "partech-romain-lavault",
@@ -6618,7 +7011,10 @@
     "linkedIn": "https://linkedin.com/in/lavault",
     "twitter": null,
     "firmUrl": "https://partechpartners.com",
-    "location": "Paris, France"
+    "location": "Paris, France",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "lightspeed-india-harsha-kumar",
@@ -6666,7 +7062,10 @@
     "linkedIn": "https://linkedin.com/in/harshakumarlsip",
     "twitter": "https://twitter.com/haraborx",
     "firmUrl": "https://lsvp.com",
-    "location": "Bangalore, India"
+    "location": "Bangalore, India",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "cowboy-ventures-aileen-lee",
@@ -6711,7 +7110,10 @@
     "linkedIn": "https://linkedin.com/in/aileenwlee",
     "twitter": "https://twitter.com/aaborxlee",
     "firmUrl": "https://cowboy.vc",
-    "location": "Palo Alto, CA"
+    "location": "Palo Alto, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "female-founders-fund-anu-duggal",
@@ -6756,7 +7158,10 @@
     "linkedIn": "https://linkedin.com/in/anu-duggal-568222",
     "twitter": "https://twitter.com/anuduggal",
     "firmUrl": "https://femalefoundersfund.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "aspect-ventures-theresia-gouw",
@@ -6801,7 +7206,10 @@
     "linkedIn": "https://linkedin.com/in/theresiagouw",
     "twitter": "https://twitter.com/theresia",
     "firmUrl": "https://acrewcapital.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "all-raise-jenny-lefcourt",
@@ -6845,7 +7253,10 @@
     "linkedIn": "https://linkedin.com/in/jennylefcourt",
     "twitter": "https://twitter.com/jennylefcourt",
     "firmUrl": "https://freestyle.vc",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "reach-capital-jennifer-carolan",
@@ -6891,7 +7302,10 @@
     "linkedIn": "https://linkedin.com/in/jcarolan",
     "twitter": "https://twitter.com/jennifercarolan",
     "firmUrl": "https://reachcapital.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "flying-fish-eva-ho",
@@ -6936,7 +7350,10 @@
     "linkedIn": "https://linkedin.com/in/evaho1",
     "twitter": "https://twitter.com/evaho",
     "firmUrl": "https://fika.vc",
-    "location": "Los Angeles, CA"
+    "location": "Los Angeles, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "bain-capital-ventures-sarah-smith",
@@ -6981,7 +7398,10 @@
     "linkedIn": "https://linkedin.com/in/sasmith4",
     "twitter": "https://twitter.com/sarahsmith",
     "firmUrl": "https://baincapitalventures.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "precursor-ventures-charles-hudson",
@@ -7025,7 +7445,10 @@
     "linkedIn": "https://linkedin.com/in/charleshudson",
     "twitter": "https://twitter.com/chaborx",
     "firmUrl": "https://precursorvc.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "harlem-capital-henri-pierre-jacques",
@@ -7070,7 +7493,10 @@
     "linkedIn": "https://linkedin.com/in/hpierrejacques",
     "twitter": "https://twitter.com/haborxjacques",
     "firmUrl": "https://harlemcapital.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "cross-culture-marlon-nichols",
@@ -7116,7 +7542,10 @@
     "linkedIn": "https://linkedin.com/in/marloncnichols",
     "twitter": "https://twitter.com/maraborxnichols",
     "firmUrl": "https://macventurecapital.com",
-    "location": "Los Angeles, CA"
+    "location": "Los Angeles, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "kapor-capital-freada-klein",
@@ -7161,7 +7590,10 @@
     "linkedIn": "https://linkedin.com/in/dr-freada-kapor-klein-487a719",
     "twitter": "https://twitter.com/freadakapor",
     "firmUrl": "https://kaporcapital.com",
-    "location": "Oakland, CA"
+    "location": "Oakland, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "ggv-jenny-lee",
@@ -7210,7 +7642,10 @@
     "linkedIn": "https://linkedin.com/in/jennylee",
     "twitter": null,
     "firmUrl": "https://graniteasia.com",
-    "location": "Singapore"
+    "location": "Singapore",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "the-venture-collective-lo-toney",
@@ -7253,7 +7688,10 @@
     "linkedIn": "https://linkedin.com/in/ltoney",
     "twitter": "https://twitter.com/lo_toney",
     "firmUrl": "https://plexocapital.com",
-    "location": "Oakland, CA"
+    "location": "Oakland, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "susa-ventures-leo-polovets",
@@ -7304,7 +7742,10 @@
     "linkedIn": "https://linkedin.com/in/lpolovets",
     "twitter": "https://twitter.com/lpolovets",
     "firmUrl": "https://susaventures.com",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "500-global-christine-tsai",
@@ -7353,7 +7794,10 @@
     "linkedIn": "https://linkedin.com/in/christinesltsai",
     "twitter": "https://twitter.com/christinetsai",
     "firmUrl": "https://500.co",
-    "location": "San Francisco, CA"
+    "location": "San Francisco, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "coatue-philippe-laffont",
@@ -7406,7 +7850,10 @@
     "linkedIn": "https://linkedin.com/in/philippe-laffont-9516b55",
     "twitter": null,
     "firmUrl": "https://coatue.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "insight-partners-jeff-horing",
@@ -7453,7 +7900,10 @@
     "linkedIn": "https://linkedin.com/in/jeffhoring2009",
     "twitter": null,
     "firmUrl": "https://insightpartners.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "menlo-ventures-matt-murphy",
@@ -7500,7 +7950,10 @@
     "linkedIn": "https://linkedin.com/in/matt-murphy-0415543",
     "twitter": null,
     "firmUrl": "https://menlovc.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "lux-capital-josh-wolfe",
@@ -7547,7 +8000,10 @@
     "linkedIn": "https://linkedin.com/in/joshwolfe",
     "twitter": "https://twitter.com/wolfejosh",
     "firmUrl": "https://luxcapital.com",
-    "location": "New York, NY"
+    "location": "New York, NY",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "felicis-ventures-aydin-senkut",
@@ -7594,42 +8050,83 @@
     "linkedIn": "https://linkedin.com/in/aydins",
     "twitter": "https://twitter.com/asenkut",
     "firmUrl": "https://felicis.com",
-    "location": "Menlo Park, CA"
+    "location": "Menlo Park, CA",
+    "entity": "individual",
+    "memberCount": null,
+    "keyPeople": null
   },
   {
     "id": "citrine-angels",
     "name": "Citrine Angels",
-    "firm": "Citrine Angels",
+    "firm": null,
     "title": "Women Angel Investing Group",
     "type": "angel_group",
     "photo": null,
     "thesis": "Provides early-stage investment opportunities and education to female investors interested in supporting female-founded startups. Focused on increasing access to capital for women entrepreneurs.",
-    "stages": ["pre_seed", "seed"],
-    "sectors": ["saas", "healthtech", "consumer", "fintech", "edtech"],
-    "checkSize": { "min": 25000, "max": 100000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "healthtech",
+      "consumer",
+      "fintech",
+      "edtech"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 100000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
-    "portfolioHighlights": ["FedTech.io", "Portfolia"],
+    "portfolioHighlights": [
+      "FedTech.io",
+      "Portfolia"
+    ],
     "fundSize": "$1.2M+ invested",
     "activelyDeploying": true,
     "lastActive": "2025-12",
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.citrineangels.com",
-    "location": "Washington, DC"
+    "location": "Washington, DC",
+    "entity": "organization",
+    "memberCount": "75+",
+    "keyPeople": []
   },
   {
     "id": "district-angels",
     "name": "District Angels",
-    "firm": "District Angels",
+    "firm": null,
     "title": "Angel Syndicate & Investing Collective",
     "type": "angel_group",
     "photo": null,
     "thesis": "Angel syndicate and investing collective activating capital, community, and conviction across DC, Maryland, and Virginia. Shaping the future of innovation in the DMV.",
-    "stages": ["pre_seed", "seed"],
-    "sectors": ["saas", "fintech", "ai_ml", "consumer", "enterprise"],
-    "checkSize": { "min": 25000, "max": 250000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "fintech",
+      "ai_ml",
+      "consumer",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 250000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "N/A - Syndicate",
@@ -7638,42 +8135,85 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.districtangels.com",
-    "location": "Washington, DC"
+    "location": "Washington, DC",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "new-dominion-angels",
     "name": "New Dominion Angels",
-    "firm": "New Dominion Angels",
+    "firm": null,
     "title": "Mid-Atlantic Angel Group",
     "type": "angel_group",
     "photo": null,
     "thesis": "Invests in startups located primarily in Virginia, Maryland and Washington, DC. Members are entrepreneurs, technologists, executives, and business leaders from a variety of fields who have built and led exceptional companies.",
-    "stages": ["pre_seed", "seed", "series_a"],
-    "sectors": ["saas", "healthtech", "enterprise", "fintech", "govtech"],
-    "checkSize": { "min": 25000, "max": 250000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "saas",
+      "healthtech",
+      "enterprise",
+      "fintech",
+      "govtech"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 250000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
-    "portfolioHighlights": ["MarginEdge", "RegScale", "Impruvon Health"],
+    "portfolioHighlights": [
+      "MarginEdge",
+      "RegScale",
+      "Impruvon Health"
+    ],
     "fundSize": "N/A - Angel Group",
     "activelyDeploying": true,
     "lastActive": "2025-12",
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.newdominionangels.com",
-    "location": "Northern Virginia"
+    "location": "Northern Virginia",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "nextgen-angels",
     "name": "NextGen Angels",
-    "firm": "NextGen Angels",
+    "firm": null,
     "title": "Young Angel Investor Network",
     "type": "angel_group",
     "photo": null,
     "thesis": "Network of 70+ young angel investors in the DC area focused on backing early-stage startups. Founded by Dan Mindus to bring the next generation of investors into the angel ecosystem.",
-    "stages": ["pre_seed", "seed"],
-    "sectors": ["saas", "consumer", "fintech", "ai_ml", "enterprise"],
-    "checkSize": { "min": 5000, "max": 50000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "consumer",
+      "fintech",
+      "ai_ml",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 5000,
+      "max": 50000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "N/A - Angel Network",
@@ -7682,20 +8222,41 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": null,
-    "location": "Washington, DC"
+    "location": "Washington, DC",
+    "entity": "organization",
+    "memberCount": "70+",
+    "keyPeople": [
+      "Dan Mindus"
+    ]
   },
   {
     "id": "dmv-angel-group",
     "name": "DMV Angel Group",
-    "firm": "DMV Angel Group",
+    "firm": null,
     "title": "Regional Angel Group",
     "type": "angel_group",
     "photo": null,
     "thesis": "Entrepreneurs backing entrepreneurs and university spinouts for 20+ years in DC, Maryland, and Virginia. Focused on early-stage companies with strong founding teams and scalable business models.",
-    "stages": ["pre_seed", "seed"],
-    "sectors": ["saas", "enterprise", "healthtech", "fintech", "govtech"],
-    "checkSize": { "min": 25000, "max": 200000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "healthtech",
+      "fintech",
+      "govtech"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 200000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "N/A - Angel Group",
@@ -7704,20 +8265,39 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.dmvangel.com",
-    "location": "Washington, DC"
+    "location": "Washington, DC",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "cav-angels",
     "name": "CAV Angels",
-    "firm": "CAV Angels",
+    "firm": null,
     "title": "UVA Alumni Angel Network",
     "type": "angel_group",
     "photo": null,
     "thesis": "Catalyzes UVA alumni engagement in entrepreneurial ecosystems and mobilizes investment in the most promising early-stage companies through educational programming, student engagement, and curated deal flow. Focused on technology and healthcare with strong UVA affiliation.",
-    "stages": ["seed", "series_a"],
-    "sectors": ["saas", "healthtech", "enterprise", "fintech", "consumer"],
-    "checkSize": { "min": 25000, "max": 250000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "saas",
+      "healthtech",
+      "enterprise",
+      "fintech",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 250000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "N/A - Angel Network",
@@ -7726,20 +8306,39 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://cavangels.com",
-    "location": "Northern Virginia"
+    "location": "Northern Virginia",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "dingman-center-angels",
     "name": "Dingman Center Angels",
-    "firm": "Dingman Center for Entrepreneurship",
+    "firm": null,
     "title": "UMD Smith School Angel Network",
     "type": "angel_group",
     "photo": null,
     "thesis": "University of Maryland Robert H. Smith School of Business angel network connecting experienced investors with promising early-stage ventures from the UMD entrepreneurial ecosystem and greater DMV region.",
-    "stages": ["pre_seed", "seed"],
-    "sectors": ["saas", "enterprise", "healthtech", "ai_ml", "edtech"],
-    "checkSize": { "min": 10000, "max": 100000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "healthtech",
+      "ai_ml",
+      "edtech"
+    ],
+    "checkSize": {
+      "min": 10000,
+      "max": 100000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "N/A - Angel Network",
@@ -7748,20 +8347,39 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.rhsmith.umd.edu/centers-excellence/dingman-center-entrepreneurship",
-    "location": "College Park, MD"
+    "location": "College Park, MD",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "vaan",
     "name": "Virginia Active Angel Network (VAAN)",
-    "firm": "VAAN",
+    "firm": null,
     "title": "Virginia Angel Network",
     "type": "angel_group",
     "photo": null,
     "thesis": "Active angel investing network operating since 2005, focused on early-stage companies in Virginia and the mid-Atlantic region. Entrepreneurs and investors collaborating to fund promising startups.",
-    "stages": ["pre_seed", "seed"],
-    "sectors": ["saas", "enterprise", "healthtech", "consumer", "govtech"],
-    "checkSize": { "min": 25000, "max": 200000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "healthtech",
+      "consumer",
+      "govtech"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 200000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "$2.75M+ invested in 13+ companies",
@@ -7770,20 +8388,40 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": null,
-    "location": "Virginia"
+    "location": "Virginia",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "zeal-capital-partners",
     "name": "Zeal Capital Partners",
-    "firm": "Zeal Capital Partners",
+    "firm": null,
     "title": "Inclusive Early-Stage VC",
     "type": "vc",
     "photo": null,
     "thesis": "Inclusive venture capital firm investing in seed and early-stage companies across fintech, health equity, and future of work. Founded in 2020, focused on backing diverse founders building transformative solutions.",
-    "stages": ["pre_seed", "seed", "series_a"],
-    "sectors": ["fintech", "healthtech", "enterprise", "ai_ml", "consumer"],
-    "checkSize": { "min": 250000, "max": 2000000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "fintech",
+      "healthtech",
+      "enterprise",
+      "ai_ml",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 2000000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "N/A",
@@ -7792,111 +8430,239 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.zealcapitalpartners.com",
-    "location": "Washington, DC"
+    "location": "Washington, DC",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "construct-capital",
     "name": "Construct Capital",
-    "firm": "Construct Capital",
+    "firm": null,
     "title": "Foundational Industries VC",
     "type": "vc",
     "photo": null,
     "thesis": "Invests in foundational industries of the economy that have been neglected for decades — manufacturing, logistics, defense, and energy. Partners with founders applying disruptive technologies to the backbone of GDP for a once-in-a-generation opportunity.",
-    "stages": ["seed", "series_a"],
-    "sectors": ["enterprise", "hardware", "deeptech", "climate", "ai_ml"],
-    "checkSize": { "min": 1000000, "max": 15000000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
-    "recentInvestments": [
-      { "company": "Hadrian", "round": "Series A", "year": 2024 },
-      { "company": "Veho", "round": "Series A", "year": 2024 }
+    "stages": [
+      "seed",
+      "series_a"
     ],
-    "portfolioHighlights": ["Hadrian", "Veho", "Aetherflux", "Sphere Semi", "Copia Automation", "Verve Motion", "AMCA"],
+    "sectors": [
+      "enterprise",
+      "hardware",
+      "deeptech",
+      "climate",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 15000000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Hadrian",
+        "round": "Series A",
+        "year": 2024
+      },
+      {
+        "company": "Veho",
+        "round": "Series A",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Hadrian",
+      "Veho",
+      "Aetherflux",
+      "Sphere Semi",
+      "Copia Automation",
+      "Verve Motion",
+      "AMCA"
+    ],
     "fundSize": "N/A",
     "activelyDeploying": true,
     "lastActive": "2025-12",
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.constructcap.com",
-    "location": "Washington, DC"
+    "location": "Washington, DC",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "revolution-ventures",
     "name": "Revolution Ventures",
-    "firm": "Revolution",
+    "firm": null,
     "title": "Multi-Stage VC Platform",
     "type": "vc",
     "photo": null,
     "thesis": "For more than two decades, Revolution has backed the people, places, and ideas that redefine what's possible. Invests in transformative technologies and iconic companies, with a focus on entrepreneurs outside traditional tech hubs. Founded by Steve Case.",
-    "stages": ["seed", "series_a", "series_b", "growth"],
-    "sectors": ["enterprise", "consumer", "fintech", "saas", "ai_ml"],
-    "checkSize": { "min": 500000, "max": 50000000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "consumer",
+      "fintech",
+      "saas",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 50000000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
-    "portfolioHighlights": ["Sweetgreen", "DraftKings", "Tempus", "Tala", "Clear"],
+    "portfolioHighlights": [
+      "Sweetgreen",
+      "DraftKings",
+      "Tempus",
+      "Tala",
+      "Clear"
+    ],
     "fundSize": "$2B+ AUM",
     "activelyDeploying": true,
     "lastActive": "2025-12",
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.revolution.com",
-    "location": "Washington, DC"
+    "location": "Washington, DC",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": [
+      "Steve Case"
+    ]
   },
   {
     "id": "grotech-ventures",
     "name": "Grotech Ventures",
-    "firm": "Grotech Ventures",
+    "firm": null,
     "title": "Mid-Atlantic Early Stage VC",
     "type": "vc",
     "photo": null,
     "thesis": "Early investors in high-potential technology companies in the mid-Atlantic region. Focused on enterprise software, SaaS, and technology-enabled services with strong founding teams and scalable models.",
-    "stages": ["seed", "series_a", "series_b"],
-    "sectors": ["saas", "enterprise", "ai_ml", "consumer", "fintech"],
-    "checkSize": { "min": 500000, "max": 10000000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "ai_ml",
+      "consumer",
+      "fintech"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 10000000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
-    "portfolioHighlights": ["Apkudo", "ChurnZero", "Ceros"],
+    "portfolioHighlights": [
+      "Apkudo",
+      "ChurnZero",
+      "Ceros"
+    ],
     "fundSize": "$800M+ AUM",
     "activelyDeploying": true,
     "lastActive": "2025-12",
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.grotech.com",
-    "location": "Owings Mills, MD"
+    "location": "Owings Mills, MD",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "blu-venture-investors",
     "name": "Blu Venture Investors",
-    "firm": "Blu Ventures",
+    "firm": null,
     "title": "Cybersecurity-Focused VC",
     "type": "vc",
     "photo": null,
     "thesis": "Trusted, premier cybersecurity investor managing capital to back market-defining founders. Built by former operators who know what it takes to scale cybersecurity companies from inception to exit. Invests in companies using AI to stay ahead of evolving threats, from threat detection to identity and infrastructure defense.",
-    "stages": ["seed", "series_a"],
-    "sectors": ["enterprise", "ai_ml", "saas", "deeptech"],
-    "checkSize": { "min": 500000, "max": 5000000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "ai_ml",
+      "saas",
+      "deeptech"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
-    "portfolioHighlights": ["Huntress", "ID.me"],
+    "portfolioHighlights": [
+      "Huntress",
+      "ID.me"
+    ],
     "fundSize": "N/A",
     "activelyDeploying": true,
     "lastActive": "2025-12",
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.bluventureinvestors.com",
-    "location": "Northern Virginia"
+    "location": "Northern Virginia",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "columbia-capital",
     "name": "Columbia Capital",
-    "firm": "Columbia Capital",
+    "firm": null,
     "title": "Growth-Stage TMT VC",
     "type": "vc",
     "photo": null,
     "thesis": "Venture capital firm partnering with top executives to build communications, media, and technology companies since 1989. Focused on digital infrastructure, enterprise IT, mobility, and broadband sectors.",
-    "stages": ["series_a", "series_b", "growth"],
-    "sectors": ["enterprise", "saas", "hardware", "deeptech"],
-    "checkSize": { "min": 5000000, "max": 50000000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas",
+      "hardware",
+      "deeptech"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "$3B+ AUM",
@@ -7905,20 +8671,38 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.colcap.com",
-    "location": "Alexandria, VA"
+    "location": "Alexandria, VA",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   },
   {
     "id": "acceleprise",
     "name": "Acceleprise",
-    "firm": "Acceleprise",
+    "firm": null,
     "title": "SaaS Accelerator & Fund",
     "type": "vc",
     "photo": null,
     "thesis": "SaaS-focused accelerator and venture fund based in DC. Invests in early-stage B2B SaaS companies and provides hands-on mentorship, office space, and go-to-market support to help startups scale.",
-    "stages": ["pre_seed", "seed"],
-    "sectors": ["saas", "enterprise", "fintech", "govtech"],
-    "checkSize": { "min": 50000, "max": 500000 },
-    "geography": ["us", "mid_atlantic", "dmv"],
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "fintech",
+      "govtech"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 500000
+    },
+    "geography": [
+      "us",
+      "mid_atlantic",
+      "dmv"
+    ],
     "recentInvestments": [],
     "portfolioHighlights": [],
     "fundSize": "N/A",
@@ -7927,6 +8711,9 @@
     "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://www.acceleprise.vc",
-    "location": "Washington, DC"
+    "location": "Washington, DC",
+    "entity": "organization",
+    "memberCount": null,
+    "keyPeople": []
   }
 ]
