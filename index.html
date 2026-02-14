@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Match Capital — Find the right investors. Skip the noise.</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#09090b;--card:#111113;--card-hover:#161618;
+  --border:rgba(255,255,255,0.06);--border-hover:rgba(255,255,255,0.12);
+  --text:#e4e4e7;--text-muted:#71717a;--text-dim:#52525b;
+  --accent:#3b82f6;--accent2:#8b5cf6;
+  --green:#22c55e;--green-bg:rgba(34,197,94,0.1);
+  --radius:12px;--radius-sm:8px;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+input{font-family:inherit;color:inherit}
+
+/* Gradient text */
+.gradient-text{background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* Container */
+.container{max-width:1200px;margin:0 auto;padding:0 24px}
+
+/* ===== NAV ===== */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(9,9,11,0.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--border)}
+nav .inner{display:flex;align-items:center;justify-content:space-between;height:64px;max-width:1200px;margin:0 auto;padding:0 24px}
+.logo{font-weight:800;font-size:1.2rem;letter-spacing:-0.02em}
+.nav-links{display:flex;gap:8px;align-items:center}
+.nav-links a,.nav-links button{padding:8px 16px;border-radius:var(--radius-sm);font-size:0.875rem;font-weight:500;color:var(--text-muted);transition:all 0.2s}
+.nav-links a:hover,.nav-links button:hover{color:var(--text);background:rgba(255,255,255,0.05)}
+.nav-links .saved-count{background:var(--accent);color:#fff;font-size:0.7rem;border-radius:50%;width:18px;height:18px;display:inline-flex;align-items:center;justify-content:center;margin-left:4px;font-weight:700}
+
+/* ===== HERO ===== */
+#hero{padding:160px 0 100px;text-align:center;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:-200px;left:50%;transform:translateX(-50%);width:800px;height:800px;background:radial-gradient(circle,rgba(59,130,246,0.08),transparent 70%);pointer-events:none}
+#hero h1{font-size:clamp(2.5rem,6vw,4rem);font-weight:800;letter-spacing:-0.03em;line-height:1.1;margin-bottom:16px}
+#hero .tagline{font-size:clamp(1rem,2vw,1.25rem);color:var(--text-muted);max-width:600px;margin:0 auto 40px}
+.hero-ctas{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn-primary{padding:12px 28px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;font-size:0.95rem;transition:all 0.2s;box-shadow:0 0 20px rgba(59,130,246,0.3)}
+.btn-primary:hover{transform:translateY(-1px);box-shadow:0 0 30px rgba(59,130,246,0.4)}
+.btn-secondary{padding:12px 28px;border-radius:var(--radius-sm);border:1px solid var(--border);color:var(--text-muted);font-weight:600;font-size:0.95rem;transition:all 0.2s}
+.btn-secondary:hover{border-color:var(--border-hover);color:var(--text);background:rgba(255,255,255,0.03)}
+
+/* Waitlist */
+.waitlist-form{display:flex;gap:8px;justify-content:center;margin-top:32px;flex-wrap:wrap}
+.waitlist-form input{padding:12px 20px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--card);width:280px;font-size:0.9rem;outline:none;transition:border 0.2s}
+.waitlist-form input:focus{border-color:var(--accent)}
+.waitlist-form button{padding:12px 24px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;font-size:0.9rem}
+.waitlist-msg{margin-top:12px;font-size:0.85rem;color:var(--green)}
+
+/* ===== SEARCH SECTION ===== */
+#search-section{padding:60px 0 40px}
+.search-header{margin-bottom:32px}
+.search-bar{position:relative;margin-bottom:24px}
+.search-bar input{width:100%;padding:16px 20px 16px 48px;border-radius:var(--radius);border:1px solid var(--border);background:var(--card);font-size:1rem;outline:none;transition:border 0.2s}
+.search-bar input:focus{border-color:var(--accent)}
+.search-bar svg{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--text-dim)}
+.search-bar .clear-btn{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:1.2rem;display:none}
+.search-bar .clear-btn.show{display:block}
+
+/* Filters */
+.filters{display:flex;flex-direction:column;gap:16px;margin-bottom:32px}
+.filter-row{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.filter-label{font-size:0.8rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;min-width:80px;flex-shrink:0}
+.chip{padding:6px 14px;border-radius:20px;border:1px solid var(--border);font-size:0.8rem;font-weight:500;color:var(--text-muted);transition:all 0.2s;white-space:nowrap}
+.chip:hover{border-color:var(--border-hover);color:var(--text)}
+.chip.active{background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(139,92,246,0.15));border-color:rgba(59,130,246,0.4);color:var(--text)}
+.filter-row select{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card);font-size:0.8rem;color:var(--text-muted);outline:none}
+.filter-row input[type=range]{width:120px;accent-color:var(--accent)}
+.range-display{font-size:0.8rem;color:var(--text-muted);min-width:100px}
+
+/* Results */
+.results-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:0.85rem;color:var(--text-muted)}
+.results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.results-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.results-grid{grid-template-columns:1fr}.filter-label{min-width:60px}}
+
+/* Investor Card */
+.investor-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;cursor:pointer;transition:all 0.25s ease;position:relative;overflow:hidden}
+.investor-card:hover{border-color:var(--border-hover);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 8px 30px rgba(0,0,0,0.3)}
+.investor-card .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.investor-card .avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;color:#fff;flex-shrink:0}
+.investor-card .active-badge{display:flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--green);background:var(--green-bg);padding:4px 10px;border-radius:20px;font-weight:600}
+.investor-card .active-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+.investor-card .name{font-weight:700;font-size:1rem;margin-bottom:2px}
+.investor-card .firm{font-size:0.85rem;color:var(--text-muted);margin-bottom:12px}
+.investor-card .type-badge{display:inline-block;padding:3px 10px;border-radius:20px;font-size:0.7rem;font-weight:600;margin-bottom:12px}
+.type-vc{background:rgba(59,130,246,0.12);color:#60a5fa}
+.type-angel{background:rgba(250,204,21,0.12);color:#fbbf24}
+.type-family-office{background:rgba(34,197,94,0.12);color:#4ade80}
+.type-corp-vc{background:rgba(168,85,247,0.12);color:#c084fc}
+.investor-card .tags{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:12px}
+.tag{padding:3px 8px;border-radius:4px;font-size:0.7rem;font-weight:500;background:rgba(255,255,255,0.04);color:var(--text-dim)}
+.tag-stage{background:rgba(59,130,246,0.08);color:#93c5fd}
+.tag-sector{background:rgba(139,92,246,0.08);color:#c4b5fd}
+.investor-card .check-size{font-size:0.8rem;color:var(--text-muted);margin-bottom:4px}
+.investor-card .location{font-size:0.8rem;color:var(--text-dim)}
+
+/* ===== MODAL ===== */
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0.7);backdrop-filter:blur(8px);display:none;align-items:center;justify-content:center;padding:24px}
+.modal-overlay.open{display:flex}
+.modal{background:var(--bg);border:1px solid var(--border);border-radius:16px;width:100%;max-width:700px;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn 0.25s ease}
+@keyframes modalIn{from{opacity:0;transform:scale(0.96)}to{opacity:1;transform:scale(1)}}
+.modal-close{position:absolute;top:16px;right:16px;font-size:1.5rem;color:var(--text-dim);z-index:1;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background 0.2s}
+.modal-close:hover{background:rgba(255,255,255,0.05)}
+.modal-header{padding:32px 32px 0;display:flex;gap:20px;align-items:flex-start}
+.modal-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.5rem;color:#fff;flex-shrink:0}
+.modal-header-info{flex:1}
+.modal-header-info h2{font-size:1.5rem;font-weight:700;margin-bottom:2px}
+.modal-header-info .firm{font-size:1rem;color:var(--text-muted);margin-bottom:8px}
+.modal-header-info .badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.modal-body{padding:24px 32px 32px}
+.modal-section{margin-bottom:24px}
+.modal-section h3{font-size:0.8rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px}
+.modal-section p{color:var(--text-muted);font-size:0.9rem;line-height:1.7}
+.modal-tags{display:flex;flex-wrap:wrap;gap:6px}
+.modal-tags .tag{padding:5px 12px;font-size:0.8rem}
+.investment-list{list-style:none}
+.investment-list li{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid var(--border);font-size:0.9rem}
+.investment-list li:last-child{border:none}
+.investment-list .company{font-weight:600}
+.investment-list .round-year{color:var(--text-muted)}
+.modal-links{display:flex;gap:12px;flex-wrap:wrap}
+.modal-links a{padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.85rem;color:var(--text-muted);transition:all 0.2s}
+.modal-links a:hover{border-color:var(--border-hover);color:var(--text)}
+.modal-actions{display:flex;gap:12px;margin-top:24px;padding-top:24px;border-top:1px solid var(--border)}
+.btn-save{padding:10px 24px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;font-size:0.9rem;transition:all 0.2s}
+.btn-save:hover{box-shadow:0 0 20px rgba(59,130,246,0.3)}
+.btn-save.saved{background:rgba(255,255,255,0.06);color:var(--text-muted)}
+.fund-info{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.fund-info-item{background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);padding:12px 16px}
+.fund-info-item .label{font-size:0.75rem;color:var(--text-dim);margin-bottom:4px}
+.fund-info-item .value{font-weight:600;font-size:0.9rem}
+
+/* ===== SAVED SECTION ===== */
+#saved-section{padding:60px 0;display:none}
+#saved-section h2{font-size:1.5rem;font-weight:700;margin-bottom:8px}
+#saved-section .subtitle{color:var(--text-muted);margin-bottom:24px;font-size:0.9rem}
+.saved-actions{display:flex;gap:12px;margin-bottom:24px}
+.saved-empty{text-align:center;padding:60px 0;color:var(--text-dim)}
+
+/* ===== FOOTER ===== */
+footer{padding:40px 0;border-top:1px solid var(--border);margin-top:60px}
+footer .inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;max-width:1200px;margin:0 auto;padding:0 24px}
+footer .left{font-size:0.85rem;color:var(--text-dim)}
+footer .links{display:flex;gap:20px}
+footer .links a{font-size:0.85rem;color:var(--text-dim);transition:color 0.2s}
+footer .links a:hover{color:var(--text)}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:6px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px}
+
+/* No results */
+.no-results{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--text-dim)}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="inner">
+    <div class="logo"><span class="gradient-text">Match Capital</span></div>
+    <div class="nav-links">
+      <a href="#" onclick="showSection('hero')">Home</a>
+      <a href="#search" onclick="showSection('search')">Search</a>
+      <button onclick="showSection('saved')">Saved <span class="saved-count" id="savedCount">0</span></button>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="container">
+    <h1>Find the right investors.<br><span class="gradient-text">Skip the noise.</span></h1>
+    <p class="tagline">The most comprehensive investor intelligence tool for founders. Search 200+ investors by stage, sector, check size, and more.</p>
+    <div class="hero-ctas">
+      <button class="btn-primary" onclick="showSection('search')">Start Searching →</button>
+      <button class="btn-secondary" onclick="document.getElementById('waitlist-input').focus()">Join Waitlist</button>
+    </div>
+    <form class="waitlist-form" onsubmit="return handleWaitlist(event)">
+      <input type="email" id="waitlist-input" placeholder="you@startup.com" required>
+      <button type="submit" class="btn-primary">Join Waitlist</button>
+    </form>
+    <p class="waitlist-msg" id="waitlistMsg"></p>
+  </div>
+</section>
+
+<!-- SEARCH -->
+<section id="search-section">
+  <div class="container">
+    <div class="search-bar">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="text" id="searchInput" placeholder="Search investors, firms, thesis...">
+      <button class="clear-btn" id="clearSearch" onclick="clearSearch()">×</button>
+    </div>
+
+    <div class="filters">
+      <div class="filter-row">
+        <span class="filter-label">Stage</span>
+        <button class="chip" data-filter="stage" data-value="Pre-Seed">Pre-Seed</button>
+        <button class="chip" data-filter="stage" data-value="Seed">Seed</button>
+        <button class="chip" data-filter="stage" data-value="Series A">Series A</button>
+        <button class="chip" data-filter="stage" data-value="Series B">Series B</button>
+        <button class="chip" data-filter="stage" data-value="Growth">Growth</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Sector</span>
+        <button class="chip" data-filter="sector" data-value="SaaS">SaaS</button>
+        <button class="chip" data-filter="sector" data-value="Fintech">Fintech</button>
+        <button class="chip" data-filter="sector" data-value="HealthTech">HealthTech</button>
+        <button class="chip" data-filter="sector" data-value="AI/ML">AI/ML</button>
+        <button class="chip" data-filter="sector" data-value="Consumer">Consumer</button>
+        <button class="chip" data-filter="sector" data-value="Enterprise">Enterprise</button>
+        <button class="chip" data-filter="sector" data-value="Climate">Climate</button>
+        <button class="chip" data-filter="sector" data-value="Crypto">Crypto</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Check Size</span>
+        <input type="range" id="checkMin" min="0" max="25000000" step="100000" value="0">
+        <input type="range" id="checkMax" min="0" max="25000000" step="100000" value="25000000">
+        <span class="range-display" id="checkDisplay">$0 – $25M+</span>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Type</span>
+        <button class="chip" data-filter="type" data-value="VC">VC</button>
+        <button class="chip" data-filter="type" data-value="Angel">Angel</button>
+        <button class="chip" data-filter="type" data-value="Family Office">Family Office</button>
+        <button class="chip" data-filter="type" data-value="Corp VC">Corp VC</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Geography</span>
+        <button class="chip" data-filter="geo" data-value="US">US</button>
+        <button class="chip" data-filter="geo" data-value="EU">EU</button>
+        <button class="chip" data-filter="geo" data-value="Asia">Asia</button>
+        <button class="chip" data-filter="geo" data-value="Global">Global</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Sort</span>
+        <select id="sortSelect" onchange="renderResults()">
+          <option value="relevance">Relevance</option>
+          <option value="recent">Recent Activity</option>
+          <option value="checkSize">Check Size</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="results-info">
+      <span id="resultsCount">0 investors</span>
+    </div>
+    <div class="results-grid" id="resultsGrid"></div>
+  </div>
+</section>
+
+<!-- SAVED -->
+<section id="saved-section">
+  <div class="container">
+    <h2>Saved Investors</h2>
+    <p class="subtitle">Your curated list of investors to reach out to.</p>
+    <div class="saved-actions">
+      <button class="btn-secondary" onclick="exportCSV()">Export CSV ↓</button>
+      <button class="btn-secondary" onclick="clearSaved()">Clear All</button>
+    </div>
+    <div class="results-grid" id="savedGrid"></div>
+    <div class="saved-empty" id="savedEmpty">No saved investors yet. Browse and save investors you're interested in.</div>
+  </div>
+</section>
+
+<!-- MODAL -->
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+  <div class="modal" id="modal"></div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="inner">
+    <div class="left">Built by <a href="https://ralcorn.com" target="_blank">Ralcorn Consulting</a> · Data sourced from public records</div>
+    <div class="links">
+      <a href="#">About</a>
+      <a href="#">Privacy</a>
+      <a href="#">Contact</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+// ===== SAMPLE DATA (fallback) =====
+const SAMPLE_DATA=[{id:"1",name:"Sarah Chen",title:"General Partner",firm:"Horizon Ventures",type:"VC",photo:null,thesis:"We back technical founders building category-defining infrastructure companies. Deep focus on developer tools, data infrastructure, and applied AI.",stages:["Seed","Series A"],sectors:["SaaS","AI/ML","Enterprise"],checkSize:{min:500000,max:5000000},geography:["US","Global"],location:"San Francisco, CA",activelyDeploying:true,lastActive:"2026-01-28",fundSize:"$250M",fundStatus:"Deploying Fund III",recentInvestments:[{company:"DataForge",round:"Series A",year:2025},{company:"Nexlayer",round:"Seed",year:2025},{company:"CodePilot AI",round:"Series A",year:2024}],portfolioHighlights:["DataForge (Series A)","Nexlayer (Seed)","Streamline AI (acquired)"],links:{linkedin:"https://linkedin.com/in/example",twitter:"https://twitter.com/example",website:"https://horizonventures.example.com"}},{id:"2",name:"Marcus Johnson",title:"Managing Partner",firm:"Ember Capital",type:"VC",photo:null,thesis:"Ember invests in seed-stage fintech and healthtech startups that leverage technology to expand access. Diversity-focused fund.",stages:["Pre-Seed","Seed"],sectors:["Fintech","HealthTech"],checkSize:{min:250000,max:2000000},geography:["US"],location:"New York, NY",activelyDeploying:true,lastActive:"2026-02-10",fundSize:"$80M",fundStatus:"Deploying Fund II",recentInvestments:[{company:"PayBridge",round:"Seed",year:2025},{company:"HealthSync",round:"Pre-Seed",year:2025},{company:"NeoBank Labs",round:"Seed",year:2024}],portfolioHighlights:["PayBridge","HealthSync","NeoBank Labs"],links:{linkedin:"https://linkedin.com/in/example2",twitter:"https://twitter.com/example2",website:"https://embercapital.example.com"}},{id:"3",name:"Elena Rodriguez",title:"Founding Partner",firm:"Verdant Fund",type:"VC",photo:null,thesis:"Climate and sustainability investing at the growth stage. Proven revenue, strong unit economics, and technology that scales.",stages:["Series A","Series B","Growth"],sectors:["Climate","Enterprise"],checkSize:{min:5000000,max:25000000},geography:["US","EU","Global"],location:"Boston, MA",activelyDeploying:false,lastActive:"2025-09-15",fundSize:"$500M",fundStatus:"Fund I fully deployed, raising Fund II",recentInvestments:[{company:"CarbonTrack",round:"Series B",year:2025},{company:"GridFlow",round:"Series A",year:2024},{company:"SolarMesh",round:"Growth",year:2024}],portfolioHighlights:["CarbonTrack ($40M rev)","GridFlow","SolarMesh"],links:{linkedin:"https://linkedin.com/in/example3",twitter:null,website:"https://verdantfund.example.com"}},{id:"4",name:"David Park",title:"Angel Investor",firm:"Independent",type:"Angel",photo:null,thesis:"Former CTO at two unicorns. Angel invest in pre-seed dev tools and crypto infrastructure. Hands-on — I'll pair program with your engineers.",stages:["Pre-Seed","Seed"],sectors:["SaaS","Crypto","AI/ML"],checkSize:{min:25000,max:250000},geography:["US","Asia","Global"],location:"Austin, TX",activelyDeploying:true,lastActive:"2026-02-01",fundSize:"Personal capital",fundStatus:"Always deploying",recentInvestments:[{company:"ChainForge",round:"Pre-Seed",year:2025},{company:"DevStack",round:"Seed",year:2025},{company:"TokenMesh",round:"Pre-Seed",year:2024}],portfolioHighlights:["ChainForge","DevStack","23 angel investments"],links:{linkedin:"https://linkedin.com/in/example4",twitter:"https://twitter.com/example4",website:null}},{id:"5",name:"Amara Osei",title:"Principal",firm:"TechNexus Ventures (CVC)",type:"Corp VC",photo:null,thesis:"Corporate venture arm of TechNexus Corp. We invest in startups building complementary AI/ML, data analytics, and enterprise SaaS products.",stages:["Series A","Series B"],sectors:["AI/ML","Enterprise","SaaS"],checkSize:{min:2000000,max:15000000},geography:["US","EU"],location:"Chicago, IL",activelyDeploying:true,lastActive:"2026-01-15",fundSize:"$150M",fundStatus:"Deploying from evergreen fund",recentInvestments:[{company:"InsightAI",round:"Series A",year:2025},{company:"DataPulse",round:"Series B",year:2025},{company:"AutomateHQ",round:"Series A",year:2024}],portfolioHighlights:["InsightAI (strategic partner)","DataPulse","AutomateHQ"],links:{linkedin:"https://linkedin.com/in/example5",twitter:"https://twitter.com/example5",website:"https://technexusventures.example.com"}}];
+
+let investors=[];
+let activeFilters={stage:[],sector:[],type:[],geo:[]};
+let savedIds=JSON.parse(localStorage.getItem('mc_saved')||'[]');
+
+// ===== INIT =====
+async function init(){
+  try{const r=await fetch('data/investors.json');if(r.ok)investors=await r.json();else throw 0}catch(e){investors=SAMPLE_DATA}
+  updateSavedCount();
+  handleHash();
+  renderResults();
+}
+
+// ===== ROUTING =====
+function handleHash(){
+  const h=location.hash;
+  if(h.startsWith('#profile/')){showSection('search');openProfileById(h.split('/')[1])}
+  else if(h==='#saved')showSection('saved');
+  else if(h==='#search')showSection('search');
+  else showSection('hero');
+}
+window.addEventListener('hashchange',handleHash);
+
+function showSection(s){
+  document.getElementById('hero').style.display=s==='hero'?'':'none';
+  document.getElementById('search-section').style.display=(s==='search'||s==='hero')?'':'none';
+  document.getElementById('saved-section').style.display=s==='saved'?'':'none';
+  if(s==='saved')renderSaved();
+  if(s==='search')document.getElementById('search-section').scrollIntoView({behavior:'smooth'});
+}
+
+// ===== FORMAT =====
+function fmt(n){if(n>=1e6)return'$'+Math.round(n/1e6)+'M';if(n>=1e3)return'$'+Math.round(n/1e3)+'K';return'$'+n}
+function initials(name){return name.split(' ').map(w=>w[0]).join('')}
+function typeClass(t){return'type-'+t.toLowerCase().replace(/\s+/g,'-')}
+
+// ===== FILTERS =====
+document.querySelectorAll('.chip[data-filter]').forEach(c=>{
+  c.addEventListener('click',()=>{
+    const f=c.dataset.filter,v=c.dataset.value;
+    c.classList.toggle('active');
+    if(c.classList.contains('active'))activeFilters[f].push(v);
+    else activeFilters[f]=activeFilters[f].filter(x=>x!==v);
+    renderResults();
+  });
+});
+
+const checkMin=document.getElementById('checkMin'),checkMax=document.getElementById('checkMax'),checkDisplay=document.getElementById('checkDisplay');
+function updateCheckDisplay(){checkDisplay.textContent=fmt(+checkMin.value)+' – '+fmt(+checkMax.value)+(+checkMax.value>=25e6?'+':'')}
+checkMin.addEventListener('input',()=>{if(+checkMin.value>+checkMax.value)checkMax.value=checkMin.value;updateCheckDisplay();renderResults()});
+checkMax.addEventListener('input',()=>{if(+checkMax.value<+checkMin.value)checkMin.value=checkMax.value;updateCheckDisplay();renderResults()});
+
+// ===== SEARCH =====
+const searchInput=document.getElementById('searchInput'),clearBtn=document.getElementById('clearSearch');
+let debounceTimer;
+searchInput.addEventListener('input',()=>{clearBtn.classList.toggle('show',searchInput.value.length>0);clearTimeout(debounceTimer);debounceTimer=setTimeout(renderResults,200)});
+function clearSearch(){searchInput.value='';clearBtn.classList.remove('show');renderResults()}
+
+// ===== RENDER =====
+function filterInvestors(){
+  const q=searchInput.value.toLowerCase();
+  const cMin=+checkMin.value,cMax=+checkMax.value;
+  return investors.filter(inv=>{
+    if(q&&!inv.name.toLowerCase().includes(q)&&!inv.firm.toLowerCase().includes(q)&&!inv.thesis.toLowerCase().includes(q))return false;
+    if(activeFilters.stage.length&&!activeFilters.stage.some(s=>inv.stages.includes(s)))return false;
+    if(activeFilters.sector.length&&!activeFilters.sector.some(s=>inv.sectors.includes(s)))return false;
+    if(activeFilters.type.length&&!activeFilters.type.includes(inv.type))return false;
+    if(activeFilters.geo.length&&!activeFilters.geo.some(g=>inv.geography.includes(g)))return false;
+    if(inv.checkSize.max<cMin||inv.checkSize.min>cMax)return false;
+    return true;
+  });
+}
+
+function sortInvestors(list){
+  const s=document.getElementById('sortSelect').value;
+  if(s==='recent')return[...list].sort((a,b)=>new Date(b.lastActive)-new Date(a.lastActive));
+  if(s==='checkSize')return[...list].sort((a,b)=>b.checkSize.max-a.checkSize.max);
+  return list;
+}
+
+function renderResults(){
+  const filtered=sortInvestors(filterInvestors());
+  document.getElementById('resultsCount').textContent=filtered.length+' investor'+(filtered.length!==1?'s':'');
+  const grid=document.getElementById('resultsGrid');
+  if(!filtered.length){grid.innerHTML='<div class="no-results">No investors match your filters. Try broadening your search.</div>';return}
+  grid.innerHTML=filtered.map(cardHTML).join('');
+}
+
+function cardHTML(inv){
+  return`<div class="investor-card" onclick="openProfile('${inv.id}')">
+    <div class="card-header">
+      <div class="avatar">${initials(inv.name)}</div>
+      ${inv.activelyDeploying?'<div class="active-badge"><span class="dot"></span>Active</div>':''}
+    </div>
+    <div class="name">${inv.name}</div>
+    <div class="firm">${inv.firm}</div>
+    <span class="type-badge ${typeClass(inv.type)}">${inv.type}</span>
+    <div class="tags">
+      ${inv.stages.map(s=>`<span class="tag tag-stage">${s}</span>`).join('')}
+      ${inv.sectors.map(s=>`<span class="tag tag-sector">${s}</span>`).join('')}
+    </div>
+    <div class="check-size">${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</div>
+    <div class="location">${inv.location}</div>
+  </div>`
+}
+
+// ===== PROFILE MODAL =====
+function openProfileById(id){const inv=investors.find(i=>i.id===id);if(inv)openProfile(id)}
+function openProfile(id){
+  location.hash='profile/'+id;
+  const inv=investors.find(i=>i.id===id);if(!inv)return;
+  const isSaved=savedIds.includes(id);
+  document.getElementById('modal').innerHTML=`
+    <button class="modal-close" onclick="closeModal()">×</button>
+    <div class="modal-header">
+      <div class="modal-avatar">${initials(inv.name)}</div>
+      <div class="modal-header-info">
+        <h2>${inv.name}</h2>
+        <div class="firm">${inv.title} · ${inv.firm}</div>
+        <div class="badges">
+          <span class="type-badge ${typeClass(inv.type)}">${inv.type}</span>
+          ${inv.activelyDeploying?'<div class="active-badge"><span class="dot"></span>Actively Deploying</div>':'<span style="font-size:0.8rem;color:var(--text-dim)">Last active: '+inv.lastActive+'</span>'}
+        </div>
+      </div>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section"><h3>Investment Thesis</h3><p>${inv.thesis}</p></div>
+      <div class="modal-section"><h3>Focus</h3>
+        <div class="modal-tags">
+          ${inv.stages.map(s=>`<span class="tag tag-stage">${s}</span>`).join('')}
+          ${inv.sectors.map(s=>`<span class="tag tag-sector">${s}</span>`).join('')}
+          ${inv.geography.map(g=>`<span class="tag">${g}</span>`).join('')}
+        </div>
+      </div>
+      <div class="modal-section"><h3>Check Size</h3><p>${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</p></div>
+      <div class="modal-section"><h3>Fund Info</h3>
+        <div class="fund-info">
+          <div class="fund-info-item"><div class="label">Fund Size</div><div class="value">${inv.fundSize}</div></div>
+          <div class="fund-info-item"><div class="label">Status</div><div class="value">${inv.fundStatus}</div></div>
+        </div>
+      </div>
+      <div class="modal-section"><h3>Recent Investments</h3>
+        <ul class="investment-list">
+          ${inv.recentInvestments.map(i=>`<li><span class="company">${i.company}</span><span class="round-year">${i.round} · ${i.year}</span></li>`).join('')}
+        </ul>
+      </div>
+      <div class="modal-section"><h3>Portfolio Highlights</h3>
+        <div class="modal-tags">${inv.portfolioHighlights.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+      </div>
+      <div class="modal-section"><h3>Links</h3>
+        <div class="modal-links">
+          ${inv.links.linkedin?`<a href="${inv.links.linkedin}" target="_blank">LinkedIn ↗</a>`:''}
+          ${inv.links.twitter?`<a href="${inv.links.twitter}" target="_blank">Twitter ↗</a>`:''}
+          ${inv.links.website?`<a href="${inv.links.website}" target="_blank">Website ↗</a>`:''}
+        </div>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-save ${isSaved?'saved':''}" onclick="toggleSave('${id}',this)">${isSaved?'✓ Saved':'Save to List'}</button>
+      </div>
+    </div>`;
+  document.getElementById('modalOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+
+function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';if(location.hash.startsWith('#profile'))history.replaceState(null,'','#search')}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+
+// ===== SAVE =====
+function toggleSave(id,btn){
+  if(savedIds.includes(id)){savedIds=savedIds.filter(x=>x!==id);if(btn){btn.classList.remove('saved');btn.textContent='Save to List'}}
+  else{savedIds.push(id);if(btn){btn.classList.add('saved');btn.textContent='✓ Saved'}}
+  localStorage.setItem('mc_saved',JSON.stringify(savedIds));updateSavedCount();
+}
+function updateSavedCount(){document.getElementById('savedCount').textContent=savedIds.length}
+
+function renderSaved(){
+  const saved=investors.filter(i=>savedIds.includes(i.id));
+  const grid=document.getElementById('savedGrid');
+  const empty=document.getElementById('savedEmpty');
+  if(!saved.length){grid.innerHTML='';empty.style.display='';return}
+  empty.style.display='none';
+  grid.innerHTML=saved.map(cardHTML).join('');
+}
+
+function exportCSV(){
+  const saved=investors.filter(i=>savedIds.includes(i.id));if(!saved.length)return;
+  const rows=[['Name','Title','Firm','Type','Stages','Sectors','Check Min','Check Max','Location','Active','Website']];
+  saved.forEach(i=>rows.push([i.name,i.title,i.firm,i.type,i.stages.join('; '),i.sectors.join('; '),i.checkSize.min,i.checkSize.max,i.location,i.activelyDeploying,i.links.website||'']));
+  const csv=rows.map(r=>r.map(c=>'"'+(c+'').replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='match-capital-saved.csv';a.click();
+}
+
+function clearSaved(){if(!confirm('Clear all saved investors?'))return;savedIds=[];localStorage.setItem('mc_saved','[]');updateSavedCount();renderSaved()}
+
+// ===== WAITLIST =====
+function handleWaitlist(e){e.preventDefault();document.getElementById('waitlistMsg').textContent='🎉 You\'re on the list! We\'ll be in touch.';e.target.reset();return false}
+
+// ===== GO =====
+init();
+</script>
+</body>
+</html>
