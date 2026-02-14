@@ -223,6 +223,8 @@ footer .links a:hover{color:var(--text)}
         <button class="chip" data-filter="sector" data-value="Enterprise">Enterprise</button>
         <button class="chip" data-filter="sector" data-value="Climate">Climate</button>
         <button class="chip" data-filter="sector" data-value="Crypto">Crypto</button>
+        <button class="chip" data-filter="sector" data-value="Biotech">Biotech</button>
+        <button class="chip" data-filter="sector" data-value="DeepTech">DeepTech</button>
       </div>
       <div class="filter-row">
         <span class="filter-label">Check Size</span>
@@ -243,6 +245,15 @@ footer .links a:hover{color:var(--text)}
         <button class="chip" data-filter="geo" data-value="EU">EU</button>
         <button class="chip" data-filter="geo" data-value="Asia">Asia</button>
         <button class="chip" data-filter="geo" data-value="Global">Global</button>
+      </div>
+      <div class="filter-row">
+        <span class="filter-label">Activity</span>
+        <select id="activityFilter" onchange="renderResults()">
+          <option value="any">Any time</option>
+          <option value="3">Last 3 months</option>
+          <option value="6">Last 6 months</option>
+          <option value="12">Last 12 months</option>
+        </select>
       </div>
       <div class="filter-row">
         <span class="filter-label">Sort</span>
@@ -300,9 +311,33 @@ let investors=[];
 let activeFilters={stage:[],sector:[],type:[],geo:[]};
 let savedIds=JSON.parse(localStorage.getItem('mc_saved')||'[]');
 
+// ===== DATA NORMALIZATION =====
+const STAGE_MAP={seed:'Seed','pre-seed':'Pre-Seed','pre_seed':'Pre-Seed',series_a:'Series A',series_b:'Series B',growth:'Growth'};
+const SECTOR_MAP={saas:'SaaS',fintech:'Fintech',healthtech:'HealthTech',ai_ml:'AI/ML',consumer:'Consumer',enterprise:'Enterprise',climate:'Climate',crypto:'Crypto',biotech:'Biotech',deeptech:'DeepTech',edtech:'EdTech',hardware:'Hardware',marketplace:'Marketplace'};
+const TYPE_MAP={vc:'VC',angel:'Angel',family_office:'Family Office',corp_vc:'Corp VC'};
+const GEO_MAP={us:'US',eu:'EU',asia:'Asia',global:'Global'};
+
+function normalizeInvestor(inv){
+  inv.stages=(inv.stages||[]).map(s=>STAGE_MAP[s]||s);
+  inv.sectors=(inv.sectors||[]).map(s=>SECTOR_MAP[s]||s);
+  inv.type=TYPE_MAP[inv.type]||inv.type;
+  inv.geography=(inv.geography||[]).map(g=>GEO_MAP[g]||g);
+  // Normalize links
+  if(!inv.links){
+    inv.links={
+      linkedin:inv.linkedIn||inv.linkedin||null,
+      twitter:inv.twitter?(/^http/.test(inv.twitter)?inv.twitter:'https://twitter.com/'+inv.twitter.replace('@','')):null,
+      website:inv.firmUrl||inv.website||null
+    };
+  }
+  if(!inv.fundStatus)inv.fundStatus=inv.activelyDeploying?'Actively Deploying':'Unknown';
+  if(!inv.title)inv.title=inv.type;
+  return inv;
+}
+
 // ===== INIT =====
 async function init(){
-  try{const r=await fetch('data/investors.json');if(r.ok)investors=await r.json();else throw 0}catch(e){investors=SAMPLE_DATA}
+  try{const r=await fetch('data/investors.json');if(r.ok)investors=(await r.json()).map(normalizeInvestor);else throw 0}catch(e){investors=SAMPLE_DATA}
   updateSavedCount();
   handleHash();
   renderResults();
@@ -357,6 +392,7 @@ function clearSearch(){searchInput.value='';clearBtn.classList.remove('show');re
 function filterInvestors(){
   const q=searchInput.value.toLowerCase();
   const cMin=+checkMin.value,cMax=+checkMax.value;
+  const actMonths=document.getElementById('activityFilter').value;
   return investors.filter(inv=>{
     if(q&&!inv.name.toLowerCase().includes(q)&&!inv.firm.toLowerCase().includes(q)&&!inv.thesis.toLowerCase().includes(q))return false;
     if(activeFilters.stage.length&&!activeFilters.stage.some(s=>inv.stages.includes(s)))return false;
@@ -364,6 +400,11 @@ function filterInvestors(){
     if(activeFilters.type.length&&!activeFilters.type.includes(inv.type))return false;
     if(activeFilters.geo.length&&!activeFilters.geo.some(g=>inv.geography.includes(g)))return false;
     if(inv.checkSize.max<cMin||inv.checkSize.min>cMax)return false;
+    if(actMonths!=='any'&&inv.lastActive){
+      const cutoff=new Date();cutoff.setMonth(cutoff.getMonth()-parseInt(actMonths));
+      const lastAct=new Date(inv.lastActive);
+      if(lastAct<cutoff)return false;
+    }
     return true;
   });
 }
@@ -453,6 +494,10 @@ function openProfile(id){
       </div>
       <div class="modal-actions">
         <button class="btn-save ${isSaved?'saved':''}" onclick="toggleSave('${id}',this)">${isSaved?'✓ Saved':'Save to List'}</button>
+        <button class="btn-secondary" onclick="alert('Profile claiming coming soon. We\\'ll notify ${inv.name.split(' ')[0]} when this feature launches.')">Share Profile</button>
+      </div>
+      <div style="text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
+        <p style="font-size:0.85rem;color:var(--text-dim)">Are you ${inv.name}? <a href="#" onclick="event.preventDefault();alert('Profile claiming is coming soon! We\\'ll let you verify and enhance your profile.')" style="color:var(--accent)">Claim this profile</a></p>
       </div>
     </div>`;
   document.getElementById('modalOverlay').classList.add('open');
