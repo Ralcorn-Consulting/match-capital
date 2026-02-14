@@ -51,7 +51,7 @@
     "fundSize": "$35B AUM",
     "activelyDeploying": true,
     "lastActive": "2025-12",
-    "linkedIn": "https://linkedin.com/in/pmarca",
+    "linkedIn": null,
     "twitter": "@pmarca",
     "firmUrl": "https://a16z.com",
     "location": "Menlo Park, CA"
@@ -107,7 +107,7 @@
     "fundSize": "$85B AUM",
     "activelyDeploying": true,
     "lastActive": "2025-12",
-    "linkedIn": "https://linkedin.com/in/alfredlin",
+    "linkedIn": "https://linkedin.com/in/linalfred",
     "twitter": null,
     "firmUrl": "https://sequoiacap.com",
     "location": "Menlo Park, CA"
@@ -588,7 +588,7 @@
     "fundSize": "$3B AUM",
     "activelyDeploying": true,
     "lastActive": "2025-06",
-    "linkedIn": "https://linkedin.com/in/mattturck",
+    "linkedIn": "https://linkedin.com/in/turck",
     "twitter": "@mattturck",
     "firmUrl": "https://firstmarkcap.com",
     "location": "New York, NY"
@@ -1929,7 +1929,7 @@
     "fundSize": "$300M AUM",
     "activelyDeploying": true,
     "lastActive": "2025-06",
-    "linkedIn": "https://linkedin.com/in/aileenlee",
+    "linkedIn": "https://linkedin.com/in/aileenwlee",
     "twitter": "@aileenlee",
     "firmUrl": "https://cowboy.vc",
     "location": "Palo Alto, CA"
@@ -3002,7 +3002,7 @@
     "fundSize": "$35B AUM",
     "activelyDeploying": true,
     "lastActive": "2025-12",
-    "linkedIn": "https://linkedin.com/in/davidgeorgea16z",
+    "linkedIn": "https://linkedin.com/in/david-george-32211a6",
     "twitter": null,
     "firmUrl": "https://a16z.com",
     "location": "San Francisco, CA"
@@ -3219,7 +3219,7 @@
     "fundSize": "$85B AUM",
     "activelyDeploying": true,
     "lastActive": "2025-06",
-    "linkedIn": "https://linkedin.com/in/lucianalixandru",
+    "linkedIn": "https://linkedin.com/in/luciana-lixandru-11042875",
     "twitter": null,
     "firmUrl": "https://sequoiacap.com",
     "location": "London, UK"
@@ -3578,7 +3578,7 @@
     "fundSize": "N/A - Personal Capital",
     "activelyDeploying": true,
     "lastActive": "2025-06",
-    "linkedIn": "https://linkedin.com/in/emilyweiss",
+    "linkedIn": "https://linkedin.com/in/emily-weiss-49014571",
     "twitter": "@emilyweiss",
     "firmUrl": null,
     "location": "New York, NY"
@@ -4246,7 +4246,7 @@
     "fundSize": "$243M AUM",
     "activelyDeploying": true,
     "lastActive": "2025-06",
-    "linkedIn": "https://linkedin.com/in/aplusk",
+    "linkedIn": "https://linkedin.com/in/ashton-kutcher-849288a2",
     "twitter": "@aplusk",
     "firmUrl": "https://soundventures.com",
     "location": "Los Angeles, CA"
@@ -4490,9 +4490,3110 @@
     "fundSize": "$500M AUM",
     "activelyDeploying": true,
     "lastActive": "2025-06",
-    "linkedIn": "https://linkedin.com/in/jimsorenson",
+    "linkedIn": null,
     "twitter": null,
     "firmUrl": "https://sorensonimpact.com",
     "location": "Salt Lake City, UT"
+  },
+  {
+    "id": "matt-turck-msft-m12",
+    "name": "Matt Turck",
+    "firm": "M12 (Microsoft's Venture Fund)",
+    "title": "Managing Partner",
+    "type": "corp_vc",
+    "photo": null,
+    "thesis": "Invests in enterprise software startups that complement Microsoft's cloud ecosystem. Focus on AI, security, and developer tools.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "ai_ml",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Moveworks",
+        "round": "Series C",
+        "year": 2024
+      },
+      {
+        "company": "Abnormal Security",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "CrowdStrike",
+      "Databricks",
+      "Forter"
+    ],
+    "fundSize": "$2B AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/turck",
+    "twitter": "https://twitter.com/mattturck",
+    "firmUrl": "https://m12.vc",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "gv-google-ventures-tyson-clark",
+    "name": "Tyson Clark",
+    "firm": "GV (Google Ventures)",
+    "title": "General Partner",
+    "type": "corp_vc",
+    "photo": null,
+    "thesis": "Backs founders using data and technology to transform enterprise infrastructure, cybersecurity, and cloud-native platforms.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas",
+      "ai_ml",
+      "deeptech"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 50000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Snyk",
+        "round": "Series G",
+        "year": 2024
+      },
+      {
+        "company": "Adept AI",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Uber",
+      "Slack",
+      "Stripe",
+      "GitLab"
+    ],
+    "fundSize": "$4.5B AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/tysonclark",
+    "twitter": null,
+    "firmUrl": "https://gv.com",
+    "location": "Mountain View, CA"
+  },
+  {
+    "id": "salesforce-ventures-john-somorjai",
+    "name": "John Somorjai",
+    "firm": "Salesforce Ventures",
+    "title": "EVP Corporate Development & Salesforce Ventures",
+    "type": "corp_vc",
+    "photo": null,
+    "thesis": "Strategic investments in enterprise cloud companies that extend Salesforce's ecosystem. Focus on AI agents, data, and CRM-adjacent innovation.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "us",
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Anthropic",
+        "round": "Series D",
+        "year": 2024
+      },
+      {
+        "company": "Cohere",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "DocuSign",
+      "Zoom",
+      "Snowflake",
+      "Airtable"
+    ],
+    "fundSize": "$4B deployed",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/johnsomorjai",
+    "twitter": null,
+    "firmUrl": "https://salesforceventures.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "intel-capital-mark-rostick",
+    "name": "Mark Rostick",
+    "firm": "Intel Capital",
+    "title": "Vice President",
+    "type": "corp_vc",
+    "photo": null,
+    "thesis": "Invests in disruptive technologies across AI, cloud, semiconductors, and autonomous systems that drive demand for compute.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "ai_ml",
+      "deeptech",
+      "hardware",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "us",
+      "eu",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Astera Labs",
+        "round": "Series D",
+        "year": 2024
+      },
+      {
+        "company": "Lilt",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "MongoDB",
+      "Cloudera",
+      "UiPath",
+      "DocuSign"
+    ],
+    "fundSize": "$16B deployed historically",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/mrostick",
+    "twitter": null,
+    "firmUrl": "https://intelcapital.com",
+    "location": "Santa Clara, CA"
+  },
+  {
+    "id": "nvidia-ventures-mohamed-siddeek",
+    "name": "Mohamed Siddeek",
+    "firm": "NVIDIA Ventures",
+    "title": "Head of Venture Investments",
+    "type": "corp_vc",
+    "photo": null,
+    "thesis": "Strategic investments in AI infrastructure, autonomous machines, and GPU-accelerated computing startups at the frontier of deep learning.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "ai_ml",
+      "deeptech",
+      "hardware"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "CoreWeave",
+        "round": "Series B",
+        "year": 2024
+      },
+      {
+        "company": "Hugging Face",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Recursion",
+      "Databricks",
+      "CoreWeave"
+    ],
+    "fundSize": "$1B+",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/mohamed-sid-siddeek-0b1718132",
+    "twitter": null,
+    "firmUrl": "https://nvidia.com",
+    "location": "Santa Clara, CA"
+  },
+  {
+    "id": "samsung-next-sj-park",
+    "name": "SJ Park",
+    "firm": "Samsung Next",
+    "title": "Managing Director",
+    "type": "corp_vc",
+    "photo": null,
+    "thesis": "Invests in early-stage startups building next-generation software infrastructure, AI/ML platforms, and frontier technologies.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "ai_ml",
+      "enterprise",
+      "deeptech",
+      "hardware"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 15000000
+    },
+    "geography": [
+      "us",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Twelve Labs",
+        "round": "Series A",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Nreal",
+      "Kustomer",
+      "Whisk"
+    ],
+    "fundSize": "$500M+",
+    "activelyDeploying": true,
+    "lastActive": "2025-08",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://samsungnext.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "qualcomm-ventures-quinn-li",
+    "name": "Quinn Li",
+    "firm": "Qualcomm Ventures",
+    "title": "Senior Vice President & Global Head",
+    "type": "corp_vc",
+    "photo": null,
+    "thesis": "Strategic investments in 5G, AI, automotive, IoT, and XR companies that drive mobile ecosystem innovation.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "ai_ml",
+      "hardware",
+      "deeptech"
+    ],
+    "checkSize": {
+      "min": 2000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "asia",
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Augmedics",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Zoom",
+      "Xiaomi",
+      "Cloudflare",
+      "99"
+    ],
+    "fundSize": "$2B+ deployed",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/liquinn",
+    "twitter": null,
+    "firmUrl": "https://qualcommventures.com",
+    "location": "San Diego, CA"
+  },
+  {
+    "id": "amazon-alexa-fund-paul-bernard",
+    "name": "Paul Bernard",
+    "firm": "Alexa Fund (Amazon)",
+    "title": "Head of Alexa Fund",
+    "type": "corp_vc",
+    "photo": null,
+    "thesis": "Invests in voice technology, AI, smart home, and ambient computing startups that shape the future of natural interfaces.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "ai_ml",
+      "consumer",
+      "hardware"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 20000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Embodied",
+        "round": "Series A",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Ring",
+      "Ecobee",
+      "Sonos"
+    ],
+    "fundSize": "$200M+",
+    "activelyDeploying": true,
+    "lastActive": "2025-07",
+    "linkedIn": "https://linkedin.com/in/paul-bernard-0b81542",
+    "twitter": null,
+    "firmUrl": "https://developer.amazon.com/alexa/alexa-fund",
+    "location": "Seattle, WA"
+  },
+  {
+    "id": "emerson-collective-laurene-powell-jobs",
+    "name": "Laurene Powell Jobs",
+    "firm": "Emerson Collective",
+    "title": "Founder & President",
+    "type": "family_office",
+    "photo": null,
+    "thesis": "Impact-oriented investing across education, immigration reform, climate, and media. Backs mission-driven founders creating systemic change.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "edtech",
+      "climate",
+      "consumer",
+      "healthtech"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 50000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Wonderschool",
+        "round": "Series A",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "The Atlantic",
+      "Axios",
+      "XQ Institute"
+    ],
+    "fundSize": "$3B+ AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://emersoncollective.com",
+    "location": "Palo Alto, CA"
+  },
+  {
+    "id": "iconiq-capital-divesh-makan",
+    "name": "Divesh Makan",
+    "firm": "Iconiq Capital",
+    "title": "Co-Founder & Managing Partner",
+    "type": "family_office",
+    "photo": null,
+    "thesis": "Multi-family office managing wealth for tech billionaires. Growth equity in enterprise software, fintech, and consumer technology.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "fintech",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 25000000,
+      "max": 200000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Canva",
+        "round": "Growth",
+        "year": 2024
+      },
+      {
+        "company": "Datadog",
+        "round": "Growth",
+        "year": 2023
+      }
+    ],
+    "portfolioHighlights": [
+      "Adyen",
+      "Gitlab",
+      "Procore",
+      "Brex"
+    ],
+    "fundSize": "$80B+ AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/divesh-makan-237107",
+    "twitter": null,
+    "firmUrl": "https://iconiqcapital.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "bezos-expeditions-jeff-bezos",
+    "name": "Jeff Bezos",
+    "firm": "Bezos Expeditions",
+    "title": "Founder",
+    "type": "family_office",
+    "photo": null,
+    "thesis": "Personal investments in bold, world-changing ventures across space, media, biotech, and frontier technology.",
+    "stages": [
+      "seed",
+      "series_a",
+      "growth"
+    ],
+    "sectors": [
+      "deeptech",
+      "consumer",
+      "biotech",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 100000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Perplexity AI",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Google",
+      "Airbnb",
+      "Twitter",
+      "Uber",
+      "Blue Origin"
+    ],
+    "fundSize": "Undisclosed",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": null,
+    "twitter": "https://twitter.com/JeffBezos",
+    "firmUrl": "https://bezosexpeditions.com",
+    "location": "Miami, FL"
+  },
+  {
+    "id": "mousse-partners-marc-benioff",
+    "name": "Marc Benioff",
+    "firm": "TIME Ventures",
+    "title": "Founder & Investor",
+    "type": "family_office",
+    "photo": null,
+    "thesis": "Personal investments in cloud, AI, and social impact companies. Backs founders with purpose-driven visions.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "saas",
+      "ai_ml",
+      "enterprise",
+      "climate"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Anthropic",
+        "round": "Series C",
+        "year": 2023
+      }
+    ],
+    "portfolioHighlights": [
+      "Zoom",
+      "Snowflake",
+      "TIME Magazine"
+    ],
+    "fundSize": "Undisclosed",
+    "activelyDeploying": true,
+    "lastActive": "2025-08",
+    "linkedIn": "https://linkedin.com/in/marcbenioff",
+    "twitter": "https://twitter.com/Benioff",
+    "firmUrl": "https://time.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "waltham-li-ka-shing-horizons",
+    "name": "Li Ka-shing",
+    "firm": "Horizons Ventures",
+    "title": "Founder",
+    "type": "family_office",
+    "photo": null,
+    "thesis": "Backs disruptive technology companies at early and growth stages with focus on AI, deeptech, biotech, and sustainability across global markets.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "ai_ml",
+      "deeptech",
+      "biotech",
+      "climate",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 50000000
+    },
+    "geography": [
+      "asia",
+      "us",
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "DeepL",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Facebook",
+      "Spotify",
+      "Zoom",
+      "DeepMind",
+      "Impossible Foods"
+    ],
+    "fundSize": "$3B+ deployed",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://horizonsventures.com",
+    "location": "Hong Kong"
+  },
+  {
+    "id": "motier-ventures-arnault-family",
+    "name": "Alexandre Arnault",
+    "firm": "Aglaé Ventures",
+    "title": "Managing Director",
+    "type": "family_office",
+    "photo": null,
+    "thesis": "LVMH family office investing in consumer tech, luxury innovation, and marketplace businesses globally.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "consumer",
+      "marketplace",
+      "fintech",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "eu",
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Epidemic Sound",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Netflix",
+      "Airbnb",
+      "Spotify",
+      "Flexport"
+    ],
+    "fundSize": "$1B+ AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/alexandre-arnault-936758140",
+    "twitter": "https://twitter.com/alexarnault",
+    "firmUrl": "https://aglaeventures.com",
+    "location": "Paris, France"
+  },
+  {
+    "id": "novo-holdings-kasim-kutay",
+    "name": "Kasim Kutay",
+    "firm": "Novo Holdings",
+    "title": "CEO",
+    "type": "family_office",
+    "photo": null,
+    "thesis": "Novo Nordisk Foundation's investment arm. Focus on life sciences, biotech, and healthcare innovation across seed to growth.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "biotech",
+      "healthtech",
+      "deeptech"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 200000000
+    },
+    "geography": [
+      "eu",
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Epoch Biosciences",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Novo Nordisk",
+      "BioNTech",
+      "Arcus Biosciences"
+    ],
+    "fundSize": "$110B AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/kasim-kutay",
+    "twitter": null,
+    "firmUrl": "https://novoholdings.dk",
+    "location": "Copenhagen, Denmark"
+  },
+  {
+    "id": "angel-elad-gil",
+    "name": "Elad Gil",
+    "firm": "Elad Gil (Angel)",
+    "title": "Angel Investor & Author",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Prolific angel backing technical founders at pre-seed/seed. Wrote 'High Growth Handbook'. Focus on AI, infra, and developer tools.",
+    "stages": [
+      "seed"
+    ],
+    "sectors": [
+      "ai_ml",
+      "saas",
+      "enterprise",
+      "crypto"
+    ],
+    "checkSize": {
+      "min": 100000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Perplexity AI",
+        "round": "Seed",
+        "year": 2023
+      },
+      {
+        "company": "Harvey AI",
+        "round": "Series A",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Airbnb",
+      "Stripe",
+      "Coinbase",
+      "Flexport",
+      "Instacart"
+    ],
+    "fundSize": "Personal capital",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/eladgil",
+    "twitter": "https://twitter.com/eaborkin",
+    "firmUrl": "https://blog.eladgil.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "angel-scott-belsky",
+    "name": "Scott Belsky",
+    "firm": "Scott Belsky (Angel)",
+    "title": "CPO at Adobe & Angel Investor",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Invests in creative tools, design-led products, and the intersection of AI and creativity. Founder of Behance.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "saas",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 500000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Runway",
+        "round": "Seed",
+        "year": 2023
+      }
+    ],
+    "portfolioHighlights": [
+      "Uber",
+      "Pinterest",
+      "Perplexity",
+      "Airtable"
+    ],
+    "fundSize": "Personal capital",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/scottbelsky",
+    "twitter": "https://twitter.com/scottbelsky",
+    "firmUrl": "https://scottbelsky.com",
+    "location": "New York, NY"
+  },
+  {
+    "id": "angel-lachy-groom",
+    "name": "Lachy Groom",
+    "firm": "Lachy Groom (Angel/Solo GP)",
+    "title": "Solo GP & Angel Investor",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Former Stripe exec. Backs technical founders building fintech infrastructure, AI, and developer platforms at the earliest stages.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "fintech",
+      "ai_ml",
+      "saas",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 10000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "OpenAI",
+        "round": "Growth",
+        "year": 2024
+      },
+      {
+        "company": "Ramp",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Brex",
+      "Ramp",
+      "OpenAI",
+      "Anduril"
+    ],
+    "fundSize": "$800M AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/lachygroom",
+    "twitter": "https://twitter.com/lfrg",
+    "firmUrl": null,
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "angel-alexis-ohanian",
+    "name": "Alexis Ohanian",
+    "firm": "Seven Seven Six",
+    "title": "Founder & Managing Partner",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Reddit co-founder turned investor. Backs founders building in crypto, consumer, creator economy, and gaming with community-driven models.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "crypto",
+      "marketplace",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Dapper Labs",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Coinbase",
+      "Instacart",
+      "Patreon"
+    ],
+    "fundSize": "$500M AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/alexisohanian",
+    "twitter": "https://twitter.com/alexisohanian",
+    "firmUrl": "https://sevensevensix.com",
+    "location": "Miami, FL"
+  },
+  {
+    "id": "angel-tina-sharkey",
+    "name": "Tina Sharkey",
+    "firm": "Tina Sharkey (Angel)",
+    "title": "Angel Investor & Operator",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Community-first brand builder. Backs consumer brands, marketplaces, and purpose-driven DTC companies led by diverse founders.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "marketplace",
+      "healthtech"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 500000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Olipop",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Brandless",
+      "iVillage",
+      "Zola"
+    ],
+    "fundSize": "Personal capital",
+    "activelyDeploying": true,
+    "lastActive": "2025-08",
+    "linkedIn": "https://linkedin.com/in/tinasharkey",
+    "twitter": "https://twitter.com/tinasharkey",
+    "firmUrl": null,
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "angel-cyan-banister",
+    "name": "Cyan Banister",
+    "firm": "Long Journey Ventures",
+    "title": "Founder & Angel Investor",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Early-stage investor focused on space, crypto, AI, and unconventional founders. Known for contrarian bets and founder empathy.",
+    "stages": [
+      "seed"
+    ],
+    "sectors": [
+      "ai_ml",
+      "crypto",
+      "deeptech",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "SpaceX",
+        "round": "Growth",
+        "year": 2023
+      }
+    ],
+    "portfolioHighlights": [
+      "SpaceX",
+      "Uber",
+      "Affirm",
+      "Niantic"
+    ],
+    "fundSize": "Personal capital",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/cyanbanister",
+    "twitter": "https://twitter.com/cyantist",
+    "firmUrl": "https://longjourneyvc.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "angel-garry-tan-angel",
+    "name": "Garry Tan",
+    "firm": "Initialized Capital / Y Combinator",
+    "title": "President & CEO, Y Combinator",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Technical founder turned investor. Backs bold seed-stage founders in developer tools, AI, and frontier technology.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "ai_ml",
+      "saas",
+      "enterprise",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 100000,
+      "max": 2000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Retool",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Coinbase",
+      "Instacart",
+      "Flexport",
+      "Cruise"
+    ],
+    "fundSize": "Personal + YC",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/garrytan",
+    "twitter": "https://twitter.com/garrytan",
+    "firmUrl": "https://ycombinator.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "angel-cindy-bi",
+    "name": "Cindy Bi",
+    "firm": "Capital X",
+    "title": "Founding Partner & Angel",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Cross-border investor focused on AI, SaaS, and fintech. Bridges US and Chinese tech ecosystems for early-stage founders.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "ai_ml",
+      "fintech",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 100000,
+      "max": 1000000
+    },
+    "geography": [
+      "us",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Deepgram",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Webflow",
+      "TalkDesk",
+      "Giphy"
+    ],
+    "fundSize": "Personal + fund capital",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/cindyxbi",
+    "twitter": "https://twitter.com/cbi",
+    "firmUrl": null,
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "angel-julia-lipton",
+    "name": "Julia Lipton",
+    "firm": "Awesome People Ventures",
+    "title": "Founder & GP",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Community-driven angel investing in SaaS, future of work, and climate tech. Backs underestimated founders.",
+    "stages": [
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "climate",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 250000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Ribbon Health",
+        "round": "Seed",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Hopin",
+      "Pipe",
+      "Vanta"
+    ],
+    "fundSize": "$10M",
+    "activelyDeploying": true,
+    "lastActive": "2025-07",
+    "linkedIn": "https://linkedin.com/in/julialipton",
+    "twitter": "https://twitter.com/juliahlipton",
+    "firmUrl": "https://awesomepeopleventures.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "angel-sahil-lavingia",
+    "name": "Sahil Lavingia",
+    "firm": "Sahil Lavingia (Angel)",
+    "title": "CEO of Gumroad & Angel Investor",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Creator economy and indie hacker champion. Backs bootstrapper-friendly startups, developer tools, and creator platforms.",
+    "stages": [
+      "seed"
+    ],
+    "sectors": [
+      "consumer",
+      "saas",
+      "marketplace"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 500000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Cal.com",
+        "round": "Seed",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Gumroad",
+      "Figma",
+      "Notion"
+    ],
+    "fundSize": "Personal capital",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/sahillavingia",
+    "twitter": "https://twitter.com/shl",
+    "firmUrl": "https://sahillavingia.com",
+    "location": "Provo, UT"
+  },
+  {
+    "id": "angel-arlan-hamilton",
+    "name": "Arlan Hamilton",
+    "firm": "Backstage Capital",
+    "title": "Founder & Managing Partner",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Invests exclusively in underrepresented founders: women, people of color, and LGBTQ+ entrepreneurs. Focus on early-stage tech.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "saas",
+      "consumer",
+      "healthtech",
+      "fintech"
+    ],
+    "checkSize": {
+      "min": 25000,
+      "max": 500000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Blavity",
+        "round": "Series A",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Calendly (early)",
+      "The Lip Bar",
+      "Partake Foods"
+    ],
+    "fundSize": "$30M deployed",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/arlanhamilton",
+    "twitter": "https://twitter.com/ArlanWasHere",
+    "firmUrl": "https://backstagecapital.com",
+    "location": "Los Angeles, CA"
+  },
+  {
+    "id": "angel-immad-akhund",
+    "name": "Immad Akhund",
+    "firm": "Mercury (CEO) & Angel",
+    "title": "CEO of Mercury & Angel Investor",
+    "type": "angel",
+    "photo": null,
+    "thesis": "Fintech founder-operator angel. Backs early-stage fintech, dev tools, and AI companies with product-led growth DNA.",
+    "stages": [
+      "seed"
+    ],
+    "sectors": [
+      "fintech",
+      "saas",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 500000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Rutter",
+        "round": "Seed",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Mercury",
+      "Webflow",
+      "Zip"
+    ],
+    "fundSize": "Personal capital",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/iakhund",
+    "twitter": "https://twitter.com/immaboringshit",
+    "firmUrl": "https://mercury.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "atomico-niklas-zennstrom",
+    "name": "Niklas Zennström",
+    "firm": "Atomico",
+    "title": "Founder & CEO",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Skype co-founder backing European tech companies scaling globally. Focus on deeptech, enterprise, and climate technology.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "deeptech",
+      "climate",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Mistral AI",
+        "round": "Series A",
+        "year": 2023
+      }
+    ],
+    "portfolioHighlights": [
+      "Klarna",
+      "Supercell",
+      "Graphcore",
+      "Lilium"
+    ],
+    "fundSize": "$820M Fund V",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/niklaszennstrom",
+    "twitter": "https://twitter.com/naborx",
+    "firmUrl": "https://atomico.com",
+    "location": "London, UK"
+  },
+  {
+    "id": "index-ventures-martin-mignot",
+    "name": "Martin Mignot",
+    "firm": "Index Ventures",
+    "title": "Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Backs European and US founders building category-defining companies in fintech, enterprise, and consumer tech.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "fintech",
+      "enterprise",
+      "saas",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 100000000
+    },
+    "geography": [
+      "eu",
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Figma",
+        "round": "Growth",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Revolut",
+      "Deliveroo",
+      "Notion",
+      "Discord",
+      "Datadog"
+    ],
+    "fundSize": "$2.3B Growth Fund",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/martinmignot",
+    "twitter": "https://twitter.com/martinmignot",
+    "firmUrl": "https://indexventures.com",
+    "location": "London, UK"
+  },
+  {
+    "id": "northzone-jessica-schultz",
+    "name": "Jessica Schultz",
+    "firm": "Northzone",
+    "title": "Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Backs exceptional European founders from seed to growth. Focus on fintech, enterprise SaaS, and marketplaces.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "fintech",
+      "saas",
+      "marketplace",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 30000000
+    },
+    "geography": [
+      "eu",
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Klarna",
+        "round": "Growth",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Spotify",
+      "iZettle",
+      "Trustpilot",
+      "Kahoot"
+    ],
+    "fundSize": "$1B Fund X",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/jessica-schultz-37a22724",
+    "twitter": null,
+    "firmUrl": "https://northzone.com",
+    "location": "Stockholm, Sweden"
+  },
+  {
+    "id": "softbank-vision-marcelo-claure",
+    "name": "Marcelo Claure",
+    "firm": "SoftBank Group / Claure Group",
+    "title": "Former COO SoftBank & Founder Claure Group",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Large-scale growth equity in transformative technology companies across LatAm, US, and global markets.",
+    "stages": [
+      "growth"
+    ],
+    "sectors": [
+      "fintech",
+      "consumer",
+      "enterprise",
+      "marketplace"
+    ],
+    "checkSize": {
+      "min": 50000000,
+      "max": 500000000
+    },
+    "geography": [
+      "us",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Nubank",
+        "round": "Growth",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "WeWork",
+      "DoorDash",
+      "Coupang",
+      "ByteDance"
+    ],
+    "fundSize": "$100B Vision Fund",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/marcelo-claure",
+    "twitter": "https://twitter.com/marceloclaure",
+    "firmUrl": "https://softbank.com",
+    "location": "Miami, FL"
+  },
+  {
+    "id": "sequoia-india-shailendra-singh",
+    "name": "Shailendra J. Singh",
+    "firm": "Peak XV Partners (fka Sequoia India)",
+    "title": "Managing Director",
+    "type": "vc",
+    "photo": null,
+    "thesis": "India & Southeast Asia focused. Backs ambitious founders in consumer internet, fintech, enterprise, and healthtech across the region.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "consumer",
+      "fintech",
+      "enterprise",
+      "healthtech"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 100000000
+    },
+    "geography": [
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Razorpay",
+        "round": "Series F",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Byju's",
+      "Zomato",
+      "Pine Labs",
+      "GoTo"
+    ],
+    "fundSize": "$2.85B",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/shailendraj1",
+    "twitter": null,
+    "firmUrl": "https://peakxv.com",
+    "location": "Mumbai, India"
+  },
+  {
+    "id": "global-founders-capital-jens-lapinski",
+    "name": "Jens Lapinski",
+    "firm": "Global Founders Capital",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Rocket Internet's venture arm. Backs internet and technology companies globally with operational playbooks for scaling.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "consumer",
+      "marketplace",
+      "fintech",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 20000000
+    },
+    "geography": [
+      "eu",
+      "us",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Forto",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Slack",
+      "Facebook",
+      "LinkedIn",
+      "Revolut"
+    ],
+    "fundSize": "$1B+",
+    "activelyDeploying": true,
+    "lastActive": "2025-08",
+    "linkedIn": "https://linkedin.com/in/jenslapinski",
+    "twitter": null,
+    "firmUrl": "https://globalfounderscapital.com",
+    "location": "Berlin, Germany"
+  },
+  {
+    "id": "accel-luciana-lixandru",
+    "name": "Luciana Lixandru",
+    "firm": "Accel",
+    "title": "Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "European tech investor backing category-defining companies in SaaS, security, and fintech from London. Deep expertise in enterprise software.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "fintech"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "eu",
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Snyk",
+        "round": "Series F",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "UiPath",
+      "Miro",
+      "1Password",
+      "CrowdStrike"
+    ],
+    "fundSize": "$650M Europe Fund",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/luciana-lixandru-11042875",
+    "twitter": "https://twitter.com/lucianalixandru",
+    "firmUrl": "https://accel.com",
+    "location": "London, UK"
+  },
+  {
+    "id": "balderton-suranga-chandratillake",
+    "name": "Suranga Chandratillake",
+    "firm": "Balderton Capital",
+    "title": "General Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Europe's leading early-stage VC. Invests in AI, enterprise, and consumer companies built by European founders.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "ai_ml",
+      "enterprise",
+      "consumer",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 20000000
+    },
+    "geography": [
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Synthesia",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Revolut",
+      "Citymapper",
+      "Nutmeg",
+      "Depop"
+    ],
+    "fundSize": "$600M Fund VIII",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/suranga-chandratillake-6a839363",
+    "twitter": "https://twitter.com/suranga",
+    "firmUrl": "https://balderton.com",
+    "location": "London, UK"
+  },
+  {
+    "id": "dst-global-yuri-milner",
+    "name": "Yuri Milner",
+    "firm": "DST Global",
+    "title": "Founder",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Late-stage growth investor in world-changing internet and technology companies. Massive bets on proven winners.",
+    "stages": [
+      "growth"
+    ],
+    "sectors": [
+      "consumer",
+      "fintech",
+      "enterprise",
+      "marketplace"
+    ],
+    "checkSize": {
+      "min": 50000000,
+      "max": 500000000
+    },
+    "geography": [
+      "us",
+      "eu",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "SpaceX",
+        "round": "Growth",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Facebook",
+      "Twitter",
+      "Airbnb",
+      "Spotify",
+      "ByteDance"
+    ],
+    "fundSize": "$10B+ AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/yuri-milner",
+    "twitter": "https://twitter.com/yaborskiy",
+    "firmUrl": "https://dstglobal.com",
+    "location": "Hong Kong"
+  },
+  {
+    "id": "kaszek-hernan-kazah",
+    "name": "Hernán Kazah",
+    "firm": "Kaszek",
+    "title": "Co-Founder & Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Latin America's leading VC. MercadoLibre co-founder backing the next generation of LatAm tech from seed to growth.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "fintech",
+      "consumer",
+      "marketplace",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 50000000
+    },
+    "geography": [
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Nubank",
+        "round": "Growth",
+        "year": 2024
+      },
+      {
+        "company": "Kavak",
+        "round": "Series E",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Nubank",
+      "Kavak",
+      "QuintoAndar",
+      "Creditas"
+    ],
+    "fundSize": "$1B Fund III",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/hernan-kazah-95810",
+    "twitter": null,
+    "firmUrl": "https://kaszek.com",
+    "location": "Buenos Aires, Argentina"
+  },
+  {
+    "id": "jungle-ventures-amit-anand",
+    "name": "Amit Anand",
+    "firm": "Jungle Ventures",
+    "title": "Founding Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Southeast Asia focused VC backing B2B and consumer tech founders building for the next billion users in the region.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "fintech",
+      "enterprise",
+      "consumer",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 2000000,
+      "max": 20000000
+    },
+    "geography": [
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Moglix",
+        "round": "Series E",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Kredivo",
+      "Moglix",
+      "Livspace"
+    ],
+    "fundSize": "$600M Fund IV",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/amit-anand-6b72903",
+    "twitter": null,
+    "firmUrl": "https://jungleventures.com",
+    "location": "Singapore"
+  },
+  {
+    "id": "creandum-simon-schmincke",
+    "name": "Simon Schmincke",
+    "firm": "Creandum",
+    "title": "General Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Nordic and European early-stage VC. Backed Spotify early. Focus on consumer, SaaS, and fintech founders.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "saas",
+      "fintech"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 15000000
+    },
+    "geography": [
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Pleo",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Spotify",
+      "Klarna",
+      "Trade Republic"
+    ],
+    "fundSize": "$500M Fund VII",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/simonschmincke",
+    "twitter": null,
+    "firmUrl": "https://creandum.com",
+    "location": "Berlin, Germany"
+  },
+  {
+    "id": "cathay-innovation-denis-barrier",
+    "name": "Denis Barrier",
+    "firm": "Cathay Innovation",
+    "title": "Co-Founder & Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Cross-border VC connecting Europe, US, and Asia. Backs startups in mobility, fintech, and enterprise with global corporate partners.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "fintech",
+      "enterprise",
+      "consumer",
+      "climate"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 30000000
+    },
+    "geography": [
+      "eu",
+      "us",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Exotec",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Too Good To Go",
+      "Exotec",
+      "ContentSquare"
+    ],
+    "fundSize": "$1B+",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/denisbarrier",
+    "twitter": null,
+    "firmUrl": "https://cathayinnovation.com",
+    "location": "Paris, France"
+  },
+  {
+    "id": "prosus-ventures-fabricio-bloisi",
+    "name": "Fabricio Bloisi",
+    "firm": "Prosus Ventures",
+    "title": "CEO",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Naspers/Prosus tech investment arm. Growth-stage investing in food delivery, payments, edtech, and classifieds globally.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "consumer",
+      "fintech",
+      "edtech",
+      "marketplace"
+    ],
+    "checkSize": {
+      "min": 50000000,
+      "max": 500000000
+    },
+    "geography": [
+      "eu",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Byju's",
+        "round": "Growth",
+        "year": 2023
+      }
+    ],
+    "portfolioHighlights": [
+      "Tencent",
+      "Swiggy",
+      "Stack Overflow",
+      "OLX"
+    ],
+    "fundSize": "$100B+ portfolio value",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/fabriciobloisi",
+    "twitter": null,
+    "firmUrl": "https://prosus.com",
+    "location": "Amsterdam, Netherlands"
+  },
+  {
+    "id": "cherry-ventures-christian-meermann",
+    "name": "Christian Meermann",
+    "firm": "Cherry Ventures",
+    "title": "Founding Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Berlin-based seed-stage VC. Backs European founders in fintech, commerce, and SaaS with hands-on operational support.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "fintech",
+      "saas",
+      "consumer",
+      "marketplace"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 5000000
+    },
+    "geography": [
+      "eu"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Taxfix",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Flixbus",
+      "Auto1",
+      "Flink",
+      "Taxfix"
+    ],
+    "fundSize": "$300M Fund IV",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/christian-meermann",
+    "twitter": null,
+    "firmUrl": "https://cherry.vc",
+    "location": "Berlin, Germany"
+  },
+  {
+    "id": "b-capital-raj-ganguly",
+    "name": "Raj Ganguly",
+    "firm": "B Capital Group",
+    "title": "Co-Founder & Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Eduardo Saverin-backed fund bridging Silicon Valley and Asia. Enterprise-focused investments in AI, fintech, and healthcare.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "ai_ml",
+      "fintech",
+      "healthtech"
+    ],
+    "checkSize": {
+      "min": 10000000,
+      "max": 60000000
+    },
+    "geography": [
+      "us",
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Icertis",
+        "round": "Series F",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Icertis",
+      "Evidation Health",
+      "BigPanda"
+    ],
+    "fundSize": "$2.1B Fund III",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/rajganguly",
+    "twitter": null,
+    "firmUrl": "https://bcapgroup.com",
+    "location": "Singapore"
+  },
+  {
+    "id": "partech-romain-lavault",
+    "name": "Romain Lavault",
+    "firm": "Partech",
+    "title": "General Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Pan-European and Africa-focused VC investing in enterprise software, deeptech, and digital health from seed to growth.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas",
+      "healthtech",
+      "deeptech"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 50000000
+    },
+    "geography": [
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Doctolib",
+        "round": "Series F",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Doctolib",
+      "ManoMano",
+      "Mirakl"
+    ],
+    "fundSize": "$400M Growth Fund",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/lavault",
+    "twitter": null,
+    "firmUrl": "https://partechpartners.com",
+    "location": "Paris, France"
+  },
+  {
+    "id": "lightspeed-india-harsha-kumar",
+    "name": "Harsha Kumar",
+    "firm": "Lightspeed India",
+    "title": "Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "India and Southeast Asia consumer internet and fintech investor. Focus on mobile-first companies serving emerging market consumers.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "consumer",
+      "fintech",
+      "healthtech",
+      "edtech"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 30000000
+    },
+    "geography": [
+      "asia",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Jar",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Byju's",
+      "OYO Rooms",
+      "Udaan",
+      "Indian Energy Exchange"
+    ],
+    "fundSize": "$500M India Fund",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/harshakumarlsip",
+    "twitter": "https://twitter.com/haraborx",
+    "firmUrl": "https://lsvp.com",
+    "location": "Bangalore, India"
+  },
+  {
+    "id": "cowboy-ventures-aileen-lee",
+    "name": "Aileen Lee",
+    "firm": "Cowboy Ventures",
+    "title": "Founder & Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Coined the term 'unicorn'. Seed and Series A investor in consumer and enterprise tech. Backs mission-driven founders building enduring companies.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "enterprise",
+      "saas",
+      "fintech"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Guild Education",
+        "round": "Series F",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Dollar Shave Club",
+      "Rent the Runway",
+      "Guild Education"
+    ],
+    "fundSize": "$95M Fund III",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/aileenwlee",
+    "twitter": "https://twitter.com/aaborxlee",
+    "firmUrl": "https://cowboy.vc",
+    "location": "Palo Alto, CA"
+  },
+  {
+    "id": "female-founders-fund-anu-duggal",
+    "name": "Anu Duggal",
+    "firm": "Female Founders Fund",
+    "title": "Founding Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Invests exclusively in women-led companies at pre-seed and seed. Focus on e-commerce, health, fintech, and future of work.",
+    "stages": [
+      "seed"
+    ],
+    "sectors": [
+      "consumer",
+      "fintech",
+      "healthtech",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Tia Health",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Zola",
+      "Tia Health",
+      "WinkyLux",
+      "Eloquii"
+    ],
+    "fundSize": "$57M Fund III",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/anu-duggal-568222",
+    "twitter": "https://twitter.com/anuduggal",
+    "firmUrl": "https://femalefoundersfund.com",
+    "location": "New York, NY"
+  },
+  {
+    "id": "aspect-ventures-theresia-gouw",
+    "name": "Theresia Gouw",
+    "firm": "Acrew Capital",
+    "title": "Founding Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Cybersecurity and enterprise SaaS specialist. Backs founders building category-defining security and infrastructure companies.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Abnormal Security",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Trulia",
+      "Cato Networks",
+      "Demisto",
+      "Exabeam"
+    ],
+    "fundSize": "$300M Fund II",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/theresiagouw",
+    "twitter": "https://twitter.com/theresia",
+    "firmUrl": "https://acrewcapital.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "all-raise-jenny-lefcourt",
+    "name": "Jenny Lefcourt",
+    "firm": "Freestyle Capital",
+    "title": "Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Seed investor and co-founder of All Raise, championing women in tech. Backs consumer, marketplace, and enterprise startups.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "marketplace",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 3000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Faire",
+        "round": "Series A",
+        "year": 2023
+      }
+    ],
+    "portfolioHighlights": [
+      "Faire",
+      "The RealReal",
+      "Airtable"
+    ],
+    "fundSize": "$160M Fund V",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/jennylefcourt",
+    "twitter": "https://twitter.com/jennylefcourt",
+    "firmUrl": "https://freestyle.vc",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "reach-capital-jennifer-carolan",
+    "name": "Jennifer Carolan",
+    "firm": "Reach Capital",
+    "title": "Co-Founder & General Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Leading edtech VC. Invests in education and workforce development companies from pre-seed through Series B.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "edtech",
+      "consumer",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 10000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "ClassDojo",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "ClassDojo",
+      "Newsela",
+      "Outschool",
+      "Handshake"
+    ],
+    "fundSize": "$200M Fund III",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/jcarolan",
+    "twitter": "https://twitter.com/jennifercarolan",
+    "firmUrl": "https://reachcapital.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "flying-fish-eva-ho",
+    "name": "Eva Ho",
+    "firm": "Fika Ventures",
+    "title": "Co-Founding Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "LA-based seed investor. Focus on applied AI, data infrastructure, and fintech. Technical founder who understands deep tech.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "ai_ml",
+      "fintech",
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 3000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Dashworks",
+        "round": "Seed",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Zentail",
+      "Pipe",
+      "Emotive"
+    ],
+    "fundSize": "$76M Fund II",
+    "activelyDeploying": true,
+    "lastActive": "2025-08",
+    "linkedIn": "https://linkedin.com/in/evaho1",
+    "twitter": "https://twitter.com/evaho",
+    "firmUrl": "https://fika.vc",
+    "location": "Los Angeles, CA"
+  },
+  {
+    "id": "bain-capital-ventures-sarah-smith",
+    "name": "Sarah Smith",
+    "firm": "Bain Capital Ventures",
+    "title": "Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Growth and late-stage enterprise SaaS. Former Qualtrics. Backs founders building large-scale B2B platforms.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Harness",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "DocuSign",
+      "Attentive",
+      "Rapid7"
+    ],
+    "fundSize": "$1.9B Fund",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/sasmith4",
+    "twitter": "https://twitter.com/sarahsmith",
+    "firmUrl": "https://baincapitalventures.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "precursor-ventures-charles-hudson",
+    "name": "Charles Hudson",
+    "firm": "Precursor Ventures",
+    "title": "Managing Partner & Founder",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Pre-seed specialist backing underrepresented founders in B2B SaaS, marketplaces, and fintech. First check focus.",
+    "stages": [
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "marketplace",
+      "fintech",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 100000,
+      "max": 500000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Squire",
+        "round": "Seed",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Wonderschool",
+      "Wagon",
+      "Haystack"
+    ],
+    "fundSize": "$30M Fund III",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/charleshudson",
+    "twitter": "https://twitter.com/chaborx",
+    "firmUrl": "https://precursorvc.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "harlem-capital-henri-pierre-jacques",
+    "name": "Henri Pierre-Jacques",
+    "firm": "Harlem Capital",
+    "title": "Co-Founder & Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Diverse-led venture fund investing in minority and women founders. Focus on consumer, fintech, and healthcare at seed/Series A.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "fintech",
+      "healthtech",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 3000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Palate",
+        "round": "Seed",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Pangea",
+      "Kanarys",
+      "Mobility Capital Finance"
+    ],
+    "fundSize": "$134M Fund II",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/hpierrejacques",
+    "twitter": "https://twitter.com/haborxjacques",
+    "firmUrl": "https://harlemcapital.com",
+    "location": "New York, NY"
+  },
+  {
+    "id": "cross-culture-marlon-nichols",
+    "name": "Marlon Nichols",
+    "firm": "MaC Venture Capital",
+    "title": "Co-Founder & Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Cultural investing at the intersection of diverse founders, technology, and shifting cultural trends. Seed and Series A.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "enterprise",
+      "fintech",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 3000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Blavity",
+        "round": "Series A",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "PlayVS",
+      "Wonderschool",
+      "Pipe",
+      "Management Up"
+    ],
+    "fundSize": "$203M Fund II",
+    "activelyDeploying": true,
+    "lastActive": "2025-10",
+    "linkedIn": "https://linkedin.com/in/marloncnichols",
+    "twitter": "https://twitter.com/maraborxnichols",
+    "firmUrl": "https://macventurecapital.com",
+    "location": "Los Angeles, CA"
+  },
+  {
+    "id": "kapor-capital-freada-klein",
+    "name": "Freada Kapor Klein",
+    "firm": "Kapor Capital",
+    "title": "Co-Chair & Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Gap-closing, impact-driven seed investments in tech companies that close gaps of access for underserved communities.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "edtech",
+      "healthtech",
+      "fintech",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 2000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Mainstay",
+        "round": "Series B",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Bitwise Industries",
+      "Pigeonly",
+      "The Muse"
+    ],
+    "fundSize": "$125M",
+    "activelyDeploying": true,
+    "lastActive": "2025-08",
+    "linkedIn": "https://linkedin.com/in/dr-freada-kapor-klein-487a719",
+    "twitter": "https://twitter.com/freadakapor",
+    "firmUrl": "https://kaporcapital.com",
+    "location": "Oakland, CA"
+  },
+  {
+    "id": "ggv-jenny-lee",
+    "name": "Jenny Lee",
+    "firm": "Granite Asia (fka GGV Capital)",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Cross-border US-Asia investor. One of Asia's most successful female VCs. Backs enterprise and consumer tech with global ambitions.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "consumer",
+      "saas",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "asia",
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "HashiCorp",
+        "round": "Growth",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Xiaomi",
+      "Grab",
+      "Slack",
+      "Zendesk"
+    ],
+    "fundSize": "$2.52B Fund",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/jennylee",
+    "twitter": null,
+    "firmUrl": "https://graniteasia.com",
+    "location": "Singapore"
+  },
+  {
+    "id": "the-venture-collective-lo-toney",
+    "name": "Lo Toney",
+    "firm": "Plexo Capital",
+    "title": "Founder & Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Former GV partner. Invests in diverse fund managers and directly in seed-stage startups. Focus on underrepresented ecosystems.",
+    "stages": [
+      "seed"
+    ],
+    "sectors": [
+      "saas",
+      "fintech",
+      "consumer",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Various fund investments",
+        "round": "Seed",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Fund-of-funds portfolio",
+      "Direct seed investments"
+    ],
+    "fundSize": "$50M",
+    "activelyDeploying": true,
+    "lastActive": "2025-09",
+    "linkedIn": "https://linkedin.com/in/ltoney",
+    "twitter": "https://twitter.com/lo_toney",
+    "firmUrl": "https://plexocapital.com",
+    "location": "Oakland, CA"
+  },
+  {
+    "id": "susa-ventures-leo-polovets",
+    "name": "Leo Polovets",
+    "firm": "Susa Ventures",
+    "title": "Co-Founder & General Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Data-driven seed investing. Ex-LinkedIn #2 engineer. Backs technical founders in AI/ML, fintech, and enterprise infrastructure.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "ai_ml",
+      "fintech",
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 3000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Robinhood",
+        "round": "Seed (early)",
+        "year": 2013
+      },
+      {
+        "company": "Mux",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Robinhood",
+      "Flexport",
+      "Mux",
+      "LenddoEFL"
+    ],
+    "fundSize": "$175M Fund III",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/lpolovets",
+    "twitter": "https://twitter.com/lpolovets",
+    "firmUrl": "https://susaventures.com",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "500-global-christine-tsai",
+    "name": "Christine Tsai",
+    "firm": "500 Global",
+    "title": "CEO & Founding Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Global accelerator and VC. Backs early-stage founders across 80+ countries with focus on emerging markets, fintech, and marketplace businesses.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "fintech",
+      "marketplace",
+      "consumer",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 100000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "asia",
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Canva",
+        "round": "Seed (early)",
+        "year": 2013
+      }
+    ],
+    "portfolioHighlights": [
+      "Canva",
+      "Grab",
+      "Talkdesk",
+      "Credit Karma"
+    ],
+    "fundSize": "$2.7B AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/christinesltsai",
+    "twitter": "https://twitter.com/christinetsai",
+    "firmUrl": "https://500.co",
+    "location": "San Francisco, CA"
+  },
+  {
+    "id": "coatue-philippe-laffont",
+    "name": "Philippe Laffont",
+    "firm": "Coatue Management",
+    "title": "Founder & Portfolio Manager",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Tiger Global-style crossover fund. Public and private tech investing with data-driven approach to growth equity.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "saas",
+      "consumer",
+      "fintech",
+      "ai_ml",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 25000000,
+      "max": 200000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Airtable",
+        "round": "Series F",
+        "year": 2024
+      },
+      {
+        "company": "Chime",
+        "round": "Series G",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "DoorDash",
+      "Snap",
+      "Instacart",
+      "Airtable"
+    ],
+    "fundSize": "$48B AUM",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/philippe-laffont-9516b55",
+    "twitter": null,
+    "firmUrl": "https://coatue.com",
+    "location": "New York, NY"
+  },
+  {
+    "id": "insight-partners-jeff-horing",
+    "name": "Jeff Horing",
+    "firm": "Insight Partners",
+    "title": "Co-Founder & Managing Director",
+    "type": "vc",
+    "photo": null,
+    "thesis": "ScaleUp investing in growth-stage software companies. Operational playbook for scaling B2B software from $10M to $100M+ ARR.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "saas",
+      "enterprise",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 25000000,
+      "max": 200000000
+    },
+    "geography": [
+      "us",
+      "eu",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Wiz",
+        "round": "Series D",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Twitter",
+      "Shopify",
+      "Wiz",
+      "Monday.com"
+    ],
+    "fundSize": "$20B Fund XII",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/jeffhoring2009",
+    "twitter": null,
+    "firmUrl": "https://insightpartners.com",
+    "location": "New York, NY"
+  },
+  {
+    "id": "menlo-ventures-matt-murphy",
+    "name": "Matt Murphy",
+    "firm": "Menlo Ventures",
+    "title": "Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Multi-stage VC with deep AI conviction. Led early investments in AI infrastructure. Focus on enterprise AI, cybersecurity, and cloud.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "ai_ml",
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 5000000,
+      "max": 50000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Anthropic",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Uber",
+      "Roku",
+      "Anthropic",
+      "Chime"
+    ],
+    "fundSize": "$900M Fund XV",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/matt-murphy-0415543",
+    "twitter": null,
+    "firmUrl": "https://menlovc.com",
+    "location": "Menlo Park, CA"
+  },
+  {
+    "id": "lux-capital-josh-wolfe",
+    "name": "Josh Wolfe",
+    "firm": "Lux Capital",
+    "title": "Co-Founder & Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Deeptech and frontier technology specialist. Invests in the physical world: robotics, biotech, space, advanced materials, and defense tech.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "deeptech",
+      "biotech",
+      "hardware",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 30000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Anduril",
+        "round": "Series E",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Anduril",
+      "Shapeways",
+      "Desktop Metal",
+      "Evolv Technology"
+    ],
+    "fundSize": "$1B Fund VIII",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://linkedin.com/in/joshwolfe",
+    "twitter": "https://twitter.com/wolfejosh",
+    "firmUrl": "https://luxcapital.com",
+    "location": "New York, NY"
+  },
+  {
+    "id": "felicis-ventures-aydin-senkut",
+    "name": "Aydin Senkut",
+    "firm": "Felicis Ventures",
+    "title": "Founder & Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Ex-Google. Seed and early-stage investor in iconic companies. Backs ambitious founders in consumer, enterprise, and fintech.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "consumer",
+      "enterprise",
+      "fintech",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 500000,
+      "max": 10000000
+    },
+    "geography": [
+      "us",
+      "global"
+    ],
+    "recentInvestments": [
+      {
+        "company": "Notion",
+        "round": "Series C",
+        "year": 2024
+      }
+    ],
+    "portfolioHighlights": [
+      "Shopify",
+      "Fitbit",
+      "Credit Karma",
+      "Adyen"
+    ],
+    "fundSize": "$900M Fund",
+    "activelyDeploying": true,
+    "lastActive": "2025-11",
+    "linkedIn": "https://linkedin.com/in/aydins",
+    "twitter": "https://twitter.com/asenkut",
+    "firmUrl": "https://felicis.com",
+    "location": "Menlo Park, CA"
   }
 ]
