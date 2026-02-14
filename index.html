@@ -162,6 +162,45 @@ footer .links a:hover{color:var(--text)}
 
 /* No results */
 .no-results{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--text-dim)}
+
+/* ===== COMPARE ===== */
+.compare-btn{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;border:2px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:var(--text-dim);transition:all 0.2s;z-index:2}
+.compare-btn:hover{border-color:var(--accent);color:var(--accent)}
+.compare-btn.selected{background:var(--accent);border-color:var(--accent);color:#fff}
+.compare-bar{position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(9,9,11,0.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:16px 24px;display:none;align-items:center;justify-content:center;gap:16px}
+.compare-bar.show{display:flex}
+.compare-bar .avatars{display:flex;gap:-8px}
+.compare-bar .mini-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#fff;border:2px solid var(--bg);margin-left:-8px}
+.compare-bar .mini-avatar:first-child{margin-left:0}
+.compare-modal{background:var(--bg);border:1px solid var(--border);border-radius:16px;width:100%;max-width:1100px;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn 0.25s ease;padding:32px}
+.compare-grid{display:grid;gap:1px;background:var(--border)}
+.compare-grid.cols-2{grid-template-columns:200px 1fr 1fr}
+.compare-grid.cols-3{grid-template-columns:180px 1fr 1fr 1fr}
+.compare-cell{background:var(--bg);padding:12px 16px;font-size:0.85rem;color:var(--text-muted)}
+.compare-cell.label{font-weight:600;color:var(--text-dim);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center}
+.compare-cell.header{background:var(--card);text-align:center;padding:20px 16px}
+.compare-cell.header .name{font-weight:700;font-size:1rem;color:var(--text);margin-top:8px}
+.compare-cell.header .firm{font-size:0.8rem;color:var(--text-muted)}
+.compare-remove{margin-top:8px;font-size:0.75rem;color:var(--text-dim);padding:4px 12px;border-radius:20px;border:1px solid var(--border);transition:all 0.2s}
+.compare-remove:hover{border-color:rgba(239,68,68,0.5);color:#f87171}
+
+/* ===== NAMED LISTS ===== */
+.list-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
+.list-tab{padding:8px 16px;border-radius:20px;border:1px solid var(--border);font-size:0.8rem;font-weight:500;color:var(--text-muted);transition:all 0.2s;display:flex;align-items:center;gap:6px}
+.list-tab:hover{border-color:var(--border-hover);color:var(--text)}
+.list-tab.active{background:linear-gradient(135deg,rgba(59,130,246,0.15),rgba(139,92,246,0.15));border-color:rgba(59,130,246,0.4);color:var(--text)}
+.list-tab .count{background:rgba(255,255,255,0.08);padding:2px 7px;border-radius:10px;font-size:0.7rem}
+.list-tab.active .count{background:rgba(59,130,246,0.3)}
+.save-dropdown{position:absolute;bottom:100%;left:0;right:0;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px;z-index:10;box-shadow:0 -8px 30px rgba(0,0,0,0.4);margin-bottom:4px;max-height:240px;overflow-y:auto}
+.save-dropdown-item{padding:8px 12px;border-radius:6px;font-size:0.85rem;color:var(--text-muted);cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:8px}
+.save-dropdown-item:hover{background:rgba(255,255,255,0.05);color:var(--text)}
+.save-dropdown-item.in-list{color:var(--accent)}
+.save-dropdown-item.create{color:var(--accent);border-top:1px solid var(--border);margin-top:4px;padding-top:12px}
+.save-dropdown .new-list-input{width:100%;padding:8px 12px;border-radius:6px;border:1px solid var(--border);background:var(--bg);font-size:0.85rem;outline:none;margin-top:4px}
+.save-dropdown .new-list-input:focus{border-color:var(--accent)}
+.save-wrap{position:relative;display:inline-block}
+.delete-list-btn{font-size:0.75rem;color:var(--text-dim);padding:4px 8px;border-radius:4px;transition:all 0.2s;margin-left:auto}
+.delete-list-btn:hover{color:#f87171;background:rgba(239,68,68,0.1)}
 </style>
 </head>
 <body>
@@ -275,16 +314,30 @@ footer .links a:hover{color:var(--text)}
 <!-- SAVED -->
 <section id="saved-section">
   <div class="container">
-    <h2>Saved Investors</h2>
-    <p class="subtitle">Your curated list of investors to reach out to.</p>
-    <div class="saved-actions">
+    <h2>Investor Lists</h2>
+    <p class="subtitle">Organize your investors into named lists for outreach.</p>
+    <div class="list-tabs" id="listTabs"></div>
+    <div class="saved-actions" id="savedActions">
       <button class="btn-secondary" onclick="exportCSV()">Export CSV ↓</button>
-      <button class="btn-secondary" onclick="clearSaved()">Clear All</button>
+      <button class="btn-secondary" onclick="clearCurrentList()">Clear List</button>
+      <button class="btn-secondary" onclick="deleteCurrentList()" id="deleteListBtn" style="color:#f87171">Delete List</button>
     </div>
     <div class="results-grid" id="savedGrid"></div>
     <div class="saved-empty" id="savedEmpty">No saved investors yet. Browse and save investors you're interested in.</div>
   </div>
 </section>
+
+<!-- COMPARE BAR -->
+<div class="compare-bar" id="compareBar">
+  <div class="avatars" id="compareAvatars"></div>
+  <button class="btn-primary" onclick="openCompare()" id="compareBtn">Compare</button>
+  <button class="btn-secondary" onclick="clearCompare()" style="padding:10px 16px">Clear</button>
+</div>
+
+<!-- COMPARE MODAL -->
+<div class="modal-overlay" id="compareOverlay" onclick="if(event.target===this)closeCompare()">
+  <div class="compare-modal" id="compareModal"></div>
+</div>
 
 <!-- MODAL -->
 <div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
@@ -309,7 +362,27 @@ const SAMPLE_DATA=[{id:"1",name:"Sarah Chen",title:"General Partner",firm:"Horiz
 
 let investors=[];
 let activeFilters={stage:[],sector:[],type:[],geo:[]};
-let savedIds=JSON.parse(localStorage.getItem('mc_saved')||'[]');
+
+// ===== NAMED LISTS =====
+function loadLists(){
+  let lists=JSON.parse(localStorage.getItem('mc_lists')||'null');
+  if(!lists){
+    // Migrate from old mc_saved
+    const old=JSON.parse(localStorage.getItem('mc_saved')||'[]');
+    lists={Saved:old};
+    localStorage.setItem('mc_lists',JSON.stringify(lists));
+  }
+  return lists;
+}
+let namedLists=loadLists();
+let currentListName=Object.keys(namedLists)[0]||'Saved';
+
+function saveLists(){localStorage.setItem('mc_lists',JSON.stringify(namedLists))}
+function allSavedIds(){const s=new Set();Object.values(namedLists).forEach(l=>l.forEach(id=>s.add(id)));return s}
+function listsForInvestor(id){return Object.entries(namedLists).filter(([,ids])=>ids.includes(id)).map(([n])=>n)}
+
+// ===== COMPARE =====
+let compareIds=[];
 
 // ===== DATA NORMALIZATION =====
 const STAGE_MAP={seed:'Seed','pre-seed':'Pre-Seed','pre_seed':'Pre-Seed',series_a:'Series A',series_b:'Series B',growth:'Growth'};
@@ -425,7 +498,11 @@ function renderResults(){
 }
 
 function cardHTML(inv){
+  const isCompared=compareIds.includes(inv.id);
   return`<div class="investor-card" onclick="openProfile('${inv.id}')">
+    <button class="compare-btn ${isCompared?'selected':''}" onclick="event.stopPropagation();toggleCompare('${inv.id}')" title="Compare">
+      ${isCompared?'✓':'＋'}
+    </button>
     <div class="card-header">
       <div class="avatar">${initials(inv.name)}</div>
       ${inv.activelyDeploying?'<div class="active-badge"><span class="dot"></span>Active</div>':''}
@@ -493,7 +570,10 @@ function openProfile(id){
         </div>
       </div>
       <div class="modal-actions">
-        <button class="btn-save ${isSaved?'saved':''}" onclick="toggleSave('${id}',this)">${isSaved?'✓ Saved':'Save to List'}</button>
+        <div class="save-wrap">
+          <button class="btn-save" onclick="toggleSaveDropdown(event,'${id}')" id="modalSaveBtn-${id}">Save to List ▾</button>
+          <div class="save-dropdown" id="saveDropdown-${id}" style="display:none"></div>
+        </div>
         <button class="btn-secondary" onclick="alert('Profile claiming coming soon. We\\'ll notify ${inv.name.split(' ')[0]} when this feature launches.')">Share Profile</button>
       </div>
       <div style="text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
@@ -505,34 +585,154 @@ function openProfile(id){
 }
 
 function closeModal(){document.getElementById('modalOverlay').classList.remove('open');document.body.style.overflow='';if(location.hash.startsWith('#profile'))history.replaceState(null,'','#search')}
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeModal()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeCompare()}});
 
-// ===== SAVE =====
-function toggleSave(id,btn){
-  if(savedIds.includes(id)){savedIds=savedIds.filter(x=>x!==id);if(btn){btn.classList.remove('saved');btn.textContent='Save to List'}}
-  else{savedIds.push(id);if(btn){btn.classList.add('saved');btn.textContent='✓ Saved'}}
-  localStorage.setItem('mc_saved',JSON.stringify(savedIds));updateSavedCount();
+// ===== SAVE DROPDOWN =====
+function toggleSaveDropdown(e,id){
+  e.stopPropagation();
+  const dd=document.getElementById('saveDropdown-'+id);
+  if(dd.style.display==='none'){renderSaveDropdown(dd,id);dd.style.display='block'}
+  else dd.style.display='none';
 }
-function updateSavedCount(){document.getElementById('savedCount').textContent=savedIds.length}
+function renderSaveDropdown(dd,investorId){
+  const inLists=listsForInvestor(investorId);
+  dd.innerHTML=Object.keys(namedLists).map(name=>{
+    const isIn=inLists.includes(name);
+    return`<div class="save-dropdown-item ${isIn?'in-list':''}" onclick="event.stopPropagation();toggleInList('${investorId}','${name.replace(/'/g,"\\'")}',this.parentElement)">${isIn?'✓ ':''} ${name}</div>`;
+  }).join('')+`<div class="save-dropdown-item create" onclick="event.stopPropagation();showNewListInput(this.parentElement,'${investorId}')">+ Create new list</div>`;
+}
+function toggleInList(investorId,listName,dd){
+  if(!namedLists[listName])namedLists[listName]=[];
+  const list=namedLists[listName];
+  const idx=list.indexOf(investorId);
+  if(idx>=0)list.splice(idx,1);else list.push(investorId);
+  saveLists();updateSavedCount();renderSaveDropdown(dd,investorId);
+}
+function showNewListInput(dd,investorId){
+  // Remove existing input if any
+  const existing=dd.querySelector('.new-list-input');if(existing)return existing.focus();
+  const input=document.createElement('input');input.className='new-list-input';input.placeholder='List name...';
+  dd.appendChild(input);input.focus();
+  input.addEventListener('keydown',e=>{
+    if(e.key==='Enter'&&input.value.trim()){
+      const name=input.value.trim();
+      if(!namedLists[name])namedLists[name]=[];
+      namedLists[name].push(investorId);
+      saveLists();updateSavedCount();renderSaveDropdown(dd,investorId);
+    }
+    if(e.key==='Escape'){input.remove()}
+  });
+}
+// Close dropdowns on outside click
+document.addEventListener('click',()=>{document.querySelectorAll('.save-dropdown').forEach(d=>d.style.display='none')});
 
+function updateSavedCount(){
+  const total=allSavedIds().size;
+  document.getElementById('savedCount').textContent=total;
+}
+
+// ===== RENDER SAVED / LISTS =====
 function renderSaved(){
-  const saved=investors.filter(i=>savedIds.includes(i.id));
+  renderListTabs();
+  const ids=namedLists[currentListName]||[];
+  const saved=investors.filter(i=>ids.includes(i.id));
   const grid=document.getElementById('savedGrid');
   const empty=document.getElementById('savedEmpty');
-  if(!saved.length){grid.innerHTML='';empty.style.display='';return}
+  const delBtn=document.getElementById('deleteListBtn');
+  // Only allow deleting non-default lists
+  delBtn.style.display=(currentListName==='Saved')?'none':'';
+  if(!saved.length){grid.innerHTML='';empty.style.display='';empty.textContent='No investors in "'+currentListName+'" yet.';return}
   empty.style.display='none';
   grid.innerHTML=saved.map(cardHTML).join('');
 }
+function renderListTabs(){
+  const tabs=document.getElementById('listTabs');
+  tabs.innerHTML=Object.entries(namedLists).map(([name,ids])=>{
+    return`<button class="list-tab ${name===currentListName?'active':''}" onclick="currentListName='${name.replace(/'/g,"\\'")}';renderSaved()">${name} <span class="count">${ids.length}</span></button>`;
+  }).join('')+`<button class="list-tab" onclick="promptNewList()" style="border-style:dashed">+ New List</button>`;
+}
+function promptNewList(){
+  const name=prompt('New list name:');
+  if(name&&name.trim()&&!namedLists[name.trim()]){
+    namedLists[name.trim()]=[];saveLists();currentListName=name.trim();renderSaved();
+  }
+}
 
 function exportCSV(){
-  const saved=investors.filter(i=>savedIds.includes(i.id));if(!saved.length)return;
+  const ids=namedLists[currentListName]||[];
+  const saved=investors.filter(i=>ids.includes(i.id));if(!saved.length)return;
   const rows=[['Name','Title','Firm','Type','Stages','Sectors','Check Min','Check Max','Location','Active','Website']];
   saved.forEach(i=>rows.push([i.name,i.title,i.firm,i.type,i.stages.join('; '),i.sectors.join('; '),i.checkSize.min,i.checkSize.max,i.location,i.activelyDeploying,i.links.website||'']));
   const csv=rows.map(r=>r.map(c=>'"'+(c+'').replace(/"/g,'""')+'"').join(',')).join('\n');
-  const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='match-capital-saved.csv';a.click();
+  const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='match-capital-'+currentListName.toLowerCase().replace(/\s+/g,'-')+'.csv';a.click();
 }
 
-function clearSaved(){if(!confirm('Clear all saved investors?'))return;savedIds=[];localStorage.setItem('mc_saved','[]');updateSavedCount();renderSaved()}
+function clearCurrentList(){
+  if(!confirm('Clear all investors from "'+currentListName+'"?'))return;
+  namedLists[currentListName]=[];saveLists();updateSavedCount();renderSaved();
+}
+function deleteCurrentList(){
+  if(currentListName==='Saved')return;
+  if(!confirm('Delete list "'+currentListName+'"?'))return;
+  delete namedLists[currentListName];saveLists();
+  currentListName=Object.keys(namedLists)[0]||'Saved';
+  updateSavedCount();renderSaved();
+}
+
+// ===== COMPARE =====
+function toggleCompare(id){
+  const idx=compareIds.indexOf(id);
+  if(idx>=0)compareIds.splice(idx,1);
+  else if(compareIds.length<3)compareIds.push(id);
+  else{alert('Maximum 3 investors for comparison');return}
+  updateCompareBar();renderResults();
+  // Also re-render saved if visible
+  if(document.getElementById('saved-section').style.display!=='none')renderSaved();
+}
+function updateCompareBar(){
+  const bar=document.getElementById('compareBar');
+  const avatarsEl=document.getElementById('compareAvatars');
+  if(!compareIds.length){bar.classList.remove('show');return}
+  bar.classList.add('show');
+  avatarsEl.innerHTML=compareIds.map(id=>{const inv=investors.find(i=>i.id===id);return`<div class="mini-avatar">${initials(inv.name)}</div>`}).join('');
+  document.getElementById('compareBtn').textContent='Compare '+compareIds.length+' investor'+(compareIds.length>1?'s':'');
+}
+function clearCompare(){compareIds=[];updateCompareBar();renderResults()}
+
+function openCompare(){
+  if(compareIds.length<2){alert('Select at least 2 investors to compare');return}
+  const invs=compareIds.map(id=>investors.find(i=>i.id===id));
+  const cols=invs.length;
+  const rows=[
+    {label:'',render:inv=>`<div class="compare-cell header"><div class="avatar" style="margin:0 auto;width:48px;height:48px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">${initials(inv.name)}</div><div class="name">${inv.name}</div><div class="firm">${inv.title} · ${inv.firm}</div><span class="type-badge ${typeClass(inv.type)}" style="margin-top:6px">${inv.type}</span><br><button class="compare-remove" onclick="removeFromCompare('${inv.id}')">✕ Remove</button></div>`},
+    {label:'Thesis',render:inv=>`<div class="compare-cell">${inv.thesis}</div>`},
+    {label:'Stages',render:inv=>`<div class="compare-cell">${inv.stages.map(s=>'<span class="tag tag-stage" style="margin:2px">'+s+'</span>').join('')}</div>`},
+    {label:'Sectors',render:inv=>`<div class="compare-cell">${inv.sectors.map(s=>'<span class="tag tag-sector" style="margin:2px">'+s+'</span>').join('')}</div>`},
+    {label:'Check Size',render:inv=>`<div class="compare-cell">${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</div>`},
+    {label:'Fund Size',render:inv=>`<div class="compare-cell">${inv.fundSize}</div>`},
+    {label:'Recent Investments',render:inv=>`<div class="compare-cell">${inv.recentInvestments.map(i=>i.company+' ('+i.round+' '+i.year+')').join('<br>')}</div>`},
+    {label:'Geography',render:inv=>`<div class="compare-cell">${inv.geography.join(', ')}</div>`},
+    {label:'Deploying',render:inv=>`<div class="compare-cell">${inv.activelyDeploying?'<span style="color:var(--green)">✓ Active</span>':'<span style="color:var(--text-dim)">Inactive — '+inv.lastActive+'</span>'}</div>`},
+    {label:'Links',render:inv=>`<div class="compare-cell">${[inv.links.linkedin?'<a href="'+inv.links.linkedin+'" target="_blank">LinkedIn</a>':null,inv.links.twitter?'<a href="'+inv.links.twitter+'" target="_blank">Twitter</a>':null,inv.links.website?'<a href="'+inv.links.website+'" target="_blank">Website</a>':null].filter(Boolean).join(' · ')||'—'}</div>`}
+  ];
+  let html=`<button class="modal-close" onclick="closeCompare()" style="position:absolute;top:16px;right:16px;font-size:1.5rem;color:var(--text-dim);z-index:1;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%">×</button>`;
+  html+=`<h2 style="margin-bottom:24px;font-size:1.3rem;font-weight:700">Investor Comparison</h2>`;
+  html+=`<div class="compare-grid cols-${cols}">`;
+  rows.forEach(row=>{
+    html+=`<div class="compare-cell label">${row.label}</div>`;
+    invs.forEach(inv=>{html+=row.render(inv)});
+  });
+  html+='</div>';
+  document.getElementById('compareModal').innerHTML=html;
+  document.getElementById('compareOverlay').classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function removeFromCompare(id){
+  compareIds=compareIds.filter(x=>x!==id);
+  if(compareIds.length<2){closeCompare();updateCompareBar();renderResults();return}
+  openCompare();updateCompareBar();renderResults();
+}
+function closeCompare(){document.getElementById('compareOverlay').classList.remove('open');document.body.style.overflow=''}
 
 // ===== WAITLIST =====
 function handleWaitlist(e){e.preventDefault();document.getElementById('waitlistMsg').textContent='🎉 You\'re on the list! We\'ll be in touch.';e.target.reset();return false}
