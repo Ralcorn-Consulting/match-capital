@@ -524,7 +524,7 @@ function openProfileById(id){const inv=investors.find(i=>i.id===id);if(inv)openP
 function openProfile(id){
   location.hash='profile/'+id;
   const inv=investors.find(i=>i.id===id);if(!inv)return;
-  const isSaved=savedIds.includes(id);
+  const isSaved=allSavedIds().has(id);
   document.getElementById('modal').innerHTML=`
     <button class="modal-close" onclick="closeModal()">×</button>
     <div class="modal-header">
