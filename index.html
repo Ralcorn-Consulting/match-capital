@@ -435,6 +435,31 @@ footer .links a:hover{color:var(--text)}
 .card-move-menu-item.remove{color:#f87171}
 .card-move-menu-item.remove:hover{background:rgba(239,68,68,0.08)}
 
+/* ===== RECENTLY VIEWED ===== */
+.recently-viewed{margin-bottom:24px;display:none}
+.recently-viewed.show{display:block}
+.rv-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.rv-header h3{font-size:0.82rem;font-weight:600;color:var(--text-muted);display:flex;align-items:center;gap:8px}
+.rv-header h3 .rv-count{font-weight:400;color:var(--text-dim)}
+.rv-clear{font-size:0.72rem;color:var(--text-dim);padding:4px 10px;border-radius:16px;border:1px solid var(--border);transition:all var(--transition-base)}
+.rv-clear:hover{color:var(--text);border-color:var(--border-hover)}
+.rv-scroll{display:flex;gap:12px;overflow-x:auto;padding:4px 0 8px;scrollbar-width:thin;-webkit-overflow-scrolling:touch}
+.rv-scroll::-webkit-scrollbar{height:4px}
+.rv-scroll::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.08);border-radius:2px}
+.rv-card{flex-shrink:0;width:160px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;cursor:pointer;transition:all var(--transition-spring);text-align:center;position:relative;overflow:hidden}
+.rv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);opacity:0;transition:opacity 0.3s}
+.rv-card:hover{border-color:rgba(99,102,241,0.3);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+.rv-card:hover::before{opacity:1}
+.rv-card .rv-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;color:#fff;margin:0 auto 8px}
+.rv-card .rv-name{font-weight:600;font-size:0.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
+.rv-card .rv-firm{font-size:0.7rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:6px}
+.rv-card .rv-time{font-size:0.65rem;color:var(--text-dim);font-family:var(--font-mono)}
+.rv-card .rv-remove{position:absolute;top:6px;right:6px;width:20px;height:20px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:0.65rem;color:var(--text-dim);opacity:0;transition:all 0.2s;background:var(--bg)}
+.rv-card:hover .rv-remove{opacity:1}
+.rv-card .rv-remove:hover{color:#f87171;background:rgba(239,68,68,0.1)}
+[data-theme="light"] .rv-card .rv-avatar{background:linear-gradient(135deg,#4f46e5,#9333ea,#db2777)}
+@media(max-width:600px){.rv-card{width:140px;padding:12px}}
+
 /* Inline rename input in tabs */
 .list-tab-rename{padding:6px 12px;border-radius:20px;border:1px solid var(--accent);background:var(--bg);font-size:0.8rem;color:var(--text);outline:none;font-family:inherit;width:140px}
 
@@ -585,6 +610,14 @@ footer .links a:hover{color:var(--text)}
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="search" id="searchInput" placeholder="Search by name, firm, sector, stage, location..." aria-label="Search investors" autocomplete="off">
       <button class="clear-btn" id="clearSearch" onclick="clearSearch()" aria-label="Clear search">×</button>
+    </div>
+
+    <div class="recently-viewed" id="recentlyViewed" aria-label="Recently viewed investors">
+      <div class="rv-header">
+        <h3>🕐 Recently Viewed <span class="rv-count" id="rvCount"></span></h3>
+        <button class="rv-clear" onclick="clearRecentlyViewed()">Clear</button>
+      </div>
+      <div class="rv-scroll" id="rvScroll"></div>
     </div>
 
     <button class="analytics-toggle" onclick="toggleAnalytics()" aria-expanded="false" aria-controls="analyticsPanel">
@@ -820,6 +853,7 @@ async function init(){
   document.getElementById('investorCountHero').textContent=investors.length;
   updateChipCounts();
   applyTheme(getPreferredTheme());
+  renderRecentlyViewed();
   handleHash();
   renderResults();
 }
@@ -1056,6 +1090,7 @@ function toggleInListDD(investorId,listName){
 function openProfile(id){
   location.hash='profile/'+id;
   const inv=investors.find(i=>i.id===id);if(!inv)return;
+  trackView(id);
   const activity=getActivityStatus(inv.lastActive);
   const portfolioCount=getPortfolioCount(inv);
   const verified=false;
@@ -1693,6 +1728,60 @@ function removeFilter(key,value){
   // Deactivate matching chip button
   document.querySelectorAll(`.chip[data-filter="${key}"][data-value="${value}"]`).forEach(c=>{c.classList.remove('active');c.setAttribute('aria-checked','false')});
   renderResults();
+}
+
+// ===== RECENTLY VIEWED =====
+const MAX_RECENT=10;
+function loadRecentlyViewed(){return JSON.parse(localStorage.getItem('mc_recent')||'[]')}
+function saveRecentlyViewed(list){localStorage.setItem('mc_recent',JSON.stringify(list))}
+function trackView(id){
+  let recent=loadRecentlyViewed();
+  recent=recent.filter(r=>r.id!==id);
+  recent.unshift({id,ts:Date.now()});
+  if(recent.length>MAX_RECENT)recent=recent.slice(0,MAX_RECENT);
+  saveRecentlyViewed(recent);
+  renderRecentlyViewed();
+}
+function clearRecentlyViewed(){saveRecentlyViewed([]);renderRecentlyViewed()}
+function removeFromRecent(e,id){
+  e.stopPropagation();
+  let recent=loadRecentlyViewed().filter(r=>r.id!==id);
+  saveRecentlyViewed(recent);
+  renderRecentlyViewed();
+}
+function timeAgo(ts){
+  const diff=Date.now()-ts;
+  const mins=Math.floor(diff/60000);
+  if(mins<1)return'Just now';
+  if(mins<60)return mins+'m ago';
+  const hrs=Math.floor(mins/60);
+  if(hrs<24)return hrs+'h ago';
+  const days=Math.floor(hrs/24);
+  return days+'d ago';
+}
+function renderRecentlyViewed(){
+  const recent=loadRecentlyViewed();
+  const container=document.getElementById('recentlyViewed');
+  const scroll=document.getElementById('rvScroll');
+  const count=document.getElementById('rvCount');
+  if(!recent.length||!investors.length){container.classList.remove('show');return}
+  // Filter to valid investors only
+  const valid=recent.filter(r=>investors.find(i=>i.id===r.id));
+  if(!valid.length){container.classList.remove('show');return}
+  container.classList.add('show');
+  count.textContent='('+valid.length+')';
+  scroll.innerHTML=valid.map(r=>{
+    const inv=investors.find(i=>i.id===r.id);
+    if(!inv)return'';
+    const isOrg=inv.entity==='organization';
+    return`<div class="rv-card" onclick="openProfile('${inv.id}')">
+      <button class="rv-remove" onclick="removeFromRecent(event,'${inv.id}')" aria-label="Remove from recent">×</button>
+      <div class="rv-avatar${isOrg?' avatar-org':''}">${isOrg?'🏢':initials(inv.name)}</div>
+      <div class="rv-name">${inv.name}</div>
+      <div class="rv-firm">${inv.firm||inv.type}</div>
+      <div class="rv-time">${timeAgo(r.ts)}</div>
+    </div>`;
+  }).join('');
 }
 
 // ===== GO =====
