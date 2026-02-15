@@ -272,22 +272,41 @@ footer .links a:hover{color:var(--text)}
 .compare-btn{position:absolute;top:12px;right:12px;width:28px;height:28px;border-radius:50%;border:2px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;font-size:0.75rem;color:var(--text-dim);transition:all 0.2s;z-index:2}
 .compare-btn:hover{border-color:var(--accent);color:var(--accent)}
 .compare-btn.selected{background:var(--accent);border-color:var(--accent);color:#fff}
-.compare-bar{position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(9,9,11,0.95);backdrop-filter:blur(20px);border-top:1px solid var(--border);padding:16px 24px;display:none;align-items:center;justify-content:center;gap:16px}
+/* Sticky compare bar */
+.compare-bar{position:fixed;bottom:0;left:0;right:0;z-index:150;background:rgba(9,9,11,0.92);backdrop-filter:blur(24px);border-top:1px solid rgba(59,130,246,0.2);padding:0;display:none;flex-direction:column;align-items:center;box-shadow:0 -8px 32px rgba(0,0,0,0.4),0 -2px 16px rgba(59,130,246,0.08);transition:transform 0.3s cubic-bezier(0.4,0,0.2,1)}
+.compare-bar::before{content:'';position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent)}
 .compare-bar.show{display:flex}
-.compare-bar .avatars{display:flex;gap:-8px}
-.compare-bar .mini-avatar{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:0.7rem;font-weight:700;color:#fff;border:2px solid var(--bg);margin-left:-8px}
-.compare-bar .mini-avatar:first-child{margin-left:0}
+.compare-bar-inner{display:flex;align-items:center;justify-content:center;gap:16px;padding:14px 24px;width:100%;max-width:1200px}
+.compare-bar .avatars{display:flex;align-items:center}
+.compare-bar .mini-chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:24px;padding:6px 14px 6px 6px;margin-left:8px;transition:all 0.2s}
+.compare-bar .mini-chip:first-child{margin-left:0}
+.compare-bar .mini-chip:hover{border-color:rgba(239,68,68,0.4)}
+.compare-bar .mini-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;flex-shrink:0}
+.compare-bar .mini-name{font-size:0.8rem;font-weight:500;color:var(--text);max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.compare-bar .mini-remove{font-size:0.7rem;color:var(--text-dim);cursor:pointer;margin-left:4px;transition:color 0.2s}
+.compare-bar .mini-remove:hover{color:#f87171}
+.compare-bar .bar-actions{display:flex;gap:8px;align-items:center}
+.compare-bar .compare-count{font-size:0.75rem;color:var(--text-dim);margin-right:4px}
 .compare-modal{background:var(--bg);border:1px solid var(--border);border-radius:16px;width:100%;max-width:1100px;max-height:90vh;overflow-y:auto;position:relative;animation:modalIn 0.25s ease;padding:32px}
-.compare-grid{display:grid;gap:1px;background:var(--border)}
-.compare-grid.cols-2{grid-template-columns:200px 1fr 1fr}
-.compare-grid.cols-3{grid-template-columns:180px 1fr 1fr 1fr}
-.compare-cell{background:var(--bg);padding:12px 16px;font-size:0.85rem;color:var(--text-muted)}
-.compare-cell.label{font-weight:600;color:var(--text-dim);font-size:0.75rem;text-transform:uppercase;letter-spacing:0.05em;display:flex;align-items:center}
-.compare-cell.header{background:var(--card);text-align:center;padding:20px 16px}
-.compare-cell.header .name{font-weight:700;font-size:1rem;color:var(--text);margin-top:8px}
-.compare-cell.header .firm{font-size:0.8rem;color:var(--text-muted)}
-.compare-remove{margin-top:8px;font-size:0.75rem;color:var(--text-dim);padding:4px 12px;border-radius:20px;border:1px solid var(--border);transition:all 0.2s}
-.compare-remove:hover{border-color:rgba(239,68,68,0.5);color:#f87171}
+@keyframes modalIn{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+/* Compare table */
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--border);border-radius:var(--radius);overflow:hidden}
+.compare-table th,.compare-table td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--border);font-size:0.85rem;vertical-align:top}
+.compare-table th{background:var(--card);font-weight:600;color:var(--text-dim);font-size:0.72rem;text-transform:uppercase;letter-spacing:0.06em;width:140px;white-space:nowrap}
+.compare-table td{color:var(--text-muted);transition:background 0.2s}
+.compare-table tr:last-child th,.compare-table tr:last-child td{border-bottom:none}
+.compare-table td.match{background:rgba(34,197,94,0.06);color:var(--text)}
+.compare-table td.match .match-icon{color:var(--green);font-size:0.7rem;margin-right:4px}
+.compare-table .header-cell{text-align:center;padding:24px 16px;background:var(--card);border-bottom:1px solid var(--border)}
+.compare-table .header-cell .name{font-weight:700;font-size:1.05rem;color:var(--text);margin-top:10px}
+.compare-table .header-cell .firm{font-size:0.82rem;color:var(--text-muted);margin-top:2px}
+.compare-table .header-cell .compare-remove{margin-top:8px;font-size:0.75rem;color:var(--text-dim);padding:4px 12px;border-radius:20px;border:1px solid var(--border);transition:all 0.2s;display:inline-block}
+.compare-table .header-cell .compare-remove:hover{border-color:rgba(239,68,68,0.5);color:#f87171}
+/* Compare export bar */
+.compare-export{display:flex;gap:8px;margin-top:20px;justify-content:flex-end;flex-wrap:wrap}
+.compare-export button{padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.8rem;font-weight:500;color:var(--text-muted);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
+.compare-export button:hover{border-color:var(--border-hover);color:var(--text);background:rgba(255,255,255,0.03)}
+.compare-export button.copied{border-color:var(--green);color:var(--green)}
 
 /* ===== NAMED LISTS ===== */
 .list-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:24px}
@@ -512,9 +531,14 @@ footer .links a:hover{color:var(--text)}
 
 <!-- COMPARE BAR -->
 <div class="compare-bar" id="compareBar">
-  <div class="avatars" id="compareAvatars"></div>
-  <button class="btn-primary" onclick="openCompare()" id="compareBtn">Compare</button>
-  <button class="btn-secondary" onclick="clearCompare()" style="padding:10px 16px">Clear</button>
+  <div class="compare-bar-inner">
+    <div class="avatars" id="compareAvatars"></div>
+    <div class="bar-actions">
+      <span class="compare-count" id="compareCount"></span>
+      <button class="btn-primary" onclick="openCompare()" id="compareBtn" style="padding:10px 24px">Compare →</button>
+      <button class="btn-secondary" onclick="clearCompare()" style="padding:10px 14px;font-size:0.8rem">Clear</button>
+    </div>
+  </div>
 </div>
 
 <!-- COMPARE MODAL -->
@@ -1066,38 +1090,120 @@ function updateCompareBar(){
   const avatarsEl=document.getElementById('compareAvatars');
   if(!compareIds.length){bar.classList.remove('show');return}
   bar.classList.add('show');
-  avatarsEl.innerHTML=compareIds.map(id=>{const inv=investors.find(i=>i.id===id);return`<div class="mini-avatar">${initials(inv.name)}</div>`}).join('');
-  document.getElementById('compareBtn').textContent='Compare '+compareIds.length+' investor'+(compareIds.length>1?'s':'');
+  avatarsEl.innerHTML=compareIds.map(id=>{
+    const inv=investors.find(i=>i.id===id);
+    return`<div class="mini-chip"><div class="mini-avatar">${initials(inv.name)}</div><span class="mini-name">${inv.name.split(' ')[0]}</span><span class="mini-remove" onclick="event.stopPropagation();toggleCompare('${id}')">✕</span></div>`;
+  }).join('');
+  document.getElementById('compareCount').textContent=compareIds.length+'/3';
 }
 function clearCompare(){compareIds=[];updateCompareBar();renderResults()}
+
+function allMatch(invs,getter){
+  const vals=invs.map(getter);
+  const norm=vals.map(v=>Array.isArray(v)?v.slice().sort().join('|'):String(v));
+  return norm.every(n=>n===norm[0]);
+}
+function arrOverlap(invs,getter){
+  const sets=invs.map(i=>new Set(getter(i)));
+  return[...sets[0]].filter(v=>sets.every(s=>s.has(v)));
+}
 
 function openCompare(){
   if(compareIds.length<2){alert('Select at least 2 investors to compare');return}
   const invs=compareIds.map(id=>investors.find(i=>i.id===id));
-  const cols=invs.length;
+
+  function matchClass(invs,getter){return allMatch(invs,getter)?'match':''}
+  function tagWithMatch(items,allItems,cls){
+    const common=new Set(allItems);
+    return items.map(s=>{
+      const isMatch=common.has(s);
+      return`<span class="tag ${cls}" style="margin:2px">${isMatch?'<span class="match-icon">●</span>':''}${s}</span>`;
+    }).join('');
+  }
+
+  const stageOverlap=arrOverlap(invs,i=>i.stages);
+  const sectorOverlap=arrOverlap(invs,i=>i.sectors);
+  const geoOverlap=arrOverlap(invs,i=>i.geography);
+
   const rows=[
-    {label:'',render:inv=>{const io=inv.entity==='organization';return`<div class="compare-cell header"><div class="avatar${io?' avatar-org':''}" style="margin:0 auto;width:48px;height:48px;border-radius:${io?'8px':'50%'};background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">${io?'🏢':initials(inv.name)}</div><div class="name">${inv.name}</div><div class="firm">${io?(inv.title||''):(inv.title+' · '+inv.firm)}</div><span class="type-badge ${typeClass(inv.type)}" style="margin-top:6px">${inv.type}</span><br><button class="compare-remove" onclick="removeFromCompare('${inv.id}')">✕ Remove</button></div>`}},
-    {label:'Thesis',render:inv=>`<div class="compare-cell">${inv.thesis}</div>`},
-    {label:'Stages',render:inv=>`<div class="compare-cell">${inv.stages.map(s=>'<span class="tag tag-stage" style="margin:2px">'+s+'</span>').join('')}</div>`},
-    {label:'Sectors',render:inv=>`<div class="compare-cell">${inv.sectors.map(s=>'<span class="tag tag-sector" style="margin:2px">'+s+'</span>').join('')}</div>`},
-    {label:'Check Size',render:inv=>`<div class="compare-cell">${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</div>`},
-    {label:'Fund Size',render:inv=>`<div class="compare-cell">${inv.fundSize}</div>`},
-    {label:'Recent Investments',render:inv=>`<div class="compare-cell">${inv.recentInvestments.map(i=>i.company+' ('+i.round+' '+i.year+')').join('<br>')}</div>`},
-    {label:'Geography',render:inv=>`<div class="compare-cell">${inv.geography.join(', ')}</div>`},
-    {label:'Deploying',render:inv=>`<div class="compare-cell">${inv.activelyDeploying?'<span style="color:var(--green)">✓ Active</span>':'<span style="color:var(--text-dim)">Inactive — '+inv.lastActive+'</span>'}</div>`},
-    {label:'Links',render:inv=>`<div class="compare-cell">${[inv.links.linkedin?'<a href="'+inv.links.linkedin+'" target="_blank">LinkedIn</a>':null,inv.links.twitter?'<a href="'+inv.links.twitter+'" target="_blank">Twitter</a>':null,inv.links.website?'<a href="'+inv.links.website+'" target="_blank">Website</a>':null].filter(Boolean).join(' · ')||'—'}</div>`}
+    {label:'Thesis',render:inv=>`<td>${inv.thesis}</td>`},
+    {label:'Stages',render:inv=>{const cls=stageOverlap.length?'':'';return`<td>${inv.stages.map(s=>`<span class="tag tag-stage" style="margin:2px">${stageOverlap.includes(s)?'<span class="match-icon">●</span>':''}${s}</span>`).join('')}</td>`}},
+    {label:'Sectors',render:inv=>`<td>${inv.sectors.map(s=>`<span class="tag tag-sector" style="margin:2px">${sectorOverlap.includes(s)?'<span class="match-icon">●</span>':''}${s}</span>`).join('')}</td>`},
+    {label:'Check Size',render:inv=>`<td class="${matchClass(invs,i=>fmt(i.checkSize.min)+'-'+fmt(i.checkSize.max))}">${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</td>`},
+    {label:'Fund Size',render:inv=>`<td class="${matchClass(invs,i=>i.fundSize)}">${inv.fundSize}</td>`},
+    {label:'Location',render:inv=>`<td class="${matchClass(invs,i=>i.location)}">${inv.location}</td>`},
+    {label:'Geography',render:inv=>`<td>${inv.geography.map(g=>`<span class="tag" style="margin:2px">${geoOverlap.includes(g)?'<span class="match-icon">●</span>':''}${g}</span>`).join('')}</td>`},
+    {label:'Deploying',render:inv=>`<td class="${matchClass(invs,i=>i.activelyDeploying)}">${inv.activelyDeploying?'<span style="color:var(--green)">✓ Active</span>':'<span style="color:var(--text-dim)">Inactive</span>'}</td>`},
+    {label:'Recent Deals',render:inv=>`<td>${inv.recentInvestments.slice(0,4).map(i=>`<div style="margin-bottom:4px">${i.company} <span style="color:var(--text-dim);font-size:0.78rem">${i.round} · ${i.year}</span></div>`).join('')}</td>`},
+    {label:'Links',render:inv=>`<td>${[inv.links.linkedin?'<a href="'+inv.links.linkedin+'" target="_blank">LinkedIn</a>':null,inv.links.twitter?'<a href="'+inv.links.twitter+'" target="_blank">Twitter</a>':null,inv.links.website?'<a href="'+inv.links.website+'" target="_blank">Website</a>':null].filter(Boolean).join(' · ')||'—'}</td>`}
   ];
+
+  // Similarity summary
+  const similarities=[];
+  if(stageOverlap.length)similarities.push(stageOverlap.join(', '));
+  if(sectorOverlap.length)similarities.push(sectorOverlap.join(', '));
+  if(allMatch(invs,i=>i.location))similarities.push(invs[0].location);
+  const simHTML=similarities.length?`<div style="margin-bottom:20px;padding:12px 16px;background:rgba(34,197,94,0.06);border:1px solid rgba(34,197,94,0.15);border-radius:var(--radius-sm);font-size:0.82rem;color:var(--text-muted)"><span style="color:var(--green);font-weight:600">● Shared:</span> ${similarities.join(' · ')}</div>`:'';
+
   let html=`<button class="modal-close" onclick="closeCompare()" style="position:absolute;top:16px;right:16px;font-size:1.5rem;color:var(--text-dim);z-index:1;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%">×</button>`;
-  html+=`<h2 style="margin-bottom:24px;font-size:1.3rem;font-weight:700">Investor Comparison</h2>`;
-  html+=`<div class="compare-grid cols-${cols}">`;
-  rows.forEach(row=>{
-    html+=`<div class="compare-cell label">${row.label}</div>`;
-    invs.forEach(inv=>{html+=row.render(inv)});
+  html+=`<h2 style="margin-bottom:8px;font-size:1.3rem;font-weight:700">Investor Comparison</h2>`;
+  html+=`<p style="font-size:0.82rem;color:var(--text-dim);margin-bottom:16px">Comparing ${invs.length} investors · <span style="color:var(--green)">●</span> = shared attributes</p>`;
+  html+=simHTML;
+  html+=`<table class="compare-table"><thead><tr><th></th>`;
+  invs.forEach(inv=>{
+    const io=inv.entity==='organization';
+    html+=`<td class="header-cell"><div class="avatar${io?' avatar-org':''}" style="margin:0 auto;width:48px;height:48px;border-radius:${io?'8px':'50%'};background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">${io?'🏢':initials(inv.name)}</div><div class="name">${inv.name}</div><div class="firm">${io?(inv.title||''):(inv.firm||'')}</div><span class="type-badge ${typeClass(inv.type)}" style="margin-top:6px">${inv.type}</span><br><button class="compare-remove" onclick="removeFromCompare('${inv.id}')">✕ Remove</button></td>`;
   });
-  html+='</div>';
+  html+=`</tr></thead><tbody>`;
+  rows.forEach(row=>{
+    html+=`<tr><th>${row.label}</th>`;
+    invs.forEach(inv=>{html+=row.render(inv)});
+    html+=`</tr>`;
+  });
+  html+=`</tbody></table>`;
+  html+=`<div class="compare-export"><button onclick="copyCompareText(this)">📋 Copy as Text</button><button onclick="exportCompareImage()">📸 Export as Image</button></div>`;
   document.getElementById('compareModal').innerHTML=html;
   document.getElementById('compareOverlay').classList.add('open');
   document.body.style.overflow='hidden';
+}
+
+function copyCompareText(btn){
+  const invs=compareIds.map(id=>investors.find(i=>i.id===id));
+  const fields=['Name','Firm','Type','Stages','Sectors','Check Size','Fund Size','Location','Geography','Active'];
+  let text='INVESTOR COMPARISON\n'+'='.repeat(40)+'\n\n';
+  invs.forEach((inv,idx)=>{
+    text+=`[${idx+1}] ${inv.name}\n`;
+    text+=`Firm: ${inv.firm||'—'}\nType: ${inv.type}\n`;
+    text+=`Stages: ${inv.stages.join(', ')}\nSectors: ${inv.sectors.join(', ')}\n`;
+    text+=`Check Size: ${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}\n`;
+    text+=`Fund Size: ${inv.fundSize}\nLocation: ${inv.location}\n`;
+    text+=`Geography: ${inv.geography.join(', ')}\n`;
+    text+=`Active: ${inv.activelyDeploying?'Yes':'No'}\n`;
+    text+=`Thesis: ${inv.thesis}\n\n`;
+  });
+  navigator.clipboard.writeText(text).then(()=>{
+    btn.classList.add('copied');btn.innerHTML='✓ Copied!';
+    setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML='📋 Copy as Text'},2000);
+  });
+}
+
+function exportCompareImage(){
+  const modal=document.getElementById('compareModal');
+  // Use canvas to render - simple screenshot via html2canvas-like approach
+  // Since we can't load external libs, we'll create a styled SVG foreignObject
+  const table=modal.querySelector('.compare-table');
+  if(!table)return;
+  // Fallback: copy as text and notify
+  const invs=compareIds.map(id=>investors.find(i=>i.id===id));
+  // Build a self-contained HTML doc for rendering
+  const styles=document.querySelector('style').textContent;
+  const tableHTML=table.outerHTML;
+  const blob=new Blob([`<!DOCTYPE html><html><head><meta charset="utf-8"><link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet"><style>${styles}body{background:#09090b;font-family:'Inter',sans-serif;padding:32px;color:#e4e4e7}.compare-table{max-width:100%}</style></head><body><h2 style="color:#e4e4e7;margin-bottom:16px;font-size:1.3rem">Match Capital — Investor Comparison</h2>${tableHTML}<p style="color:#52525b;font-size:0.75rem;margin-top:16px">Generated from hq.ralcorporation.com</p></body></html>`],{type:'text/html'});
+  const a=document.createElement('a');
+  a.href=URL.createObjectURL(blob);
+  a.download='match-capital-comparison.html';
+  a.click();
+  URL.revokeObjectURL(a.href);
 }
 function removeFromCompare(id){
   compareIds=compareIds.filter(x=>x!==id);
