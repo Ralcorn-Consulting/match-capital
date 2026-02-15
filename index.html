@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -397,24 +397,65 @@ footer .links a:hover{color:var(--text)}
 .share-btn{padding:8px 16px;border-radius:var(--radius-sm);border:1px solid var(--border);font-size:0.8rem;font-weight:500;color:var(--text-muted);transition:all 0.2s;display:inline-flex;align-items:center;gap:6px}
 .share-btn:hover{border-color:var(--border-hover);color:var(--text);background:rgba(255,255,255,0.03)}
 .share-btn.copied{border-color:var(--green);color:var(--green)}
+
+/* ===== ACCESSIBILITY ===== */
+/* Skip to content link */
+.skip-link{position:absolute;top:-100%;left:16px;padding:12px 24px;background:var(--accent);color:#fff;border-radius:var(--radius-sm);font-weight:600;font-size:0.9rem;z-index:1000;transition:top 0.2s}
+.skip-link:focus{top:8px}
+
+/* Focus ring styling */
+*:focus-visible{outline:2px solid var(--accent-light);outline-offset:2px;border-radius:4px}
+.chip:focus-visible{outline-offset:0;box-shadow:0 0 0 2px var(--bg),0 0 0 4px var(--accent-light)}
+.investor-card:focus-visible{outline:2px solid var(--accent-light);outline-offset:-2px;border-color:rgba(99,102,241,0.5);background:var(--card-hover);transform:translateY(-3px);box-shadow:var(--shadow-card-hover)}
+.btn-primary:focus-visible,.btn-secondary:focus-visible{outline-offset:2px}
+.search-bar input:focus-visible{outline:none}
+.modal-close:focus-visible{outline-offset:-2px}
+.compare-btn:focus-visible{outline-offset:-2px}
+.similar-card:focus-visible{outline:2px solid var(--accent-light);outline-offset:-2px}
+.nav-links a:focus-visible,.nav-links button:focus-visible{outline-offset:0}
+
+/* Card keyboard focus indicator */
+.investor-card.kb-focused{border-color:rgba(99,102,241,0.5);background:var(--card-hover);transform:translateY(-3px);box-shadow:var(--shadow-card-hover)}
+.investor-card.kb-focused::before{opacity:0.8}
+
+/* Reduced motion */
+@media(prefers-reduced-motion:reduce){
+  *,*::before,*::after{animation-duration:0.01ms !important;animation-iteration-count:1 !important;transition-duration:0.01ms !important;scroll-behavior:auto !important}
+  .investor-card{animation:none !important}
+  .investor-card:hover,.investor-card.kb-focused,.investor-card:focus-visible{transform:none !important}
+  .similar-card:hover{transform:none !important}
+  .btn-primary:hover{transform:none !important}
+  .modal{transition:none !important}
+  .modal-overlay{transition:none !important}
+  #hero::before{animation:none !important}
+  .active-badge .dot{animation:none !important}
+  .skeleton-line,.skeleton-circle{animation:none !important}
+  html{scroll-behavior:auto !important}
+}
+
+/* Visually hidden (screen reader only) */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 </style>
 </head>
 <body>
 
+<!-- Skip to content -->
+<a href="#search-section" class="skip-link" onclick="showSection('search')">Skip to main content</a>
+
 <!-- NAV -->
-<nav>
+<nav aria-label="Main navigation">
   <div class="inner">
     <div class="logo"><span class="gradient-text">Match Capital</span></div>
-    <div class="nav-links">
-      <a href="#" onclick="showSection('hero')">Home</a>
-      <a href="#search" onclick="showSection('search')">Search</a>
-      <button onclick="showSection('saved')">Saved <span class="saved-count" id="savedCount">0</span></button>
+    <div class="nav-links" role="menubar">
+      <a href="#" onclick="showSection('hero')" role="menuitem">Home</a>
+      <a href="#search" onclick="showSection('search')" role="menuitem">Search</a>
+      <button onclick="showSection('saved')" role="menuitem">Saved <span class="saved-count" id="savedCount" aria-label="saved investors count">0</span></button>
     </div>
   </div>
 </nav>
 
 <!-- HERO -->
-<section id="hero">
+<section id="hero" aria-label="Hero">
   <div class="container">
     <h1>Find the right investors.<br><span class="gradient-text">Skip the noise.</span></h1>
     <p class="tagline">The most comprehensive investor intelligence tool for founders. Search <span id="investorCountHero">150+</span> investors by stage, sector, check size, and more.</p>
@@ -426,7 +467,7 @@ footer .links a:hover{color:var(--text)}
 </section>
 
 <!-- SEARCH -->
-<section id="search-section">
+<main id="search-section" role="main" aria-label="Investor search">
   <div class="container">
     <div class="onboarding-banner" id="onboardingBanner">
       <div class="onboarding-header" onclick="toggleOnboarding()">
@@ -440,32 +481,32 @@ footer .links a:hover{color:var(--text)}
       </div>
     </div>
 
-    <div class="search-bar">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="text" id="searchInput" placeholder="Search by name, firm, sector, stage, location...">
-      <button class="clear-btn" id="clearSearch" onclick="clearSearch()">×</button>
+    <div class="search-bar" role="search">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
+      <input type="search" id="searchInput" placeholder="Search by name, firm, sector, stage, location..." aria-label="Search investors" autocomplete="off">
+      <button class="clear-btn" id="clearSearch" onclick="clearSearch()" aria-label="Clear search">×</button>
     </div>
 
-    <div class="analytics-toggle" onclick="toggleAnalytics()">
-      <span class="chevron" id="analyticsChevron">▶</span>
+    <button class="analytics-toggle" onclick="toggleAnalytics()" aria-expanded="false" aria-controls="analyticsPanel">
+      <span class="chevron" id="analyticsChevron" aria-hidden="true">▶</span>
       <span>📊 Database Analytics</span>
-    </div>
-    <div class="analytics-panel" id="analyticsPanel">
+    </button>
+    <div class="analytics-panel" id="analyticsPanel" role="region" aria-label="Database analytics">
       <div class="stats-counters" id="statsCounters"></div>
       <div class="analytics-grid" id="analyticsGrid"></div>
     </div>
 
-    <div class="filters">
-      <div class="filter-row">
-        <span class="filter-label">Stage</span>
+    <div class="filters" role="group" aria-label="Investor filters">
+      <div class="filter-row" role="group" aria-label="Stage filter">
+        <span class="filter-label" id="filter-label-stage">Stage</span>
         <button class="chip" data-filter="stage" data-value="Pre-Seed">Pre-Seed</button>
         <button class="chip" data-filter="stage" data-value="Seed">Seed</button>
         <button class="chip" data-filter="stage" data-value="Series A">Series A</button>
         <button class="chip" data-filter="stage" data-value="Series B">Series B</button>
         <button class="chip" data-filter="stage" data-value="Growth">Growth</button>
       </div>
-      <div class="filter-row">
-        <span class="filter-label">Sector</span>
+      <div class="filter-row" role="group" aria-label="Sector filter">
+        <span class="filter-label" id="filter-label-sector">Sector</span>
         <button class="chip" data-filter="sector" data-value="SaaS">SaaS</button>
         <button class="chip" data-filter="sector" data-value="Fintech">Fintech</button>
         <button class="chip" data-filter="sector" data-value="HealthTech">HealthTech</button>
@@ -477,13 +518,13 @@ footer .links a:hover{color:var(--text)}
         <button class="chip" data-filter="sector" data-value="Biotech">Biotech</button>
         <button class="chip" data-filter="sector" data-value="DeepTech">DeepTech</button>
       </div>
-      <div class="filter-row">
+      <div class="filter-row" role="group" aria-label="Check size filter">
         <span class="filter-label">Check Size</span>
-        <input type="range" id="checkMin" min="0" max="25000000" step="100000" value="0">
-        <input type="range" id="checkMax" min="0" max="25000000" step="100000" value="25000000">
-        <span class="range-display" id="checkDisplay">$0 – $25M+</span>
+        <input type="range" id="checkMin" min="0" max="25000000" step="100000" value="0" aria-label="Minimum check size">
+        <input type="range" id="checkMax" min="0" max="25000000" step="100000" value="25000000" aria-label="Maximum check size">
+        <span class="range-display" id="checkDisplay" aria-live="polite">$0 – $25M+</span>
       </div>
-      <div class="filter-row">
+      <div class="filter-row" role="group" aria-label="Investor type filter">
         <span class="filter-label">Type</span>
         <button class="chip" data-filter="type" data-value="VC">VC</button>
         <button class="chip" data-filter="type" data-value="Angel">Angel</button>
@@ -491,30 +532,30 @@ footer .links a:hover{color:var(--text)}
         <button class="chip" data-filter="type" data-value="Corp VC">Corp VC</button>
         <button class="chip" data-filter="type" data-value="Angel Group">Angel Group</button>
       </div>
-      <div class="filter-row">
+      <div class="filter-row" role="group" aria-label="Entity type filter">
         <span class="filter-label">Entity</span>
         <button class="chip" data-filter="entity" data-value="individual">Individuals</button>
         <button class="chip" data-filter="entity" data-value="organization">Organizations</button>
       </div>
-      <div class="filter-row">
+      <div class="filter-row" role="group" aria-label="Geography filter">
         <span class="filter-label">Geography</span>
         <button class="chip" data-filter="geo" data-value="US">US</button>
         <button class="chip" data-filter="geo" data-value="EU">EU</button>
         <button class="chip" data-filter="geo" data-value="Asia">Asia</button>
         <button class="chip" data-filter="geo" data-value="Global">Global</button>
       </div>
-      <div class="filter-row">
+      <div class="filter-row" role="group" aria-label="Activity filter">
         <span class="filter-label">Activity</span>
-        <select id="activityFilter" onchange="renderResults()">
+        <select id="activityFilter" onchange="renderResults()" aria-label="Filter by activity recency">
           <option value="any">Any time</option>
           <option value="3">Last 3 months</option>
           <option value="6">Last 6 months</option>
           <option value="12">Last 12 months</option>
         </select>
       </div>
-      <div class="filter-row">
+      <div class="filter-row" role="group" aria-label="Sort order">
         <span class="filter-label">Sort</span>
-        <select id="sortSelect" onchange="renderResults()">
+        <select id="sortSelect" onchange="renderResults()" aria-label="Sort investors by">
           <option value="relevance">Relevance</option>
           <option value="nameAZ">Name A → Z</option>
           <option value="nameZA">Name Z → A</option>
@@ -526,15 +567,15 @@ footer .links a:hover{color:var(--text)}
       </div>
     </div>
 
-    <div class="results-info">
-      <span><span id="resultsCount">0 investors</span><span id="filterBadge" class="filter-badge"></span><button id="clearFiltersBtn" class="clear-filters-btn" onclick="clearAllFilters()" style="display:none">Clear Filters ✕</button></span>
+    <div class="results-info" aria-live="polite">
+      <span><span id="resultsCount" role="status">0 investors</span><span id="filterBadge" class="filter-badge"></span><button id="clearFiltersBtn" class="clear-filters-btn" onclick="clearAllFilters()" style="display:none" aria-label="Clear all filters">Clear Filters ✕</button></span>
     </div>
-    <div class="results-grid" id="resultsGrid"></div>
+    <div class="results-grid" id="resultsGrid" role="list" aria-label="Investor results"></div>
   </div>
-</section>
+</main>
 
 <!-- SAVED -->
-<section id="saved-section">
+<section id="saved-section" aria-label="Saved investors">
   <div class="container">
     <h2>Investor Lists</h2>
     <p class="subtitle">Organize your investors into named lists for outreach.</p>
@@ -550,7 +591,7 @@ footer .links a:hover{color:var(--text)}
 </section>
 
 <!-- COMPARE BAR -->
-<div class="compare-bar" id="compareBar">
+<div class="compare-bar" id="compareBar" role="region" aria-label="Compare investors toolbar">
   <div class="compare-bar-inner">
     <div class="avatars" id="compareAvatars"></div>
     <div class="bar-actions">
@@ -562,17 +603,17 @@ footer .links a:hover{color:var(--text)}
 </div>
 
 <!-- COMPARE MODAL -->
-<div class="modal-overlay" id="compareOverlay" onclick="if(event.target===this)closeCompare()">
+<div class="modal-overlay" id="compareOverlay" onclick="if(event.target===this)closeCompare()" role="dialog" aria-modal="true" aria-label="Investor comparison">
   <div class="compare-modal" id="compareModal"></div>
 </div>
 
 <!-- MODAL -->
-<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()">
+<div class="modal-overlay" id="modalOverlay" onclick="if(event.target===this)closeModal()" role="dialog" aria-modal="true" aria-label="Investor profile">
   <div class="modal" id="modal"></div>
 </div>
 
 <!-- FOOTER -->
-<footer>
+<footer role="contentinfo">
   <div class="inner">
     <div class="left">Built by <a href="https://ralcorn.com" target="_blank">Ralcorn Consulting</a> · Data sourced from public records</div>
     <div class="links">
@@ -678,10 +719,14 @@ function typeClass(t){return'type-'+t.toLowerCase().replace(/\s+/g,'-')}
 
 // ===== FILTERS =====
 document.querySelectorAll('.chip[data-filter]').forEach(c=>{
+  c.setAttribute('role','checkbox');
+  c.setAttribute('aria-checked','false');
   c.addEventListener('click',()=>{
     const f=c.dataset.filter,v=c.dataset.value;
     c.classList.toggle('active');
-    if(c.classList.contains('active'))activeFilters[f].push(v);
+    const isActive=c.classList.contains('active');
+    c.setAttribute('aria-checked',isActive);
+    if(isActive)activeFilters[f].push(v);
     else activeFilters[f]=activeFilters[f].filter(x=>x!==v);
     renderResults();
   });
@@ -760,7 +805,7 @@ function getActiveFilterCount(){
 function renderResults(append){
   const filtered=sortInvestors(filterInvestors());
   lastFiltered=filtered;
-  if(!append)displayedCount=PAGE_SIZE;
+  if(!append){displayedCount=PAGE_SIZE;kbFocusIndex=-1;}
   const showing=Math.min(displayedCount,filtered.length);
   document.getElementById('resultsCount').textContent='Showing '+showing+' of '+filtered.length+' investor'+(filtered.length!==1?'s':'');
   const fc=getActiveFilterCount();
@@ -799,8 +844,8 @@ function cardHTML(inv,idx){
   const avatarClass=isOrg?'avatar avatar-org':'avatar';
   const avatarContent=isOrg?'🏢':initials(inv.name);
   const firmLine=isOrg?(inv.memberCount?`<div class="firm"><span class="member-count-badge">👥 ${inv.memberCount} members</span></div>`:''):`<div class="firm">${inv.firm||''}</div>`;
-  return`<div class="investor-card" onclick="openProfile('${inv.id}')" style="animation-delay:${delay}s">
-    <button class="compare-btn ${isCompared?'selected':''}" onclick="event.stopPropagation();toggleCompare('${inv.id}')" title="Compare">
+  return`<div class="investor-card" onclick="openProfile('${inv.id}')" style="animation-delay:${delay}s" role="listitem" tabindex="0" aria-label="${inv.name}, ${inv.firm||inv.type}, ${inv.stages.join(', ')}" data-investor-id="${inv.id}" onkeydown="cardKeyHandler(event,'${inv.id}')">
+    <button class="compare-btn ${isCompared?'selected':''}" onclick="event.stopPropagation();toggleCompare('${inv.id}')" aria-label="${isCompared?'Remove '+inv.name+' from comparison':'Add '+inv.name+' to comparison'}" aria-pressed="${isCompared}">
       ${isCompared?'✓':'＋'}
     </button>
     <div class="card-header">
@@ -885,7 +930,7 @@ function openProfile(id){
   const modalAvatarContent=isOrg?'🏢':initials(inv.name);
   const firmLine=isOrg?(inv.title?`<div class="firm">${inv.title}</div>`:''):`<div class="firm">${inv.title} · ${inv.firm}</div>`;
   document.getElementById('modal').innerHTML=`
-    <button class="modal-close" onclick="closeModal()">×</button>
+    <button class="modal-close" onclick="closeModal()" aria-label="Close profile">×</button>
     <div class="modal-header">
       <div class="${modalAvatarClass}">${modalAvatarContent}</div>
       <div class="modal-header-info">
@@ -988,7 +1033,7 @@ function openProfile(id){
   overlay.classList.remove('animate-out');
   overlay.classList.add('open');
   document.body.style.overflow='hidden';
-  requestAnimationFrame(()=>requestAnimationFrame(()=>overlay.classList.add('animate-in')));
+  requestAnimationFrame(()=>requestAnimationFrame(()=>{overlay.classList.add('animate-in');const closeBtn=document.querySelector('#modal .modal-close');if(closeBtn)closeBtn.focus()}));
 }
 
 function closeModal(){
@@ -1001,7 +1046,69 @@ function closeModal(){
   },300);
   if(location.hash.startsWith('#profile'))history.replaceState(null,'','#search');
 }
-document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeModal();closeCompare()}});
+// ===== KEYBOARD NAVIGATION =====
+let kbFocusIndex=-1;
+
+function cardKeyHandler(e,id){
+  if(e.key==='Enter'||e.key===' '){e.preventDefault();openProfile(id)}
+  if(e.key==='c'||e.key==='C'){e.preventDefault();toggleCompare(id)}
+}
+
+function getVisibleCards(){return[...document.querySelectorAll('#resultsGrid .investor-card')]}
+
+function setKbFocus(idx){
+  const cards=getVisibleCards();
+  if(!cards.length)return;
+  // Remove previous
+  cards.forEach(c=>c.classList.remove('kb-focused'));
+  kbFocusIndex=Math.max(0,Math.min(idx,cards.length-1));
+  const card=cards[kbFocusIndex];
+  card.classList.add('kb-focused');
+  card.focus({preventScroll:false});
+  card.scrollIntoView({block:'nearest',behavior:'smooth'});
+}
+
+document.addEventListener('keydown',e=>{
+  // Escape closes modals/panels
+  if(e.key==='Escape'){
+    const compareOpen=document.getElementById('compareOverlay').classList.contains('open');
+    const modalOpen=document.getElementById('modalOverlay').classList.contains('open');
+    if(modalOpen){closeModal();return}
+    if(compareOpen){closeCompare();return}
+    // Escape from search clears it
+    if(document.activeElement===document.getElementById('searchInput')){
+      if(searchInput.value){clearSearch()}else{searchInput.blur()}
+      return;
+    }
+  }
+
+  // Arrow key navigation through cards (only when not in input/select/modal)
+  const tag=document.activeElement?.tagName;
+  const inInput=tag==='INPUT'||tag==='SELECT'||tag==='TEXTAREA';
+  const modalOpen=document.getElementById('modalOverlay').classList.contains('open')||document.getElementById('compareOverlay').classList.contains('open');
+  if(modalOpen)return;
+
+  const cards=getVisibleCards();
+  if(!cards.length)return;
+
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'){
+    if(inInput&&e.key==='ArrowDown'&&tag!=='SELECT'){}else if(!inInput){
+      e.preventDefault();
+      setKbFocus(kbFocusIndex+1);
+    }
+  }
+  if(e.key==='ArrowLeft'||e.key==='ArrowUp'){
+    if(!inInput){
+      e.preventDefault();
+      setKbFocus(kbFocusIndex-1);
+    }
+  }
+  // Slash to focus search
+  if(e.key==='/'&&!inInput){
+    e.preventDefault();
+    document.getElementById('searchInput').focus();
+  }
+});
 
 // ===== SAVE DROPDOWN =====
 function toggleSaveDropdown(e,id){
@@ -1236,8 +1343,10 @@ function closeCompare(){document.getElementById('compareOverlay').classList.remo
 function toggleAnalytics(){
   const panel=document.getElementById('analyticsPanel');
   const chevron=document.getElementById('analyticsChevron');
+  const toggle=document.querySelector('.analytics-toggle');
   const isOpen=panel.classList.toggle('open');
   chevron.classList.toggle('open',isOpen);
+  toggle.setAttribute('aria-expanded',isOpen);
   if(isOpen&&!panel.dataset.rendered){renderAnalytics();panel.dataset.rendered='1'}
 }
 
