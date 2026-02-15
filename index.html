@@ -88,6 +88,20 @@
 .theme-toggle:hover{background:rgba(255,255,255,0.08);border-color:var(--border-hover);transform:scale(1.1)}
 [data-theme="light"] .theme-toggle{background:rgba(0,0,0,0.04)}
 [data-theme="light"] .theme-toggle:hover{background:rgba(0,0,0,0.08)}
+#helpBtn{font-weight:700;font-size:1rem;font-family:var(--font-mono,monospace)}
+.shortcuts-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
+.shortcuts-overlay.open{display:flex;opacity:1}
+.shortcuts-modal{background:var(--card-bg,#1a1a2e);border:1px solid var(--border);border-radius:16px;padding:28px 32px;max-width:520px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,0.4);animation:modalIn .25s ease}
+.shortcuts-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
+.shortcuts-header h2{margin:0;font-size:1.25rem;color:var(--text)}
+.shortcuts-close{background:none;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;padding:4px 8px;border-radius:6px}
+.shortcuts-close:hover{background:rgba(255,255,255,0.1);color:var(--text)}
+.shortcuts-group{margin-bottom:20px}
+.shortcuts-group h3{font-size:.85rem;text-transform:uppercase;letter-spacing:.08em;color:var(--accent,#6c63ff);margin:0 0 10px}
+.shortcut-row{display:flex;align-items:center;gap:8px;padding:6px 0;color:var(--text-muted);font-size:.9rem}
+.shortcut-row kbd{display:inline-block;min-width:28px;text-align:center;padding:3px 8px;background:rgba(255,255,255,0.08);border:1px solid var(--border);border-radius:6px;font-family:var(--font-mono,monospace);font-size:.8rem;color:var(--text);box-shadow:0 1px 2px rgba(0,0,0,0.2)}
+[data-theme="light"] .shortcut-row kbd{background:rgba(0,0,0,0.06);box-shadow:0 1px 2px rgba(0,0,0,0.1)}
+.shortcut-row code{padding:2px 6px;background:rgba(108,99,255,0.15);border-radius:4px;font-size:.8rem;color:var(--accent,#6c63ff)}
 
 html{scroll-behavior:smooth}
 body{font-family:'Inter',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;-webkit-font-smoothing:antialiased;-moz-osx-font-smoothing:grayscale;letter-spacing:-0.01em}
@@ -791,9 +805,43 @@ footer .links a:hover{color:var(--text)}
       <a href="#search" onclick="showSection('search')" role="menuitem">Search</a>
       <button onclick="showSection('saved')" role="menuitem">Saved <span class="saved-count" id="savedCount" aria-label="saved investors count">0</span></button>
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
+      <button class="theme-toggle" id="helpBtn" onclick="toggleShortcutsModal()" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (?)">?</button>
     </div>
   </div>
 </nav>
+
+<!-- KEYBOARD SHORTCUTS MODAL -->
+<div id="shortcutsOverlay" class="shortcuts-overlay" onclick="if(event.target===this)toggleShortcutsModal()" role="dialog" aria-label="Keyboard shortcuts">
+  <div class="shortcuts-modal">
+    <div class="shortcuts-header">
+      <h2>⌨️ Keyboard Shortcuts</h2>
+      <button onclick="toggleShortcutsModal()" aria-label="Close" class="shortcuts-close">&times;</button>
+    </div>
+    <div class="shortcuts-body">
+      <div class="shortcuts-group">
+        <h3>Navigation</h3>
+        <div class="shortcut-row"><kbd>←</kbd> <kbd>↑</kbd> Previous card</div>
+        <div class="shortcut-row"><kbd>→</kbd> <kbd>↓</kbd> Next card</div>
+        <div class="shortcut-row"><kbd>Enter</kbd> <kbd>Space</kbd> Open selected card</div>
+        <div class="shortcut-row"><kbd>Esc</kbd> Close modal / clear search</div>
+      </div>
+      <div class="shortcuts-group">
+        <h3>Actions</h3>
+        <div class="shortcut-row"><kbd>/</kbd> Focus search</div>
+        <div class="shortcut-row"><kbd>C</kbd> Toggle compare (on focused card)</div>
+        <div class="shortcut-row"><kbd>?</kbd> Toggle this help</div>
+      </div>
+      <div class="shortcuts-group">
+        <h3>Search Syntax</h3>
+        <div class="shortcut-row"><code>stage:seed</code> Filter by stage</div>
+        <div class="shortcut-row"><code>type:vc</code> Filter by type</div>
+        <div class="shortcut-row"><code>sector:fintech</code> Filter by sector</div>
+        <div class="shortcut-row"><code>check:&gt;500k</code> Min check size</div>
+        <div class="shortcut-row"><code>geo:nyc</code> Filter by geography</div>
+      </div>
+    </div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="hero" aria-label="Hero">
@@ -1994,7 +2042,16 @@ document.addEventListener('keydown',e=>{
     e.preventDefault();
     document.getElementById('searchInput').focus();
   }
+  if(e.key==='?'&&!inInput){
+    e.preventDefault();
+    toggleShortcutsModal();
+  }
 });
+
+function toggleShortcutsModal(){
+  const o=document.getElementById('shortcutsOverlay');
+  o.classList.toggle('open');
+}
 
 // ===== SAVE DROPDOWN =====
 function toggleSaveDropdown(e,id){
