@@ -331,6 +331,26 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .saved-actions{display:flex;gap:12px;margin-bottom:24px}
 .saved-empty{text-align:center;padding:60px 0;color:var(--text-dim)}
 
+/* Bulk actions */
+.bulk-bar{display:none;align-items:center;gap:12px;padding:10px 16px;margin-bottom:16px;background:var(--card);border:1px solid var(--accent);border-radius:var(--radius-sm);flex-wrap:wrap;animation:fadeIn 0.2s ease}
+.bulk-bar.visible{display:flex}
+.bulk-bar .bulk-count{font-size:0.82rem;font-weight:600;color:var(--accent-light);min-width:100px}
+.bulk-bar .bulk-actions{display:flex;gap:8px;flex-wrap:wrap}
+.bulk-bar .bulk-btn{padding:6px 14px;font-size:0.78rem;border-radius:8px;border:1px solid var(--border);background:var(--bg-subtle);color:var(--text-muted);font-weight:500;transition:all 0.15s}
+.bulk-bar .bulk-btn:hover{border-color:var(--border-hover);color:var(--text);background:var(--card-hover)}
+.bulk-bar .bulk-btn.danger:hover{border-color:#ef4444;color:#ef4444}
+.bulk-select-all{display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--text-muted);cursor:pointer;user-select:none}
+.bulk-select-all input[type=checkbox]{accent-color:var(--accent);width:16px;height:16px;cursor:pointer}
+.investor-card .bulk-checkbox{position:absolute;top:10px;left:10px;width:20px;height:20px;accent-color:var(--accent);cursor:pointer;z-index:5;opacity:0;transition:opacity 0.15s}
+.bulk-mode .investor-card .bulk-checkbox{opacity:1}
+.investor-card:hover .bulk-checkbox{opacity:0.6}
+.bulk-mode .investor-card:hover .bulk-checkbox{opacity:1}
+.investor-card.bulk-selected{border-color:var(--accent)!important;box-shadow:0 0 0 1px var(--accent),var(--shadow-card)!important}
+.bulk-move-dropdown{position:relative;display:inline-block}
+.bulk-move-menu{position:absolute;top:100%;left:0;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px 0;min-width:160px;z-index:100;box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.bulk-move-menu-item{padding:8px 14px;font-size:0.8rem;cursor:pointer;transition:background 0.1s}
+.bulk-move-menu-item:hover{background:var(--card-hover)}
+
 /* Nav active underline */
 .nav-links a.nav-active,.nav-links button.nav-active{color:var(--text);position:relative}
 .nav-links a.nav-active::after,.nav-links button.nav-active::after{content:'';position:absolute;bottom:-2px;left:8px;right:8px;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2),#ec4899);border-radius:2px}
@@ -823,8 +843,20 @@ footer .links a:hover{color:var(--text)}
     <div class="saved-header-row">
       <span class="saved-list-info" id="savedListInfo"></span>
       <div class="saved-actions" id="savedActions" style="margin-bottom:0">
+        <label class="bulk-select-all"><input type="checkbox" id="bulkToggle" onchange="toggleBulkMode(this.checked)"> Select</label>
         <button class="btn-secondary" onclick="exportCSV()" style="padding:8px 16px;font-size:0.82rem">↓ Export CSV</button>
         <button class="btn-secondary" onclick="clearCurrentList()" style="padding:8px 16px;font-size:0.82rem">Clear</button>
+      </div>
+    </div>
+    <div class="bulk-bar" id="bulkBar">
+      <label class="bulk-select-all"><input type="checkbox" id="bulkSelectAll" onchange="bulkSelectAll(this.checked)"> All</label>
+      <span class="bulk-count" id="bulkCount">0 selected</span>
+      <div class="bulk-actions">
+        <button class="bulk-btn" onclick="bulkExport()">↓ Export Selected</button>
+        <div class="bulk-move-dropdown">
+          <button class="bulk-btn" onclick="toggleBulkMoveMenu(this)">⇄ Move/Copy to…</button>
+        </div>
+        <button class="bulk-btn danger" onclick="bulkRemove()">✕ Remove Selected</button>
       </div>
     </div>
     <div class="saved-tag-filter" id="savedTagFilter" style="display:none"></div>
@@ -1652,7 +1684,9 @@ function updateSavedCount(){
 // ===== RENDER SAVED / LISTS =====
 function renderSaved(){
   renderListTabs();
+  // Clear bulk selections that are no longer in current list
   const ids=namedLists[currentListName]||[];
+  bulkSelected.forEach(id=>{if(!ids.includes(id))bulkSelected.delete(id)});
   let saved=investors.filter(i=>ids.includes(i.id));
   const grid=document.getElementById('savedGrid');
   const empty=document.getElementById('savedEmpty');
@@ -1667,13 +1701,22 @@ function renderSaved(){
   if(!saved.length){grid.innerHTML='';empty.style.display='';empty.textContent=savedTagFilter?'No investors with tag "'+savedTagFilter+'" in this list.':'No investors in "'+currentListName+'" yet. Browse and save investors to get started.';return}
   empty.style.display='none';
   grid.innerHTML=saved.map((inv,i)=>savedCardHTML(inv,i)).join('');
+  // Restore bulk mode visual state
+  if(bulkMode){
+    document.getElementById('saved-section').classList.add('bulk-mode');
+    document.getElementById('bulkBar').classList.add('visible');
+    updateBulkCount();
+  }
 }
 function savedCardHTML(inv,idx){
-  // Like cardHTML but with move/remove controls + notes/tags
+  // Like cardHTML but with move/remove controls + notes/tags + bulk checkbox
   let html=cardHTML(inv,idx);
-  // Inject move button after compare-btn
+  // Inject bulk checkbox + move button after compare-btn
+  const bulkCb=`<input type="checkbox" class="bulk-checkbox" onclick="toggleBulkCard(this,'${inv.id}',event)" ${bulkSelected.has(inv.id)?'checked':''}>`; 
   const moveBtn=`<div class="card-move-btn" onclick="event.stopPropagation();toggleCardMoveMenu(this,'${inv.id}')">⇄ Lists</div>`;
-  html=html.replace('</button>\n    <div class="card-header">',`</button>\n    ${moveBtn}\n    <div class="card-header">`);
+  html=html.replace('</button>\n    <div class="card-header">',`</button>\n    ${bulkCb}\n    ${moveBtn}\n    <div class="card-header">`);
+  // Mark as selected if in bulk set
+  if(bulkSelected.has(inv.id))html=html.replace('class="investor-card"','class="investor-card bulk-selected"');
   // Append notes/tags bar before closing div
   const ntHTML=notesTagsHTML(inv.id);
   if(ntHTML)html=html.replace(/<\/div>$/,ntHTML+'</div>');
@@ -1774,6 +1817,106 @@ function exportCSV(){
 function clearCurrentList(){
   if(!confirm('Clear all investors from "'+currentListName+'"?'))return;
   namedLists[currentListName]=[];saveLists();updateSavedCount();renderSaved();
+}
+
+// ===== BULK ACTIONS =====
+let bulkMode=false;
+let bulkSelected=new Set();
+
+function toggleBulkMode(on){
+  bulkMode=on;
+  bulkSelected.clear();
+  const section=document.getElementById('saved-section');
+  const bar=document.getElementById('bulkBar');
+  if(on){section.classList.add('bulk-mode');bar.classList.add('visible')}
+  else{section.classList.remove('bulk-mode');bar.classList.remove('visible')}
+  document.getElementById('bulkSelectAll').checked=false;
+  updateBulkCount();
+  // Update card visual states
+  document.querySelectorAll('#savedGrid .investor-card').forEach(c=>{
+    c.classList.remove('bulk-selected');
+    const cb=c.querySelector('.bulk-checkbox');
+    if(cb)cb.checked=false;
+  });
+}
+
+function toggleBulkCard(checkbox,investorId,ev){
+  ev.stopPropagation();
+  if(checkbox.checked)bulkSelected.add(investorId);
+  else bulkSelected.delete(investorId);
+  const card=checkbox.closest('.investor-card');
+  if(card)card.classList.toggle('bulk-selected',checkbox.checked);
+  updateBulkCount();
+}
+
+function bulkSelectAll(checked){
+  document.querySelectorAll('#savedGrid .investor-card').forEach(c=>{
+    const id=c.getAttribute('data-investor-id');
+    const cb=c.querySelector('.bulk-checkbox');
+    if(id&&cb){
+      cb.checked=checked;
+      if(checked)bulkSelected.add(id);else bulkSelected.delete(id);
+      c.classList.toggle('bulk-selected',checked);
+    }
+  });
+  updateBulkCount();
+}
+
+function updateBulkCount(){
+  const n=bulkSelected.size;
+  document.getElementById('bulkCount').textContent=n+' selected';
+  document.getElementById('bulkSelectAll').checked=n>0&&n===document.querySelectorAll('#savedGrid .investor-card').length;
+}
+
+function bulkExport(){
+  if(!bulkSelected.size){alert('Select investors first');return}
+  const saved=investors.filter(i=>bulkSelected.has(i.id));
+  const rows=[['Name','Title','Firm','Type','Stages','Sectors','Check Min','Check Max','Location','Active','Website','Notes','Tags']];
+  saved.forEach(i=>{const note=getInvestorNote(i.id);const tags=getInvestorTags(i.id).map(t=>t.name).join('; ');rows.push([i.name,i.title,i.firm,i.type,i.stages.join('; '),i.sectors.join('; '),i.checkSize.min,i.checkSize.max,i.location,i.activelyDeploying,i.links.website||'',note,tags])});
+  const csv=rows.map(r=>r.map(c=>'"'+(c+'').replace(/"/g,'""')+'"').join(',')).join('\n');
+  const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='match-capital-selected-'+bulkSelected.size+'.csv';a.click();
+}
+
+function bulkRemove(){
+  if(!bulkSelected.size)return;
+  if(!confirm('Remove '+bulkSelected.size+' investor'+(bulkSelected.size>1?'s':'')+' from "'+currentListName+'"?'))return;
+  const list=namedLists[currentListName]||[];
+  namedLists[currentListName]=list.filter(id=>!bulkSelected.has(id));
+  bulkSelected.clear();
+  saveLists();updateSavedCount();renderSaved();
+  // Keep bulk mode on but reset
+  document.getElementById('bulkToggle').checked=true;
+  toggleBulkMode(true);
+}
+
+function toggleBulkMoveMenu(btn){
+  // Remove existing menus
+  document.querySelectorAll('.bulk-move-menu').forEach(m=>m.remove());
+  if(!bulkSelected.size){alert('Select investors first');return}
+  const menu=document.createElement('div');
+  menu.className='bulk-move-menu';
+  const lists=Object.keys(namedLists).filter(n=>n!==currentListName);
+  if(!lists.length){menu.innerHTML='<div class="bulk-move-menu-item" style="color:var(--text-dim)">No other lists</div>'}
+  else{menu.innerHTML=lists.map(name=>`<div class="bulk-move-menu-item" onclick="bulkMoveTo('${name.replace(/'/g,"\\'")}',false)">Copy to "${name}"</div><div class="bulk-move-menu-item" onclick="bulkMoveTo('${name.replace(/'/g,"\\'")}',true)">Move to "${name}"</div>`).join('<div style="border-top:1px solid var(--border);margin:2px 0"></div>')}
+  btn.parentElement.appendChild(menu);
+  const close=e=>{if(!btn.parentElement.contains(e.target)){menu.remove();document.removeEventListener('click',close)}};
+  setTimeout(()=>document.addEventListener('click',close),0);
+}
+
+function bulkMoveTo(targetList,removeFromCurrent){
+  const target=namedLists[targetList]||[];
+  bulkSelected.forEach(id=>{if(!target.includes(id))target.push(id)});
+  namedLists[targetList]=target;
+  if(removeFromCurrent){
+    namedLists[currentListName]=(namedLists[currentListName]||[]).filter(id=>!bulkSelected.has(id));
+  }
+  const action=removeFromCurrent?'Moved':'Copied';
+  const n=bulkSelected.size;
+  bulkSelected.clear();
+  document.querySelectorAll('.bulk-move-menu').forEach(m=>m.remove());
+  saveLists();updateSavedCount();renderSaved();
+  document.getElementById('bulkToggle').checked=true;
+  toggleBulkMode(true);
 }
 
 // ===== COMPARE =====
