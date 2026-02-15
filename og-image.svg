@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#09090b"/>
+      <stop offset="100%" stop-color="#111113"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3b82f6"/>
+      <stop offset="100%" stop-color="#8b5cf6"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#bg)"/>
+  <rect x="0" y="0" width="1200" height="4" fill="url(#accent)"/>
+  <text x="600" y="250" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="800" font-size="72" fill="url(#accent)">Match Capital</text>
+  <text x="600" y="330" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="400" font-size="32" fill="#a1a1aa">Find the right investors. Skip the noise.</text>
+  <text x="600" y="420" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="500" font-size="24" fill="#71717a">150+ investors · Search by stage, sector, check size & more</text>
+  <text x="600" y="560" text-anchor="middle" font-family="system-ui,sans-serif" font-weight="400" font-size="18" fill="#52525b">hq.ralcorporation.com</text>
+</svg>
