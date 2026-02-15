@@ -337,6 +337,37 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .profile-col{display:flex;flex-direction:column;gap:0}
 .profile-col .modal-section:last-child{margin-bottom:0}
 .modal-divider{border:none;border-top:1px solid var(--border);margin:4px 0 20px;opacity:0.5}
+/* Outreach CTA */
+.outreach-cta{display:flex;align-items:center;gap:10px;padding:14px 18px;border-radius:var(--radius-sm);background:linear-gradient(135deg,rgba(99,102,241,0.1),rgba(168,85,247,0.08));border:1px solid rgba(99,102,241,0.2);margin-bottom:20px;cursor:pointer;transition:all var(--transition-base)}
+.outreach-cta:hover{background:linear-gradient(135deg,rgba(99,102,241,0.15),rgba(168,85,247,0.12));border-color:rgba(99,102,241,0.35);transform:translateY(-1px)}
+.outreach-cta .cta-icon{font-size:1.4rem;flex-shrink:0}
+.outreach-cta .cta-text{flex:1}
+.outreach-cta .cta-text strong{display:block;font-size:0.9rem;color:var(--text);margin-bottom:2px}
+.outreach-cta .cta-text span{font-size:0.8rem;color:var(--text-muted)}
+.outreach-cta .cta-arrow{font-size:1rem;color:var(--text-dim);transition:transform var(--transition-base)}
+.outreach-cta.open .cta-arrow{transform:rotate(90deg)}
+.outreach-panel{max-height:0;overflow:hidden;transition:max-height 0.4s cubic-bezier(0.4,0,0.2,1);margin-bottom:0}
+.outreach-panel.open{max-height:1200px;margin-bottom:20px}
+.outreach-inner{padding:18px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.02);border:1px solid var(--border)}
+[data-theme="light"] .outreach-inner{background:rgba(0,0,0,0.02)}
+[data-theme="light"] .outreach-cta{background:linear-gradient(135deg,rgba(79,70,229,0.08),rgba(147,51,234,0.06));border-color:rgba(79,70,229,0.2)}
+[data-theme="light"] .outreach-cta:hover{background:linear-gradient(135deg,rgba(79,70,229,0.12),rgba(147,51,234,0.1));border-color:rgba(79,70,229,0.3)}
+.outreach-form label{display:block;font-size:0.75rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:6px;font-family:var(--font-mono)}
+.outreach-form input,.outreach-form textarea,.outreach-form select{width:100%;padding:10px 14px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.04);border:1px solid var(--border);color:var(--text);font-size:0.85rem;font-family:inherit;transition:border-color var(--transition-base);margin-bottom:14px;resize:vertical}
+[data-theme="light"] .outreach-form input,[data-theme="light"] .outreach-form textarea,[data-theme="light"] .outreach-form select{background:rgba(0,0,0,0.03)}
+.outreach-form input:focus,.outreach-form textarea:focus,.outreach-form select:focus{outline:none;border-color:var(--accent)}
+.outreach-form textarea{min-height:60px}
+.outreach-output{margin-top:16px;padding:16px;border-radius:var(--radius-sm);background:rgba(255,255,255,0.03);border:1px solid var(--border);font-size:0.85rem;line-height:1.7;color:var(--text-muted);white-space:pre-wrap;position:relative}
+[data-theme="light"] .outreach-output{background:rgba(0,0,0,0.02)}
+.outreach-output .copy-email-btn{position:absolute;top:8px;right:8px;padding:6px 12px;border-radius:6px;font-size:0.75rem;font-weight:600;background:var(--accent);color:#fff;cursor:pointer;border:none;transition:all var(--transition-base)}
+.outreach-output .copy-email-btn:hover{background:var(--accent-light);transform:scale(1.05)}
+.outreach-actions{display:flex;gap:8px;flex-wrap:wrap}
+.outreach-actions .btn-generate{padding:10px 20px;border-radius:var(--radius-sm);background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;font-size:0.85rem;border:none;cursor:pointer;transition:all var(--transition-base)}
+.outreach-actions .btn-generate:hover{box-shadow:0 0 20px rgba(99,102,241,0.3);transform:translateY(-1px)}
+.outreach-tone-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.outreach-tone-chips .tone-chip{padding:5px 12px;border-radius:20px;font-size:0.78rem;font-weight:500;border:1px solid var(--border);cursor:pointer;transition:all var(--transition-base)}
+.outreach-tone-chips .tone-chip.active{background:rgba(99,102,241,0.1);border-color:var(--accent);color:var(--accent-light)}
+.outreach-tone-chips .tone-chip:hover{border-color:var(--border-hover)}
 /* Social proof */
 .social-proof{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding:12px 16px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)}
 .proof-item{display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--text-muted)}
@@ -1700,6 +1731,37 @@ function openProfile(id){
         ${inv.activelyDeploying?'<div class="proof-item" style="color:var(--green)">🟢 Actively Deploying</div>':''}
       </div>
 
+      <div class="outreach-cta" onclick="toggleOutreach(this)" id="outreach-cta-${id}">
+        <div class="cta-icon">✉️</div>
+        <div class="cta-text"><strong>Draft Outreach Email</strong><span>Generate a personalized cold email for ${inv.name}</span></div>
+        <div class="cta-arrow">›</div>
+      </div>
+      <div class="outreach-panel" id="outreach-panel-${id}">
+        <div class="outreach-inner">
+          <div class="outreach-form">
+            <label>Your Name</label>
+            <input type="text" id="outreach-name-${id}" placeholder="Jane Smith" value="${getOutreachField('name')}">
+            <label>Your Company</label>
+            <input type="text" id="outreach-company-${id}" placeholder="Acme Inc." value="${getOutreachField('company')}">
+            <label>One-liner (what you're building)</label>
+            <input type="text" id="outreach-oneliner-${id}" placeholder="AI-powered grant writing for nonprofits" value="${getOutreachField('oneliner')}">
+            <label>Why this investor? (optional)</label>
+            <textarea id="outreach-why-${id}" rows="2" placeholder="e.g. Their portfolio company X is in a similar space...">${getOutreachField('why')}</textarea>
+            <label>Tone</label>
+            <div class="outreach-tone-chips" id="outreach-tone-${id}">
+              <span class="tone-chip active" data-tone="professional" onclick="selectTone(this)">Professional</span>
+              <span class="tone-chip" data-tone="warm" onclick="selectTone(this)">Warm & Friendly</span>
+              <span class="tone-chip" data-tone="bold" onclick="selectTone(this)">Bold & Direct</span>
+              <span class="tone-chip" data-tone="brief" onclick="selectTone(this)">Ultra-Brief</span>
+            </div>
+            <div class="outreach-actions">
+              <button class="btn-generate" onclick="generateOutreach('${id}')">✨ Generate Email</button>
+            </div>
+          </div>
+          <div id="outreach-result-${id}"></div>
+        </div>
+      </div>
+
       ${isOrg&&(inv.keyPeople&&inv.keyPeople.length||inv.memberCount)?`
       <div class="modal-section">
         ${inv.memberCount?`<div style="margin-bottom:8px"><span class="member-count-badge">👥 ${inv.memberCount} members</span></div>`:''}
@@ -2357,6 +2419,119 @@ function toggleOnboarding(){document.getElementById('onboardingBanner').classLis
 function dismissOnboarding(){document.getElementById('onboardingBanner').style.display='none';localStorage.setItem('mc_onboarding_dismissed','1')}
 
 // ===== SHARE =====
+// --- Outreach Email Generator ---
+function getOutreachField(field){
+  try{const d=JSON.parse(localStorage.getItem('mc_outreach')||'{}');return d[field]||''}catch{return''}
+}
+function saveOutreachFields(id){
+  const data={
+    name:(document.getElementById('outreach-name-'+id)||{}).value||'',
+    company:(document.getElementById('outreach-company-'+id)||{}).value||'',
+    oneliner:(document.getElementById('outreach-oneliner-'+id)||{}).value||'',
+    why:(document.getElementById('outreach-why-'+id)||{}).value||''
+  };
+  localStorage.setItem('mc_outreach',JSON.stringify(data));
+}
+function toggleOutreach(el){
+  const panel=el.nextElementSibling;
+  el.classList.toggle('open');
+  panel.classList.toggle('open');
+}
+function selectTone(chip){
+  chip.parentElement.querySelectorAll('.tone-chip').forEach(c=>c.classList.remove('active'));
+  chip.classList.add('active');
+}
+function generateOutreach(id){
+  const inv=investors.find(i=>i.id===id);if(!inv)return;
+  saveOutreachFields(id);
+  const senderName=(document.getElementById('outreach-name-'+id)||{}).value||'[Your Name]';
+  const company=(document.getElementById('outreach-company-'+id)||{}).value||'[Your Company]';
+  const oneliner=(document.getElementById('outreach-oneliner-'+id)||{}).value||'[what you\'re building]';
+  const why=(document.getElementById('outreach-why-'+id)||{}).value||'';
+  const toneChip=document.querySelector('#outreach-tone-'+id+' .tone-chip.active');
+  const tone=toneChip?toneChip.dataset.tone:'professional';
+
+  const firstName=inv.name.split(' ')[0];
+  const sectors=inv.sectors.slice(0,3).join(', ');
+  const stages=inv.stages.join('/');
+  const checkRange=fmt(inv.checkSize.min)+'–'+fmt(inv.checkSize.max);
+  const portfolio=inv.portfolioHighlights.slice(0,2).join(' and ');
+
+  let subject,body;
+  const whyLine=why?'\n\n'+why:'';
+
+  if(tone==='professional'){
+    subject=company+' — '+stages+' Round ('+sectors+')';
+    body=`Hi ${firstName},
+
+I'm ${senderName}, founder of ${company} — ${oneliner}.
+
+I came across your investment profile and noticed strong alignment: you invest in ${sectors} at the ${stages} stage, and your work with ${portfolio} caught my attention.${whyLine}
+
+We're raising a round in the ${checkRange} range and I'd love to share a brief overview. Would you be open to a 15-minute call this week?
+
+Best regards,
+${senderName}`;
+  } else if(tone==='warm'){
+    subject='Quick hello from '+senderName+' ('+company+')';
+    body=`Hey ${firstName}! 👋
+
+I'm ${senderName} — building ${company} (${oneliner}).
+
+I've been following your investments in ${sectors}, especially ${portfolio}, and it really resonated with what we're working on.${whyLine}
+
+We're currently raising (${checkRange} range) and I think there could be a great fit. Would love to chat if you have 15 minutes sometime!
+
+Cheers,
+${senderName}`;
+  } else if(tone==='bold'){
+    subject=company+': '+oneliner;
+    body=`${firstName} —
+
+${company}. ${oneliner}. ${stages} stage, raising ${checkRange}.
+
+You back ${sectors} companies like ${portfolio}. We're building in the same space with serious traction.${whyLine}
+
+15 minutes. Happy to send a deck first if you prefer.
+
+${senderName}`;
+  } else { // brief
+    subject=stages+' opportunity — '+company;
+    body=`Hi ${firstName},
+
+${senderName} here, building ${company} (${oneliner}). Raising ${checkRange} at ${stages}. Your ${sectors} focus is a strong fit.${whyLine}
+
+Open to a quick call?
+
+${senderName}`;
+  }
+
+  const resultDiv=document.getElementById('outreach-result-'+id);
+  resultDiv.innerHTML=`
+    <div class="outreach-output">
+      <button class="copy-email-btn" onclick="copyOutreach(this,'${id}')">📋 Copy</button>
+      <div style="margin-bottom:10px"><strong style="color:var(--text)">Subject:</strong> ${escapeHTML(subject)}</div>
+      <div>${escapeHTML(body)}</div>
+    </div>
+    <div style="display:flex;gap:8px;margin-top:12px;flex-wrap:wrap">
+      <a href="mailto:?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}" class="btn-generate" style="text-decoration:none;font-size:0.8rem;padding:8px 16px;display:inline-flex;align-items:center;gap:6px">📧 Open in Mail App</a>
+      ${inv.links.linkedin?`<a href="${inv.links.linkedin}" target="_blank" class="btn-generate" style="text-decoration:none;font-size:0.8rem;padding:8px 16px;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#0077b5,#00a0dc)">💼 LinkedIn Profile</a>`:''}
+      ${inv.links.twitter?`<a href="${inv.links.twitter}" target="_blank" class="btn-generate" style="text-decoration:none;font-size:0.8rem;padding:8px 16px;display:inline-flex;align-items:center;gap:6px;background:linear-gradient(135deg,#1d9bf0,#1a8cd8)">𝕏 Twitter/X</a>`:''}
+    </div>`;
+
+  // Track outreach generation
+  const history=JSON.parse(localStorage.getItem('mc_outreach_history')||'[]');
+  history.unshift({investorId:id,investorName:inv.name,tone,date:new Date().toISOString()});
+  if(history.length>50)history.length=50;
+  localStorage.setItem('mc_outreach_history',JSON.stringify(history));
+}
+function copyOutreach(btn,id){
+  const output=btn.parentElement;
+  const text=output.innerText.replace('📋 Copy','').trim();
+  navigator.clipboard.writeText(text).then(()=>{btn.textContent='✓ Copied!';setTimeout(()=>{btn.textContent='📋 Copy'},2000)});
+}
+function escapeHTML(str){return str.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+
 function copyProfileLink(btn,id){
   const url=window.location.origin+window.location.pathname+'#profile/'+id;
   navigator.clipboard.writeText(url).then(()=>{btn.classList.add('copied');btn.innerHTML='✓ Copied!';setTimeout(()=>{btn.classList.remove('copied');btn.innerHTML='📋 Copy Link'},2000)});
