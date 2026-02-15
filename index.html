@@ -282,7 +282,8 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .virtual-scroll-window{position:relative}
 .results-grid .virtual-placeholder{visibility:hidden;pointer-events:none;min-height:0;padding:0;margin:0;border:none;box-shadow:none}
 .investor-card .card-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
-.investor-card .avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;color:#fff;flex-shrink:0;letter-spacing:-0.02em}
+.investor-card .avatar{width:44px;height:44px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.95rem;color:#fff;flex-shrink:0;letter-spacing:-0.02em;overflow:hidden}
+.avatar-img,.modal-avatar-img,.sim-avatar-img,.mini-avatar-img,.rv-avatar-img{width:100%;height:100%;object-fit:cover;border-radius:inherit}
 .investor-card .active-badge{display:flex;align-items:center;gap:4px;font-size:0.7rem;color:var(--green);background:var(--green-bg);padding:4px 10px;border-radius:20px;font-weight:600}
 .investor-card .active-badge .dot{width:6px;height:6px;border-radius:50%;background:var(--green);animation:pulse 2s infinite}
 @keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
@@ -317,7 +318,7 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .modal-close{position:absolute;top:16px;right:16px;font-size:1.5rem;color:var(--text-dim);z-index:1;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background 0.2s}
 .modal-close:hover{background:rgba(255,255,255,0.05)}
 .modal-header{padding:32px 32px 0;display:flex;gap:20px;align-items:flex-start}
-.modal-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.5rem;color:#fff;flex-shrink:0}
+.modal-avatar{width:64px;height:64px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1.5rem;color:#fff;flex-shrink:0;overflow:hidden}
 .modal-header-info{flex:1}
 .modal-header-info h2{font-size:1.5rem;font-weight:700;margin-bottom:2px;display:flex;align-items:center;gap:8px}
 .modal-header-info .firm{font-size:1rem;color:var(--text-muted);margin-bottom:8px}
@@ -431,7 +432,7 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .similar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);opacity:0;transition:opacity 0.3s}
 .similar-card:hover{border-color:rgba(99,102,241,0.4);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
 .similar-card:hover::before{opacity:1}
-.similar-card .sim-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;color:#fff;margin:0 auto 10px}
+.similar-card .sim-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;color:#fff;margin:0 auto 10px;overflow:hidden}
 .similar-card .sim-name{font-weight:600;font-size:0.85rem;margin-bottom:2px}
 .similar-card .sim-firm{font-size:0.75rem;color:var(--text-muted);margin-bottom:4px}
 .similar-card .sim-overlap{font-size:0.7rem;color:var(--text-dim);margin-bottom:8px}
@@ -538,7 +539,7 @@ footer .links a:hover{color:var(--text)}
 .compare-bar .mini-chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.05);border:1px solid var(--border);border-radius:24px;padding:6px 14px 6px 6px;margin-left:8px;transition:all 0.2s}
 .compare-bar .mini-chip:first-child{margin-left:0}
 .compare-bar .mini-chip:hover{border-color:rgba(239,68,68,0.4)}
-.compare-bar .mini-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;flex-shrink:0}
+.compare-bar .mini-avatar{width:28px;height:28px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:700;color:#fff;flex-shrink:0;overflow:hidden}
 .compare-bar .mini-name{font-size:0.8rem;font-weight:500;color:var(--text);max-width:100px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .compare-bar .mini-remove{font-size:0.7rem;color:var(--text-dim);cursor:pointer;margin-left:4px;transition:color 0.2s}
 .compare-bar .mini-remove:hover{color:#f87171}
@@ -616,7 +617,7 @@ footer .links a:hover{color:var(--text)}
 .rv-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);opacity:0;transition:opacity 0.3s}
 .rv-card:hover{border-color:rgba(99,102,241,0.3);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
 .rv-card:hover::before{opacity:1}
-.rv-card .rv-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;color:#fff;margin:0 auto 8px}
+.rv-card .rv-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2),#ec4899);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;color:#fff;margin:0 auto 8px;overflow:hidden}
 .rv-card .rv-name{font-weight:600;font-size:0.8rem;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:2px}
 .rv-card .rv-firm{font-size:0.7rem;color:var(--text-muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-bottom:6px}
 .rv-card .rv-time{font-size:0.65rem;color:var(--text-dim);font-family:var(--font-mono)}
@@ -1688,7 +1689,7 @@ function cardHTML(inv,idx){
   const delay=Math.min((idx||0)*0.05,0.8);
   const isOrg=inv.entity==='organization';
   const avatarClass=isOrg?'avatar avatar-org':'avatar';
-  const avatarContent=isOrg?'🏢':initials(inv.name);
+  const avatarContent=inv.photo?`<img src="${inv.photo}" alt="${inv.name}" class="avatar-img" onerror="this.replaceWith(document.createTextNode('${isOrg?'🏢':initials(inv.name)}'))">`:(isOrg?'🏢':initials(inv.name));
   const firmLine=isOrg?(inv.memberCount?`<div class="firm"><span class="member-count-badge">👥 ${inv.memberCount} members</span></div>`:''):`<div class="firm">${inv.firm||''}</div>`;
   const matchBadge=matchScoresActive&&inv._matchScore>0?`<div class="match-score-badge ${inv._matchScore>=70?'score-high':inv._matchScore>=40?'score-med':'score-low'}">${inv._matchScore}% match</div>`:'';
   return`<div class="investor-card" onclick="openProfile('${inv.id}')" style="animation-delay:${delay}s" role="listitem" tabindex="0" aria-label="${inv.name}, ${inv.firm||inv.type}, ${inv.stages.join(', ')}${matchScoresActive?' Match score '+inv._matchScore+'%':''}" data-investor-id="${inv.id}" onkeydown="cardKeyHandler(event,'${inv.id}')">
@@ -1811,7 +1812,7 @@ function openProfile(id){
 
   const isOrg=inv.entity==='organization';
   const modalAvatarClass=isOrg?'modal-avatar avatar-org':'modal-avatar';
-  const modalAvatarContent=isOrg?'🏢':initials(inv.name);
+  const modalAvatarContent=inv.photo?`<img src="${inv.photo}" alt="${inv.name}" class="modal-avatar-img" onerror="this.replaceWith(document.createTextNode('${isOrg?'🏢':initials(inv.name)}'))">`:(isOrg?'🏢':initials(inv.name));
   const firmLine=isOrg?(inv.title?`<div class="firm">${inv.title}</div>`:''):`<div class="firm">${inv.title} · ${inv.firm}</div>`;
   document.getElementById('modal').innerHTML=`
     <button class="modal-close" onclick="closeModal()" aria-label="Close profile">×</button>
@@ -1930,7 +1931,7 @@ function openProfile(id){
           ${similar.map(s=>{
             const overlap=s._overlap.slice(0,3).join(', ');
             return`<div class="similar-card" onclick="closeModal();setTimeout(()=>openProfile('${s.id}'),200)">
-              <div class="sim-avatar">${initials(s.name)}</div>
+              <div class="sim-avatar">${s.photo?`<img src="${s.photo}" alt="${s.name}" class="sim-avatar-img" onerror="this.replaceWith(document.createTextNode('${initials(s.name)}'))">`:initials(s.name)}</div>
               <div class="sim-name">${s.name}</div>
               <div class="sim-firm">${s.firm||''}</div>
               <div class="sim-overlap">${overlap}</div>
@@ -2352,7 +2353,7 @@ function updateCompareBar(){
   bar.classList.add('show');
   avatarsEl.innerHTML=compareIds.map(id=>{
     const inv=investors.find(i=>i.id===id);
-    return`<div class="mini-chip"><div class="mini-avatar">${initials(inv.name)}</div><span class="mini-name">${inv.name.split(' ')[0]}</span><span class="mini-remove" onclick="event.stopPropagation();toggleCompare('${id}')">✕</span></div>`;
+    return`<div class="mini-chip"><div class="mini-avatar">${inv.photo?`<img src="${inv.photo}" alt="${inv.name}" class="mini-avatar-img" onerror="this.replaceWith(document.createTextNode('${initials(inv.name)}'))">`:initials(inv.name)}</div><span class="mini-name">${inv.name.split(' ')[0]}</span><span class="mini-remove" onclick="event.stopPropagation();toggleCompare('${id}')">✕</span></div>`;
   }).join('');
   document.getElementById('compareCount').textContent=compareIds.length+'/3';
 }
@@ -2412,7 +2413,7 @@ function openCompare(){
   html+=`<table class="compare-table"><thead><tr><th></th>`;
   invs.forEach(inv=>{
     const io=inv.entity==='organization';
-    html+=`<td class="header-cell"><div class="avatar${io?' avatar-org':''}" style="margin:0 auto;width:48px;height:48px;border-radius:${io?'8px':'50%'};background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff">${io?'🏢':initials(inv.name)}</div><div class="name">${inv.name}</div><div class="firm">${io?(inv.title||''):(inv.firm||'')}</div><span class="type-badge ${typeClass(inv.type)}" style="margin-top:6px">${inv.type}</span><br><button class="compare-remove" onclick="removeFromCompare('${inv.id}')">✕ Remove</button></td>`;
+    html+=`<td class="header-cell"><div class="avatar${io?' avatar-org':''}" style="margin:0 auto;width:48px;height:48px;border-radius:${io?'8px':'50%'};background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;color:#fff;overflow:hidden">${inv.photo?`<img src="${inv.photo}" alt="${inv.name}" style="width:100%;height:100%;object-fit:cover;border-radius:inherit" onerror="this.replaceWith(document.createTextNode('${io?'🏢':initials(inv.name)}'))">`:io?'🏢':initials(inv.name)}</div><div class="name">${inv.name}</div><div class="firm">${io?(inv.title||''):(inv.firm||'')}</div><span class="type-badge ${typeClass(inv.type)}" style="margin-top:6px">${inv.type}</span><br><button class="compare-remove" onclick="removeFromCompare('${inv.id}')">✕ Remove</button></td>`;
   });
   html+=`</tr></thead><tbody>`;
   rows.forEach(row=>{
@@ -2781,7 +2782,7 @@ function renderRecentlyViewed(){
     const isOrg=inv.entity==='organization';
     return`<div class="rv-card" onclick="openProfile('${inv.id}')">
       <button class="rv-remove" onclick="removeFromRecent(event,'${inv.id}')" aria-label="Remove from recent">×</button>
-      <div class="rv-avatar${isOrg?' avatar-org':''}">${isOrg?'🏢':initials(inv.name)}</div>
+      <div class="rv-avatar${isOrg?' avatar-org':''}">${inv.photo?`<img src="${inv.photo}" alt="${inv.name}" class="rv-avatar-img" onerror="this.replaceWith(document.createTextNode('${isOrg?'🏢':initials(inv.name)}'))">`:isOrg?'🏢':initials(inv.name)}</div>
       <div class="rv-name">${inv.name}</div>
       <div class="rv-firm">${inv.firm||inv.type}</div>
       <div class="rv-time">${timeAgo(r.ts)}</div>
