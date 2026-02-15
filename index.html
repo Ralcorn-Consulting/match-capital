@@ -15,6 +15,12 @@
 <meta name="twitter:description" content="Search 150+ investors by stage, sector, check size, and more. Free investor intelligence.">
 <meta name="twitter:image" content="https://hq.ralcorporation.com/og-image.png">
 <link rel="icon" type="image/svg+xml" href="favicon.svg">
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#6366f1">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Match Capital">
+<link rel="apple-touch-icon" href="/icon-192.png">
 <script>
 // Prevent FOUC: apply theme before render
 (function(){var t=localStorage.getItem('mc_theme')||(window.matchMedia('(prefers-color-scheme:light)').matches?'light':'dark');document.documentElement.setAttribute('data-theme',t)})();
@@ -110,6 +116,7 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 #hero{padding:180px 0 120px;text-align:center;position:relative;overflow:hidden}
 #hero::before{content:'';position:absolute;top:-300px;left:50%;transform:translateX(-50%);width:1000px;height:1000px;background:radial-gradient(ellipse at center,rgba(99,102,241,0.12) 0%,rgba(168,85,247,0.06) 40%,transparent 70%);pointer-events:none;animation:heroGlow 8s ease-in-out infinite alternate}
 #hero::after{content:'';position:absolute;top:0;left:0;right:0;bottom:0;background:radial-gradient(ellipse at 20% 50%,rgba(236,72,153,0.04),transparent 50%),radial-gradient(ellipse at 80% 50%,rgba(99,102,241,0.04),transparent 50%);pointer-events:none}
+@keyframes slideUp{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
 @keyframes heroGlow{0%{opacity:0.7;transform:translateX(-50%) scale(1)}100%{opacity:1;transform:translateX(-50%) scale(1.05)}}
 #hero h1{font-size:clamp(2.8rem,6.5vw,4.5rem);font-weight:900;letter-spacing:-0.04em;line-height:1.05;margin-bottom:20px;position:relative}
 #hero .tagline{font-size:clamp(1rem,2vw,1.2rem);color:var(--text-muted);max-width:560px;margin:0 auto 44px;line-height:1.7;letter-spacing:0}
@@ -2663,6 +2670,71 @@ function toggleSavedTagFilter(tagName){
   savedTagFilter=savedTagFilter===tagName?null:tagName;
   renderSaved();
 }
+
+// ===== PWA =====
+let deferredInstallPrompt=null;
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('/sw.js').then(reg=>{
+    // Check for updates every 30 min
+    setInterval(()=>reg.update(),1800000);
+    reg.addEventListener('updatefound',()=>{
+      const nw=reg.installing;
+      nw.addEventListener('statechange',()=>{
+        if(nw.state==='installed'&&navigator.serviceWorker.controller){
+          showOfflineToast('Update available — refresh to get the latest version.');
+        }
+      });
+    });
+  }).catch(e=>console.warn('SW registration failed:',e));
+}
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredInstallPrompt=e;
+  showInstallBanner();
+});
+window.addEventListener('appinstalled',()=>{
+  deferredInstallPrompt=null;
+  hideInstallBanner();
+});
+
+function showInstallBanner(){
+  if(document.getElementById('pwa-install-banner'))return;
+  const b=document.createElement('div');
+  b.id='pwa-install-banner';
+  b.innerHTML=`<div style="display:flex;align-items:center;gap:12px;flex-wrap:wrap">
+    <span style="font-size:20px">📱</span>
+    <span style="flex:1;min-width:180px"><strong>Install Match Capital</strong> for quick access &amp; offline use</span>
+    <button onclick="pwaInstall()" style="padding:8px 20px;border-radius:8px;border:none;background:var(--accent);color:#fff;font-weight:600;cursor:pointer;font-size:14px">Install</button>
+    <button onclick="hideInstallBanner()" style="padding:8px 12px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-muted);cursor:pointer;font-size:14px">Later</button>
+  </div>`;
+  Object.assign(b.style,{position:'fixed',bottom:'20px',left:'50%',transform:'translateX(-50%)',
+    background:'var(--card)',border:'1px solid var(--border)',borderRadius:'16px',padding:'16px 20px',
+    zIndex:'10001',maxWidth:'480px',width:'calc(100% - 32px)',boxShadow:'0 8px 32px rgba(0,0,0,0.3)',
+    animation:'slideUp .3s ease'});
+  document.body.appendChild(b);
+}
+function hideInstallBanner(){
+  const b=document.getElementById('pwa-install-banner');
+  if(b)b.remove();
+}
+function pwaInstall(){
+  if(!deferredInstallPrompt)return;
+  deferredInstallPrompt.prompt();
+  deferredInstallPrompt.userChoice.then(()=>{deferredInstallPrompt=null;hideInstallBanner()});
+}
+function showOfflineToast(msg){
+  const t=document.createElement('div');
+  t.textContent=msg;
+  Object.assign(t.style,{position:'fixed',bottom:'20px',left:'50%',transform:'translateX(-50%)',
+    background:'var(--card)',border:'1px solid var(--accent)',borderRadius:'12px',padding:'12px 20px',
+    zIndex:'10001',color:'var(--text)',fontSize:'14px',boxShadow:'0 4px 16px rgba(0,0,0,0.3)'});
+  document.body.appendChild(t);
+  setTimeout(()=>t.remove(),6000);
+}
+
+// Offline indicator
+window.addEventListener('online',()=>showOfflineToast('You\u2019re back online!'));
+window.addEventListener('offline',()=>showOfflineToast('You\u2019re offline — cached data still available.'));
 
 // ===== GO =====
 initOnboarding();
