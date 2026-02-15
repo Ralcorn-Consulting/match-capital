@@ -124,13 +124,13 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .investor-card .location{font-size:0.8rem;color:var(--text-dim)}
 
 /* ===== MODAL ===== */
-.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0);backdrop-filter:blur(0px);display:none;align-items:flex-end;justify-content:center;padding:24px;transition:background 0.3s ease,backdrop-filter 0.3s ease}
+.modal-overlay{position:fixed;inset:0;z-index:200;background:rgba(0,0,0,0);backdrop-filter:blur(0px);display:none;align-items:center;justify-content:center;padding:24px;transition:background 0.4s cubic-bezier(0.4,0,0.2,1),backdrop-filter 0.4s cubic-bezier(0.4,0,0.2,1)}
 .modal-overlay.open{display:flex}
-.modal-overlay.open.animate-in{background:rgba(0,0,0,0.7);backdrop-filter:blur(8px)}
-.modal{background:var(--bg);border:1px solid var(--border);border-radius:16px;width:100%;max-width:720px;max-height:90vh;overflow-y:auto;position:relative;opacity:0;transform:translateY(40px);transition:opacity 0.35s ease,transform 0.35s ease}
-.modal-overlay.open.animate-in .modal{opacity:1;transform:translateY(0)}
-.modal-overlay.animate-out .modal{opacity:0;transform:translateY(40px);transition:opacity 0.25s ease,transform 0.25s ease}
-.modal-overlay.animate-out{background:rgba(0,0,0,0);backdrop-filter:blur(0px);transition:background 0.25s ease,backdrop-filter 0.25s ease}
+.modal-overlay.open.animate-in{background:rgba(0,0,0,0.75);backdrop-filter:blur(12px)}
+.modal{background:var(--bg);border:1px solid var(--border);border-radius:16px;width:100%;max-width:820px;max-height:90vh;overflow-y:auto;position:relative;opacity:0;transform:translateY(30px) scale(0.97);transition:opacity 0.4s cubic-bezier(0.4,0,0.2,1),transform 0.4s cubic-bezier(0.4,0,0.2,1)}
+.modal-overlay.open.animate-in .modal{opacity:1;transform:translateY(0) scale(1)}
+.modal-overlay.animate-out .modal{opacity:0;transform:translateY(20px) scale(0.97);transition:opacity 0.25s cubic-bezier(0.4,0,0.2,1),transform 0.25s cubic-bezier(0.4,0,0.2,1)}
+.modal-overlay.animate-out{background:rgba(0,0,0,0);backdrop-filter:blur(0px);transition:background 0.25s cubic-bezier(0.4,0,0.2,1),backdrop-filter 0.25s cubic-bezier(0.4,0,0.2,1)}
 .modal-close{position:absolute;top:16px;right:16px;font-size:1.5rem;color:var(--text-dim);z-index:1;width:36px;height:36px;display:flex;align-items:center;justify-content:center;border-radius:50%;transition:background 0.2s}
 .modal-close:hover{background:rgba(255,255,255,0.05)}
 .modal-header{padding:32px 32px 0;display:flex;gap:20px;align-items:flex-start}
@@ -141,7 +141,8 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .modal-header-info .badges{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
 .modal-body{padding:24px 32px 32px}
 .modal-section{margin-bottom:24px}
-.modal-section h3{font-size:0.8rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:10px}
+.modal-section h3{font-size:0.75rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px;display:flex;align-items:center;gap:8px}
+.modal-section h3::after{content:'';flex:1;height:1px;background:var(--border);opacity:0.6}
 .modal-section p{color:var(--text-muted);font-size:0.9rem;line-height:1.7}
 .modal-tags{display:flex;flex-wrap:wrap;gap:6px}
 .modal-tags .tag{padding:5px 12px;font-size:0.8rem}
@@ -162,8 +163,11 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .fund-info-item .label{font-size:0.75rem;color:var(--text-dim);margin-bottom:4px}
 .fund-info-item .value{font-weight:600;font-size:0.9rem}
 /* Profile two-column grid */
-.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 24px}
+.profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 32px}
 .profile-grid .full-width{grid-column:1/-1}
+.profile-col{display:flex;flex-direction:column;gap:0}
+.profile-col .modal-section:last-child{margin-bottom:0}
+.modal-divider{border:none;border-top:1px solid var(--border);margin:4px 0 20px;opacity:0.5}
 /* Social proof */
 .social-proof{display:flex;gap:16px;flex-wrap:wrap;margin-bottom:20px;padding:12px 16px;background:rgba(255,255,255,0.02);border-radius:var(--radius-sm);border:1px solid var(--border)}
 .proof-item{display:flex;align-items:center;gap:6px;font-size:0.8rem;color:var(--text-muted)}
@@ -174,13 +178,17 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .activity-dot.yellow{background:#eab308}
 .activity-dot.gray{background:#52525b}
 /* Similar investors */
-.similar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
-.similar-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-sm);padding:14px;text-align:center;transition:all 0.2s;cursor:pointer}
-.similar-card:hover{border-color:rgba(99,102,241,0.4);background:var(--card-hover)}
-.similar-card .sim-avatar{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.75rem;color:#fff;margin:0 auto 8px}
+.similar-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:12px}
+.similar-card{background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;text-align:center;transition:all 0.25s ease;cursor:pointer;position:relative;overflow:hidden}
+.similar-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--accent),var(--accent2),transparent);opacity:0;transition:opacity 0.3s}
+.similar-card:hover{border-color:rgba(99,102,241,0.4);background:var(--card-hover);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+.similar-card:hover::before{opacity:1}
+.similar-card .sim-avatar{width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,var(--accent),var(--accent2));display:flex;align-items:center;justify-content:center;font-weight:700;font-size:0.8rem;color:#fff;margin:0 auto 10px}
 .similar-card .sim-name{font-weight:600;font-size:0.85rem;margin-bottom:2px}
-.similar-card .sim-firm{font-size:0.75rem;color:var(--text-muted);margin-bottom:8px}
-.similar-card .sim-link{font-size:0.75rem;color:var(--accent);font-weight:500}
+.similar-card .sim-firm{font-size:0.75rem;color:var(--text-muted);margin-bottom:4px}
+.similar-card .sim-overlap{font-size:0.7rem;color:var(--text-dim);margin-bottom:8px}
+.similar-card .sim-link{font-size:0.75rem;color:var(--accent);font-weight:500;transition:color 0.2s}
+.similar-card:hover .sim-link{color:var(--accent2)}
 /* Add to list dropdown in modal header */
 .modal-list-dropdown{position:relative;display:inline-block}
 .modal-list-dd-content{position:absolute;top:100%;left:0;margin-top:4px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px;z-index:10;box-shadow:0 8px 30px rgba(0,0,0,0.4);min-width:200px;max-height:240px;overflow-y:auto;display:none}
@@ -245,6 +253,7 @@ footer .links a:hover{color:var(--text)}
   #hero{padding:120px 0 60px}
   #hero h1{font-size:2rem}
   .modal{max-height:95vh;border-radius:16px 16px 0 0}
+  .profile-grid{grid-template-columns:1fr !important}
   .similar-grid{grid-template-columns:repeat(2,1fr)}
 }
 
@@ -286,6 +295,37 @@ footer .links a:hover{color:var(--text)}
 .save-wrap{position:relative;display:inline-block}
 .delete-list-btn{font-size:0.75rem;color:var(--text-dim);padding:4px 8px;border-radius:4px;transition:all 0.2s;margin-left:auto}
 .delete-list-btn:hover{color:#f87171;background:rgba(239,68,68,0.1)}
+
+/* ===== ANALYTICS PANEL ===== */
+.analytics-toggle{display:flex;align-items:center;gap:8px;margin-bottom:16px;cursor:pointer;user-select:none;font-size:0.85rem;color:var(--text-muted);transition:color 0.2s}
+.analytics-toggle:hover{color:var(--text)}
+.analytics-toggle .chevron{transition:transform 0.3s;font-size:0.7rem}
+.analytics-toggle .chevron.open{transform:rotate(90deg)}
+.analytics-panel{overflow:hidden;max-height:0;opacity:0;transition:max-height 0.4s ease,opacity 0.3s ease,margin 0.3s ease;margin-bottom:0}
+.analytics-panel.open{max-height:800px;opacity:1;margin-bottom:24px}
+.stats-counters{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:700px){.stats-counters{grid-template-columns:repeat(2,1fr)}}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;text-align:center}
+.stat-card .stat-value{font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.stat-card .stat-label{font-size:0.72rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-top:4px}
+.analytics-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+@media(max-width:900px){.analytics-grid{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.analytics-grid{grid-template-columns:1fr}}
+.analytics-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px}
+.analytics-card h4{font-size:0.72rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+.bar-row{display:flex;align-items:center;gap:8px;margin-bottom:8px;font-size:0.8rem}
+.bar-row:last-child{margin-bottom:0}
+.bar-label{min-width:80px;color:var(--text-muted);flex-shrink:0;text-align:right}
+.bar-track{flex:1;height:8px;background:rgba(255,255,255,0.04);border-radius:4px;overflow:hidden}
+.bar-fill{height:100%;border-radius:4px;transition:width 0.6s ease}
+.bar-count{min-width:28px;font-size:0.75rem;color:var(--text-dim);font-weight:600}
+.bar-fill.fill-vc{background:linear-gradient(90deg,#3b82f6,#60a5fa)}
+.bar-fill.fill-angel{background:linear-gradient(90deg,#eab308,#fbbf24)}
+.bar-fill.fill-family-office{background:linear-gradient(90deg,#22c55e,#4ade80)}
+.bar-fill.fill-corp-vc{background:linear-gradient(90deg,#a855f7,#c084fc)}
+.bar-fill.fill-angel-group{background:linear-gradient(90deg,#f97316,#fb923c)}
+.bar-fill.fill-stage{background:linear-gradient(90deg,var(--accent),#93c5fd)}
+.bar-fill.fill-geo{background:linear-gradient(90deg,var(--accent2),#c4b5fd)}
 </style>
 </head>
 <body>
@@ -321,6 +361,15 @@ footer .links a:hover{color:var(--text)}
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
       <input type="text" id="searchInput" placeholder="Search by name, firm, sector, stage, location...">
       <button class="clear-btn" id="clearSearch" onclick="clearSearch()">×</button>
+    </div>
+
+    <div class="analytics-toggle" onclick="toggleAnalytics()">
+      <span class="chevron" id="analyticsChevron">▶</span>
+      <span>📊 Database Analytics</span>
+    </div>
+    <div class="analytics-panel" id="analyticsPanel">
+      <div class="stats-counters" id="statsCounters"></div>
+      <div class="analytics-grid" id="analyticsGrid"></div>
     </div>
 
     <div class="filters">
@@ -705,12 +754,14 @@ function getPortfolioCount(inv){
 function isVerified(inv){return !!(inv.links.linkedin && inv.links.website)}
 
 function findSimilarInvestors(inv){
-  return investors.filter(other=>{
-    if(other.id===inv.id)return false;
-    const stageOverlap=inv.stages.filter(s=>other.stages.includes(s)).length;
-    const sectorOverlap=inv.sectors.filter(s=>other.sectors.includes(s)).length;
-    return(stageOverlap+sectorOverlap)>=2;
-  }).slice(0,4);
+  return investors.map(other=>{
+    if(other.id===inv.id)return null;
+    const stageOverlap=inv.stages.filter(s=>other.stages.includes(s));
+    const sectorOverlap=inv.sectors.filter(s=>other.sectors.includes(s));
+    const score=stageOverlap.length+sectorOverlap.length;
+    if(score<2)return null;
+    return{...other,_score:score,_overlap:[...sectorOverlap,...stageOverlap]};
+  }).filter(Boolean).sort((a,b)=>b._score-a._score).slice(0,4);
 }
 
 function toggleModalListDropdown(e,id){
@@ -773,25 +824,37 @@ function openProfile(id){
       </div>
 
       ${isOrg&&(inv.keyPeople&&inv.keyPeople.length||inv.memberCount)?`
-      <div class="modal-section full-width">
+      <div class="modal-section">
         ${inv.memberCount?`<div style="margin-bottom:8px"><span class="member-count-badge">👥 ${inv.memberCount} members</span></div>`:''}
         ${inv.keyPeople&&inv.keyPeople.length?`<h3>Key People</h3><ul class="key-people-list">${inv.keyPeople.map(p=>'<li>'+p+'</li>').join('')}</ul>`:''}
       </div>`:''}
 
-      <div class="modal-section full-width"><h3>Investment Thesis</h3><p>${inv.thesis}</p></div>
+      <div class="modal-section"><h3>Investment Thesis</h3><p>${inv.thesis}</p></div>
+
+      <hr class="modal-divider">
 
       <div class="profile-grid">
-        <div>
-          <div class="modal-section"><h3>Focus</h3>
+        <div class="profile-col">
+          <div class="modal-section"><h3>Focus Areas</h3>
             <div class="modal-tags">
               ${inv.stages.map(s=>`<span class="tag tag-stage">${s}</span>`).join('')}
               ${inv.sectors.map(s=>`<span class="tag tag-sector">${s}</span>`).join('')}
               ${inv.geography.map(g=>`<span class="tag">${g}</span>`).join('')}
             </div>
           </div>
-          <div class="modal-section"><h3>Check Size</h3><p>${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</p></div>
+          <div class="modal-section"><h3>Check Size</h3><p style="font-size:1.1rem;font-weight:600;color:var(--text)">${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</p></div>
+          <div class="modal-section"><h3>Portfolio Highlights</h3>
+            <div class="modal-tags">${inv.portfolioHighlights.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
+          </div>
+          <div class="modal-section"><h3>Links</h3>
+            <div class="modal-links-row">
+              ${inv.links.linkedin?`<a href="${inv.links.linkedin}" target="_blank" title="LinkedIn">💼</a>`:''}
+              ${inv.links.twitter?`<a href="${inv.links.twitter}" target="_blank" title="Twitter">🐦</a>`:''}
+              ${inv.links.website?`<a href="${inv.links.website}" target="_blank" title="Website">🌐</a>`:''}
+            </div>
+          </div>
         </div>
-        <div>
+        <div class="profile-col">
           <div class="modal-section"><h3>Fund Info</h3>
             <div class="fund-info">
               <div class="fund-info-item"><div class="label">Fund Size</div><div class="value">${inv.fundSize}</div></div>
@@ -806,36 +869,28 @@ function openProfile(id){
         </div>
       </div>
 
-      <div class="modal-section"><h3>Portfolio Highlights</h3>
-        <div class="modal-tags">${inv.portfolioHighlights.map(p=>`<span class="tag">${p}</span>`).join('')}</div>
-      </div>
-
-      <div class="modal-section"><h3>Links</h3>
-        <div class="modal-links-row">
-          ${inv.links.linkedin?`<a href="${inv.links.linkedin}" target="_blank" title="LinkedIn">💼</a>`:''}
-          ${inv.links.twitter?`<a href="${inv.links.twitter}" target="_blank" title="Twitter">🐦</a>`:''}
-          ${inv.links.website?`<a href="${inv.links.website}" target="_blank" title="Website">🌐</a>`:''}
-        </div>
-      </div>
-
       ${similar.length?`
-      <div class="modal-section" style="border-top:1px solid var(--border);padding-top:20px"><h3>Similar Investors</h3>
+      <hr class="modal-divider">
+      <div class="modal-section"><h3>Similar Investors</h3>
         <div class="similar-grid">
-          ${similar.map(s=>`
-            <div class="similar-card" onclick="closeModal();setTimeout(()=>openProfile('${s.id}'),100)">
+          ${similar.map(s=>{
+            const overlap=s._overlap.slice(0,3).join(', ');
+            return`<div class="similar-card" onclick="closeModal();setTimeout(()=>openProfile('${s.id}'),200)">
               <div class="sim-avatar">${initials(s.name)}</div>
               <div class="sim-name">${s.name}</div>
-              <div class="sim-firm">${s.firm}</div>
-              <span class="sim-link">View →</span>
-            </div>`).join('')}
+              <div class="sim-firm">${s.firm||''}</div>
+              <div class="sim-overlap">${overlap}</div>
+              <span class="sim-link">View Profile →</span>
+            </div>`}).join('')}
         </div>
       </div>`:''}
 
-      <div class="modal-actions">
+      <hr class="modal-divider">
+      <div class="modal-actions" style="border:none;padding-top:0;margin-top:0">
         <button class="btn-secondary" onclick="navigator.clipboard.writeText(window.location.origin+'#profile/${inv.id}').then(()=>{this.textContent='Link copied!';setTimeout(()=>this.textContent='Share Profile',2000)})">Share Profile</button>
       </div>
-      <div style="text-align:center;margin-top:20px;padding-top:16px;border-top:1px solid var(--border)">
-        <p style="font-size:0.85rem;color:var(--text-dim)">Are you ${inv.name}? <a href="mailto:hello@matchcapital.ai?subject=Claim Profile: ${encodeURIComponent(inv.name)}" style="color:var(--accent)">Claim this profile</a></p>
+      <div style="text-align:center;margin-top:12px">
+        <p style="font-size:0.8rem;color:var(--text-dim)">Are you ${inv.name}? <a href="mailto:hello@matchcapital.ai?subject=Claim Profile: ${encodeURIComponent(inv.name)}" style="color:var(--accent)">Claim this profile</a></p>
       </div>
     </div>`;
   const overlay=document.getElementById('modalOverlay');
@@ -1003,6 +1058,65 @@ function removeFromCompare(id){
   openCompare();updateCompareBar();renderResults();
 }
 function closeCompare(){document.getElementById('compareOverlay').classList.remove('open');document.body.style.overflow=''}
+
+// ===== ANALYTICS =====
+function toggleAnalytics(){
+  const panel=document.getElementById('analyticsPanel');
+  const chevron=document.getElementById('analyticsChevron');
+  const isOpen=panel.classList.toggle('open');
+  chevron.classList.toggle('open',isOpen);
+  if(isOpen&&!panel.dataset.rendered){renderAnalytics();panel.dataset.rendered='1'}
+}
+
+function renderAnalytics(){
+  const total=investors.length;
+  // Type breakdown
+  const typeCounts={};investors.forEach(i=>{typeCounts[i.type]=(typeCounts[i.type]||0)+1});
+  // Stage breakdown
+  const stageCounts={};investors.forEach(i=>i.stages.forEach(s=>{stageCounts[s]=(stageCounts[s]||0)+1}));
+  // Geo breakdown
+  const geoCounts={};investors.forEach(i=>i.geography.forEach(g=>{geoCounts[g]=(geoCounts[g]||0)+1}));
+  // Avg check size
+  const avgMin=Math.round(investors.reduce((a,i)=>a+i.checkSize.min,0)/total);
+  const avgMax=Math.round(investors.reduce((a,i)=>a+i.checkSize.max,0)/total);
+  // Active count
+  const activeCount=investors.filter(i=>i.activelyDeploying).length;
+  // Top locations
+  const locCounts={};investors.forEach(i=>{const loc=(i.location||'').split(',')[0].trim();if(loc)locCounts[loc]=(locCounts[loc]||0)+1});
+  const topLocs=Object.entries(locCounts).sort((a,b)=>b[1]-a[1]).slice(0,6);
+
+  // Counters
+  document.getElementById('statsCounters').innerHTML=`
+    <div class="stat-card"><div class="stat-value">${total}</div><div class="stat-label">Total Investors</div></div>
+    <div class="stat-card"><div class="stat-value">${activeCount}</div><div class="stat-label">Actively Deploying</div></div>
+    <div class="stat-card"><div class="stat-value">${fmt(avgMin)}</div><div class="stat-label">Avg Min Check</div></div>
+    <div class="stat-card"><div class="stat-value">${fmt(avgMax)}</div><div class="stat-label">Avg Max Check</div></div>
+  `;
+
+  const typeOrder=['VC','Angel','Family Office','Corp VC','Angel Group'];
+  const typeColors={'VC':'fill-vc','Angel':'fill-angel','Family Office':'fill-family-office','Corp VC':'fill-corp-vc','Angel Group':'fill-angel-group'};
+  const stageOrder=['Pre-Seed','Seed','Series A','Series B','Growth'];
+
+  function barsHTML(data,order,fillClass,maxVal){
+    return order.filter(k=>data[k]).map(k=>{
+      const pct=Math.round((data[k]/maxVal)*100);
+      const cls=typeof fillClass==='object'?fillClass[k]:fillClass;
+      return`<div class="bar-row"><span class="bar-label">${k}</span><div class="bar-track"><div class="bar-fill ${cls}" style="width:${pct}%"></div></div><span class="bar-count">${data[k]}</span></div>`;
+    }).join('');
+  }
+
+  const maxType=Math.max(...Object.values(typeCounts));
+  const maxStage=Math.max(...Object.values(stageCounts));
+  const geoOrder=Object.keys(geoCounts).sort((a,b)=>geoCounts[b]-geoCounts[a]);
+  const maxGeo=Math.max(...Object.values(geoCounts));
+
+  document.getElementById('analyticsGrid').innerHTML=`
+    <div class="analytics-card"><h4>By Type</h4>${barsHTML(typeCounts,typeOrder,typeColors,maxType)}</div>
+    <div class="analytics-card"><h4>By Stage</h4>${barsHTML(stageCounts,stageOrder,'fill-stage',maxStage)}</div>
+    <div class="analytics-card"><h4>By Geography</h4>${barsHTML(geoCounts,geoOrder,'fill-geo',maxGeo)}</div>
+    <div class="analytics-card"><h4>Top Locations</h4>${topLocs.map(([loc,n])=>`<div class="bar-row"><span class="bar-label" style="min-width:100px">${loc}</span><div class="bar-track"><div class="bar-fill fill-stage" style="width:${Math.round(n/topLocs[0][1]*100)}%"></div></div><span class="bar-count">${n}</span></div>`).join('')}</div>
+  `;
+}
 
 // ===== GO =====
 init();
