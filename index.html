@@ -138,6 +138,25 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .search-bar .clear-btn:hover{color:var(--text)}
 .search-bar .clear-btn.show{display:block}
 
+/* Search syntax help */
+.search-syntax-help{position:absolute;top:100%;left:0;right:0;margin-top:6px;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:0 8px 30px rgba(0,0,0,0.3);z-index:20;display:none;animation:syntaxFadeIn 0.2s ease}
+.search-bar:focus-within .search-syntax-help.show{display:block}
+@keyframes syntaxFadeIn{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}
+.syntax-title{font-size:0.75rem;font-weight:600;color:var(--text-muted);margin-bottom:8px;letter-spacing:0.03em}
+.syntax-examples{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.syntax-examples code{padding:3px 10px;border-radius:6px;font-size:0.74rem;font-family:var(--font-mono);background:rgba(99,102,241,0.08);color:var(--accent-light);border:1px solid rgba(99,102,241,0.15);cursor:pointer;transition:all 0.15s}
+.syntax-examples code:hover{background:rgba(99,102,241,0.15);border-color:rgba(99,102,241,0.3)}
+.syntax-hint{font-size:0.72rem;color:var(--text-dim);line-height:1.5}
+.syntax-hint code{padding:2px 6px;border-radius:4px;font-size:0.72rem;font-family:var(--font-mono);background:rgba(255,255,255,0.04);color:var(--text-muted)}
+[data-theme="light"] .syntax-examples code{background:rgba(79,70,229,0.06);color:#4338ca;border-color:rgba(79,70,229,0.15)}
+[data-theme="light"] .syntax-examples code:hover{background:rgba(79,70,229,0.12)}
+[data-theme="light"] .syntax-hint code{background:rgba(0,0,0,0.04)}
+/* Active search syntax indicator */
+.search-bar .syntax-active{position:absolute;right:44px;top:50%;transform:translateY(-50%);display:none;gap:4px;align-items:center}
+.search-bar .syntax-active.show{display:flex}
+.syntax-badge{padding:2px 8px;border-radius:10px;font-size:0.65rem;font-weight:600;font-family:var(--font-mono);background:rgba(99,102,241,0.1);color:var(--accent-light);border:1px solid rgba(99,102,241,0.2);white-space:nowrap}
+[data-theme="light"] .syntax-badge{background:rgba(79,70,229,0.08);color:#4338ca;border-color:rgba(79,70,229,0.2)}
+
 /* Filters — sticky bar */
 .filter-bar{position:sticky;top:60px;z-index:90;background:rgba(7,7,10,0.92);backdrop-filter:blur(16px);margin:0 -24px;padding:0 24px;border-bottom:1px solid transparent;transition:border-color 0.3s,box-shadow 0.3s}
 .filter-bar.stuck{border-bottom-color:var(--border);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
@@ -672,8 +691,16 @@ footer .links a:hover{color:var(--text)}
 
     <div class="search-bar" role="search">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="search" id="searchInput" placeholder="Search by name, firm, sector, stage, location..." aria-label="Search investors" autocomplete="off">
+      <input type="search" id="searchInput" placeholder="Search investors... (try stage:seed sector:saas or check:>500k)" aria-label="Search investors" autocomplete="off">
+      <div class="syntax-active" id="syntaxActive"></div>
       <button class="clear-btn" id="clearSearch" onclick="clearSearch()" aria-label="Clear search">×</button>
+      <div class="search-syntax-help" id="searchSyntaxHelp">
+        <div class="syntax-title">⚡ Advanced Search</div>
+        <div class="syntax-examples">
+          <code>stage:seed</code> <code>sector:ai</code> <code>type:vc</code> <code>geo:us</code> <code>check:&gt;500k</code> <code>check:&lt;5m</code> <code>active:yes</code>
+        </div>
+        <div class="syntax-hint">Combine with free text: <code>climate stage:seed check:&lt;2m</code></div>
+      </div>
     </div>
 
     <div class="recently-viewed" id="recentlyViewed" aria-label="Recently viewed investors">
@@ -974,21 +1001,149 @@ checkMax.addEventListener('input',()=>{if(+checkMax.value<+checkMin.value)checkM
 // ===== SEARCH =====
 const searchInput=document.getElementById('searchInput'),clearBtn=document.getElementById('clearSearch');
 let debounceTimer;
-searchInput.addEventListener('input',()=>{clearBtn.classList.toggle('show',searchInput.value.length>0);clearTimeout(debounceTimer);debounceTimer=setTimeout(renderResults,200)});
-function clearSearch(){searchInput.value='';clearBtn.classList.remove('show');renderResults()}
+searchInput.addEventListener('input',()=>{
+  clearBtn.classList.toggle('show',searchInput.value.length>0);
+  // Show syntax help when input is focused and has content but no syntax yet
+  const helpEl=document.getElementById('searchSyntaxHelp');
+  const val=searchInput.value;
+  const hasSyntax=/\w+:[<>]?\S+/.test(val);
+  helpEl.classList.toggle('show',val.length>0&&val.length<3&&!hasSyntax);
+  clearTimeout(debounceTimer);debounceTimer=setTimeout(renderResults,200);
+});
+searchInput.addEventListener('focus',()=>{
+  const helpEl=document.getElementById('searchSyntaxHelp');
+  if(!searchInput.value)helpEl.classList.add('show');
+});
+searchInput.addEventListener('blur',()=>{
+  setTimeout(()=>document.getElementById('searchSyntaxHelp').classList.remove('show'),200);
+});
+// Click syntax examples to insert
+document.querySelectorAll('.syntax-examples code').forEach(el=>{
+  el.addEventListener('mousedown',e=>{
+    e.preventDefault();
+    const current=searchInput.value;
+    searchInput.value=(current?current+' ':'')+el.textContent;
+    searchInput.focus();
+    clearBtn.classList.add('show');
+    clearTimeout(debounceTimer);debounceTimer=setTimeout(renderResults,200);
+  });
+});
+function clearSearch(){searchInput.value='';clearBtn.classList.remove('show');document.getElementById('syntaxActive').classList.remove('show');document.getElementById('syntaxActive').innerHTML='';renderResults()}
 
 // ===== RENDER =====
+// ===== ADVANCED SEARCH SYNTAX =====
+// Parses queries like "climate stage:seed sector:ai check:>500k type:vc geo:us active:yes"
+function parseSearchQuery(raw){
+  const syntaxPattern=/(\w+):([<>]?\S+)/gi;
+  const structured={};
+  let freeText=raw;
+  let match;
+  while((match=syntaxPattern.exec(raw))!==null){
+    const key=match[1].toLowerCase();
+    const val=match[2].toLowerCase();
+    if(!structured[key])structured[key]=[];
+    structured[key].push(val);
+    freeText=freeText.replace(match[0],'');
+  }
+  freeText=freeText.trim().replace(/\s+/g,' ');
+  return{structured,freeText};
+}
+
+function parseCheckAmount(s){
+  s=s.replace(/[$,]/g,'').toLowerCase();
+  const m=s.match(/^([<>]?)(\d+(?:\.\d+)?)(k|m)?$/);
+  if(!m)return null;
+  let num=parseFloat(m[2]);
+  if(m[3]==='k')num*=1e3;
+  if(m[3]==='m')num*=1e6;
+  return{op:m[1]||'=',amount:num};
+}
+
+// Alias maps for flexible syntax matching
+const SYNTAX_STAGE_ALIASES={'preseed':'Pre-Seed','pre-seed':'Pre-Seed','seed':'Seed','seriesa':'Series A','series-a':'Series A','a':'Series A','seriesb':'Series B','series-b':'Series B','b':'Series B','growth':'Growth'};
+const SYNTAX_SECTOR_ALIASES={'saas':'SaaS','fintech':'Fintech','healthtech':'HealthTech','health':'HealthTech','ai':'AI/ML','ai/ml':'AI/ML','ml':'AI/ML','consumer':'Consumer','enterprise':'Enterprise','climate':'Climate','crypto':'Crypto','web3':'Crypto','biotech':'Biotech','deeptech':'DeepTech','deep':'DeepTech','edtech':'EdTech','hardware':'Hardware','marketplace':'Marketplace'};
+const SYNTAX_TYPE_ALIASES={'vc':'VC','angel':'Angel','family':'Family Office','familyoffice':'Family Office','family-office':'Family Office','corp':'Corp VC','corpvc':'Corp VC','corp-vc':'Corp VC','corporate':'Corp VC','angelgroup':'Angel Group','angel-group':'Angel Group'};
+const SYNTAX_GEO_ALIASES={'us':'US','usa':'US','eu':'EU','europe':'EU','asia':'Asia','global':'Global'};
+
+function matchSyntaxFilter(inv,structured){
+  // Stage filter from syntax
+  if(structured.stage){
+    const stages=structured.stage.map(s=>SYNTAX_STAGE_ALIASES[s.toLowerCase()]||s);
+    if(!stages.some(s=>inv.stages.some(is=>is.toLowerCase()===s.toLowerCase())))return false;
+  }
+  // Sector filter from syntax
+  if(structured.sector){
+    const sectors=structured.sector.map(s=>SYNTAX_SECTOR_ALIASES[s.toLowerCase()]||s);
+    if(!sectors.some(s=>inv.sectors.some(is=>is.toLowerCase()===s.toLowerCase())))return false;
+  }
+  // Type filter from syntax
+  if(structured.type){
+    const types=structured.type.map(t=>SYNTAX_TYPE_ALIASES[t.toLowerCase()]||t);
+    if(!types.some(t=>inv.type.toLowerCase()===t.toLowerCase()))return false;
+  }
+  // Geo filter from syntax
+  if(structured.geo||structured.geography||structured.location){
+    const geos=[...(structured.geo||[]),...(structured.geography||[]),...(structured.location||[])].map(g=>SYNTAX_GEO_ALIASES[g.toLowerCase()]||g);
+    if(!geos.some(g=>inv.geography.some(ig=>ig.toLowerCase()===g.toLowerCase())||inv.location.toLowerCase().includes(g.toLowerCase())))return false;
+  }
+  // Check size from syntax: check:>500k, check:<5m
+  if(structured.check||structured.checksize){
+    const checks=[...(structured.check||[]),...(structured.checksize||[])];
+    for(const c of checks){
+      const parsed=parseCheckAmount(c);
+      if(!parsed)continue;
+      if(parsed.op==='>'){if(inv.checkSize.max<parsed.amount)return false}
+      else if(parsed.op==='<'){if(inv.checkSize.min>parsed.amount)return false}
+      else{if(inv.checkSize.max<parsed.amount||inv.checkSize.min>parsed.amount)return false}
+    }
+  }
+  // Active filter from syntax
+  if(structured.active){
+    const val=structured.active[0];
+    if(val==='yes'||val==='true'||val==='1'){if(!inv.activelyDeploying)return false}
+    if(val==='no'||val==='false'||val==='0'){if(inv.activelyDeploying)return false}
+  }
+  // Entity filter from syntax
+  if(structured.entity){
+    if(!structured.entity.some(e=>inv.entity.toLowerCase().startsWith(e.toLowerCase())))return false;
+  }
+  // Firm filter from syntax
+  if(structured.firm){
+    if(!structured.firm.some(f=>(inv.firm||'').toLowerCase().includes(f.toLowerCase())))return false;
+  }
+  return true;
+}
+
+function updateSyntaxIndicator(structured){
+  const el=document.getElementById('syntaxActive');
+  const keys=Object.keys(structured);
+  if(!keys.length){el.classList.remove('show');el.innerHTML='';return}
+  el.classList.add('show');
+  el.innerHTML=keys.map(k=>`<span class="syntax-badge">${k}:${structured[k].join(',')}</span>`).join('');
+}
+
 function filterInvestors(){
-  const q=searchInput.value.toLowerCase();
+  const raw=searchInput.value.toLowerCase();
+  const {structured,freeText}=parseSearchQuery(raw);
   const cMin=+checkMin.value,cMax=+checkMax.value;
   const actMonths=document.getElementById('activityFilter').value;
+
+  // Show/hide syntax help
+  const helpEl=document.getElementById('searchSyntaxHelp');
+  const hasSyntax=Object.keys(structured).length>0;
+  helpEl.classList.toggle('show',raw.length>0&&!hasSyntax&&raw.includes(':')===false);
+  updateSyntaxIndicator(structured);
+
   return investors.filter(inv=>{
-    if(q){
+    // Apply structured syntax filters
+    if(hasSyntax&&!matchSyntaxFilter(inv,structured))return false;
+
+    // Apply free text search (fuzzy)
+    if(freeText){
       const fields=[inv.name,inv.firm,inv.thesis,inv.location,...inv.sectors,...inv.stages,...inv.geography,inv.type].map(s=>(s||'').toLowerCase());
-      const words=q.split(/\s+/);
+      const words=freeText.split(/\s+/).filter(Boolean);
       const match=words.every(w=>fields.some(f=>f.includes(w)));
       if(!match){
-        // Fuzzy: allow 1-char typos for words > 3 chars
         const fuzzy=words.every(w=>{
           if(w.length<=3)return fields.some(f=>f.includes(w));
           return fields.some(f=>{
