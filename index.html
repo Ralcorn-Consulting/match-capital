@@ -88,14 +88,36 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .search-bar .clear-btn:hover{color:var(--text)}
 .search-bar .clear-btn.show{display:block}
 
-/* Filters */
-.filters{display:flex;flex-direction:column;gap:14px;margin-bottom:32px}
+/* Filters — sticky bar */
+.filter-bar{position:sticky;top:60px;z-index:90;background:rgba(7,7,10,0.92);backdrop-filter:blur(16px);margin:0 -24px;padding:0 24px;border-bottom:1px solid transparent;transition:border-color 0.3s,box-shadow 0.3s}
+.filter-bar.stuck{border-bottom-color:var(--border);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
+.filter-bar-header{display:flex;align-items:center;gap:12px;padding:12px 0;cursor:pointer;user-select:none}
+.filter-bar-header h3{font-size:0.85rem;font-weight:600;color:var(--text-muted);display:flex;align-items:center;gap:8px;margin:0}
+.filter-bar-toggle{font-size:0.65rem;color:var(--text-dim);transition:transform 0.3s}
+.filter-bar-toggle.open{transform:rotate(90deg)}
+.filter-count-badge{display:inline-flex;align-items:center;justify-content:center;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:0.65rem;font-weight:700;transition:all var(--transition-spring)}
+.filter-count-badge.hidden{display:none}
+.filter-bar-clear{font-size:0.72rem;color:#f87171;padding:4px 12px;border-radius:16px;border:1px solid rgba(239,68,68,0.2);background:rgba(239,68,68,0.05);transition:all var(--transition-base);margin-left:auto}
+.filter-bar-clear:hover{background:rgba(239,68,68,0.1);border-color:rgba(239,68,68,0.4)}
+.filter-bar-clear.hidden{display:none}
+/* Active filter chips summary */
+.active-chips{display:flex;flex-wrap:wrap;gap:6px;padding:0 0 10px}
+.active-chips:empty{display:none}
+.active-chip{display:inline-flex;align-items:center;gap:5px;padding:4px 10px;border-radius:16px;font-size:0.72rem;font-weight:500;background:rgba(99,102,241,0.1);border:1px solid rgba(99,102,241,0.25);color:var(--accent-light);transition:all var(--transition-base);cursor:default}
+.active-chip .chip-x{cursor:pointer;color:var(--text-dim);font-size:0.8rem;margin-left:2px;transition:color 0.15s;line-height:1}
+.active-chip .chip-x:hover{color:#f87171}
+/* Expand/collapse animation */
+.filters-collapsible{overflow:hidden;transition:max-height 0.35s cubic-bezier(0.4,0,0.2,1),opacity 0.25s ease;max-height:600px;opacity:1}
+.filters-collapsible.collapsed{max-height:0;opacity:0}
+.filters{display:flex;flex-direction:column;gap:14px;padding:4px 0 16px}
 .filter-row{display:flex;flex-wrap:wrap;gap:7px;align-items:center}
 .filter-label{font-size:0.7rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;min-width:80px;flex-shrink:0;font-family:var(--font-mono)}
 .chip{padding:6px 14px;border-radius:20px;border:1px solid var(--border);font-size:0.78rem;font-weight:500;color:var(--text-muted);transition:all var(--transition-spring);white-space:nowrap}
 .chip:hover{border-color:rgba(99,102,241,0.25);color:var(--text);background:rgba(99,102,241,0.03)}
 .chip:active{transform:scale(0.95);transition-duration:0.1s}
 .chip.active{background:rgba(99,102,241,0.1);border-color:rgba(99,102,241,0.35);color:var(--accent-light);box-shadow:0 0 12px rgba(99,102,241,0.06)}
+.chip .chip-count{font-size:0.65rem;color:var(--text-dim);margin-left:2px;font-family:var(--font-mono)}
+.chip.active .chip-count{color:rgba(129,140,248,0.7)}
 .filter-row select{padding:6px 14px;border-radius:20px;border:1px solid var(--border);background:var(--card);font-size:0.78rem;color:var(--text-muted);outline:none;transition:border-color var(--transition-base);cursor:pointer}
 .filter-row select:hover{border-color:var(--border-hover)}
 .filter-row select:focus{border-color:rgba(99,102,241,0.4)}
@@ -106,7 +128,7 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .results-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:0.82rem;color:var(--text-muted);letter-spacing:-0.005em}
 .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
 @media(max-width:900px){.results-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.results-grid{grid-template-columns:1fr}.filter-label{min-width:60px}}
+@media(max-width:600px){.results-grid{grid-template-columns:1fr}.filter-label{min-width:60px}.filter-bar{margin:0 -16px;padding:0 16px}}
 
 /* Clear Filters */
 .clear-filters-btn{padding:4px 12px;border-radius:20px;border:1px solid rgba(239,68,68,0.2);font-size:0.78rem;font-weight:500;color:#f87171;background:rgba(239,68,68,0.05);transition:all var(--transition-base);margin-left:8px}
@@ -456,6 +478,8 @@ footer .links a:hover{color:var(--text)}
   .active-badge .dot{animation:none !important}
   .skeleton-line,.skeleton-circle{animation:none !important}
   html{scroll-behavior:auto !important}
+  .filters-collapsible{transition:none !important}
+  .filter-bar-toggle{transition:none !important}
 }
 
 /* Visually hidden (screen reader only) */
@@ -521,74 +545,84 @@ footer .links a:hover{color:var(--text)}
       <div class="analytics-grid" id="analyticsGrid"></div>
     </div>
 
-    <div class="filters" role="group" aria-label="Investor filters">
-      <div class="filter-row" role="group" aria-label="Stage filter">
-        <span class="filter-label" id="filter-label-stage">Stage</span>
-        <button class="chip" data-filter="stage" data-value="Pre-Seed">Pre-Seed</button>
-        <button class="chip" data-filter="stage" data-value="Seed">Seed</button>
-        <button class="chip" data-filter="stage" data-value="Series A">Series A</button>
-        <button class="chip" data-filter="stage" data-value="Series B">Series B</button>
-        <button class="chip" data-filter="stage" data-value="Growth">Growth</button>
+    <div class="filter-bar" id="filterBar">
+      <div class="filter-bar-header" onclick="toggleFilterSection()">
+        <span class="filter-bar-toggle open" id="filterToggleChevron" aria-hidden="true">▶</span>
+        <h3>Filters <span class="filter-count-badge hidden" id="filterCountBadge">0</span></h3>
+        <button class="filter-bar-clear hidden" id="filterBarClear" onclick="event.stopPropagation();clearAllFilters()" aria-label="Clear all filters">Clear All ✕</button>
       </div>
-      <div class="filter-row" role="group" aria-label="Sector filter">
-        <span class="filter-label" id="filter-label-sector">Sector</span>
-        <button class="chip" data-filter="sector" data-value="SaaS">SaaS</button>
-        <button class="chip" data-filter="sector" data-value="Fintech">Fintech</button>
-        <button class="chip" data-filter="sector" data-value="HealthTech">HealthTech</button>
-        <button class="chip" data-filter="sector" data-value="AI/ML">AI/ML</button>
-        <button class="chip" data-filter="sector" data-value="Consumer">Consumer</button>
-        <button class="chip" data-filter="sector" data-value="Enterprise">Enterprise</button>
-        <button class="chip" data-filter="sector" data-value="Climate">Climate</button>
-        <button class="chip" data-filter="sector" data-value="Crypto">Crypto</button>
-        <button class="chip" data-filter="sector" data-value="Biotech">Biotech</button>
-        <button class="chip" data-filter="sector" data-value="DeepTech">DeepTech</button>
-      </div>
-      <div class="filter-row" role="group" aria-label="Check size filter">
-        <span class="filter-label">Check Size</span>
-        <input type="range" id="checkMin" min="0" max="25000000" step="100000" value="0" aria-label="Minimum check size">
-        <input type="range" id="checkMax" min="0" max="25000000" step="100000" value="25000000" aria-label="Maximum check size">
-        <span class="range-display" id="checkDisplay" aria-live="polite">$0 – $25M+</span>
-      </div>
-      <div class="filter-row" role="group" aria-label="Investor type filter">
-        <span class="filter-label">Type</span>
-        <button class="chip" data-filter="type" data-value="VC">VC</button>
-        <button class="chip" data-filter="type" data-value="Angel">Angel</button>
-        <button class="chip" data-filter="type" data-value="Family Office">Family Office</button>
-        <button class="chip" data-filter="type" data-value="Corp VC">Corp VC</button>
-        <button class="chip" data-filter="type" data-value="Angel Group">Angel Group</button>
-      </div>
-      <div class="filter-row" role="group" aria-label="Entity type filter">
-        <span class="filter-label">Entity</span>
-        <button class="chip" data-filter="entity" data-value="individual">Individuals</button>
-        <button class="chip" data-filter="entity" data-value="organization">Organizations</button>
-      </div>
-      <div class="filter-row" role="group" aria-label="Geography filter">
-        <span class="filter-label">Geography</span>
-        <button class="chip" data-filter="geo" data-value="US">US</button>
-        <button class="chip" data-filter="geo" data-value="EU">EU</button>
-        <button class="chip" data-filter="geo" data-value="Asia">Asia</button>
-        <button class="chip" data-filter="geo" data-value="Global">Global</button>
-      </div>
-      <div class="filter-row" role="group" aria-label="Activity filter">
-        <span class="filter-label">Activity</span>
-        <select id="activityFilter" onchange="renderResults()" aria-label="Filter by activity recency">
-          <option value="any">Any time</option>
-          <option value="3">Last 3 months</option>
-          <option value="6">Last 6 months</option>
-          <option value="12">Last 12 months</option>
-        </select>
-      </div>
-      <div class="filter-row" role="group" aria-label="Sort order">
-        <span class="filter-label">Sort</span>
-        <select id="sortSelect" onchange="renderResults()" aria-label="Sort investors by">
-          <option value="relevance">Relevance</option>
-          <option value="nameAZ">Name A → Z</option>
-          <option value="nameZA">Name Z → A</option>
-          <option value="recent">Recent Activity</option>
-          <option value="checkSize">Check Size (High → Low)</option>
-          <option value="checkSizeAsc">Check Size (Low → High)</option>
-          <option value="location">Location</option>
-        </select>
+      <div class="active-chips" id="activeChips" aria-label="Active filters"></div>
+      <div class="filters-collapsible" id="filtersCollapsible">
+        <div class="filters" role="group" aria-label="Investor filters">
+          <div class="filter-row" role="group" aria-label="Stage filter">
+            <span class="filter-label" id="filter-label-stage">Stage</span>
+            <button class="chip" data-filter="stage" data-value="Pre-Seed">Pre-Seed</button>
+            <button class="chip" data-filter="stage" data-value="Seed">Seed</button>
+            <button class="chip" data-filter="stage" data-value="Series A">Series A</button>
+            <button class="chip" data-filter="stage" data-value="Series B">Series B</button>
+            <button class="chip" data-filter="stage" data-value="Growth">Growth</button>
+          </div>
+          <div class="filter-row" role="group" aria-label="Sector filter">
+            <span class="filter-label" id="filter-label-sector">Sector</span>
+            <button class="chip" data-filter="sector" data-value="SaaS">SaaS</button>
+            <button class="chip" data-filter="sector" data-value="Fintech">Fintech</button>
+            <button class="chip" data-filter="sector" data-value="HealthTech">HealthTech</button>
+            <button class="chip" data-filter="sector" data-value="AI/ML">AI/ML</button>
+            <button class="chip" data-filter="sector" data-value="Consumer">Consumer</button>
+            <button class="chip" data-filter="sector" data-value="Enterprise">Enterprise</button>
+            <button class="chip" data-filter="sector" data-value="Climate">Climate</button>
+            <button class="chip" data-filter="sector" data-value="Crypto">Crypto</button>
+            <button class="chip" data-filter="sector" data-value="Biotech">Biotech</button>
+            <button class="chip" data-filter="sector" data-value="DeepTech">DeepTech</button>
+          </div>
+          <div class="filter-row" role="group" aria-label="Check size filter">
+            <span class="filter-label">Check Size</span>
+            <input type="range" id="checkMin" min="0" max="25000000" step="100000" value="0" aria-label="Minimum check size">
+            <input type="range" id="checkMax" min="0" max="25000000" step="100000" value="25000000" aria-label="Maximum check size">
+            <span class="range-display" id="checkDisplay" aria-live="polite">$0 – $25M+</span>
+          </div>
+          <div class="filter-row" role="group" aria-label="Investor type filter">
+            <span class="filter-label">Type</span>
+            <button class="chip" data-filter="type" data-value="VC">VC</button>
+            <button class="chip" data-filter="type" data-value="Angel">Angel</button>
+            <button class="chip" data-filter="type" data-value="Family Office">Family Office</button>
+            <button class="chip" data-filter="type" data-value="Corp VC">Corp VC</button>
+            <button class="chip" data-filter="type" data-value="Angel Group">Angel Group</button>
+          </div>
+          <div class="filter-row" role="group" aria-label="Entity type filter">
+            <span class="filter-label">Entity</span>
+            <button class="chip" data-filter="entity" data-value="individual">Individuals</button>
+            <button class="chip" data-filter="entity" data-value="organization">Organizations</button>
+          </div>
+          <div class="filter-row" role="group" aria-label="Geography filter">
+            <span class="filter-label">Geography</span>
+            <button class="chip" data-filter="geo" data-value="US">US</button>
+            <button class="chip" data-filter="geo" data-value="EU">EU</button>
+            <button class="chip" data-filter="geo" data-value="Asia">Asia</button>
+            <button class="chip" data-filter="geo" data-value="Global">Global</button>
+          </div>
+          <div class="filter-row" role="group" aria-label="Activity filter">
+            <span class="filter-label">Activity</span>
+            <select id="activityFilter" onchange="renderResults()" aria-label="Filter by activity recency">
+              <option value="any">Any time</option>
+              <option value="3">Last 3 months</option>
+              <option value="6">Last 6 months</option>
+              <option value="12">Last 12 months</option>
+            </select>
+          </div>
+          <div class="filter-row" role="group" aria-label="Sort order">
+            <span class="filter-label">Sort</span>
+            <select id="sortSelect" onchange="renderResults()" aria-label="Sort investors by">
+              <option value="relevance">Relevance</option>
+              <option value="nameAZ">Name A → Z</option>
+              <option value="nameZA">Name Z → A</option>
+              <option value="recent">Recent Activity</option>
+              <option value="checkSize">Check Size (High → Low)</option>
+              <option value="checkSizeAsc">Check Size (Low → High)</option>
+              <option value="location">Location</option>
+            </select>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -712,6 +746,7 @@ async function init(){
   try{const r=await fetch('data/investors.json');if(r.ok)investors=(await r.json()).map(normalizeInvestor);else throw new Error('Fetch failed')}catch(e){investors=[];grid.innerHTML='<div class="no-results"><div class="no-results-icon">⚠️</div>Failed to load investor data.<div class="no-results-hint">Please refresh the page or try again later.</div></div>';return}
   updateSavedCount();
   document.getElementById('investorCountHero').textContent=investors.length;
+  updateChipCounts();
   handleHash();
   renderResults();
 }
@@ -840,6 +875,7 @@ function renderResults(append){
   const clearBtn=document.getElementById('clearFiltersBtn');
   badge.textContent=fc?' ('+fc+' filter'+(fc>1?'s':'')+' active)':'';
   clearBtn.style.display=fc?'inline-block':'none';
+  updateFilterUI();
   const grid=document.getElementById('resultsGrid');
   if(!filtered.length){grid.innerHTML='<div class="no-results"><div class="no-results-icon">🔍</div>No investors match your filters.<div class="no-results-hint">Try removing some filters or broadening your search terms.<br><button class="btn-secondary" onclick="clearAllFilters()" style="margin-top:12px;padding:8px 20px">Clear All Filters</button></div></div>';return}
   const page=filtered.slice(0,showing);
@@ -1515,6 +1551,75 @@ function shareOnTwitter(name,id){
   const url=window.location.origin+window.location.pathname+'#profile/'+id;
   const text='Check out '+name+' on Match Capital — investor discovery for founders';
   window.open('https://twitter.com/intent/tweet?text='+encodeURIComponent(text)+'&url='+encodeURIComponent(url),'_blank','width=550,height=420');
+}
+
+// ===== FILTER BAR =====
+let filtersOpen=true;
+function toggleFilterSection(){
+  filtersOpen=!filtersOpen;
+  document.getElementById('filtersCollapsible').classList.toggle('collapsed',!filtersOpen);
+  document.getElementById('filterToggleChevron').classList.toggle('open',filtersOpen);
+}
+
+// Sticky detection
+const filterBarEl=document.getElementById('filterBar');
+if(filterBarEl&&window.IntersectionObserver){
+  const sentinel=document.createElement('div');
+  sentinel.style.height='1px';sentinel.style.marginBottom='-1px';
+  filterBarEl.parentNode.insertBefore(sentinel,filterBarEl);
+  new IntersectionObserver(([e])=>{filterBarEl.classList.toggle('stuck',!e.isIntersecting)},{threshold:[1]}).observe(sentinel);
+}
+
+// Investor counts per chip
+function updateChipCounts(){
+  if(!investors.length)return;
+  const counts={stage:{},sector:{},type:{},geo:{},entity:{}};
+  investors.forEach(inv=>{
+    inv.stages.forEach(s=>{counts.stage[s]=(counts.stage[s]||0)+1});
+    inv.sectors.forEach(s=>{counts.sector[s]=(counts.sector[s]||0)+1});
+    counts.type[inv.type]=(counts.type[inv.type]||0)+1;
+    inv.geography.forEach(g=>{counts.geo[g]=(counts.geo[g]||0)+1});
+    counts.entity[inv.entity]=(counts.entity[inv.entity]||0)+1;
+  });
+  document.querySelectorAll('.chip[data-filter]').forEach(chip=>{
+    const f=chip.dataset.filter,v=chip.dataset.value;
+    const c=counts[f]?.[v]||0;
+    let span=chip.querySelector('.chip-count');
+    if(!span){span=document.createElement('span');span.className='chip-count';chip.appendChild(span)}
+    span.textContent='('+c+')';
+  });
+}
+
+// Active chips & badge
+function updateFilterUI(){
+  const fc=getActiveFilterCount();
+  const badge=document.getElementById('filterCountBadge');
+  const clearBtn=document.getElementById('filterBarClear');
+  badge.textContent=fc;
+  badge.classList.toggle('hidden',fc===0);
+  clearBtn.classList.toggle('hidden',fc===0);
+
+  // Build active chips
+  const container=document.getElementById('activeChips');
+  let chips=[];
+  Object.entries(activeFilters).forEach(([key,vals])=>{
+    const labels={stage:'Stage',sector:'Sector',type:'Type',geo:'Geo',entity:'Entity'};
+    vals.forEach(v=>{
+      chips.push(`<span class="active-chip">${labels[key]}: ${v} <span class="chip-x" onclick="removeFilter('${key}','${v.replace(/'/g,"\\'")}')" title="Remove">×</span></span>`);
+    });
+  });
+  if(+checkMin.value>0)chips.push(`<span class="active-chip">Min: ${fmt(+checkMin.value)} <span class="chip-x" onclick="checkMin.value=0;updateCheckDisplay();renderResults()" title="Remove">×</span></span>`);
+  if(+checkMax.value<25e6)chips.push(`<span class="active-chip">Max: ${fmt(+checkMax.value)} <span class="chip-x" onclick="checkMax.value=25e6;updateCheckDisplay();renderResults()" title="Remove">×</span></span>`);
+  const actVal=document.getElementById('activityFilter').value;
+  if(actVal!=='any')chips.push(`<span class="active-chip">Activity: Last ${actVal}mo <span class="chip-x" onclick="document.getElementById('activityFilter').value='any';renderResults()" title="Remove">×</span></span>`);
+  container.innerHTML=chips.join('');
+}
+
+function removeFilter(key,value){
+  activeFilters[key]=activeFilters[key].filter(v=>v!==value);
+  // Deactivate matching chip button
+  document.querySelectorAll(`.chip[data-filter="${key}"][data-value="${value}"]`).forEach(c=>{c.classList.remove('active');c.setAttribute('aria-checked','false')});
+  renderResults();
 }
 
 // ===== GO =====
