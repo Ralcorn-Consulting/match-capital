@@ -193,6 +193,41 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .filter-row input[type=range]{width:120px;accent-color:var(--accent)}
 .range-display{font-size:0.78rem;color:var(--text-muted);min-width:100px;font-family:var(--font-mono)}
 
+/* Match Panel */
+.match-panel{margin:16px 0;border:1px solid var(--border);border-radius:var(--radius);background:var(--card);overflow:hidden}
+.match-panel-header{display:flex;align-items:center;gap:10px;padding:14px 18px;cursor:pointer;transition:background var(--transition-base)}
+.match-panel-header:hover{background:var(--card-hover)}
+.match-panel-header h3{font-size:0.9rem;font-weight:600;margin:0}
+.match-panel-toggle{font-size:0.65rem;color:var(--text-muted);transition:transform 0.2s}
+.match-panel-toggle.open{transform:rotate(90deg)}
+.match-panel-status{margin-left:auto;font-size:0.78rem;color:var(--accent-light);font-weight:500}
+.match-panel-body{padding:0 18px 18px}
+.match-hint{font-size:0.82rem;color:var(--text-muted);margin-bottom:14px}
+.match-fields{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(max-width:600px){.match-fields{grid-template-columns:1fr}}
+.match-field label{display:block;font-size:0.78rem;font-weight:600;color:var(--text-muted);margin-bottom:6px;text-transform:uppercase;letter-spacing:0.04em}
+.match-field select{width:100%;padding:8px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.85rem}
+.match-sector-chips{display:flex;flex-wrap:wrap;gap:6px}
+.match-actions{margin-top:12px;display:flex;gap:8px}
+/* Match score badge on cards */
+.match-score-badge{position:absolute;top:10px;left:10px;padding:4px 10px;border-radius:20px;font-size:0.72rem;font-weight:700;letter-spacing:0.02em;z-index:2;backdrop-filter:blur(8px)}
+.match-score-badge.score-high{background:rgba(16,185,129,0.15);color:#10b981;border:1px solid rgba(16,185,129,0.3)}
+.match-score-badge.score-med{background:rgba(234,179,8,0.12);color:#eab308;border:1px solid rgba(234,179,8,0.25)}
+.match-score-badge.score-low{background:rgba(239,68,68,0.1);color:#f87171;border:1px solid rgba(239,68,68,0.2)}
+[data-theme="light"] .match-score-badge.score-high{background:rgba(5,150,105,0.1);color:#047857}
+[data-theme="light"] .match-score-badge.score-med{background:rgba(202,138,4,0.1);color:#a16207}
+[data-theme="light"] .match-score-badge.score-low{background:rgba(220,38,38,0.08);color:#dc2626}
+/* Match score in modal */
+.match-score-modal{display:flex;align-items:center;gap:12px;padding:14px 18px;border-radius:var(--radius-sm);margin-bottom:16px}
+.match-score-modal.score-high{background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.2)}
+.match-score-modal.score-med{background:rgba(234,179,8,0.06);border:1px solid rgba(234,179,8,0.15)}
+.match-score-modal.score-low{background:rgba(239,68,68,0.05);border:1px solid rgba(239,68,68,0.12)}
+.match-score-number{font-size:1.6rem;font-weight:800;font-family:var(--font-mono)}
+.match-score-details{font-size:0.82rem;color:var(--text-muted)}
+.match-score-details strong{color:var(--text);font-weight:600}
+.match-score-bar{height:4px;border-radius:2px;background:var(--border);margin-top:6px;overflow:hidden}
+.match-score-bar-fill{height:100%;border-radius:2px;transition:width 0.4s ease}
+
 /* Results */
 .results-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:0.82rem;color:var(--text-muted);letter-spacing:-0.005em}
 .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -821,8 +856,76 @@ footer .links a:hover{color:var(--text)}
               <option value="checkSize">Check Size (High → Low)</option>
               <option value="checkSizeAsc">Check Size (Low → High)</option>
               <option value="location">Location</option>
+              <option value="matchScore">Match Score (Best First)</option>
             </select>
           </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- MATCH SCORING PANEL -->
+    <div class="match-panel" id="matchPanel">
+      <div class="match-panel-header" onclick="toggleMatchPanel()">
+        <span class="match-panel-toggle" id="matchToggleChevron" aria-hidden="true">▶</span>
+        <h3>🎯 Match Score — Describe Your Startup</h3>
+        <span class="match-panel-status" id="matchStatus"></span>
+      </div>
+      <div class="match-panel-body" id="matchPanelBody" style="display:none">
+        <p class="match-hint">Tell us about your startup and we'll score each investor on how well they match your needs.</p>
+        <div class="match-fields">
+          <div class="match-field">
+            <label>Stage</label>
+            <select id="matchStage" onchange="computeMatchScores()">
+              <option value="">Select...</option>
+              <option value="Pre-Seed">Pre-Seed</option>
+              <option value="Seed">Seed</option>
+              <option value="Series A">Series A</option>
+              <option value="Series B">Series B</option>
+              <option value="Growth">Growth</option>
+            </select>
+          </div>
+          <div class="match-field">
+            <label>Sectors (select all that apply)</label>
+            <div class="match-sector-chips" id="matchSectorChips">
+              <button class="chip" onclick="toggleMatchSector(this,'SaaS')">SaaS</button>
+              <button class="chip" onclick="toggleMatchSector(this,'Fintech')">Fintech</button>
+              <button class="chip" onclick="toggleMatchSector(this,'HealthTech')">HealthTech</button>
+              <button class="chip" onclick="toggleMatchSector(this,'AI/ML')">AI/ML</button>
+              <button class="chip" onclick="toggleMatchSector(this,'Consumer')">Consumer</button>
+              <button class="chip" onclick="toggleMatchSector(this,'Enterprise')">Enterprise</button>
+              <button class="chip" onclick="toggleMatchSector(this,'Climate')">Climate</button>
+              <button class="chip" onclick="toggleMatchSector(this,'Crypto')">Crypto</button>
+              <button class="chip" onclick="toggleMatchSector(this,'Biotech')">Biotech</button>
+              <button class="chip" onclick="toggleMatchSector(this,'DeepTech')">DeepTech</button>
+            </div>
+          </div>
+          <div class="match-field">
+            <label>Raise Amount</label>
+            <select id="matchRaise" onchange="computeMatchScores()">
+              <option value="">Select...</option>
+              <option value="100000">~$100K</option>
+              <option value="250000">~$250K</option>
+              <option value="500000">~$500K</option>
+              <option value="1000000">~$1M</option>
+              <option value="2000000">~$2M</option>
+              <option value="5000000">~$5M</option>
+              <option value="10000000">~$10M</option>
+              <option value="25000000">~$25M+</option>
+            </select>
+          </div>
+          <div class="match-field">
+            <label>Geography</label>
+            <select id="matchGeo" onchange="computeMatchScores()">
+              <option value="">Select...</option>
+              <option value="US">US</option>
+              <option value="EU">EU</option>
+              <option value="Asia">Asia</option>
+              <option value="Global">Global</option>
+            </select>
+          </div>
+        </div>
+        <div class="match-actions">
+          <button class="btn-secondary" onclick="clearMatchProfile()">Clear</button>
         </div>
       </div>
     </div>
@@ -1213,6 +1316,7 @@ function filterInvestors(){
 
 function sortInvestors(list){
   const s=document.getElementById('sortSelect').value;
+  if(s==='matchScore')return[...list].sort((a,b)=>(b._matchScore||0)-(a._matchScore||0));
   if(s==='recent')return[...list].sort((a,b)=>new Date(b.lastActive)-new Date(a.lastActive));
   if(s==='checkSize')return[...list].sort((a,b)=>b.checkSize.max-a.checkSize.max);
   if(s==='checkSizeAsc')return[...list].sort((a,b)=>a.checkSize.min-b.checkSize.min);
@@ -1220,6 +1324,115 @@ function sortInvestors(list){
   if(s==='nameZA')return[...list].sort((a,b)=>b.name.localeCompare(a.name));
   if(s==='location')return[...list].sort((a,b)=>(a.location||'').localeCompare(b.location||''));
   return list;
+}
+
+// ===== MATCH SCORING =====
+let matchProfile={stage:'',sectors:[],raise:'',geo:''};
+let matchScoresActive=false;
+
+function toggleMatchPanel(){
+  const body=document.getElementById('matchPanelBody');
+  const chev=document.getElementById('matchToggleChevron');
+  const open=body.style.display==='none';
+  body.style.display=open?'block':'none';
+  chev.classList.toggle('open',open);
+}
+
+function toggleMatchSector(btn,sector){
+  btn.classList.toggle('active');
+  const idx=matchProfile.sectors.indexOf(sector);
+  if(idx>=0)matchProfile.sectors.splice(idx,1);else matchProfile.sectors.push(sector);
+  computeMatchScores();
+}
+
+function clearMatchProfile(){
+  matchProfile={stage:'',sectors:[],raise:'',geo:''};
+  document.getElementById('matchStage').value='';
+  document.getElementById('matchRaise').value='';
+  document.getElementById('matchGeo').value='';
+  document.querySelectorAll('#matchSectorChips .chip').forEach(c=>c.classList.remove('active'));
+  matchScoresActive=false;
+  investors.forEach(inv=>inv._matchScore=0);
+  document.getElementById('matchStatus').textContent='';
+  renderResults();
+}
+
+function getMatchProfile(){
+  return{
+    stage:document.getElementById('matchStage').value,
+    sectors:matchProfile.sectors,
+    raise:+document.getElementById('matchRaise').value||0,
+    geo:document.getElementById('matchGeo').value
+  };
+}
+
+function computeMatchScores(){
+  const p=getMatchProfile();
+  const hasInput=p.stage||p.sectors.length||p.raise||p.geo;
+  matchScoresActive=!!hasInput;
+  if(!hasInput){
+    investors.forEach(inv=>inv._matchScore=0);
+    document.getElementById('matchStatus').textContent='';
+    renderResults();return;
+  }
+
+  const stageMap={'Pre-Seed':'pre_seed','Seed':'seed','Series A':'series_a','Series B':'series_b','Growth':'growth'};
+  const stageNorm=stageMap[p.stage]||p.stage.toLowerCase();
+
+  investors.forEach(inv=>{
+    let score=0,max=0;
+
+    // Stage match (0-30 pts)
+    if(p.stage){
+      max+=30;
+      const invStages=inv.stages.map(s=>s.toLowerCase().replace(/[\s-]/g,'_'));
+      if(invStages.includes(stageNorm))score+=30;
+      else{
+        // Adjacent stage partial credit
+        const order=['pre_seed','seed','series_a','series_b','growth'];
+        const pi=order.indexOf(stageNorm);
+        const closest=Math.min(...invStages.map(s=>Math.abs(order.indexOf(s)-pi)).filter(d=>d>0));
+        if(closest===1)score+=15;
+        else if(closest===2)score+=5;
+      }
+    }
+
+    // Sector overlap (0-30 pts)
+    if(p.sectors.length){
+      max+=30;
+      const invSectors=inv.sectors.map(s=>s.toLowerCase().replace(/[\/\s]/g,''));
+      const pSectors=p.sectors.map(s=>s.toLowerCase().replace(/[\/\s]/g,''));
+      const overlap=pSectors.filter(s=>invSectors.some(is=>is.includes(s)||s.includes(is))).length;
+      score+=Math.min(30,Math.round((overlap/pSectors.length)*30));
+    }
+
+    // Check size / raise fit (0-25 pts)
+    if(p.raise){
+      max+=25;
+      const min=inv.checkSize.min,mx=inv.checkSize.max;
+      if(p.raise>=min&&p.raise<=mx)score+=25;
+      else if(p.raise>=min*0.5&&p.raise<=mx*2)score+=15;
+      else if(p.raise>=min*0.2&&p.raise<=mx*5)score+=5;
+    }
+
+    // Geography (0-15 pts)
+    if(p.geo){
+      max+=15;
+      const invGeo=inv.geography.map(g=>g.toLowerCase());
+      const pGeo=p.geo.toLowerCase();
+      if(invGeo.includes(pGeo)||invGeo.includes('global'))score+=15;
+      else if(pGeo==='global')score+=10;
+    }
+
+    inv._matchScore=max>0?Math.round((score/max)*100):0;
+  });
+
+  const matched=investors.filter(i=>i._matchScore>=50).length;
+  document.getElementById('matchStatus').textContent=matched+' strong match'+(matched!==1?'es':'');
+
+  // Auto-sort by match score
+  document.getElementById('sortSelect').value='matchScore';
+  renderResults();
 }
 
 function getActiveFilterCount(){
@@ -1357,7 +1570,9 @@ function cardHTML(inv,idx){
   const avatarClass=isOrg?'avatar avatar-org':'avatar';
   const avatarContent=isOrg?'🏢':initials(inv.name);
   const firmLine=isOrg?(inv.memberCount?`<div class="firm"><span class="member-count-badge">👥 ${inv.memberCount} members</span></div>`:''):`<div class="firm">${inv.firm||''}</div>`;
-  return`<div class="investor-card" onclick="openProfile('${inv.id}')" style="animation-delay:${delay}s" role="listitem" tabindex="0" aria-label="${inv.name}, ${inv.firm||inv.type}, ${inv.stages.join(', ')}" data-investor-id="${inv.id}" onkeydown="cardKeyHandler(event,'${inv.id}')">
+  const matchBadge=matchScoresActive&&inv._matchScore>0?`<div class="match-score-badge ${inv._matchScore>=70?'score-high':inv._matchScore>=40?'score-med':'score-low'}">${inv._matchScore}% match</div>`:'';
+  return`<div class="investor-card" onclick="openProfile('${inv.id}')" style="animation-delay:${delay}s" role="listitem" tabindex="0" aria-label="${inv.name}, ${inv.firm||inv.type}, ${inv.stages.join(', ')}${matchScoresActive?' Match score '+inv._matchScore+'%':''}" data-investor-id="${inv.id}" onkeydown="cardKeyHandler(event,'${inv.id}')">
+    ${matchBadge}
     <button class="compare-btn ${isCompared?'selected':''}" onclick="event.stopPropagation();toggleCompare('${inv.id}')" aria-label="${isCompared?'Remove '+inv.name+' from comparison':'Add '+inv.name+' to comparison'}" aria-pressed="${isCompared}">
       ${isCompared?'✓':'＋'}
     </button>
@@ -1463,6 +1678,14 @@ function openProfile(id){
       </div>
     </div>
     <div class="modal-body">
+      ${matchScoresActive&&inv._matchScore>0?`
+      <div class="match-score-modal ${inv._matchScore>=70?'score-high':inv._matchScore>=40?'score-med':'score-low'}">
+        <div class="match-score-number">${inv._matchScore}%</div>
+        <div class="match-score-details">
+          <strong>Match Score</strong> — Based on your startup profile
+          <div class="match-score-bar"><div class="match-score-bar-fill" style="width:${inv._matchScore}%;background:${inv._matchScore>=70?'#10b981':inv._matchScore>=40?'#eab308':'#f87171'}"></div></div>
+        </div>
+      </div>`:''}
       <div class="social-proof">
         <div class="proof-item">📊 <span class="proof-val">${portfolioCount}</span> portfolio companies</div>
         <div class="proof-item">💰 <span class="proof-val">${fmt(inv.checkSize.min)}–${fmt(inv.checkSize.max)}</span> checks</div>
