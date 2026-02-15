@@ -345,6 +345,31 @@ footer .links a:hover{color:var(--text)}
 .delete-list-btn{font-size:0.75rem;color:var(--text-dim);padding:4px 8px;border-radius:4px;transition:all 0.2s;margin-left:auto}
 .delete-list-btn:hover{color:#f87171;background:rgba(239,68,68,0.1)}
 
+/* List tab context menu */
+.list-tab-menu{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px;z-index:300;box-shadow:0 8px 30px rgba(0,0,0,0.5);min-width:140px}
+.list-tab-menu-item{padding:8px 12px;border-radius:6px;font-size:0.82rem;color:var(--text-muted);cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:8px}
+.list-tab-menu-item:hover{background:rgba(255,255,255,0.05);color:var(--text)}
+.list-tab-menu-item.danger{color:#f87171}
+.list-tab-menu-item.danger:hover{background:rgba(239,68,68,0.1)}
+
+/* Move to list dropdown on cards in saved view */
+.card-move-btn{position:absolute;top:12px;left:12px;padding:4px 10px;border-radius:16px;border:1px solid var(--border);background:var(--card);font-size:0.7rem;color:var(--text-dim);z-index:2;transition:all 0.2s;opacity:0}
+.investor-card:hover .card-move-btn{opacity:1}
+.card-move-btn:hover{border-color:var(--accent);color:var(--accent-light);background:rgba(99,102,241,0.08)}
+.card-move-menu{position:absolute;top:100%;left:0;margin-top:4px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:4px;z-index:10;box-shadow:0 8px 30px rgba(0,0,0,0.4);min-width:160px}
+.card-move-menu-item{padding:7px 12px;border-radius:6px;font-size:0.8rem;color:var(--text-muted);cursor:pointer;transition:background 0.15s;display:flex;align-items:center;gap:6px}
+.card-move-menu-item:hover{background:rgba(255,255,255,0.05);color:var(--text)}
+.card-move-menu-item.in-list{color:var(--accent)}
+.card-move-menu-item.remove{color:#f87171}
+.card-move-menu-item.remove:hover{background:rgba(239,68,68,0.08)}
+
+/* Inline rename input in tabs */
+.list-tab-rename{padding:6px 12px;border-radius:20px;border:1px solid var(--accent);background:var(--bg);font-size:0.8rem;color:var(--text);outline:none;font-family:inherit;width:140px}
+
+/* Saved section improvements */
+.saved-header-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:8px}
+.saved-list-info{font-size:0.82rem;color:var(--text-dim)}
+
 /* ===== ANALYTICS PANEL ===== */
 .analytics-toggle{display:flex;align-items:center;gap:8px;margin-bottom:16px;cursor:pointer;user-select:none;font-size:0.85rem;color:var(--text-muted);transition:color 0.2s}
 .analytics-toggle:hover{color:var(--text)}
@@ -578,12 +603,14 @@ footer .links a:hover{color:var(--text)}
 <section id="saved-section" aria-label="Saved investors">
   <div class="container">
     <h2>Investor Lists</h2>
-    <p class="subtitle">Organize your investors into named lists for outreach.</p>
+    <p class="subtitle">Organize your investors into named lists for outreach. Right-click a tab to rename or delete.</p>
     <div class="list-tabs" id="listTabs"></div>
-    <div class="saved-actions" id="savedActions">
-      <button class="btn-secondary" onclick="exportCSV()">Export CSV ↓</button>
-      <button class="btn-secondary" onclick="clearCurrentList()">Clear List</button>
-      <button class="btn-secondary" onclick="deleteCurrentList()" id="deleteListBtn" style="color:#f87171">Delete List</button>
+    <div class="saved-header-row">
+      <span class="saved-list-info" id="savedListInfo"></span>
+      <div class="saved-actions" id="savedActions" style="margin-bottom:0">
+        <button class="btn-secondary" onclick="exportCSV()" style="padding:8px 16px;font-size:0.82rem">↓ Export CSV</button>
+        <button class="btn-secondary" onclick="clearCurrentList()" style="padding:8px 16px;font-size:0.82rem">Clear</button>
+      </div>
     </div>
     <div class="results-grid" id="savedGrid"></div>
     <div class="saved-empty" id="savedEmpty">No saved investors yet. Browse and save investors you're interested in.</div>
@@ -1161,23 +1188,100 @@ function renderSaved(){
   const saved=investors.filter(i=>ids.includes(i.id));
   const grid=document.getElementById('savedGrid');
   const empty=document.getElementById('savedEmpty');
-  const delBtn=document.getElementById('deleteListBtn');
-  // Only allow deleting non-default lists
-  delBtn.style.display=(currentListName==='Saved')?'none':'';
-  if(!saved.length){grid.innerHTML='';empty.style.display='';empty.textContent='No investors in "'+currentListName+'" yet.';return}
+  const info=document.getElementById('savedListInfo');
+  info.textContent=saved.length?saved.length+' investor'+(saved.length!==1?'s':'')+' in "'+currentListName+'"':'';
+  if(!saved.length){grid.innerHTML='';empty.style.display='';empty.textContent='No investors in "'+currentListName+'" yet. Browse and save investors to get started.';return}
   empty.style.display='none';
-  grid.innerHTML=saved.map(cardHTML).join('');
+  grid.innerHTML=saved.map((inv,i)=>savedCardHTML(inv,i)).join('');
+}
+function savedCardHTML(inv,idx){
+  // Like cardHTML but with move/remove controls
+  let html=cardHTML(inv,idx);
+  // Inject move button after compare-btn
+  const moveBtn=`<div class="card-move-btn" onclick="event.stopPropagation();toggleCardMoveMenu(this,'${inv.id}')">⇄ Lists</div>`;
+  html=html.replace('</button>\n    <div class="card-header">',`</button>\n    ${moveBtn}\n    <div class="card-header">`);
+  return html;
+}
+function toggleCardMoveMenu(btn,investorId){
+  // Close any open menus
+  document.querySelectorAll('.card-move-menu').forEach(m=>m.remove());
+  const menu=document.createElement('div');
+  menu.className='card-move-menu';
+  const lists=Object.keys(namedLists);
+  menu.innerHTML=lists.map(name=>{
+    const isIn=(namedLists[name]||[]).includes(investorId);
+    return`<div class="card-move-menu-item ${isIn?'in-list':''}" onclick="event.stopPropagation();toggleInListAndRefresh('${investorId}','${name.replace(/'/g,"\\'")}')">
+      ${isIn?'✓':'○'} ${name}</div>`;
+  }).join('')+`<div class="card-move-menu-item remove" onclick="event.stopPropagation();removeFromCurrentList('${investorId}')">✕ Remove from "${currentListName}"</div>`;
+  btn.style.position='relative';
+  btn.appendChild(menu);
+  const close=e=>{if(!btn.contains(e.target)){menu.remove();document.removeEventListener('click',close)}};
+  setTimeout(()=>document.addEventListener('click',close),0);
+}
+function toggleInListAndRefresh(investorId,listName){
+  if(!namedLists[listName])namedLists[listName]=[];
+  const list=namedLists[listName];
+  const idx=list.indexOf(investorId);
+  if(idx>=0)list.splice(idx,1);else list.push(investorId);
+  saveLists();updateSavedCount();renderSaved();
+}
+function removeFromCurrentList(investorId){
+  const list=namedLists[currentListName]||[];
+  const idx=list.indexOf(investorId);
+  if(idx>=0){list.splice(idx,1);saveLists();updateSavedCount();renderSaved()}
 }
 function renderListTabs(){
   const tabs=document.getElementById('listTabs');
   tabs.innerHTML=Object.entries(namedLists).map(([name,ids])=>{
-    return`<button class="list-tab ${name===currentListName?'active':''}" onclick="currentListName='${name.replace(/'/g,"\\'")}';renderSaved()">${name} <span class="count">${ids.length}</span></button>`;
+    const esc=name.replace(/'/g,"\\'");
+    return`<button class="list-tab ${name===currentListName?'active':''}" onclick="currentListName='${esc}';renderSaved()" oncontextmenu="event.preventDefault();showListTabMenu(event,'${esc}')">${name} <span class="count">${ids.length}</span></button>`;
   }).join('')+`<button class="list-tab" onclick="promptNewList()" style="border-style:dashed">+ New List</button>`;
+}
+function showListTabMenu(e,listName){
+  document.querySelectorAll('.list-tab-menu').forEach(m=>m.remove());
+  const menu=document.createElement('div');
+  menu.className='list-tab-menu';
+  menu.style.left=e.pageX+'px';menu.style.top=e.pageY+'px';menu.style.position='fixed';
+  let items=`<div class="list-tab-menu-item" onclick="renameList('${listName.replace(/'/g,"\\'")}')">✏️ Rename</div>`;
+  items+=`<div class="list-tab-menu-item" onclick="duplicateList('${listName.replace(/'/g,"\\'")}')">📋 Duplicate</div>`;
+  if(listName!=='Saved')items+=`<div class="list-tab-menu-item danger" onclick="deleteNamedList('${listName.replace(/'/g,"\\'")}')">🗑 Delete</div>`;
+  menu.innerHTML=items;
+  document.body.appendChild(menu);
+  const close=()=>{menu.remove();document.removeEventListener('click',close)};
+  setTimeout(()=>document.addEventListener('click',close),0);
+}
+function renameList(oldName){
+  document.querySelectorAll('.list-tab-menu').forEach(m=>m.remove());
+  const newName=prompt('Rename "'+oldName+'" to:',oldName);
+  if(!newName||!newName.trim()||newName.trim()===oldName)return;
+  const trimmed=newName.trim();
+  if(namedLists[trimmed]){alert('A list named "'+trimmed+'" already exists.');return}
+  // Preserve order
+  const entries=Object.entries(namedLists);
+  const newLists={};
+  entries.forEach(([k,v])=>{newLists[k===oldName?trimmed:k]=v});
+  namedLists=newLists;
+  if(currentListName===oldName)currentListName=trimmed;
+  saveLists();renderSaved();
+}
+function duplicateList(name){
+  document.querySelectorAll('.list-tab-menu').forEach(m=>m.remove());
+  let newName=name+' (copy)';let i=2;
+  while(namedLists[newName]){newName=name+' (copy '+i+')';i++}
+  namedLists[newName]=[...(namedLists[name]||[])];
+  saveLists();currentListName=newName;renderSaved();
+}
+function deleteNamedList(name){
+  document.querySelectorAll('.list-tab-menu').forEach(m=>m.remove());
+  if(!confirm('Delete list "'+name+'"?'))return;
+  delete namedLists[name];saveLists();
+  if(currentListName===name)currentListName=Object.keys(namedLists)[0]||'Saved';
+  updateSavedCount();renderSaved();
 }
 function promptNewList(){
   const name=prompt('New list name:');
   if(name&&name.trim()&&!namedLists[name.trim()]){
-    namedLists[name.trim()]=[];saveLists();currentListName=name.trim();renderSaved();
+    namedLists[name.trim()]=[];saveLists();currentListName=name.trim();renderSaved();updateSavedCount();
   }
 }
 
@@ -1193,13 +1297,6 @@ function exportCSV(){
 function clearCurrentList(){
   if(!confirm('Clear all investors from "'+currentListName+'"?'))return;
   namedLists[currentListName]=[];saveLists();updateSavedCount();renderSaved();
-}
-function deleteCurrentList(){
-  if(currentListName==='Saved')return;
-  if(!confirm('Delete list "'+currentListName+'"?'))return;
-  delete namedLists[currentListName];saveLists();
-  currentListName=Object.keys(namedLists)[0]||'Saved';
-  updateSavedCount();renderSaved();
 }
 
 // ===== COMPARE =====
