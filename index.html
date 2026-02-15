@@ -463,6 +463,70 @@ footer .links a:hover{color:var(--text)}
 /* Inline rename input in tabs */
 .list-tab-rename{padding:6px 12px;border-radius:20px;border:1px solid var(--accent);background:var(--bg);font-size:0.8rem;color:var(--text);outline:none;font-family:inherit;width:140px}
 
+/* ===== QUICK NOTES & TAGS ===== */
+.card-notes-bar{padding:8px 12px 4px;border-top:1px solid var(--border);margin-top:auto}
+.card-note-preview{font-size:0.72rem;color:var(--text-muted);line-height:1.4;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden;margin-bottom:4px;font-style:italic;opacity:0.8}
+.card-user-tags{display:flex;flex-wrap:wrap;gap:3px}
+.user-tag{padding:2px 7px;border-radius:10px;font-size:0.62rem;font-weight:600;letter-spacing:0.02em;border:1px solid transparent}
+.user-tag-red{background:rgba(239,68,68,0.12);color:#f87171;border-color:rgba(239,68,68,0.2)}
+.user-tag-orange{background:rgba(249,115,22,0.12);color:#fb923c;border-color:rgba(249,115,22,0.2)}
+.user-tag-yellow{background:rgba(234,179,8,0.12);color:#facc15;border-color:rgba(234,179,8,0.2)}
+.user-tag-green{background:rgba(34,197,94,0.12);color:#4ade80;border-color:rgba(34,197,94,0.2)}
+.user-tag-blue{background:rgba(59,130,246,0.12);color:#60a5fa;border-color:rgba(59,130,246,0.2)}
+.user-tag-purple{background:rgba(168,85,247,0.12);color:#c084fc;border-color:rgba(168,85,247,0.2)}
+.user-tag-pink{background:rgba(236,72,153,0.12);color:#f472b6;border-color:rgba(236,72,153,0.2)}
+[data-theme="light"] .user-tag-red{background:rgba(239,68,68,0.08);color:#dc2626}
+[data-theme="light"] .user-tag-orange{background:rgba(249,115,22,0.08);color:#ea580c}
+[data-theme="light"] .user-tag-yellow{background:rgba(234,179,8,0.08);color:#a16207}
+[data-theme="light"] .user-tag-green{background:rgba(34,197,94,0.08);color:#16a34a}
+[data-theme="light"] .user-tag-blue{background:rgba(59,130,246,0.08);color:#2563eb}
+[data-theme="light"] .user-tag-purple{background:rgba(168,85,247,0.08);color:#9333ea}
+[data-theme="light"] .user-tag-pink{background:rgba(236,72,153,0.08);color:#db2777}
+
+/* Notes editor in modal */
+.notes-section{margin-top:16px;padding:16px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-sm)}
+[data-theme="light"] .notes-section{background:rgba(0,0,0,0.02)}
+.notes-section h3{font-size:0.9rem;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.notes-section h3 .notes-icon{font-size:1rem}
+.note-textarea{width:100%;min-height:70px;max-height:200px;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg);color:var(--text);font-family:inherit;font-size:0.82rem;line-height:1.5;resize:vertical;transition:border-color var(--transition-base);outline:none}
+.note-textarea:focus{border-color:var(--accent)}
+.note-textarea::placeholder{color:var(--text-dim)}
+.note-save-hint{font-size:0.68rem;color:var(--text-dim);margin-top:6px;opacity:0;transition:opacity 0.3s}
+.note-save-hint.show{opacity:1}
+
+/* Tag editor */
+.tag-editor{margin-top:12px}
+.tag-editor-label{font-size:0.78rem;color:var(--text-muted);margin-bottom:8px;font-weight:500}
+.tag-editor-list{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:8px}
+.tag-editor-list .user-tag{cursor:pointer;transition:all 0.15s;padding:4px 10px;font-size:0.72rem}
+.tag-editor-list .user-tag:hover{opacity:0.7}
+.tag-editor-list .user-tag.selected{box-shadow:0 0 0 2px var(--accent);opacity:1}
+.tag-editor-list .user-tag .tag-x{margin-left:4px;opacity:0.5;font-size:0.65rem}
+.tag-editor-list .user-tag .tag-x:hover{opacity:1}
+.tag-add-row{display:flex;gap:6px;align-items:center}
+.tag-add-input{padding:6px 10px;border-radius:16px;border:1px solid var(--border);background:var(--bg);color:var(--text);font-size:0.76rem;font-family:inherit;outline:none;width:120px;transition:border-color var(--transition-base)}
+.tag-add-input:focus{border-color:var(--accent)}
+.tag-color-picker{display:flex;gap:4px}
+.tag-color-dot{width:18px;height:18px;border-radius:50%;cursor:pointer;border:2px solid transparent;transition:all 0.15s}
+.tag-color-dot:hover{transform:scale(1.2)}
+.tag-color-dot.selected{border-color:var(--text);transform:scale(1.15)}
+.tag-color-dot-red{background:#ef4444}
+.tag-color-dot-orange{background:#f97316}
+.tag-color-dot-yellow{background:#eab308}
+.tag-color-dot-green{background:#22c55e}
+.tag-color-dot-blue{background:#3b82f6}
+.tag-color-dot-purple{background:#a855f7}
+.tag-color-dot-pink{background:#ec4899}
+.tag-add-btn{padding:5px 12px;border-radius:16px;border:1px solid var(--border);background:var(--bg);color:var(--text-muted);font-size:0.72rem;font-family:inherit;cursor:pointer;transition:all 0.15s}
+.tag-add-btn:hover{border-color:var(--accent);color:var(--accent-light)}
+
+/* Saved view tag filter */
+.saved-tag-filter{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:16px;align-items:center}
+.saved-tag-filter-label{font-size:0.76rem;color:var(--text-dim);margin-right:4px}
+.saved-tag-filter .user-tag{cursor:pointer;transition:all 0.15s;padding:3px 9px;font-size:0.68rem}
+.saved-tag-filter .user-tag:hover{opacity:0.8}
+.saved-tag-filter .user-tag.filter-active{box-shadow:0 0 0 2px var(--accent)}
+
 /* Saved section improvements */
 .saved-header-row{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:8px}
 .saved-list-info{font-size:0.82rem;color:var(--text-dim)}
@@ -730,6 +794,7 @@ footer .links a:hover{color:var(--text)}
         <button class="btn-secondary" onclick="clearCurrentList()" style="padding:8px 16px;font-size:0.82rem">Clear</button>
       </div>
     </div>
+    <div class="saved-tag-filter" id="savedTagFilter" style="display:none"></div>
     <div class="results-grid" id="savedGrid"></div>
     <div class="saved-empty" id="savedEmpty">No saved investors yet. Browse and save investors you're interested in.</div>
   </div>
@@ -1196,6 +1261,7 @@ function openProfile(id){
           <button class="share-btn" onclick="shareOnTwitter('${inv.name.replace(/'/g,"\\'")}','${inv.id}')">𝕏 Share on X</button>
         </div>
       </div>
+      ${notesTagsModalHTML(id)}
       <div style="text-align:center;margin-top:12px">
         <p style="font-size:0.8rem;color:var(--text-dim)">Are you ${inv.name}? <a href="mailto:hello@matchcapital.ai?subject=Claim Profile: ${encodeURIComponent(inv.name)}" style="color:var(--accent)">Claim this profile</a></p>
       </div>
@@ -1329,21 +1395,30 @@ function updateSavedCount(){
 function renderSaved(){
   renderListTabs();
   const ids=namedLists[currentListName]||[];
-  const saved=investors.filter(i=>ids.includes(i.id));
+  let saved=investors.filter(i=>ids.includes(i.id));
   const grid=document.getElementById('savedGrid');
   const empty=document.getElementById('savedEmpty');
   const info=document.getElementById('savedListInfo');
-  info.textContent=saved.length?saved.length+' investor'+(saved.length!==1?'s':'')+' in "'+currentListName+'"':'';
-  if(!saved.length){grid.innerHTML='';empty.style.display='';empty.textContent='No investors in "'+currentListName+'" yet. Browse and save investors to get started.';return}
+  // Tag filter
+  renderSavedTagFilter(ids);
+  if(savedTagFilter){
+    const allTags=loadInvestorTags();
+    saved=saved.filter(inv=>(allTags[inv.id]||[]).includes(savedTagFilter));
+  }
+  info.textContent=saved.length?saved.length+' investor'+(saved.length!==1?'s':'')+' in "'+currentListName+'"'+(savedTagFilter?' · filtered by "'+savedTagFilter+'"':''):'';
+  if(!saved.length){grid.innerHTML='';empty.style.display='';empty.textContent=savedTagFilter?'No investors with tag "'+savedTagFilter+'" in this list.':'No investors in "'+currentListName+'" yet. Browse and save investors to get started.';return}
   empty.style.display='none';
   grid.innerHTML=saved.map((inv,i)=>savedCardHTML(inv,i)).join('');
 }
 function savedCardHTML(inv,idx){
-  // Like cardHTML but with move/remove controls
+  // Like cardHTML but with move/remove controls + notes/tags
   let html=cardHTML(inv,idx);
   // Inject move button after compare-btn
   const moveBtn=`<div class="card-move-btn" onclick="event.stopPropagation();toggleCardMoveMenu(this,'${inv.id}')">⇄ Lists</div>`;
   html=html.replace('</button>\n    <div class="card-header">',`</button>\n    ${moveBtn}\n    <div class="card-header">`);
+  // Append notes/tags bar before closing div
+  const ntHTML=notesTagsHTML(inv.id);
+  if(ntHTML)html=html.replace(/<\/div>$/,ntHTML+'</div>');
   return html;
 }
 function toggleCardMoveMenu(btn,investorId){
@@ -1432,8 +1507,8 @@ function promptNewList(){
 function exportCSV(){
   const ids=namedLists[currentListName]||[];
   const saved=investors.filter(i=>ids.includes(i.id));if(!saved.length)return;
-  const rows=[['Name','Title','Firm','Type','Stages','Sectors','Check Min','Check Max','Location','Active','Website']];
-  saved.forEach(i=>rows.push([i.name,i.title,i.firm,i.type,i.stages.join('; '),i.sectors.join('; '),i.checkSize.min,i.checkSize.max,i.location,i.activelyDeploying,i.links.website||'']));
+  const rows=[['Name','Title','Firm','Type','Stages','Sectors','Check Min','Check Max','Location','Active','Website','Notes','Tags']];
+  saved.forEach(i=>{const note=getInvestorNote(i.id);const tags=getInvestorTags(i.id).map(t=>t.name).join('; ');rows.push([i.name,i.title,i.firm,i.type,i.stages.join('; '),i.sectors.join('; '),i.checkSize.min,i.checkSize.max,i.location,i.activelyDeploying,i.links.website||'',note,tags])});
   const csv=rows.map(r=>r.map(c=>'"'+(c+'').replace(/"/g,'""')+'"').join(',')).join('\n');
   const blob=new Blob([csv],{type:'text/csv'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='match-capital-'+currentListName.toLowerCase().replace(/\s+/g,'-')+'.csv';a.click();
 }
@@ -1782,6 +1857,187 @@ function renderRecentlyViewed(){
       <div class="rv-time">${timeAgo(r.ts)}</div>
     </div>`;
   }).join('');
+}
+
+// ===== QUICK NOTES & TAGS =====
+const TAG_COLORS=['red','orange','yellow','green','blue','purple','pink'];
+function loadInvestorNotes(){return JSON.parse(localStorage.getItem('mc_notes')||'{}')}
+function saveInvestorNotes(notes){localStorage.setItem('mc_notes',JSON.stringify(notes))}
+function loadInvestorTags(){return JSON.parse(localStorage.getItem('mc_tags')||'{}')}
+function saveInvestorTags(tags){localStorage.setItem('mc_tags',JSON.stringify(tags))}
+function loadTagDefs(){return JSON.parse(localStorage.getItem('mc_tag_defs')||'[]')}
+function saveTagDefs(defs){localStorage.setItem('mc_tag_defs',JSON.stringify(defs))}
+
+// Get tags for an investor: [{name,color}]
+function getInvestorTags(id){
+  const tags=loadInvestorTags();
+  const defs=loadTagDefs();
+  return(tags[id]||[]).map(tname=>defs.find(d=>d.name===tname)).filter(Boolean);
+}
+function getInvestorNote(id){return(loadInvestorNotes())[id]||''}
+
+function setInvestorNote(id,text){
+  const notes=loadInvestorNotes();
+  if(text.trim())notes[id]=text.trim();
+  else delete notes[id];
+  saveInvestorNotes(notes);
+}
+
+function addTagToInvestor(id,tagName){
+  const tags=loadInvestorTags();
+  if(!tags[id])tags[id]=[];
+  if(!tags[id].includes(tagName))tags[id].push(tagName);
+  saveInvestorTags(tags);
+}
+function removeTagFromInvestor(id,tagName){
+  const tags=loadInvestorTags();
+  if(!tags[id])return;
+  tags[id]=tags[id].filter(t=>t!==tagName);
+  if(!tags[id].length)delete tags[id];
+  saveInvestorTags(tags);
+}
+
+function addTagDef(name,color){
+  const defs=loadTagDefs();
+  if(defs.find(d=>d.name===name))return false;
+  defs.push({name,color});
+  saveTagDefs(defs);
+  return true;
+}
+function removeTagDef(name){
+  let defs=loadTagDefs();
+  defs=defs.filter(d=>d.name!==name);
+  saveTagDefs(defs);
+  // Remove from all investors
+  const tags=loadInvestorTags();
+  Object.keys(tags).forEach(id=>{tags[id]=tags[id].filter(t=>t!==name);if(!tags[id].length)delete tags[id]});
+  saveInvestorTags(tags);
+}
+
+// Render note/tag bar on saved cards
+function notesTagsHTML(investorId){
+  const note=getInvestorNote(investorId);
+  const tags=getInvestorTags(investorId);
+  if(!note&&!tags.length)return'';
+  let html='<div class="card-notes-bar">';
+  if(tags.length)html+='<div class="card-user-tags">'+tags.map(t=>`<span class="user-tag user-tag-${t.color}">${t.name}</span>`).join('')+'</div>';
+  if(note)html+=`<div class="card-note-preview">📝 ${note}</div>`;
+  html+='</div>';
+  return html;
+}
+
+// Notes/tags section in profile modal
+function notesTagsModalHTML(investorId){
+  const note=getInvestorNote(investorId);
+  const itags=loadInvestorTags()[investorId]||[];
+  const defs=loadTagDefs();
+  let newColor='blue';
+
+  let html=`<div class="notes-section">
+    <h3><span class="notes-icon">📝</span> Your Notes & Tags</h3>
+    <textarea class="note-textarea" id="noteText-${investorId}" placeholder="Add private notes about this investor... (e.g., intro via Sarah, follow up after demo day)"
+      oninput="noteChanged('${investorId}')">${note}</textarea>
+    <div class="note-save-hint" id="noteHint-${investorId}">✓ Saved</div>
+    <div class="tag-editor">
+      <div class="tag-editor-label">Tags</div>
+      <div class="tag-editor-list" id="tagList-${investorId}">`;
+  defs.forEach(d=>{
+    const isOn=itags.includes(d.name);
+    html+=`<span class="user-tag user-tag-${d.color} ${isOn?'selected':''}" onclick="toggleTagOnInvestor('${investorId}','${d.name.replace(/'/g,"\\'")}')">${d.name}${isOn?' ✓':''}<span class="tag-x" onclick="event.stopPropagation();deleteTagDef('${investorId}','${d.name.replace(/'/g,"\\'")}')">×</span></span>`;
+  });
+  html+=`</div>
+      <div class="tag-add-row">
+        <input class="tag-add-input" id="tagInput-${investorId}" placeholder="New tag..." onkeydown="if(event.key==='Enter')addNewTag('${investorId}')">
+        <div class="tag-color-picker" id="tagColorPicker-${investorId}">
+          ${TAG_COLORS.map(c=>`<div class="tag-color-dot tag-color-dot-${c} ${c==='blue'?'selected':''}" onclick="selectTagColor('${investorId}','${c}')" data-color="${c}"></div>`).join('')}
+        </div>
+        <button class="tag-add-btn" onclick="addNewTag('${investorId}')">+ Add</button>
+      </div>
+    </div>
+  </div>`;
+  return html;
+}
+
+let noteDebounce={};
+function noteChanged(investorId){
+  clearTimeout(noteDebounce[investorId]);
+  noteDebounce[investorId]=setTimeout(()=>{
+    const text=document.getElementById('noteText-'+investorId).value;
+    setInvestorNote(investorId,text);
+    const hint=document.getElementById('noteHint-'+investorId);
+    hint.classList.add('show');
+    setTimeout(()=>hint.classList.remove('show'),1500);
+  },500);
+}
+
+function getSelectedTagColor(investorId){
+  const picker=document.getElementById('tagColorPicker-'+investorId);
+  const sel=picker?.querySelector('.selected');
+  return sel?.dataset.color||'blue';
+}
+function selectTagColor(investorId,color){
+  const picker=document.getElementById('tagColorPicker-'+investorId);
+  picker.querySelectorAll('.tag-color-dot').forEach(d=>d.classList.toggle('selected',d.dataset.color===color));
+}
+
+function addNewTag(investorId){
+  const input=document.getElementById('tagInput-'+investorId);
+  const name=input.value.trim();
+  if(!name)return;
+  const color=getSelectedTagColor(investorId);
+  addTagDef(name,color);
+  addTagToInvestor(investorId,name);
+  input.value='';
+  // Re-render tag list in modal
+  refreshModalTags(investorId);
+}
+
+function toggleTagOnInvestor(investorId,tagName){
+  const tags=loadInvestorTags();
+  const current=tags[investorId]||[];
+  if(current.includes(tagName))removeTagFromInvestor(investorId,tagName);
+  else addTagToInvestor(investorId,tagName);
+  refreshModalTags(investorId);
+}
+
+function deleteTagDef(investorId,tagName){
+  if(!confirm('Delete tag "'+tagName+'" from all investors?'))return;
+  removeTagDef(tagName);
+  refreshModalTags(investorId);
+}
+
+function refreshModalTags(investorId){
+  const container=document.getElementById('tagList-'+investorId);
+  if(!container)return;
+  const itags=loadInvestorTags()[investorId]||[];
+  const defs=loadTagDefs();
+  container.innerHTML=defs.map(d=>{
+    const isOn=itags.includes(d.name);
+    return`<span class="user-tag user-tag-${d.color} ${isOn?'selected':''}" onclick="toggleTagOnInvestor('${investorId}','${d.name.replace(/'/g,"\\'")}')">${d.name}${isOn?' ✓':''}<span class="tag-x" onclick="event.stopPropagation();deleteTagDef('${investorId}','${d.name.replace(/'/g,"\\'")}')">×</span></span>`;
+  }).join('');
+}
+
+// Saved view tag filter state
+let savedTagFilter=null;
+
+function renderSavedTagFilter(savedInvestorIds){
+  const container=document.getElementById('savedTagFilter');
+  const defs=loadTagDefs();
+  const allTags=loadInvestorTags();
+  // Only show tags that appear on saved investors
+  const usedTags=new Set();
+  savedInvestorIds.forEach(id=>{(allTags[id]||[]).forEach(t=>usedTags.add(t))});
+  const relevantDefs=defs.filter(d=>usedTags.has(d.name));
+  if(!relevantDefs.length){container.style.display='none';return}
+  container.style.display='flex';
+  container.innerHTML='<span class="saved-tag-filter-label">Filter by tag:</span>'+
+    relevantDefs.map(d=>`<span class="user-tag user-tag-${d.color} ${savedTagFilter===d.name?'filter-active':''}" onclick="toggleSavedTagFilter('${d.name.replace(/'/g,"\\'")}')">${d.name}</span>`).join('')+
+    (savedTagFilter?'<span class="user-tag" onclick="toggleSavedTagFilter(null)" style="cursor:pointer;opacity:0.6">✕ Clear</span>':'');
+}
+
+function toggleSavedTagFilter(tagName){
+  savedTagFilter=savedTagFilter===tagName?null:tagName;
+  renderSaved();
 }
 
 // ===== GO =====
