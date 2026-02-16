@@ -1021,7 +1021,7 @@
     "title": "Co-Founding Partner",
     "type": "vc",
     "photo": "https://unavatar.io/twitter/annimaniac",
-    "thesis": "Seed-stage investor focused on finding 'thunder lizard' startups\u2014companies that create entirely new categories. Deep expertise in marketplace dynamics and technical infrastructure.",
+    "thesis": "Seed-stage investor focused on finding 'thunder lizard' startups—companies that create entirely new categories. Deep expertise in marketplace dynamics and technical infrastructure.",
     "stages": [
       "seed"
     ],
@@ -1298,7 +1298,7 @@
     "title": "Co-Founder & Partner",
     "type": "vc",
     "photo": "https://unavatar.io/twitter/satyapatel",
-    "thesis": "Seed-stage focus on 'Bottom Up Economy' companies\u2014startups empowering individuals and small teams to do more. Deep expertise in product management and go-to-market.",
+    "thesis": "Seed-stage focus on 'Bottom Up Economy' companies—startups empowering individuals and small teams to do more. Deep expertise in product management and go-to-market.",
     "stages": [
       "seed"
     ],
@@ -2536,7 +2536,7 @@
     "title": "Founder & Managing Partner",
     "type": "vc",
     "photo": "https://unavatar.io/twitter/ArlanWasHere",
-    "thesis": "Exclusively invests in underrepresented founders\u2014women, people of color, and LGBTQ+ entrepreneurs. Believes the best returns come from backing overlooked talent and underestimated markets.",
+    "thesis": "Exclusively invests in underrepresented founders—women, people of color, and LGBTQ+ entrepreneurs. Believes the best returns come from backing overlooked talent and underestimated markets.",
     "stages": [
       "seed"
     ],
@@ -5455,7 +5455,7 @@
   {
     "id": "motier-ventures-arnault-family",
     "name": "Alexandre Arnault",
-    "firm": "Agla\u00e9 Ventures",
+    "firm": "Aglaé Ventures",
     "title": "Managing Director",
     "type": "family_office",
     "photo": "https://unavatar.io/twitter/https://twitter.com/alexarnault",
@@ -6146,7 +6146,7 @@
   },
   {
     "id": "atomico-niklas-zennstrom",
-    "name": "Niklas Zennstr\u00f6m",
+    "name": "Niklas Zennström",
     "firm": "Atomico",
     "title": "Founder & CEO",
     "type": "vc",
@@ -6612,7 +6612,7 @@
   },
   {
     "id": "kaszek-hernan-kazah",
-    "name": "Hern\u00e1n Kazah",
+    "name": "Hernán Kazah",
     "firm": "Kaszek",
     "title": "Co-Founder & Managing Partner",
     "type": "vc",
@@ -8442,7 +8442,7 @@
     "title": "Foundational Industries VC",
     "type": "vc",
     "photo": "https://ui-avatars.com/api/?name=Construct+Capital&background=eeeb3b&color=fff&size=128&bold=true",
-    "thesis": "Invests in foundational industries of the economy that have been neglected for decades \u2014 manufacturing, logistics, defense, and energy. Partners with founders applying disruptive technologies to the backbone of GDP for a once-in-a-generation opportunity.",
+    "thesis": "Invests in foundational industries of the economy that have been neglected for decades — manufacturing, logistics, defense, and energy. Partners with founders applying disruptive technologies to the backbone of GDP for a once-in-a-generation opportunity.",
     "stages": [
       "seed",
       "series_a"
@@ -10380,5 +10380,2453 @@
     "entity": "individual",
     "memberCount": null,
     "keyPeople": null
+  },
+  {
+    "id": "lazard-international-equity-strategies",
+    "name": "N/A Lazard FO GP Holdings LLC",
+    "firm": "Lazard International Equity Strategies",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$242M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lazard FO GP Holdings LLC",
+      "N/A Lazard Asset Management LLC",
+      "Casey Whalen",
+      "Jerome Antenen",
+      "Alison Rosenzweig"
+    ]
+  },
+  {
+    "id": "provenire-alpha-select",
+    "name": "Anthony Daffer",
+    "firm": "PROVENIRE ALPHA SELECT",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in EDEN PRAIRIE, MINNESOTA. Discovered via SEC Form D filing.",
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$9M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "EDEN PRAIRIE, MINNESOTA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Anthony Daffer",
+      "Gregory Konezny"
+    ]
+  },
+  {
+    "id": "glen-capital-partners-focus",
+    "name": "LLC Glen Capital Partners GP,",
+    "firm": "Glen Capital Partners Focus",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in Naples, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$10M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "Naples, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "LLC Glen Capital Partners GP,"
+    ]
+  },
+  {
+    "id": "scp-alpha-omega-dividend-value-payer",
+    "name": "Peter Stamos",
+    "firm": "SCP Alpha Omega Dividend Value Payer",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in MENLO PARK, CALIFORNIA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$268M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "MENLO PARK, CALIFORNIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Peter Stamos"
+    ]
+  },
+  {
+    "id": "securis-opportunities",
+    "name": "Heidi Birtwistle",
+    "firm": "Securis Opportunities",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in GRAND CAYMAN, CAYMAN ISLANDS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$203M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "GRAND CAYMAN, CAYMAN ISLANDS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Heidi Birtwistle",
+      "Richard Boleat",
+      "Mads Jensen"
+    ]
+  },
+  {
+    "id": "north-rock",
+    "name": "N/A North Rock Capital Management, LLC",
+    "firm": "North Rock",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 10000000,
+      "max": 100000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$1164M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A North Rock Capital Management, LLC",
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Kelly Perkins",
+      "Robert Swan, III",
+      "N/A North Rock Fund, Limited"
+    ]
+  },
+  {
+    "id": "spring-lake-unconstrained-municipal-opportunities",
+    "name": "N/A SPRING LAKE ASSET MANAGEMENT, INC.",
+    "firm": "Spring Lake Unconstrained Municipal Opportunities",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in TAMPA, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$69M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "TAMPA, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A SPRING LAKE ASSET MANAGEMENT, INC.",
+      "THOMAS CALDWELL",
+      "CHRISTOPHER CROSBY"
+    ]
+  },
+  {
+    "id": "ir-amp-m-short",
+    "name": "N/A Income Research &amp; Management",
+    "firm": "IR&amp;M Short",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in BOSTON, MASSACHUSETTS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 10000000,
+      "max": 100000000
+    },
+    "geography": [
+      "us",
+      "boston"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$4429M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "BOSTON, MASSACHUSETTS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Income Research &amp; Management"
+    ]
+  },
+  {
+    "id": "wa-crown-city-clo",
+    "name": "N/A WA Crown City CLO Fund I GP, LLC",
+    "firm": "WA Crown City CLO",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PASADENA, CALIFORNIA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$78M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PASADENA, CALIFORNIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A WA Crown City CLO Fund I GP, LLC",
+      "N/A Western Asset Management Company, LLC"
+    ]
+  },
+  {
+    "id": "rch-energy-mlp-swap",
+    "name": "Robert Raymond",
+    "firm": "RCH Energy MLP Swap",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in DALLAS, TEXAS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "texas"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$284M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "DALLAS, TEXAS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Robert Raymond",
+      "Robert Horton",
+      "Tonya Hamilton",
+      "N/A RR Advisors, LLC"
+    ]
+  },
+  {
+    "id": "mission-crest-macro",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "Mission Crest Macro",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$181M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "N/A Mission Crest Capital Management, LLC",
+      "N/A Mission Crest Macro Fund, Ltd.",
+      "Sean McGould",
+      "Robert Swan, III",
+      "Benjamin Browning",
+      "Georgia Prinsloo",
+      "Matt Aureimma"
+    ]
+  },
+  {
+    "id": "ohpc",
+    "name": "--- SR Alternative Credit, LLC",
+    "firm": "OHPC",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in DARIEN, CONNECTICUT. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$92M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "DARIEN, CONNECTICUT",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "--- SR Alternative Credit, LLC"
+    ]
+  },
+  {
+    "id": "contrarian-credit-feeder",
+    "name": "-- Contrarian Capital Management, L.L.C.",
+    "firm": "Contrarian Credit Feeder",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in GREENWICH, CONNECTICUT. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$90M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "GREENWICH, CONNECTICUT",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "-- Contrarian Capital Management, L.L.C.",
+      "-- CCF GP, LLC"
+    ]
+  },
+  {
+    "id": "summerhaven-commodity",
+    "name": "-- SummerHaven Capital, LLC",
+    "firm": "SummerHaven Commodity",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in STAMFORD, CONNECTICUT. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$137M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "STAMFORD, CONNECTICUT",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "-- SummerHaven Capital, LLC",
+      "-- SummerHaven Investment Management, LLC"
+    ]
+  },
+  {
+    "id": "worcester",
+    "name": "Joel Worcester",
+    "firm": "Worcester",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in KANSAS CITY, MISSOURI. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$17M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "KANSAS CITY, MISSOURI",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Joel Worcester"
+    ]
+  },
+  {
+    "id": "shakti-venture-capital-ii",
+    "name": "n/a Shakti GP II, LLC",
+    "firm": "Shakti Venture Capital II",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in SAN FRANCISCO, CALIFORNIA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$41M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "SAN FRANCISCO, CALIFORNIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a Shakti GP II, LLC",
+      "Keval Desai"
+    ]
+  },
+  {
+    "id": "ir-amp-m-long-government-credit",
+    "name": "N/A Income Research &amp; Management",
+    "firm": "IR&amp;M Long Government/Credit",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in BOSTON, MASSACHUSETTS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 10000000,
+      "max": 100000000
+    },
+    "geography": [
+      "us",
+      "boston"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$2029M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "BOSTON, MASSACHUSETTS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Income Research &amp; Management"
+    ]
+  },
+  {
+    "id": "scp-venture",
+    "name": "Peter Stamos",
+    "firm": "SCP Venture",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in MENLO PARK, CALIFORNIA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$140M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "MENLO PARK, CALIFORNIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Peter Stamos"
+    ]
+  },
+  {
+    "id": "ir-amp-m-long-credit",
+    "name": "n/a Income Research &amp; Management",
+    "firm": "IR&amp;M Long Credit",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in BOSTON, MASSACHUSETTS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "boston"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$763M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "BOSTON, MASSACHUSETTS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a Income Research &amp; Management"
+    ]
+  },
+  {
+    "id": "rch-oil-amp-gas-midstream",
+    "name": "Robert Raymond",
+    "firm": "RCH Oil &amp; Gas Midstream",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in DALLAS, TEXAS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "texas"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$200M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "DALLAS, TEXAS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Robert Raymond",
+      "Robert Horton",
+      "Tonya Hamilton",
+      "N/A RR Advisors, LLC"
+    ]
+  },
+  {
+    "id": "nova-infrastructure",
+    "name": "Christopher Beall",
+    "firm": "NOVA Infrastructure",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$269M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Christopher Beall",
+      "Allison Kingsley",
+      "Donna Toth",
+      "John Livingston",
+      "Michael Gruppuso"
+    ]
+  },
+  {
+    "id": "scp-masters-equity-long",
+    "name": "Peter Stamos",
+    "firm": "SCP Masters Equity Long",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in MENLO PARK, CALIFORNIA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$234M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "MENLO PARK, CALIFORNIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Peter Stamos"
+    ]
+  },
+  {
+    "id": "stepstone-climate",
+    "name": "n/a StepStone Climate (GP), LLC",
+    "firm": "StepStone Climate",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in LA JOLLA, CALIFORNIA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$49M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "LA JOLLA, CALIFORNIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a StepStone Climate (GP), LLC",
+      "David Jeffrey",
+      "Suzanne Tavill",
+      "Michael Cronin",
+      "Bhavika Vyas"
+    ]
+  },
+  {
+    "id": "napier-park-eton",
+    "name": "n/a Napier Park Global Capital Delaware LLC",
+    "firm": "Napier Park Eton",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in New York, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$305M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "New York, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a Napier Park Global Capital Delaware LLC",
+      "n/a Napier Park Global Capital Ltd.",
+      "n/a Napier Park Global Capital (US) LP",
+      "Jonathan Dorfman",
+      "James O'Brien",
+      "Michael Williams",
+      "Timothy Greatorex"
+    ]
+  },
+  {
+    "id": "wellington-compound-growth",
+    "name": "-- Wellington Funds (US) LLC",
+    "firm": "Wellington Compound Growth",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in BOSTON, MASSACHUSETTS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "boston"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$266M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "BOSTON, MASSACHUSETTS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "-- Wellington Funds (US) LLC",
+      "-- Wellington Management Company LLP",
+      "-- Wellington Management Funds Inc."
+    ]
+  },
+  {
+    "id": "gulf-view",
+    "name": "N/A White Sands Management LLC",
+    "firm": "Gulf View",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in Orlando, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$12M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "Orlando, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A White Sands Management LLC",
+      "Sandy Modell"
+    ]
+  },
+  {
+    "id": "peachhtree-media-opportunity",
+    "name": "-- DF Capital TR, LLC",
+    "firm": "Peachhtree Media Opportunity",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in ATLANTA, GEORGIA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$17M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "ATLANTA, GEORGIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "-- DF Capital TR, LLC",
+      "-- Peachtree Hotel Group II, LLC",
+      "Gregory Friedman",
+      "Jatin Desai",
+      "Mitul Patel",
+      "Kevin Cadin",
+      "Michael Ritz"
+    ]
+  },
+  {
+    "id": "interval",
+    "name": "Gregg Moskowitz",
+    "firm": "INTERVAL",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$418M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Gregg Moskowitz",
+      "Connor McLaughlin",
+      "Raymond Fernandez"
+    ]
+  },
+  {
+    "id": "lighthouse-opportunities",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "LIGHTHOUSE OPPORTUNITIES",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$128M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Benjamin Browning",
+      "N/A Lighthouse Opportunities Fund Ltd"
+    ]
+  },
+  {
+    "id": "lighthouse-multi-strategy",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "LIGHTHOUSE MULTI-STRATEGY",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$38M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Benjamin Browning",
+      "N/A Lighthouse Multi-Strategy Fund Limited"
+    ]
+  },
+  {
+    "id": "lighthouse-palmetto-strategic-partnership",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "Lighthouse Palmetto Strategic Partnership",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 10000000,
+      "max": 100000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$3171M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Benjamin Browning",
+      "Robert Swan, III"
+    ]
+  },
+  {
+    "id": "monaco-capital",
+    "name": "N/A Monte Carlo Capital Partners, LLC",
+    "firm": "Monaco Capital",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PARKVILLE, MISSOURI. Discovered via SEC Form D filing.",
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$0M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PARKVILLE, MISSOURI",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Monte Carlo Capital Partners, LLC"
+    ]
+  },
+  {
+    "id": "lazard-us-equity-strategies",
+    "name": "N/A Lazard FO GP Holdings LLC",
+    "firm": "Lazard US Equity Strategies",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$179M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lazard FO GP Holdings LLC",
+      "N/A Lazard Asset Management LLC",
+      "Casey Whalen",
+      "Jerome Antenen",
+      "Alison Rosenzweig"
+    ]
+  },
+  {
+    "id": "roadmap",
+    "name": "ANIL STEVENS",
+    "firm": "Roadmap",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$79M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "ANIL STEVENS",
+      "CONNOR MCLAUGHLIN",
+      "GREGG MOSKOWITZ",
+      "Raymond Fernandez"
+    ]
+  },
+  {
+    "id": "kc-gamma-opportunity",
+    "name": "-- Casey Capital, LLC",
+    "firm": "KC GAMMA OPPORTUNITY",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in SARASOTA, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$44M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "SARASOTA, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "-- Casey Capital, LLC",
+      "-- Casey Capital Management, LLC"
+    ]
+  },
+  {
+    "id": "lighthouse-strategies",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "LIGHTHOUSE STRATEGIES",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$38M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Benjamin Browning"
+    ]
+  },
+  {
+    "id": "lazard-event-driven-strategies",
+    "name": "N/A Lazard FO GP Holdings LLC",
+    "firm": "Lazard Event Driven Strategies",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$162M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lazard FO GP Holdings LLC",
+      "N/A Lazard Asset Management LLC",
+      "Casey Whalen",
+      "Jerome Antenen",
+      "Alison Rosenzweig"
+    ]
+  },
+  {
+    "id": "sansone-partners-qp",
+    "name": "-- Sansone Advisors, LLC",
+    "firm": "SANSONE PARTNERS (QP)",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in RED BANK, NEW JERSEY. Discovered via SEC Form D filing.",
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$9M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "RED BANK, NEW JERSEY",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "-- Sansone Advisors, LLC",
+      "-- Sansone Capital Management, LLC"
+    ]
+  },
+  {
+    "id": "crystal-capital",
+    "name": "n/a Crystal Capital Partners, LLC",
+    "firm": "Crystal Capital",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in BAY HARBOR ISLANDS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$974M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "BAY HARBOR ISLANDS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a Crystal Capital Partners, LLC",
+      "Michael Hoyer",
+      "Steven Brod",
+      "Natalie Brod",
+      "Nishant Mehta",
+      "Alan Strauss",
+      "Golan Lewkowicz"
+    ]
+  },
+  {
+    "id": "resolute-capital-asset-partners",
+    "name": "Anita Falicia",
+    "firm": "Resolute Capital Asset Partners",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in DENVER, COLORADO. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$121M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "DENVER, COLORADO",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Anita Falicia",
+      "James Hillary"
+    ]
+  },
+  {
+    "id": "gaf-re-ii",
+    "name": "n/a GAF GP II, LLC - Series RE",
+    "firm": "GAF-RE II",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in Charlotte, NORTH CAROLINA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$16M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "Charlotte, NORTH CAROLINA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a GAF GP II, LLC - Series RE",
+      "n/a Global Endowment Management, L.P.",
+      "Richard Abraham"
+    ]
+  },
+  {
+    "id": "ifm-usidf-offshore-a",
+    "name": "n/a IFM USIDF General Partner Ltd.",
+    "firm": "IFM USIDF (Offshore) A",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in GRAND CAYMAN, CAYMAN ISLANDS. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$30M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "GRAND CAYMAN, CAYMAN ISLANDS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a IFM USIDF General Partner Ltd.",
+      "Peter Heaps",
+      "Neel Mehta",
+      "Jarladth Travers"
+    ]
+  },
+  {
+    "id": "new-paradigm",
+    "name": "-- New Paradigm Capital Management, LLC",
+    "firm": "New Paradigm",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in GREAT FALLS, VIRGINIA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$59M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "GREAT FALLS, VIRGINIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "-- New Paradigm Capital Management, LLC"
+    ]
+  },
+  {
+    "id": "ows-lsar-offshore",
+    "name": "David Sherr",
+    "firm": "OWS LSAR Offshore",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in GRAND CAYMAN, CAYMAN ISLANDS. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$24M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "GRAND CAYMAN, CAYMAN ISLANDS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "David Sherr",
+      "Kurt Locher",
+      "John D'Agostino",
+      "Vanessa Gilman",
+      "Alaina Danley"
+    ]
+  },
+  {
+    "id": "lazard-private-market-opportunities",
+    "name": "N/A Lazard FO GP Holdings LLC",
+    "firm": "Lazard Private Market Opportunities",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$731M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lazard FO GP Holdings LLC",
+      "N/A Lazard Asset Management LLC",
+      "Casey Whalen",
+      "Jerome Antenen",
+      "Alison Rosenzweig"
+    ]
+  },
+  {
+    "id": "gaf-vc-ii",
+    "name": "n/a GAF GP II, LLC - Series VC",
+    "firm": "GAF-VC II",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in Charlotte, NORTH CAROLINA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$46M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "Charlotte, NORTH CAROLINA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a GAF GP II, LLC - Series VC",
+      "n/a Global Endowment Management, L.P.",
+      "Richard Abraham"
+    ]
+  },
+  {
+    "id": "lighthouse-diversified",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "LIGHTHOUSE DIVERSIFIED",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$352M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Benjamin Browning",
+      "N/A Lighthouse Diversified Fund Ltd."
+    ]
+  },
+  {
+    "id": "lighthouse-aggressive-growth",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "LIGHTHOUSE AGGRESSIVE GROWTH",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$166M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Benjamin Browning"
+    ]
+  },
+  {
+    "id": "pier61",
+    "name": "N/A Pier61 Partners LLC",
+    "firm": "Pier61",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$84M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Pier61 Partners LLC",
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Robert Swan, III",
+      "J. Perkins"
+    ]
+  },
+  {
+    "id": "recurrent",
+    "name": "Edward Gilliss",
+    "firm": "Recurrent",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$27M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Edward Gilliss",
+      "Raymond Fernandez"
+    ]
+  },
+  {
+    "id": "ir-amp-m-intermediate",
+    "name": "N/A Income Research &amp; Management",
+    "firm": "IR&amp;M Intermediate",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in BOSTON, MASSACHUSETTS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 10000000,
+      "max": 100000000
+    },
+    "geography": [
+      "us",
+      "boston"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$2780M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "BOSTON, MASSACHUSETTS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Income Research &amp; Management"
+    ]
+  },
+  {
+    "id": "penglai-peak",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "PENGLAI PEAK",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$53M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Robert Swan, III",
+      "J. Perkins"
+    ]
+  },
+  {
+    "id": "mesirow-institutional-multi-strategy",
+    "name": "N/A Lighthouse Investment Partners LLC",
+    "firm": "Mesirow Institutional Multi-Strategy",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in PALM BEACH GARDENS, FLORIDA. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$107M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "PALM BEACH GARDENS, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lighthouse Investment Partners LLC",
+      "Sean McGould",
+      "Benjamin Browning"
+    ]
+  },
+  {
+    "id": "provenire-technology-partners",
+    "name": "Anthony Daffer",
+    "firm": "Provenire Technology Partners",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in EDEN PRAIRIE, MINNESOTA. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$26M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "EDEN PRAIRIE, MINNESOTA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Anthony Daffer",
+      "Gregory Konezny"
+    ]
+  },
+  {
+    "id": "ep-tff",
+    "name": "Joel Ehrenkranz",
+    "firm": "EP TFF",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$21M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Joel Ehrenkranz",
+      "John Ehrenkranz",
+      "Sanford Ehrenkranz",
+      "Andrew Sommers",
+      "Patrick Shaw"
+    ]
+  },
+  {
+    "id": "aims-sidecar-i",
+    "name": "N/A NB AIMS SC1 GP LLC",
+    "firm": "AIMS Sidecar I",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$70M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A NB AIMS SC1 GP LLC",
+      "N/A NB AIMS GP LLC"
+    ]
+  },
+  {
+    "id": "lazard-long-short-equity-strategies",
+    "name": "N/A Lazard FO GP Holdings LLC",
+    "firm": "Lazard Long/Short Equity Strategies",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$167M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Lazard FO GP Holdings LLC",
+      "N/A Lazard Asset Management LLC",
+      "Casey Whalen",
+      "Jerome Antenen",
+      "Alison Rosenzweig"
+    ]
+  },
+  {
+    "id": "acacia-capital",
+    "name": "Peter Kinney",
+    "firm": "ACACIA CAPITAL",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in CHICAGO, ILLINOIS. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$340M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "CHICAGO, ILLINOIS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "Peter Kinney",
+      "N/A Kinney Asset Management LLC",
+      "Brent Batts"
+    ]
+  },
+  {
+    "id": "generation-food-rural-partners-i",
+    "name": ". Generation Food Rural Partners GP I, LLC",
+    "firm": "Generation Food Rural Partners I",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in Montclair, NEW JERSEY. Discovered via SEC Form D filing.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$54M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "Montclair, NEW JERSEY",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      ". Generation Food Rural Partners GP I, LLC",
+      "Thomas Mastrobuoni",
+      "Frank Klemens",
+      "Andrew Ive"
+    ]
+  },
+  {
+    "id": "apogem-secondary",
+    "name": "N/A ASF VII GP, LLC",
+    "firm": "Apogem Secondary",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Investment fund based in NEW YORK, NEW YORK. Discovered via SEC Form D filing.",
+    "stages": [
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$776M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "NEW YORK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A ASF VII GP, LLC",
+      "John Grady",
+      "Christopher Stringer",
+      "N/A Apogem Capital LLC",
+      "Michael Zeleniuch",
+      "Michael Griech"
+    ]
   }
 ]

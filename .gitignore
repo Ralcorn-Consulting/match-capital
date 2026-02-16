@@ -1,0 +1,5 @@
+pipeline/discovered.json
+pipeline/verified.json
+pipeline/merge-report.json
+pipeline/*.backup-*
+data/investors.json.backup-*
