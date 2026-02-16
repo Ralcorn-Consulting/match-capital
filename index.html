@@ -495,6 +495,14 @@ footer .links a:hover{color:var(--text)}
 ::-webkit-scrollbar-track{background:transparent}
 ::-webkit-scrollbar-thumb{background:rgba(255,255,255,0.1);border-radius:3px}
 
+/* Load More */
+.load-more-container{text-align:center;padding:32px 0 16px;display:flex;flex-direction:column;align-items:center;gap:12px}
+.showing-count{font-size:0.82rem;color:var(--text-muted);font-family:var(--font-mono)}
+.btn-load-more{padding:12px 32px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--card);color:var(--text);font-weight:600;font-size:0.9rem;transition:all var(--transition-spring);cursor:pointer}
+.btn-load-more:hover{border-color:rgba(99,102,241,0.4);background:rgba(99,102,241,0.06);transform:translateY(-2px);box-shadow:0 4px 16px rgba(0,0,0,0.2)}
+.btn-load-more:active{transform:translateY(0);transition-duration:0.1s}
+@media(min-width:769px){.load-more-container{display:none !important}}
+
 /* No results */
 .no-results{grid-column:1/-1;text-align:center;padding:60px 0;color:var(--text-dim)}
 .no-results .no-results-icon{font-size:3rem;margin-bottom:16px;opacity:0.5}
@@ -1342,6 +1350,10 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
       <span><span id="resultsCount" role="status">0 investors</span><span id="filterBadge" class="filter-badge"></span><button id="clearFiltersBtn" class="clear-filters-btn" onclick="clearAllFilters()" style="display:none" aria-label="Clear all filters">Clear Filters ✕</button></span>
     </div>
     <div class="results-grid" id="resultsGrid" role="list" aria-label="Investor results"></div>
+    <div id="loadMoreContainer" class="load-more-container" style="display:none">
+      <div id="showingCount" class="showing-count"></div>
+      <button id="loadMoreBtn" class="btn-load-more" onclick="loadMore()">Load More</button>
+    </div>
   </div>
 </main>
 
@@ -1891,10 +1903,16 @@ function getGridCols(){
   return 3;
 }
 
-function renderResults(){
+const MOBILE_PAGE_SIZE=20;
+let mobileVisibleCount=MOBILE_PAGE_SIZE;
+function isMobileView(){return window.innerWidth<768}
+function hasActiveSearch(){return searchInput.value.trim().length>0}
+
+function renderResults(resetPage=true){
   const filtered=sortInvestors(filterInvestors());
   lastFiltered=filtered;
   kbFocusIndex=-1;
+  if(resetPage)mobileVisibleCount=MOBILE_PAGE_SIZE;
   document.getElementById('resultsCount').textContent=filtered.length+' investor'+(filtered.length!==1?'s':'');
   const fc=getActiveFilterCount();
   const badge=document.getElementById('filterBadge');
@@ -1903,10 +1921,36 @@ function renderResults(){
   clearBtn.style.display=fc?'inline-block':'none';
   updateFilterUI();
   const grid=document.getElementById('resultsGrid');
-  if(!filtered.length){grid.innerHTML='<div class="no-results"><div class="no-results-icon">🔍</div>No investors match your filters.<div class="no-results-hint">Try removing some filters or broadening your search terms.<br><button class="btn-secondary" onclick="clearAllFilters()" style="margin-top:12px;padding:8px 20px">Clear All Filters</button></div></div>';return}
-  // Render all cards — ~200 cards is trivial for modern browsers, no virtual scroll needed
+  const loadMoreContainer=document.getElementById('loadMoreContainer');
+  if(!filtered.length){grid.innerHTML='<div class="no-results"><div class="no-results-icon">🔍</div>No investors match your filters.<div class="no-results-hint">Try removing some filters or broadening your search terms.<br><button class="btn-secondary" onclick="clearAllFilters()" style="margin-top:12px;padding:8px 20px">Clear All Filters</button></div></div>';loadMoreContainer.style.display='none';return}
+  // On mobile, paginate unless searching
+  const usePagination=isMobileView()&&!hasActiveSearch();
+  const visible=usePagination?filtered.slice(0,mobileVisibleCount):filtered;
   grid.style.minHeight='';
-  grid.innerHTML=filtered.map((inv,i)=>cardHTML(inv,i)).join('');
+  grid.innerHTML=visible.map((inv,i)=>cardHTML(inv,i)).join('');
+  // Update load more UI
+  if(usePagination&&mobileVisibleCount<filtered.length){
+    loadMoreContainer.style.display='flex';
+    document.getElementById('showingCount').textContent='Showing '+visible.length+' of '+filtered.length+' investors';
+    document.getElementById('loadMoreBtn').style.display='';
+  }else if(usePagination&&mobileVisibleCount>=filtered.length){
+    loadMoreContainer.style.display='flex';
+    document.getElementById('showingCount').textContent='Showing all '+filtered.length+' investors';
+    document.getElementById('loadMoreBtn').style.display='none';
+  }else{
+    loadMoreContainer.style.display='none';
+  }
+}
+
+function loadMore(){
+  const prevCount=mobileVisibleCount;
+  mobileVisibleCount+=MOBILE_PAGE_SIZE;
+  renderResults(false);
+  // Scroll to first new card
+  const cards=document.querySelectorAll('#resultsGrid .investor-card');
+  if(cards[prevCount]){
+    setTimeout(()=>{cards[prevCount].scrollIntoView({behavior:'smooth',block:'start'})},50);
+  }
 }
 
 function clearAllFilters(){
