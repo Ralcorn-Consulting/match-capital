@@ -1252,6 +1252,42 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
 .tour-progress span.active{background:var(--accent);transform:scale(1.2)}
 .tour-progress span.done{background:var(--accent2)}
 @media(max-width:768px){.tour-tooltip{max-width:calc(100vw - 32px);left:16px !important;right:16px !important;width:auto}}
+
+/* ===== Feedback Widget ===== */
+.feedback-fab{position:fixed;bottom:24px;right:24px;z-index:9000;width:56px;height:56px;border-radius:50%;border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:1.5rem;cursor:pointer;box-shadow:0 4px 20px rgba(99,102,241,0.35);transition:transform var(--transition-spring),box-shadow var(--transition-base);display:flex;align-items:center;justify-content:center}
+.feedback-fab:hover{transform:scale(1.1);box-shadow:0 6px 28px rgba(99,102,241,0.5)}
+.feedback-fab.open{transform:rotate(45deg) scale(1.1)}
+.feedback-panel{position:fixed;bottom:92px;right:24px;z-index:9001;width:360px;max-width:calc(100vw - 48px);background:var(--card);border:1px solid var(--border);border-radius:var(--radius);box-shadow:0 16px 48px rgba(0,0,0,0.4);opacity:0;transform:translateY(16px) scale(0.95);pointer-events:none;transition:opacity 0.25s ease,transform 0.3s cubic-bezier(0.16,1,0.3,1);overflow:hidden}
+.feedback-panel.open{opacity:1;transform:translateY(0) scale(1);pointer-events:auto}
+.feedback-panel-header{padding:16px 20px;border-bottom:1px solid var(--border);display:flex;align-items:center;justify-content:space-between}
+.feedback-panel-header h3{font-size:1rem;font-weight:700;color:var(--text);margin:0}
+.feedback-panel-header button{background:none;border:none;color:var(--text-muted);font-size:1.2rem;cursor:pointer;padding:4px}
+.feedback-panel-body{padding:20px}
+.feedback-type-row{display:flex;gap:8px;margin-bottom:16px}
+.feedback-type-btn{flex:1;padding:8px 4px;border-radius:var(--radius-sm);border:1px solid var(--border);background:transparent;color:var(--text-muted);font-size:0.8rem;cursor:pointer;transition:all var(--transition-base);text-align:center}
+.feedback-type-btn:hover{border-color:var(--border-hover);color:var(--text)}
+.feedback-type-btn.active{border-color:var(--accent);background:rgba(99,102,241,0.08);color:var(--accent-light)}
+.feedback-panel textarea{width:100%;min-height:100px;padding:12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-subtle);color:var(--text);font-family:'Inter',sans-serif;font-size:0.85rem;resize:vertical;transition:border-color var(--transition-base)}
+.feedback-panel textarea:focus{outline:none;border-color:var(--accent)}
+.feedback-panel textarea::placeholder{color:var(--text-dim)}
+.feedback-email{width:100%;padding:10px 12px;border-radius:var(--radius-sm);border:1px solid var(--border);background:var(--bg-subtle);color:var(--text);font-family:'Inter',sans-serif;font-size:0.85rem;margin-top:12px;transition:border-color var(--transition-base)}
+.feedback-email:focus{outline:none;border-color:var(--accent)}
+.feedback-email::placeholder{color:var(--text-dim)}
+.feedback-submit{width:100%;margin-top:16px;padding:12px;border-radius:var(--radius-sm);border:none;background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-weight:600;font-size:0.9rem;cursor:pointer;transition:opacity var(--transition-base),transform var(--transition-base)}
+.feedback-submit:hover{opacity:0.9;transform:translateY(-1px)}
+.feedback-submit:disabled{opacity:0.5;cursor:not-allowed;transform:none}
+.feedback-success{text-align:center;padding:32px 20px}
+.feedback-success .success-icon{font-size:2.5rem;margin-bottom:12px}
+.feedback-success h4{color:var(--text);margin-bottom:8px}
+.feedback-success p{color:var(--text-muted);font-size:0.85rem}
+.feedback-history-btn{background:none;border:none;color:var(--text-dim);font-size:0.75rem;cursor:pointer;margin-top:12px;text-decoration:underline}
+.feedback-history-btn:hover{color:var(--text-muted)}
+.feedback-history{margin-top:12px;max-height:200px;overflow-y:auto}
+.feedback-history-item{padding:8px 0;border-bottom:1px solid var(--border);font-size:0.78rem}
+.feedback-history-item .fh-type{display:inline-block;padding:2px 6px;border-radius:4px;background:rgba(99,102,241,0.08);color:var(--accent-light);font-size:0.7rem;margin-right:6px}
+.feedback-history-item .fh-text{color:var(--text-muted)}
+.feedback-history-item .fh-date{color:var(--text-dim);font-size:0.7rem;display:block;margin-top:2px}
+@media(max-width:480px){.feedback-panel{right:12px;left:12px;width:auto;bottom:84px}.feedback-fab{bottom:16px;right:16px;width:50px;height:50px;font-size:1.3rem}}
 </style>
 </head>
 <body>
@@ -4275,6 +4311,115 @@ function maybeAutoTour(){
     setTimeout(()=>startTour(),1500);
   }
 }
+
+// ===== FEEDBACK WIDGET =====
+(function(){
+  // Inject HTML
+  document.body.insertAdjacentHTML('beforeend',`
+<button class="feedback-fab" id="feedbackFab" onclick="toggleFeedback()" aria-label="Send feedback" title="Send feedback">💬</button>
+<div class="feedback-panel" id="feedbackPanel">
+  <div class="feedback-panel-header">
+    <h3>💬 Send Feedback</h3>
+    <button onclick="toggleFeedback()" aria-label="Close">&times;</button>
+  </div>
+  <div class="feedback-panel-body" id="feedbackBody">
+    <div class="feedback-type-row">
+      <button class="feedback-type-btn active" data-type="suggestion" onclick="setFeedbackType(this)">💡 Suggestion</button>
+      <button class="feedback-type-btn" data-type="bug" onclick="setFeedbackType(this)">🐛 Bug</button>
+      <button class="feedback-type-btn" data-type="data" onclick="setFeedbackType(this)">📊 Data Fix</button>
+      <button class="feedback-type-btn" data-type="praise" onclick="setFeedbackType(this)">❤️ Praise</button>
+    </div>
+    <textarea id="feedbackText" placeholder="What's on your mind? Suggest a feature, report an issue, or request a data correction…"></textarea>
+    <input type="email" class="feedback-email" id="feedbackEmail" placeholder="Email (optional — for follow-up)">
+    <button class="feedback-submit" id="feedbackSubmit" onclick="submitFeedback()">Send Feedback →</button>
+    <button class="feedback-history-btn" id="feedbackHistoryBtn" onclick="toggleFeedbackHistory()" style="display:none">View past feedback</button>
+    <div class="feedback-history" id="feedbackHistory" style="display:none"></div>
+  </div>
+</div>`);
+
+  // Check if there's past feedback
+  const stored=JSON.parse(localStorage.getItem('mc_feedback')||'[]');
+  if(stored.length>0)document.getElementById('feedbackHistoryBtn').style.display='';
+})();
+
+let _feedbackType='suggestion';
+function toggleFeedback(){
+  const panel=document.getElementById('feedbackPanel');
+  const fab=document.getElementById('feedbackFab');
+  const isOpen=panel.classList.contains('open');
+  panel.classList.toggle('open');
+  fab.classList.toggle('open');
+  if(!isOpen){
+    // Reset to form view
+    showFeedbackForm();
+    setTimeout(()=>document.getElementById('feedbackText').focus(),300);
+  }
+}
+
+function setFeedbackType(btn){
+  document.querySelectorAll('.feedback-type-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  _feedbackType=btn.dataset.type;
+  const ta=document.getElementById('feedbackText');
+  const placeholders={suggestion:'What feature would make this more useful?',bug:'What went wrong? Steps to reproduce help a lot.',data:'Which investor data needs updating? Include correct info if you have it.',praise:'We love hearing what works! 🎉'};
+  ta.placeholder=placeholders[_feedbackType]||ta.placeholder;
+}
+
+function submitFeedback(){
+  const text=document.getElementById('feedbackText').value.trim();
+  if(!text)return document.getElementById('feedbackText').focus();
+  const email=document.getElementById('feedbackEmail').value.trim();
+  const entry={type:_feedbackType,text,email,ts:new Date().toISOString(),filters:getActiveFilterSummary()};
+  // Store locally
+  const stored=JSON.parse(localStorage.getItem('mc_feedback')||'[]');
+  stored.push(entry);
+  localStorage.setItem('mc_feedback',JSON.stringify(stored));
+  // Show success
+  const body=document.getElementById('feedbackBody');
+  body.innerHTML=`<div class="feedback-success">
+    <div class="success-icon">✅</div>
+    <h4>Thanks for your feedback!</h4>
+    <p>Your ${_feedbackType} has been saved. We review all submissions to improve Match Capital.</p>
+    <button class="feedback-submit" onclick="showFeedbackForm()" style="margin-top:16px;background:var(--bg-subtle);color:var(--text)">Send Another</button>
+  </div>`;
+  document.getElementById('feedbackHistoryBtn').style.display='';
+}
+
+function getActiveFilterSummary(){
+  try{
+    const chips=document.querySelectorAll('.active-filters .active-chip');
+    return Array.from(chips).map(c=>c.textContent.replace('×','').trim()).join(', ')||'none';
+  }catch(e){return 'unknown'}
+}
+
+function showFeedbackForm(){
+  const body=document.getElementById('feedbackBody');
+  body.innerHTML=`
+    <div class="feedback-type-row">
+      <button class="feedback-type-btn active" data-type="suggestion" onclick="setFeedbackType(this)">💡 Suggestion</button>
+      <button class="feedback-type-btn" data-type="bug" onclick="setFeedbackType(this)">🐛 Bug</button>
+      <button class="feedback-type-btn" data-type="data" onclick="setFeedbackType(this)">📊 Data Fix</button>
+      <button class="feedback-type-btn" data-type="praise" onclick="setFeedbackType(this)">❤️ Praise</button>
+    </div>
+    <textarea id="feedbackText" placeholder="What's on your mind? Suggest a feature, report an issue, or request a data correction…"></textarea>
+    <input type="email" class="feedback-email" id="feedbackEmail" placeholder="Email (optional — for follow-up)">
+    <button class="feedback-submit" id="feedbackSubmit" onclick="submitFeedback()">Send Feedback →</button>
+    <button class="feedback-history-btn" id="feedbackHistoryBtn" onclick="toggleFeedbackHistory()" style="${JSON.parse(localStorage.getItem('mc_feedback')||'[]').length?'':'display:none'}">View past feedback</button>
+    <div class="feedback-history" id="feedbackHistory" style="display:none"></div>`;
+  _feedbackType='suggestion';
+}
+
+function toggleFeedbackHistory(){
+  const el=document.getElementById('feedbackHistory');
+  if(el.style.display==='none'){
+    const stored=JSON.parse(localStorage.getItem('mc_feedback')||'[]');
+    el.innerHTML=stored.slice().reverse().map(f=>`<div class="feedback-history-item"><span class="fh-type">${f.type}</span><span class="fh-text">${f.text.substring(0,80)}${f.text.length>80?'…':''}</span><span class="fh-date">${new Date(f.ts).toLocaleDateString()}</span></div>`).join('')||'<p style="color:var(--text-dim);font-size:0.8rem">No feedback yet.</p>';
+    el.style.display='';
+  }else{el.style.display='none'}
+}
+
+// Close feedback on Escape
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&document.getElementById('feedbackPanel').classList.contains('open'))toggleFeedback()});
 
 // ===== GO =====
 initOnboarding();
