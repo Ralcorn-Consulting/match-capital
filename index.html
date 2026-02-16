@@ -264,6 +264,36 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .match-score-bar{height:4px;border-radius:2px;background:var(--border);margin-top:6px;overflow:hidden}
 .match-score-bar-fill{height:100%;border-radius:2px;transition:width 0.4s ease}
 
+/* View Switcher */
+.view-switcher{display:flex;gap:2px;background:var(--border);border-radius:8px;padding:2px;margin-left:8px}
+.view-switcher button{padding:5px 10px;border:none;background:transparent;color:var(--text-dim);cursor:pointer;border-radius:6px;font-size:0.78rem;transition:all var(--transition-base);display:flex;align-items:center;gap:4px}
+.view-switcher button.active{background:var(--card);color:var(--text);box-shadow:0 1px 3px rgba(0,0,0,0.15)}
+.view-switcher button:hover:not(.active){color:var(--text-muted)}
+.view-switcher button svg{width:14px;height:14px}
+
+/* Map View */
+.map-container{display:none;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-bottom:16px;position:relative;overflow:hidden}
+.map-container.active{display:block}
+.map-svg-wrap{position:relative;width:100%;max-width:900px;margin:0 auto}
+.map-svg-wrap svg{width:100%;height:auto}
+.map-cluster{cursor:pointer;transition:transform 0.2s ease}
+.map-cluster:hover{transform:scale(1.15)}
+.map-cluster circle{transition:all 0.2s ease}
+.map-cluster:hover circle{filter:brightness(1.2)}
+.map-cluster text{font-family:'Inter',sans-serif;font-weight:700;fill:#fff;pointer-events:none;text-anchor:middle;dominant-baseline:central}
+.map-tooltip{position:absolute;background:var(--card);border:1px solid var(--border-hover);border-radius:var(--radius-sm);padding:10px 14px;font-size:0.78rem;color:var(--text);pointer-events:none;opacity:0;transition:opacity 0.15s ease;z-index:100;max-width:240px;box-shadow:0 8px 24px rgba(0,0,0,0.3)}
+.map-tooltip.visible{opacity:1}
+.map-tooltip .tt-city{font-weight:700;margin-bottom:4px;font-size:0.82rem}
+.map-tooltip .tt-count{color:var(--text-muted);margin-bottom:6px;font-size:0.72rem}
+.map-tooltip .tt-names{color:var(--text-dim);font-size:0.72rem;line-height:1.4}
+.map-legend{display:flex;gap:16px;justify-content:center;margin-top:12px;font-size:0.72rem;color:var(--text-muted)}
+.map-legend-item{display:flex;align-items:center;gap:5px}
+.map-legend-dot{width:10px;height:10px;border-radius:50%}
+.map-hint{text-align:center;font-size:0.72rem;color:var(--text-dim);margin-top:6px}
+[data-theme="light"] .map-container{box-shadow:var(--shadow-card)}
+[data-theme="light"] .map-tooltip{box-shadow:0 8px 24px rgba(0,0,0,0.1)}
+@media(max-width:768px){.map-container{padding:12px}.map-legend{gap:10px;flex-wrap:wrap}}
+
 /* Results */
 .results-info{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;font-size:0.82rem;color:var(--text-muted);letter-spacing:-0.005em}
 .results-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
@@ -1444,11 +1474,27 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
     </div>
 
     <div class="results-info" aria-live="polite">
-      <span><span id="resultsCount" role="status">0 investors</span><span id="filterBadge" class="filter-badge"></span><button id="clearFiltersBtn" class="clear-filters-btn" onclick="clearAllFilters()" style="display:none" aria-label="Clear all filters">Clear Filters ✕</button></span>
+      <span><span id="resultsCount" role="status">0 investors</span><span id="filterBadge" class="filter-badge"></span><button id="clearFiltersBtn" class="clear-filters-btn" onclick="clearAllFilters()" style="display:none" aria-label="Clear all filters">Clear Filters ✕</button>
+      <span class="view-switcher" id="viewSwitcher">
+        <button class="active" data-view="grid" onclick="setView('grid')" title="Card View" aria-label="Card view"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="1" y="1" width="6" height="6" rx="1"/><rect x="9" y="1" width="6" height="6" rx="1"/><rect x="1" y="9" width="6" height="6" rx="1"/><rect x="9" y="9" width="6" height="6" rx="1"/></svg></button>
+        <button data-view="map" onclick="setView('map')" title="Map View" aria-label="Map view"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M1 3l4.5-1.5 5 2L15 2v11l-4.5 1.5-5-2L1 14V3z"/><path d="M5.5 1.5V12M10.5 3.5V14"/></svg></button>
+      </span>
+      </span>
       <span class="export-controls">
         <button id="exportCsvBtn" class="btn-export" onclick="exportFiltered('csv')" title="Export filtered investors as CSV" aria-label="Export as CSV">⬇ CSV</button>
         <button id="exportJsonBtn" class="btn-export" onclick="exportFiltered('json')" title="Export filtered investors as JSON" aria-label="Export as JSON">⬇ JSON</button>
       </span>
+    </div>
+    <div class="map-container" id="mapContainer">
+      <div class="map-svg-wrap" id="mapSvgWrap"></div>
+      <div class="map-tooltip" id="mapTooltip"></div>
+      <div class="map-legend">
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#10b981"></div>Seed</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#6366f1"></div>Series A</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#a855f7"></div>Growth</div>
+        <div class="map-legend-item"><div class="map-legend-dot" style="background:#8b8b9a"></div>Mixed</div>
+      </div>
+      <div class="map-hint">Click a cluster to filter investors by location</div>
     </div>
     <div class="results-grid" id="resultsGrid" role="list" aria-label="Investor results"></div>
     <div id="loadMoreContainer" class="load-more-container" style="display:none">
@@ -2043,6 +2089,7 @@ function hasActiveSearch(){return searchInput.value.trim().length>0}
 function renderResults(resetPage=true){
   const filtered=sortInvestors(filterInvestors());
   lastFiltered=filtered;
+  if(currentView==='map')renderMap();
   kbFocusIndex=-1;
   if(resetPage)mobileVisibleCount=MOBILE_PAGE_SIZE;
   document.getElementById('resultsCount').textContent=filtered.length+' investor'+(filtered.length!==1?'s':'');
@@ -3666,6 +3713,183 @@ window.addEventListener('offline',()=>showOfflineToast('You\u2019re offline — 
     if(ch)ch.classList.remove('open');
   }
 })();
+
+// ===== MAP VIEW =====
+const CITY_COORDS={
+  'New York':{lat:40.7,lng:-74},'NYC':{lat:40.7,lng:-74},
+  'San Francisco':{lat:37.8,lng:-122.4},'SF':{lat:37.8,lng:-122.4},
+  'Boston':{lat:42.4,lng:-71.1},'Washington':{lat:38.9,lng:-77},'DC':{lat:38.9,lng:-77},
+  'Los Angeles':{lat:34.1,lng:-118.2},'LA':{lat:34.1,lng:-118.2},
+  'Austin':{lat:30.3,lng:-97.7},'Chicago':{lat:41.9,lng:-87.6},
+  'Seattle':{lat:47.6,lng:-122.3},'Miami':{lat:25.8,lng:-80.2},
+  'Denver':{lat:39.7,lng:-105},'Boulder':{lat:40,lng:-105.3},
+  'Atlanta':{lat:33.7,lng:-84.4},'Menlo Park':{lat:37.45,lng:-122.18},
+  'Palo Alto':{lat:37.44,lng:-122.16},'Mountain View':{lat:37.39,lng:-122.08},
+  'Santa Clara':{lat:37.35,lng:-121.95},'Oakland':{lat:37.8,lng:-122.27},
+  'San Diego':{lat:32.7,lng:-117.2},'Salt Lake City':{lat:40.76,lng:-111.89},
+  'Provo':{lat:40.23,lng:-111.66},'McLean':{lat:38.93,lng:-77.18},
+  'Alexandria':{lat:38.8,lng:-77.05},'College Park':{lat:38.98,lng:-76.94},
+  'Owings Mills':{lat:39.42,lng:-76.78},'Potomac':{lat:39.02,lng:-77.2},
+  'Northern Virginia':{lat:38.85,lng:-77.3},'Virginia':{lat:37.5,lng:-78.5},
+  'Newton':{lat:42.34,lng:-71.21},'Lynnwood':{lat:47.82,lng:-122.32},
+  'Holbrook':{lat:40.79,lng:-73.08},
+  'London':{lat:51.5,lng:-0.12},'Paris':{lat:48.86,lng:2.35},'Berlin':{lat:52.52,lng:13.4},
+  'Singapore':{lat:1.35,lng:103.82},'Hong Kong':{lat:22.3,lng:114.17},
+  'Copenhagen':{lat:55.68,lng:12.57},'Stockholm':{lat:59.33,lng:18.07},
+  'Mumbai':{lat:19.08,lng:72.88},'Bangalore':{lat:12.97,lng:77.59},
+  'Buenos Aires':{lat:-34.6,lng:-58.38},'Amsterdam':{lat:52.37,lng:4.9}
+};
+function locationToCity(loc){
+  if(!loc)return null;
+  const parts=loc.split('/').map(s=>s.trim());
+  const results=[];
+  for(const p of parts){
+    const city=p.split(',')[0].trim().replace(/^(LYNNWOOD|BOSTON|MIAMI|HOLBROOK|NEWTON|SAN FRANCISCO).*$/i,m=>m.split(',')[0].trim());
+    const normalized=city.charAt(0).toUpperCase()+city.slice(1).toLowerCase();
+    // Try exact match first
+    for(const[k,v] of Object.entries(CITY_COORDS)){
+      if(city.toLowerCase()===k.toLowerCase()||normalized===k){results.push({city:k,...v,origLoc:p.trim()});break}
+    }
+  }
+  return results.length?results:null;
+}
+function clusterInvestors(investorList){
+  const clusters={};
+  for(const inv of investorList){
+    const cities=locationToCity(inv.location);
+    if(!cities)continue;
+    for(const c of cities){
+      const key=c.city;
+      if(!clusters[key])clusters[key]={city:key,lat:c.lat,lng:c.lng,investors:[],origLoc:c.origLoc};
+      clusters[key].investors.push(inv);
+    }
+  }
+  // Merge nearby clusters (within ~0.5 deg) into the larger one
+  const arr=Object.values(clusters);
+  const merged=[];
+  const used=new Set();
+  arr.sort((a,b)=>b.investors.length-a.investors.length);
+  for(let i=0;i<arr.length;i++){
+    if(used.has(i))continue;
+    const c={...arr[i],investors:[...arr[i].investors]};
+    for(let j=i+1;j<arr.length;j++){
+      if(used.has(j))continue;
+      const d=Math.abs(c.lat-arr[j].lat)+Math.abs(c.lng-arr[j].lng);
+      if(d<0.5){c.investors.push(...arr[j].investors);used.add(j)}
+    }
+    merged.push(c);used.add(i);
+  }
+  return merged;
+}
+function getClusterColor(investors){
+  const stages={seed:0,series_a:0,growth:0};
+  for(const inv of investors){
+    if(inv.stages)for(const s of inv.stages){
+      if(s==='seed'||s==='pre_seed')stages.seed++;
+      else if(s==='series_a')stages.series_a++;
+      else if(s==='series_b'||s==='growth'||s==='late_stage')stages.growth++;
+    }
+  }
+  const max=Math.max(stages.seed,stages.series_a,stages.growth);
+  if(max===0)return '#8b8b9a';
+  if(stages.seed===max)return '#10b981';
+  if(stages.series_a===max)return '#6366f1';
+  return '#a855f7';
+}
+// US-focused Albers projection (approximate)
+function projectGeo(lat,lng,w,h){
+  // Simple Mercator-ish for US, with padding
+  // Map bounds: lat 24-50, lng -125 to -66
+  const usOnly=lng>=-130&&lng<=-60&&lat>=24&&lat<=50;
+  if(!usOnly)return null; // skip non-US for the US map
+  const x=((lng+125)/(125-66))*w;
+  const y=((50-lat)/(50-24))*h;
+  return{x,y};
+}
+let currentView='grid';
+function setView(view){
+  currentView=view;
+  document.querySelectorAll('.view-switcher button').forEach(b=>b.classList.toggle('active',b.dataset.view===view));
+  document.getElementById('mapContainer').classList.toggle('active',view==='map');
+  document.getElementById('resultsGrid').style.display=view==='grid'?'':'none';
+  const lmc=document.getElementById('loadMoreContainer');
+  if(lmc)lmc.style.display=view==='grid'?'':'none';
+  if(view==='map')renderMap();
+}
+function renderMap(){
+  const wrap=document.getElementById('mapSvgWrap');
+  const filtered=getFilteredInvestors?getFilteredInvestors():investors;
+  const clusters=clusterInvestors(filtered);
+  const W=900,H=500;
+  // Build SVG
+  let svg=`<svg viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg" style="overflow:visible">`;
+  // US outline (simplified)
+  svg+=`<rect x="0" y="0" width="${W}" height="${H}" fill="var(--bg-subtle)" rx="12"/>`;
+  // Simple US boundary path (very simplified)
+  svg+=`<path d="M60,120 L120,100 L200,95 L280,80 L340,85 L380,100 L420,90 L480,95 L540,100 L600,110 L660,95 L720,100 L780,90 L830,110 L840,140 L845,180 L830,220 L810,260 L780,300 L740,340 L700,360 L660,380 L600,390 L540,380 L480,370 L420,360 L380,380 L340,400 L300,390 L260,370 L220,340 L180,300 L140,260 L100,230 L70,190 L55,160 Z" fill="var(--border)" opacity="0.3" stroke="var(--text-dim)" stroke-width="0.5" stroke-opacity="0.3"/>`;
+
+  const maxCount=Math.max(...clusters.map(c=>c.investors.length),1);
+  const clusterData=[];
+  for(const cluster of clusters){
+    const pos=projectGeo(cluster.lat,cluster.lng,W,H);
+    if(!pos)continue;
+    const count=cluster.investors.length;
+    const r=Math.max(14,Math.min(40,10+Math.sqrt(count/maxCount)*30));
+    const color=getClusterColor(cluster.investors);
+    const idx=clusterData.length;
+    clusterData.push(cluster);
+    svg+=`<g class="map-cluster" data-idx="${idx}" onmouseenter="showMapTooltip(event,${idx})" onmouseleave="hideMapTooltip()" onclick="filterByCluster(${idx})">`;
+    svg+=`<circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="${color}" opacity="0.85"/>`;
+    svg+=`<circle cx="${pos.x}" cy="${pos.y}" r="${r}" fill="none" stroke="${color}" stroke-width="2" opacity="0.4"/>`;
+    if(count>1)svg+=`<text x="${pos.x}" y="${pos.y}" font-size="${r>20?13:11}">${count}</text>`;
+    else svg+=`<text x="${pos.x}" y="${pos.y}" font-size="9">${cluster.investors[0].name.split(' ')[0]}</text>`;
+    svg+=`</g>`;
+  }
+  svg+=`</svg>`;
+  wrap.innerHTML=svg;
+  window._mapClusters=clusterData;
+}
+function showMapTooltip(evt,idx){
+  const cluster=window._mapClusters[idx];
+  if(!cluster)return;
+  const tt=document.getElementById('mapTooltip');
+  const names=cluster.investors.slice(0,5).map(i=>i.name).join(', ');
+  const more=cluster.investors.length>5?` +${cluster.investors.length-5} more`:'';
+  tt.innerHTML=`<div class="tt-city">${cluster.city}</div><div class="tt-count">${cluster.investors.length} investor${cluster.investors.length>1?'s':''}</div><div class="tt-names">${names}${more}</div>`;
+  tt.classList.add('visible');
+  const wrap=document.getElementById('mapSvgWrap');
+  const rect=wrap.getBoundingClientRect();
+  const x=evt.clientX-rect.left+10;
+  const y=evt.clientY-rect.top-10;
+  tt.style.left=Math.min(x,rect.width-250)+'px';
+  tt.style.top=y+'px';
+}
+function hideMapTooltip(){document.getElementById('mapTooltip').classList.remove('visible')}
+function filterByCluster(idx){
+  const cluster=window._mapClusters[idx];
+  if(!cluster)return;
+  // Find matching geography chip or set search
+  const cityLower=cluster.city.toLowerCase();
+  const locTerms=cluster.investors.map(i=>i.location).filter(Boolean);
+  // Try to find a geo chip
+  const geoChips=document.querySelectorAll('[data-filter="geography"] .chip');
+  let matched=false;
+  geoChips.forEach(chip=>{
+    const val=chip.dataset.value||'';
+    if(val&&locTerms.some(l=>l.toLowerCase().includes(val.toLowerCase()))){
+      if(!chip.classList.contains('active'))chip.click();
+      matched=true;
+    }
+  });
+  if(!matched){
+    // Fall back to search
+    const searchInput=document.getElementById('searchInput');
+    if(searchInput){searchInput.value=cluster.city;searchInput.dispatchEvent(new Event('input'))}
+  }
+  setView('grid');
+}
+// Expose filtered list for map
+window.getFilteredInvestors=function(){return lastFiltered||investors};
 
 // ===== GO =====
 initOnboarding();
