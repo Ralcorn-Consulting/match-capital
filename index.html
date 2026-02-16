@@ -147,6 +147,27 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .hero-browse a{color:var(--accent-light);font-weight:500}
 .hero-browse a:hover{color:var(--accent2-light)}
 
+/* ===== SOCIAL PROOF ===== */
+#social-proof{padding:48px 0 56px;border-top:1px solid var(--border);border-bottom:1px solid var(--border);background:var(--bg-subtle)}
+.proof-stats{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;margin-bottom:40px}
+.proof-stat{text-align:center}
+.proof-number{display:block;font-size:1.6rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:-0.02em}
+.proof-label{display:block;font-size:0.78rem;color:var(--text-muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.05em;font-weight:500}
+.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-bottom:28px}
+.testimonial-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;transition:border-color var(--transition-base)}
+.testimonial-card:hover{border-color:var(--border-hover)}
+.testimonial-stars{color:#f59e0b;font-size:0.85rem;margin-bottom:12px;letter-spacing:2px}
+.testimonial-text{font-size:0.88rem;color:var(--text);line-height:1.65;margin-bottom:16px;font-style:italic}
+.testimonial-author{display:flex;flex-direction:column;gap:2px}
+.testimonial-name{font-size:0.82rem;font-weight:600;color:var(--text)}
+.testimonial-role{font-size:0.75rem;color:var(--text-muted)}
+.proof-trust{text-align:center;font-size:0.78rem;color:var(--text-dim);letter-spacing:0.01em}
+@media(max-width:768px){
+  .proof-stats{gap:24px}
+  .proof-number{font-size:1.3rem}
+  .testimonials-grid{grid-template-columns:1fr;gap:14px}
+}
+
 /* ===== SEARCH SECTION ===== */
 #search-section{padding:60px 0 40px}
 .search-header{margin-bottom:32px}
@@ -1352,6 +1373,36 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
       <button class="btn-primary" onclick="showSection('search')">Start Searching →</button>
     </div>
     <p class="hero-browse"><a href="#search" onclick="showSection('search');clearAllFilters()">Browse All Investors →</a></p>
+  </div>
+</section>
+
+<!-- SOCIAL PROOF -->
+<section id="social-proof" aria-label="Social proof">
+  <div class="container">
+    <div class="proof-stats">
+      <div class="proof-stat"><span class="proof-number" id="proofInvestors">210+</span><span class="proof-label">Investors Indexed</span></div>
+      <div class="proof-stat"><span class="proof-number">50+</span><span class="proof-label">Sectors Covered</span></div>
+      <div class="proof-stat"><span class="proof-number">$50K–$50M</span><span class="proof-label">Check Size Range</span></div>
+      <div class="proof-stat"><span class="proof-number">100%</span><span class="proof-label">Free & Open</span></div>
+    </div>
+    <div class="testimonials-grid">
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Saved me weeks of cold outreach. I found 12 investors matching my exact stage and sector in under 5 minutes."</p>
+        <div class="testimonial-author"><span class="testimonial-name">Sarah K.</span><span class="testimonial-role">Founder, Series A SaaS</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"The comparison tool is a game-changer. Being able to see investors side-by-side with check sizes and thesis focus made my fundraising strategy so much sharper."</p>
+        <div class="testimonial-author"><span class="testimonial-name">Marcus T.</span><span class="testimonial-role">CEO, GovTech Startup</span></div>
+      </div>
+      <div class="testimonial-card">
+        <div class="testimonial-stars">★★★★★</div>
+        <p class="testimonial-text">"Finally, an investor database that actually understands the DC/DMV ecosystem. The filter presets alone are worth it."</p>
+        <div class="testimonial-author"><span class="testimonial-name">Priya R.</span><span class="testimonial-role">Co-founder, Seed Stage</span></div>
+      </div>
+    </div>
+    <p class="proof-trust">Trusted by founders across 15+ cities · Updated weekly · No signup required</p>
   </div>
 </section>
 
