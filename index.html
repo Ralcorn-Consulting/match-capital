@@ -325,6 +325,7 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .tag-stage{background:rgba(99,102,241,0.07);color:#a5b4fc}
 .tag-sector{background:rgba(168,85,247,0.07);color:#c4b5fd}
 .investor-card .check-size{font-size:0.78rem;color:var(--text-muted);margin-bottom:4px;font-family:var(--font-mono);font-weight:500}
+.portfolio-match-badge{font-size:0.74rem;color:#a78bfa;background:rgba(167,139,250,0.1);border:1px solid rgba(167,139,250,0.2);padding:4px 10px;border-radius:14px;margin-bottom:6px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
 .investor-card .location{font-size:0.78rem;color:var(--text-dim)}
 
 /* ===== MODAL ===== */
@@ -1183,13 +1184,13 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
 
     <div class="search-bar" role="search">
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="11" cy="11" r="8"/><path d="m21 21-4.35-4.35"/></svg>
-      <input type="search" id="searchInput" placeholder="Search investors... (try stage:seed sector:saas or check:>500k)" aria-label="Search investors" autocomplete="off">
+      <input type="search" id="searchInput" placeholder="Search investors... (try stage:seed sector:saas portfolio:stripe or check:>500k)" aria-label="Search investors" autocomplete="off">
       <div class="syntax-active" id="syntaxActive"></div>
       <button class="clear-btn" id="clearSearch" onclick="clearSearch()" aria-label="Clear search">×</button>
       <div class="search-syntax-help" id="searchSyntaxHelp">
         <div class="syntax-title">⚡ Advanced Search</div>
         <div class="syntax-examples">
-          <code>stage:seed</code> <code>sector:ai</code> <code>type:vc</code> <code>geo:us</code> <code>check:&gt;500k</code> <code>check:&lt;5m</code> <code>active:yes</code>
+          <code>stage:seed</code> <code>sector:ai</code> <code>type:vc</code> <code>geo:us</code> <code>check:&gt;500k</code> <code>check:&lt;5m</code> <code>active:yes</code> <code>portfolio:stripe</code>
         </div>
         <div class="syntax-hint">Combine with free text: <code>climate stage:seed check:&lt;2m</code></div>
       </div>
@@ -1663,6 +1664,13 @@ function clearSearch(){searchInput.value='';clearBtn.classList.remove('show');do
 // ===== RENDER =====
 // ===== ADVANCED SEARCH SYNTAX =====
 // Parses queries like "climate stage:seed sector:ai check:>500k type:vc geo:us active:yes"
+function getPortfolioCompanies(inv){
+  const all=[];
+  (inv.recentInvestments||[]).forEach(i=>all.push(i.company));
+  (inv.portfolioHighlights||[]).forEach(p=>all.push(p.replace(/\s*\(.*\)/,'').trim()));
+  return all;
+}
+
 function parseSearchQuery(raw){
   const syntaxPattern=/(\w+):([<>]?\S+)/gi;
   const structured={};
@@ -1741,6 +1749,14 @@ function matchSyntaxFilter(inv,structured){
   if(structured.firm){
     if(!structured.firm.some(f=>(inv.firm||'').toLowerCase().includes(f.toLowerCase())))return false;
   }
+  // Portfolio filter from syntax
+  if(structured.portfolio||structured.invested){
+    const terms=[...(structured.portfolio||[]),...(structured.invested||[])];
+    const allPortfolio=getPortfolioCompanies(inv);
+    const matched=terms.filter(t=>allPortfolio.some(p=>p.toLowerCase().includes(t.toLowerCase())));
+    if(!matched.length)return false;
+    inv._portfolioMatch=matched.map(t=>allPortfolio.find(p=>p.toLowerCase().includes(t.toLowerCase()))||t);
+  }
   return true;
 }
 
@@ -1768,15 +1784,18 @@ function filterInvestors(){
     // Apply structured syntax filters
     if(hasSyntax&&!matchSyntaxFilter(inv,structured))return false;
 
-    // Apply free text search (fuzzy)
+    // Apply free text search (fuzzy) — includes portfolio companies
     if(freeText){
+      const portfolioNames=getPortfolioCompanies(inv);
       const fields=[inv.name,inv.firm,inv.thesis,inv.location,...inv.sectors,...inv.stages,...inv.geography,inv.type].map(s=>(s||'').toLowerCase());
+      const portfolioFields=portfolioNames.map(s=>s.toLowerCase());
+      const allFields=[...fields,...portfolioFields];
       const words=freeText.split(/\s+/).filter(Boolean);
-      const match=words.every(w=>fields.some(f=>f.includes(w)));
+      const match=words.every(w=>allFields.some(f=>f.includes(w)));
       if(!match){
         const fuzzy=words.every(w=>{
-          if(w.length<=3)return fields.some(f=>f.includes(w));
-          return fields.some(f=>{
+          if(w.length<=3)return allFields.some(f=>f.includes(w));
+          return allFields.some(f=>{
             for(let i=0;i<=f.length-w.length;i++){
               let diff=0;
               for(let j=0;j<w.length;j++){if(f[i+j]!==w[j])diff++;if(diff>1)break}
@@ -1787,7 +1806,11 @@ function filterInvestors(){
         });
         if(!fuzzy)return false;
       }
-    }
+      // Track portfolio matches for badge display
+      const portfolioMatches=portfolioNames.filter(p=>words.some(w=>p.toLowerCase().includes(w)));
+      if(portfolioMatches.length)inv._portfolioMatch=portfolioMatches;
+      else delete inv._portfolioMatch;
+    } else { delete inv._portfolioMatch; }
     if(activeFilters.stage.length&&!activeFilters.stage.some(s=>inv.stages.includes(s)))return false;
     if(activeFilters.sector.length&&!activeFilters.sector.some(s=>inv.sectors.includes(s)))return false;
     if(activeFilters.type.length&&!activeFilters.type.includes(inv.type))return false;
@@ -2074,6 +2097,7 @@ function cardHTML(inv,idx){
       ${inv.stages.map(s=>`<span class="tag tag-stage">${s}</span>`).join('')}
     </div>
     <div class="check-size">💰 ${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</div>
+    ${inv._portfolioMatch?`<div class="portfolio-match-badge">💼 Invested in: ${[...new Set(inv._portfolioMatch)].slice(0,3).join(', ')}</div>`:''}
     <div class="location">${inv.location}</div>
   </div>`
 }
