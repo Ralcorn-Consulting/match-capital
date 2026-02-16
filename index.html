@@ -513,6 +513,7 @@ footer .links a:hover{color:var(--text)}
 
 /* Tablet breakpoint */
 @media(max-width:768px){
+  #helpBtn{display:none !important}
   .container{padding:0 16px}
   nav .inner{padding:0 12px}
   .nav-links a,.nav-links button{padding:7px 10px;font-size:0.8rem}
@@ -1060,6 +1061,22 @@ footer .links a:hover{color:var(--text)}
 /* Touch optimization — eliminate 300ms tap delay */
 html{touch-action:manipulation}
 button,a,.chip,.investor-card,.similar-card,.rv-card,.tone-chip,.compare-btn,.tag-color-dot,.user-tag,.list-tab,.share-btn,.outreach-cta{-webkit-tap-highlight-color:transparent}
+
+/* ===== PWA SAFE AREAS & MOBILE POLISH ===== */
+/* Safe area insets for notch/home indicator */
+body{padding-top:env(safe-area-inset-top);padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+nav{padding-top:env(safe-area-inset-top)}
+footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
+.modal{padding-bottom:env(safe-area-inset-bottom)}
+.compare-bar{padding-bottom:env(safe-area-inset-bottom)}
+/* Smooth momentum scrolling */
+.modal,.shortcuts-modal,.compare-modal{-webkit-overflow-scrolling:touch;overscroll-behavior:contain}
+.rv-scroll,.list-tabs,.saved-tag-filter{-webkit-overflow-scrolling:touch}
+/* Modal actions safe area on mobile */
+@media(max-width:600px){
+  .modal-actions{padding-bottom:max(16px,env(safe-area-inset-bottom))}
+  footer .inner{padding-bottom:max(16px,env(safe-area-inset-bottom))}
+}
 </style>
 </head>
 <body>
@@ -2262,7 +2279,7 @@ document.addEventListener('keydown',e=>{
     e.preventDefault();
     document.getElementById('searchInput').focus();
   }
-  if(e.key==='?'&&!inInput){
+  if(e.key==='?'&&!inInput&&window.innerWidth>=768){
     e.preventDefault();
     toggleShortcutsModal();
   }
