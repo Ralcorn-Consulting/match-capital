@@ -1210,6 +1210,22 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
   .modal-actions{padding-bottom:max(16px,env(safe-area-inset-bottom))}
   footer .inner{padding-bottom:max(16px,env(safe-area-inset-bottom))}
 }
+/* ===== Mobile Swipe Gestures ===== */
+.investor-card{touch-action:pan-y}
+.investor-card.swiping{transition:none!important;transform-origin:center bottom;z-index:10;user-select:none;-webkit-user-select:none}
+.investor-card .swipe-indicator{position:absolute;top:0;left:0;right:0;bottom:0;border-radius:var(--radius);display:flex;align-items:center;justify-content:center;font-size:2rem;font-weight:800;pointer-events:none;opacity:0;transition:opacity 0.1s;z-index:5}
+.investor-card .swipe-indicator.save{background:rgba(16,185,129,0.15);border:2px solid var(--green);color:var(--green)}
+.investor-card .swipe-indicator.dismiss{background:rgba(239,68,68,0.15);border:2px solid #ef4444;color:#ef4444}
+.investor-card.swipe-exit-right{transition:transform 0.3s ease-out,opacity 0.3s ease-out!important;transform:translateX(120%) rotate(15deg)!important;opacity:0!important}
+.investor-card.swipe-exit-left{transition:transform 0.3s ease-out,opacity 0.3s ease-out!important;transform:translateX(-120%) rotate(-15deg)!important;opacity:0!important}
+.swipe-undo-toast{position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 20px;display:flex;align-items:center;gap:12px;font-size:0.85rem;color:var(--text);box-shadow:0 8px 32px rgba(0,0,0,0.3);z-index:9999;animation:toastIn 0.3s ease}
+.swipe-undo-toast button{background:var(--accent);color:#fff;border:none;border-radius:8px;padding:6px 14px;font-weight:600;font-size:0.8rem;cursor:pointer}
+@keyframes toastIn{from{opacity:0;transform:translateX(-50%) translateY(20px)}to{opacity:1;transform:translateX(-50%) translateY(0)}}
+.swipe-hint{display:none}
+@media(max-width:768px){
+  .swipe-hint{display:flex;align-items:center;justify-content:center;gap:8px;font-size:0.75rem;color:var(--text-dim);padding:4px 0 8px;letter-spacing:0.01em}
+  .swipe-hint span{opacity:0.7}
+}
 </style>
 </head>
 <body>
@@ -3989,6 +4005,148 @@ function filterByCluster(idx){
 }
 // Expose filtered list for map
 window.getFilteredInvestors=function(){return lastFiltered||investors};
+
+// ===== MOBILE SWIPE GESTURES =====
+const dismissedIds=new Set();
+let swipeUndoTimeout=null;
+
+function isTouchDevice(){return 'ontouchstart' in window || navigator.maxTouchPoints>0}
+
+function attachSwipeHandlers(){
+  if(!isTouchDevice()||window.innerWidth>768)return;
+  document.querySelectorAll('#resultsGrid .investor-card').forEach(card=>{
+    if(card._swipeAttached)return;
+    card._swipeAttached=true;
+    // Add swipe indicator overlays
+    if(!card.querySelector('.swipe-indicator')){
+      card.insertAdjacentHTML('afterbegin','<div class="swipe-indicator save">✓ Save</div><div class="swipe-indicator dismiss">✕ Skip</div>');
+    }
+    let startX=0,startY=0,dx=0,isSwipe=false,locked=false;
+    card.addEventListener('touchstart',e=>{
+      if(e.touches.length!==1)return;
+      startX=e.touches[0].clientX;startY=e.touches[0].clientY;dx=0;isSwipe=false;locked=false;
+    },{passive:true});
+    card.addEventListener('touchmove',e=>{
+      if(e.touches.length!==1||locked)return;
+      const cx=e.touches[0].clientX,cy=e.touches[0].clientY;
+      const diffX=cx-startX,diffY=cy-startY;
+      // Lock direction after 10px movement
+      if(!isSwipe&&Math.abs(diffX)<10&&Math.abs(diffY)<10)return;
+      if(!isSwipe){
+        if(Math.abs(diffY)>Math.abs(diffX)){locked=true;return} // vertical scroll
+        isSwipe=true;card.classList.add('swiping');
+      }
+      e.preventDefault();
+      dx=diffX;
+      const pct=Math.min(Math.abs(dx)/150,1);
+      const rotate=dx*0.05;
+      card.style.transform=`translateX(${dx}px) rotate(${rotate}deg)`;
+      const saveInd=card.querySelector('.swipe-indicator.save');
+      const dismissInd=card.querySelector('.swipe-indicator.dismiss');
+      if(dx>30){saveInd.style.opacity=pct;dismissInd.style.opacity=0}
+      else if(dx<-30){dismissInd.style.opacity=pct;saveInd.style.opacity=0}
+      else{saveInd.style.opacity=0;dismissInd.style.opacity=0}
+    },{passive:false});
+    card.addEventListener('touchend',()=>{
+      if(!isSwipe){card.classList.remove('swiping');return}
+      const threshold=80;
+      const investorId=card.getAttribute('data-investor-id');
+      if(dx>threshold){
+        // Swipe right = save
+        card.classList.remove('swiping');card.classList.add('swipe-exit-right');
+        const listName=currentListName||Object.keys(namedLists)[0]||'Saved';
+        if(!namedLists[listName])namedLists[listName]=[];
+        if(!namedLists[listName].includes(investorId)){
+          namedLists[listName].push(investorId);saveLists();updateSavedCount();
+        }
+        showSwipeToast('Saved to "'+listName+'"',investorId,'save');
+        setTimeout(()=>{card.style.display='none'},300);
+      }else if(dx<-threshold){
+        // Swipe left = dismiss
+        card.classList.remove('swiping');card.classList.add('swipe-exit-left');
+        dismissedIds.add(investorId);
+        showSwipeToast('Skipped',investorId,'dismiss');
+        setTimeout(()=>{card.style.display='none'},300);
+      }else{
+        // Snap back
+        card.classList.remove('swiping');
+        card.style.transition='transform 0.3s ease, opacity 0.3s ease';
+        card.style.transform='';
+        const saveInd=card.querySelector('.swipe-indicator.save');
+        const dismissInd=card.querySelector('.swipe-indicator.dismiss');
+        if(saveInd)saveInd.style.opacity=0;if(dismissInd)dismissInd.style.opacity=0;
+        setTimeout(()=>{card.style.transition=''},300);
+      }
+    },{passive:true});
+  });
+}
+
+function showSwipeToast(msg,investorId,type){
+  const existing=document.querySelector('.swipe-undo-toast');if(existing)existing.remove();
+  clearTimeout(swipeUndoTimeout);
+  const toast=document.createElement('div');toast.className='swipe-undo-toast';
+  toast.innerHTML=`<span>${type==='save'?'✓':'✕'} ${msg}</span><button onclick="undoSwipe('${investorId}','${type}')">Undo</button>`;
+  document.body.appendChild(toast);
+  swipeUndoTimeout=setTimeout(()=>{toast.remove()},4000);
+  removeSwipeHint();
+}
+
+function undoSwipe(investorId,type){
+  const toast=document.querySelector('.swipe-undo-toast');if(toast)toast.remove();
+  clearTimeout(swipeUndoTimeout);
+  if(type==='save'){
+    const listName=currentListName||Object.keys(namedLists)[0]||'Saved';
+    const list=namedLists[listName]||[];
+    const idx=list.indexOf(investorId);if(idx>=0)list.splice(idx,1);
+    saveLists();updateSavedCount();
+  }else{
+    dismissedIds.delete(investorId);
+  }
+  renderResults(false);
+}
+
+// Inject swipe hint above results grid
+function addSwipeHint(){
+  if(!isTouchDevice()||window.innerWidth>768||localStorage.getItem('mc_swipe_hint_seen'))return;
+  const grid=document.getElementById('resultsGrid');
+  if(grid&&!document.getElementById('swipeHint')){
+    grid.insertAdjacentHTML('beforebegin','<div class="swipe-hint" id="swipeHint"><span>👈 Swipe left to skip</span><span>•</span><span>Swipe right to save 👉</span></div>');
+  }
+}
+
+// Patch renderResults to attach swipe handlers and filter dismissed
+const _origRenderResults=renderResults;
+// We can't reassign const, so we hook via a MutationObserver on the grid
+const _swipeObserver=new MutationObserver(()=>{
+  // Hide dismissed cards
+  document.querySelectorAll('#resultsGrid .investor-card').forEach(card=>{
+    const id=card.getAttribute('data-investor-id');
+    if(dismissedIds.has(id))card.style.display='none';
+  });
+  attachSwipeHandlers();
+});
+document.addEventListener('DOMContentLoaded',()=>{
+  const grid=document.getElementById('resultsGrid');
+  if(grid){
+    _swipeObserver.observe(grid,{childList:true});
+    addSwipeHint();
+  }
+});
+// Also hook after init since DOMContentLoaded may have fired
+setTimeout(()=>{
+  const grid=document.getElementById('resultsGrid');
+  if(grid){_swipeObserver.observe(grid,{childList:true});addSwipeHint()}
+  attachSwipeHandlers();
+},500);
+
+// Hide swipe hint after first swipe
+let _swipeHintRemoved=false;
+function removeSwipeHint(){
+  if(_swipeHintRemoved)return;_swipeHintRemoved=true;
+  const hint=document.getElementById('swipeHint');
+  if(hint){hint.style.transition='opacity 0.3s';hint.style.opacity='0';setTimeout(()=>hint.remove(),300)}
+  localStorage.setItem('mc_swipe_hint_seen','1');
+}
 
 // ===== GO =====
 initOnboarding();
