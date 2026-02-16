@@ -1226,6 +1226,32 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
   .swipe-hint{display:flex;align-items:center;justify-content:center;gap:8px;font-size:0.75rem;color:var(--text-dim);padding:4px 0 8px;letter-spacing:0.01em}
   .swipe-hint span{opacity:0.7}
 }
+/* ===== GUIDED TOUR ===== */
+.tour-overlay{position:fixed;inset:0;z-index:100000;pointer-events:none;transition:opacity 0.3s}
+.tour-overlay.active{pointer-events:auto}
+.tour-backdrop{position:fixed;inset:0;z-index:100000}
+.tour-spotlight{position:absolute;z-index:100001;border-radius:var(--radius-sm);box-shadow:0 0 0 9999px rgba(0,0,0,0.7);transition:all 0.4s cubic-bezier(0.16,1,0.3,1);pointer-events:none}
+[data-theme="light"] .tour-spotlight{box-shadow:0 0 0 9999px rgba(0,0,0,0.5)}
+.tour-spotlight::after{content:'';position:absolute;inset:-4px;border-radius:calc(var(--radius-sm) + 4px);border:2px solid var(--accent);animation:tour-pulse 2s infinite}
+@keyframes tour-pulse{0%,100%{opacity:1;border-color:var(--accent)}50%{opacity:0.4;border-color:var(--accent2)}}
+.tour-tooltip{position:absolute;z-index:100002;background:var(--card);border:1px solid var(--border-hover);border-radius:var(--radius);padding:20px 24px;max-width:340px;width:max-content;box-shadow:0 20px 60px rgba(0,0,0,0.4);animation:tour-tooltip-in 0.35s cubic-bezier(0.16,1,0.3,1)}
+@keyframes tour-tooltip-in{from{opacity:0;transform:translateY(8px) scale(0.96)}to{opacity:1;transform:none}}
+.tour-tooltip h4{font-size:1rem;font-weight:700;color:var(--text);margin-bottom:6px;display:flex;align-items:center;gap:8px}
+.tour-tooltip p{font-size:0.85rem;color:var(--text-muted);line-height:1.6;margin-bottom:16px}
+.tour-tooltip .tour-step-indicator{font-size:0.75rem;color:var(--text-dim);font-family:var(--font-mono);margin-bottom:8px}
+.tour-actions{display:flex;gap:8px;align-items:center}
+.tour-actions button{padding:8px 16px;border-radius:20px;font-size:0.82rem;font-weight:600;cursor:pointer;border:none;transition:all 0.2s}
+.tour-btn-next{background:var(--accent);color:#fff}
+.tour-btn-next:hover{background:var(--accent-light)}
+.tour-btn-skip{background:transparent;color:var(--text-muted);border:1px solid var(--border) !important}
+.tour-btn-skip:hover{color:var(--text);border-color:var(--border-hover) !important}
+.tour-btn-back{background:transparent;color:var(--text-muted)}
+.tour-btn-back:hover{color:var(--text)}
+.tour-progress{display:flex;gap:4px;margin-left:auto}
+.tour-progress span{width:8px;height:8px;border-radius:50%;background:var(--border);transition:all 0.3s}
+.tour-progress span.active{background:var(--accent);transform:scale(1.2)}
+.tour-progress span.done{background:var(--accent2)}
+@media(max-width:768px){.tour-tooltip{max-width:calc(100vw - 32px);left:16px !important;right:16px !important;width:auto}}
 </style>
 </head>
 <body>
@@ -1243,6 +1269,7 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
       <button onclick="showSection('saved')" role="menuitem">Saved <span class="saved-count" id="savedCount" aria-label="saved investors count">0</span></button>
       <button class="theme-toggle" id="themeToggle" onclick="toggleTheme()" aria-label="Toggle light/dark mode" title="Toggle theme">🌙</button>
       <button class="theme-toggle" id="helpBtn" onclick="toggleShortcutsModal()" aria-label="Keyboard shortcuts" title="Keyboard shortcuts (?)">?</button>
+      <button class="theme-toggle" id="tourBtn" onclick="startTour()" aria-label="Start guided tour" title="Take a tour">🎓</button>
     </div>
   </div>
 </nav>
@@ -4148,9 +4175,111 @@ function removeSwipeHint(){
   localStorage.setItem('mc_swipe_hint_seen','1');
 }
 
+// ===== GUIDED TOUR =====
+const TOUR_STEPS=[
+  {selector:'#searchInput',icon:'🔍',title:'Smart Search',desc:'Type anything — investor names, firms, or use power syntax like <code>stage:seed</code>, <code>sector:fintech</code>, <code>check:&gt;500k</code>, or <code>portfolio:stripe</code>.',position:'bottom',action:()=>{showSection('search')}},
+  {selector:'#presetRow',icon:'⚡',title:'Filter Presets',desc:'One-tap preset combos for common searches — DC/DMV Seed, NYC Series A, GovTech/Impact, and more. Tap again to clear.',position:'bottom',action:()=>{showSection('search');const fb=document.getElementById('filterBar');if(fb)fb.scrollIntoView({behavior:'smooth',block:'center'})}},
+  {selector:'#filtersCollapsible',icon:'🎛️',title:'Advanced Filters',desc:'Filter by stage, sector, type, check size, and geography. Combine multiple filters to narrow your search. Active filters show as chips above results.',position:'bottom',action:()=>{showSection('search');const fc=document.getElementById('filtersCollapsible');if(fc&&fc.style.display==='none'){toggleFilterSection()}}},
+  {selector:'.investor-card',icon:'📇',title:'Investor Cards',desc:'Each card shows key info at a glance — type, stages, sectors, and check size. Click any card to see the full profile with thesis, portfolio, and outreach tools.',position:'top',action:()=>{showSection('search')}},
+  {selector:'#analyticsToggle',icon:'📊',title:'Analytics & Charts',desc:'Expand to see live stats — sector heatmap, geographic distribution, and stage breakdown. Click any chart element to filter by it.',position:'bottom',action:()=>{showSection('search')}},
+  {selector:'.export-btn',icon:'⬇️',title:'Export Data',desc:'Export your filtered investor list as CSV or JSON. Great for building outreach spreadsheets or importing into your CRM.',position:'bottom',action:()=>{showSection('search')}},
+  {selector:'.view-toggle',icon:'🗺️',title:'Map View',desc:'Switch to map view to see investors plotted geographically. Click any cluster to filter by that location.',position:'bottom',action:()=>{showSection('search')}},
+  {selector:'#savedCount',icon:'💾',title:'Saved Lists',desc:'Save investors to custom lists for tracking. Compare up to 4 investors side-by-side, generate outreach emails, and export comparisons.',position:'bottom'},
+  {selector:'#tourBtn',icon:'🎓',title:'You\'re All Set!',desc:'That\'s the tour! You can restart it anytime from this button. Happy fundraising! 🚀',position:'bottom'}
+];
+let _tourActive=false,_tourStep=0;
+let _tourOverlay=null,_tourSpotlight=null,_tourTooltip=null;
+
+function startTour(){
+  if(_tourActive)return;
+  _tourActive=true;_tourStep=0;
+  showSection('search');
+  // Create overlay elements
+  if(!_tourOverlay){
+    _tourOverlay=document.createElement('div');_tourOverlay.className='tour-overlay';
+    _tourSpotlight=document.createElement('div');_tourSpotlight.className='tour-spotlight';
+    _tourTooltip=document.createElement('div');_tourTooltip.className='tour-tooltip';
+    const backdrop=document.createElement('div');backdrop.className='tour-backdrop';
+    backdrop.onclick=()=>endTour();
+    _tourOverlay.appendChild(backdrop);
+    _tourOverlay.appendChild(_tourSpotlight);
+    _tourOverlay.appendChild(_tourTooltip);
+    document.body.appendChild(_tourOverlay);
+  }
+  _tourOverlay.classList.add('active');_tourOverlay.style.display='';
+  document.body.style.overflow='hidden';
+  setTimeout(()=>showTourStep(0),300);
+}
+
+function showTourStep(idx){
+  _tourStep=idx;
+  const step=TOUR_STEPS[idx];if(!step){endTour();return}
+  if(step.action)step.action();
+  setTimeout(()=>{
+    const el=document.querySelector(step.selector);
+    if(!el){_tourStep++;showTourStep(_tourStep);return}
+    el.scrollIntoView({behavior:'smooth',block:'center'});
+    setTimeout(()=>positionTourElements(el,step,idx),350);
+  },100);
+}
+
+function positionTourElements(el,step,idx){
+  const r=el.getBoundingClientRect();const pad=8;
+  _tourSpotlight.style.left=(r.left-pad+window.scrollX)+'px';
+  _tourSpotlight.style.top=(r.top-pad+window.scrollY)+'px';
+  _tourSpotlight.style.width=(r.width+pad*2)+'px';
+  _tourSpotlight.style.height=(r.height+pad*2)+'px';
+  // Build tooltip content
+  const total=TOUR_STEPS.length;
+  const dots=Array.from({length:total},(_,i)=>`<span class="${i<idx?'done':i===idx?'active':''}"></span>`).join('');
+  _tourTooltip.innerHTML=`
+    <div class="tour-step-indicator">Step ${idx+1} of ${total}</div>
+    <h4>${step.icon} ${step.title}</h4>
+    <p>${step.desc}</p>
+    <div class="tour-actions">
+      ${idx>0?'<button class="tour-btn-back" onclick="prevTourStep()">← Back</button>':''}
+      <button class="tour-btn-skip" onclick="endTour()">Skip</button>
+      <button class="tour-btn-next" onclick="nextTourStep()">${idx===total-1?'Finish ✓':'Next →'}</button>
+      <div class="tour-progress">${dots}</div>
+    </div>`;
+  // Position tooltip
+  const pos=step.position||'bottom';
+  _tourTooltip.style.left='';_tourTooltip.style.right='';_tourTooltip.style.top='';_tourTooltip.style.bottom='';
+  if(pos==='bottom'){
+    _tourTooltip.style.top=(r.bottom+pad+12+window.scrollY)+'px';
+    _tourTooltip.style.left=Math.max(16,Math.min(r.left+window.scrollX,window.innerWidth-360))+'px';
+  }else{
+    _tourTooltip.style.top=(r.top-pad-12+window.scrollY)+'px';
+    _tourTooltip.style.left=Math.max(16,Math.min(r.left+window.scrollX,window.innerWidth-360))+'px';
+    _tourTooltip.style.transform='translateY(-100%)';
+  }
+  // Re-animate
+  _tourTooltip.style.animation='none';_tourTooltip.offsetHeight;_tourTooltip.style.animation='';
+}
+
+function nextTourStep(){if(_tourStep<TOUR_STEPS.length-1)showTourStep(_tourStep+1);else endTour()}
+function prevTourStep(){if(_tourStep>0)showTourStep(_tourStep-1)}
+function endTour(){
+  _tourActive=false;
+  if(_tourOverlay){_tourOverlay.classList.remove('active');_tourOverlay.style.display='none'}
+  document.body.style.overflow='';
+  _tourTooltip.style.transform='';
+  localStorage.setItem('mc_tour_seen','1');
+}
+// Escape key ends tour
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&_tourActive)endTour()});
+
+// Auto-start tour for first-time visitors (after data loads)
+function maybeAutoTour(){
+  if(!localStorage.getItem('mc_tour_seen')&&!localStorage.getItem('mc_onboarding_dismissed')){
+    setTimeout(()=>startTour(),1500);
+  }
+}
+
 // ===== GO =====
 initOnboarding();
 init();
+setTimeout(maybeAutoTour,2000);
 </script>
 </body>
 </html>
