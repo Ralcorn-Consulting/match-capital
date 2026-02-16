@@ -33,6 +33,14 @@ echo ">>> Step 3: Merge into app data"
 node merge.js
 echo ""
 
+# Step 4: Enrich & Filter
+echo ">>> Step 4: Enrichment & Filtering"
+echo "  - Filtering non-VC entities (hedge funds, credit, RE, commodities)"
+echo "  - Enriching VC funds with website data"
+echo "  - Quality scoring & categorization"
+node enrich.js
+echo ""
+
 echo "============================================"
 echo "  Pipeline complete!"
 echo "============================================"

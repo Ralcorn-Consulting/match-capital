@@ -1,0 +1,125 @@
+{
+  "timestamp": "2026-02-16T04:18:31.201Z",
+  "original": 200,
+  "skeletonsProcessed": 148,
+  "filtered": 132,
+  "enrichedKept": 10,
+  "dropped": 6,
+  "finalTotal": 210,
+  "keptFunds": [
+    {
+      "firm": "Shakti Venture Capital II",
+      "score": 3,
+      "firmUrl": "https://shaktivc.com",
+      "thesis": "Backs bold founders reimagining global habits with new tech infrastructure. Inve..."
+    },
+    {
+      "firm": "Grant Park Ventures",
+      "score": 5,
+      "firmUrl": "https://grantparkventures.com",
+      "thesis": "Early-stage venture capital backing transformative founders in healthcare, finte..."
+    },
+    {
+      "firm": "WAVE Equity",
+      "score": 4,
+      "firmUrl": "https://waveep.com",
+      "thesis": "Sustainability-focused private investment firm partnering with early-growth clea..."
+    },
+    {
+      "firm": "Alter VC",
+      "score": 3,
+      "firmUrl": "https://alter.vc",
+      "thesis": "Venture capital focused on emerging market tech entrepreneurs. Provides VC fundi..."
+    },
+    {
+      "firm": "Davidovs Venture Capital",
+      "score": 3,
+      "firmUrl": "https://dvc.ai",
+      "thesis": "AI-focused seed and follow-on VC built on a community of 140+ founders (includin..."
+    },
+    {
+      "firm": "General Innovation Capital Partners",
+      "score": 4,
+      "firmUrl": "https://generalinnovation.com",
+      "thesis": "Invests in leading advanced technology businesses at inflection points of growth..."
+    },
+    {
+      "firm": "Tectonic Ventures Parallel III",
+      "score": 5,
+      "firmUrl": "https://www.tectonicventures.com",
+      "thesis": "Parallel vehicle for Tectonic Ventures III. Early-stage fund investing in health..."
+    },
+    {
+      "firm": "Climate Venture Capital",
+      "score": 2,
+      "firmUrl": null,
+      "thesis": "Venture capital fund focused on climate technology investments...."
+    },
+    {
+      "firm": "Tectonic Ventures III",
+      "score": 5,
+      "firmUrl": "https://www.tectonicventures.com",
+      "thesis": "Early-stage venture fund with 45+ investments across healthcare, fintech, and en..."
+    },
+    {
+      "firm": "Starkiller Capital",
+      "score": 4,
+      "firmUrl": "https://www.starkiller.capital",
+      "thesis": "Digital asset investment management applying quantitative research. Team from DR..."
+    }
+  ],
+  "droppedFunds": [
+    {
+      "id": "scp-venture",
+      "firm": "SCP Venture",
+      "score": 0
+    },
+    {
+      "id": "gaf-vc-ii",
+      "firm": "GAF-VC II",
+      "score": 0
+    },
+    {
+      "id": "sip-warwick-partners-i-qp-r-amp-m",
+      "firm": "SIP Warwick Partners I QP - R&amp;M",
+      "score": 0
+    },
+    {
+      "id": "js-venture",
+      "firm": "JS VENTURE",
+      "score": 0
+    },
+    {
+      "id": "95-impact-esg",
+      "firm": "95 Impact ESG",
+      "score": 0
+    },
+    {
+      "id": "rcp-small-amp-emerging",
+      "firm": "RCP SMALL &amp; EMERGING",
+      "score": 0
+    }
+  ],
+  "filteredFunds": [
+    "Lazard International Equity Strategies (non-vc (heuristic))",
+    "PROVENIRE ALPHA SELECT (non-vc (heuristic))",
+    "Glen Capital Partners Focus (non-vc (heuristic))",
+    "SCP Alpha Omega Dividend Value Payer (non-vc (heuristic))",
+    "Securis Opportunities (non-vc (heuristic))",
+    "North Rock (non-vc (heuristic))",
+    "Spring Lake Unconstrained Municipal Opportunities (non-vc (heuristic))",
+    "IR&amp;M Short (non-vc (heuristic))",
+    "WA Crown City CLO (non-vc (heuristic))",
+    "RCH Energy MLP Swap (non-vc (heuristic))",
+    "Mission Crest Macro (non-vc (heuristic))",
+    "OHPC (non-vc (heuristic))",
+    "Contrarian Credit Feeder (non-vc (heuristic))",
+    "SummerHaven Commodity (non-vc (heuristic))",
+    "Worcester (non-vc (heuristic))",
+    "IR&amp;M Long Government/Credit (non-vc (heuristic))",
+    "IR&amp;M Long Credit (non-vc (heuristic))",
+    "RCH Oil &amp; Gas Midstream (non-vc (heuristic))",
+    "NOVA Infrastructure (non-vc (heuristic))",
+    "SCP Masters Equity Long (non-vc (heuristic))"
+  ]
+}

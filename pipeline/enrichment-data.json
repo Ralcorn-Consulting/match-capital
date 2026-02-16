@@ -1,0 +1,284 @@
+{
+  "Shakti Venture Capital II": {
+    "thesis": "Backs bold founders reimagining global habits with new tech infrastructure. Invests as early as pre-revenue, initial checks up to $1M with follow-ons up to $1-2M for companies with product-market fit.",
+    "firmUrl": "https://shaktivc.com",
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["pre_seed", "seed"],
+    "sectors": ["ai_ml", "enterprise", "consumer"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Davidovs Venture Capital": {
+    "thesis": "AI-focused seed and follow-on VC built on a community of 140+ founders (including 9 active unicorn founders). Backs repeat AI founders at pre-seed/seed ($100-300k) and follow-on at Series A/B ($1-3M).",
+    "firmUrl": "https://dvc.ai",
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["pre_seed", "seed", "series_a", "series_b"],
+    "sectors": ["ai_ml", "enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "CincyTech": {
+    "thesis": "Cincinnati-based venture capital firm investing in innovative founders tackling complex challenges. Portfolio spans biotech, healthtech, and enterprise software.",
+    "firmUrl": "https://www.cincytechusa.com",
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["biotech", "healthtech", "enterprise", "saas"],
+    "portfolioHighlights": ["Clarametyx Biosciences", "TeamCentral", "Cart.com"],
+    "type": "vc"
+  },
+  "Tectonic Ventures III": {
+    "thesis": "Early-stage venture fund with 45+ investments across healthcare, fintech, and enterprise SaaS. Active deployer with 5 portfolio exits.",
+    "firmUrl": "https://www.tectonicventures.com",
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a", "series_b"],
+    "sectors": ["healthtech", "fintech", "enterprise", "saas"],
+    "portfolioHighlights": ["evolvedMD"],
+    "type": "vc"
+  },
+  "Tectonic Ventures Parallel III": {
+    "thesis": "Parallel vehicle for Tectonic Ventures III. Early-stage fund investing in healthcare, fintech, and enterprise SaaS.",
+    "firmUrl": "https://www.tectonicventures.com",
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a", "series_b"],
+    "sectors": ["healthtech", "fintech", "enterprise", "saas"],
+    "portfolioHighlights": ["evolvedMD"],
+    "type": "vc"
+  },
+  "Alter VC": {
+    "thesis": "Venture capital focused on emerging market tech entrepreneurs. Provides VC funding and talent in strategy and data science to scale startups globally.",
+    "firmUrl": "https://alter.vc",
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas", "fintech", "consumer"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "WAVE Equity": {
+    "thesis": "Sustainability-focused private investment firm partnering with early-growth cleantech innovators. ~$440M AUM across three institutional funds. Focus on clean energy, water, recycling, food, hard-tech, and advanced materials.",
+    "firmUrl": "https://waveep.com",
+    "linkedIn": "https://www.linkedin.com/company/wave-equity-partners",
+    "twitter": null,
+    "stages": ["series_a", "series_b", "growth"],
+    "sectors": ["cleantech", "climate", "enterprise"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Starkiller Capital": {
+    "thesis": "Digital asset investment management applying quantitative research. Team from DRW, Coinbase, Stripe, Tagomi. Focuses on Bitcoin ecosystem and crypto-native strategies.",
+    "firmUrl": "https://www.starkiller.capital",
+    "linkedIn": "https://www.linkedin.com/company/starkiller-capital",
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["crypto", "fintech"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "SineWave Ventures Direct 2C": {
+    "thesis": "Early-stage venture capital bridging Silicon Valley and Capitol Hill. Invests in technology companies across commercial and public sector ecosystems.",
+    "firmUrl": "https://sinewave.vc",
+    "linkedIn": "https://www.linkedin.com/company/sinewave-ventures",
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "govtech", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Grant Park Ventures": {
+    "thesis": "Early-stage venture capital backing transformative founders in healthcare, fintech, logistics, and software. Strong network of healthcare providers, payers, and Fortune 500 executives.",
+    "firmUrl": "https://grantparkventures.com",
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["healthtech", "fintech", "logistics", "saas"],
+    "portfolioHighlights": ["SaveIN"],
+    "type": "vc"
+  },
+  "General Innovation Capital Partners": {
+    "thesis": "Invests in leading advanced technology businesses at inflection points of growth that enhance the western way of life. Venture and growth investments in deep tech.",
+    "firmUrl": "https://generalinnovation.com",
+    "linkedIn": "https://www.linkedin.com/company/general-innovation-capital",
+    "twitter": null,
+    "stages": ["series_a", "series_b", "growth"],
+    "sectors": ["deeptech", "enterprise", "ai_ml"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "INTERSTATE FUSION VENTURES": {
+    "thesis": "First VC firm linking bi-coastal venture communities to Northeast Ohio. Invests in top-tier startups on the coasts and the Midwest, leveraging regional legacy corporations and research institutions.",
+    "firmUrl": "https://interstatefusion.com",
+    "linkedIn": "https://www.linkedin.com/company/interstate-fusion-ventures",
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas", "ai_ml"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Transform Health Ventures LLC": {
+    "thesis": "Pasadena-based venture capital firm investing in early-stage healthcare companies. Founded in 2023.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["healthtech", "biotech"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "IASV Seed Ventures": {
+    "thesis": "Early-stage venture capital fund (IA Seed Ventures). Invests in seed-stage startups.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["pre_seed", "seed"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Geek Ventures NewHomesMate SPV, a series of Decile SPV, LLC": {
+    "thesis": "Tech venture fund investing in immigrant founders building scalable products. Drives equal opportunity for visionary immigrant entrepreneurs through capital and connections.",
+    "firmUrl": "https://geek.vc",
+    "linkedIn": "https://www.linkedin.com/company/geek-ventures",
+    "twitter": null,
+    "stages": ["pre_seed", "seed"],
+    "sectors": ["enterprise", "saas", "consumer", "ai_ml"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Runway Healthcare": {
+    "thesis": "Chester County medtech accelerator and venture studio investing in early-stage medical device technologies. Provides venture capital and management services for healthcare product commercialization.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["pre_seed", "seed"],
+    "sectors": ["healthtech", "biotech", "medtech"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Shima GS Studio SPV LLC": {
+    "thesis": "Crypto-focused VC firm investing pre-seed and seed in web3 companies. ~$200M fund launched 2022. Based in Irvine, CA.",
+    "firmUrl": "https://shima.capital",
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["pre_seed", "seed"],
+    "sectors": ["crypto", "web3", "fintech"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Climate Venture Capital": {
+    "thesis": "Venture capital fund focused on climate technology investments.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["climate", "cleantech"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Star Castle Ventures VC": {
+    "thesis": "Venture capital fund.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "OKEANOS VENTURE PARTNERS II LLC-SERIES 124": {
+    "thesis": "Venture capital fund.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "ATHOS Venture": {
+    "thesis": "Emerging venture capital fund.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "Athos Emerging Venture": {
+    "thesis": "Emerging venture capital fund.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "SCP Venture": {
+    "thesis": "Venture capital fund.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "EPIC SPROUT VENTURES LLC": {
+    "thesis": "Venture capital fund.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "025 - Series of IPOSharks Venture Master": {
+    "thesis": "Venture capital SPV series.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "GAF-VC II": {
+    "thesis": "Venture capital fund (GAF VC series).",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "JS VENTURE": {
+    "thesis": "Venture capital fund.",
+    "firmUrl": null,
+    "linkedIn": null,
+    "twitter": null,
+    "stages": ["seed", "series_a"],
+    "sectors": ["enterprise", "saas"],
+    "portfolioHighlights": [],
+    "type": "vc"
+  },
+  "210k Capital": {
+    "_remove": true,
+    "_reason": "Bitcoin/crypto trading fund (UTXO Management), not a VC"
+  },
+  "Focal Point Partners": {
+    "_remove": true,
+    "_reason": "Fund of buyout funds / electrical services company, not VC"
+  },
+  "DRAKE CAPITAL PARTNERS II": {
+    "_remove": true,
+    "_reason": "Hedge fund based in Greenwich, not a VC"
+  }
+}

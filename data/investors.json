@@ -10380,5 +10380,431 @@
     "entity": "individual",
     "memberCount": null,
     "keyPeople": null
+  },
+  {
+    "id": "shakti-venture-capital-ii",
+    "name": "n/a Shakti GP II, LLC",
+    "firm": "Shakti Venture Capital II",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Backs bold founders reimagining global habits with new tech infrastructure. Invests as early as pre-revenue, initial checks up to $1M with follow-ons up to $1-2M for companies with product-market fit.",
+    "stages": [
+      "pre_seed",
+      "seed"
+    ],
+    "sectors": [
+      "ai_ml",
+      "enterprise",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "sf_bay"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$41M",
+    "activelyDeploying": true,
+    "lastActive": "2025-02",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://shaktivc.com",
+    "location": "SAN FRANCISCO, CALIFORNIA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "n/a Shakti GP II, LLC",
+      "Keval Desai"
+    ]
+  },
+  {
+    "id": "grant-park-ventures",
+    "name": "N/A Fund GP, LLC",
+    "firm": "Grant Park Ventures",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Early-stage venture capital backing transformative founders in healthcare, fintech, logistics, and software. Strong network of healthcare providers, payers, and Fortune 500 executives.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "healthtech",
+      "fintech",
+      "logistics",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [
+      "SaveIN"
+    ],
+    "fundSize": "$1M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://grantparkventures.com",
+    "location": "LYNNWOOD, DELAWARE",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Fund GP, LLC",
+      "N/A Belltower Fund Group, Ltd."
+    ]
+  },
+  {
+    "id": "wave-equity",
+    "name": "N/A WAVE Equity III GP LLC",
+    "firm": "WAVE Equity",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Sustainability-focused private investment firm partnering with early-growth cleantech innovators. ~$440M AUM across three institutional funds. Focus on clean energy, water, recycling, food, hard-tech, and advanced materials.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "cleantech",
+      "climate",
+      "enterprise"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "boston"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$42M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://www.linkedin.com/company/wave-equity-partners",
+    "twitter": null,
+    "firmUrl": "https://waveep.com",
+    "location": "BOSTON, MASSACHUSETTS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A WAVE Equity III GP LLC",
+      "Mark Robinson",
+      "Praveen Sahay",
+      "U. Crocker"
+    ]
+  },
+  {
+    "id": "alter-vc",
+    "name": "N/A Fund GP, LLC",
+    "firm": "Alter VC",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Venture capital focused on emerging market tech entrepreneurs. Provides VC funding and talent in strategy and data science to scale startups globally.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "enterprise",
+      "saas",
+      "fintech",
+      "consumer"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$3M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://alter.vc",
+    "location": "LYNNWOOD, WASHINGTON",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Fund GP, LLC",
+      "N/A Belltower Fund Group Ltd."
+    ]
+  },
+  {
+    "id": "davidovs-venture-capital",
+    "name": "N/A Fund GP, LLC",
+    "firm": "Davidovs Venture Capital",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "AI-focused seed and follow-on VC built on a community of 140+ founders (including 9 active unicorn founders). Backs repeat AI founders at pre-seed/seed ($100-300k) and follow-on at Series A/B ($1-3M).",
+    "stages": [
+      "pre_seed",
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "ai_ml",
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$4M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://dvc.ai",
+    "location": "LYNNWOOD, WASHINGTON",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Fund GP, LLC",
+      "N/A Belltower Fund Group, Ltd."
+    ]
+  },
+  {
+    "id": "general-innovation-capital-partners",
+    "name": "N/A General Innovation Capital Partners Fund I GP, LLC",
+    "firm": "General Innovation Capital Partners",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Invests in leading advanced technology businesses at inflection points of growth that enhance the western way of life. Venture and growth investments in deep tech.",
+    "stages": [
+      "series_a",
+      "series_b",
+      "growth"
+    ],
+    "sectors": [
+      "deeptech",
+      "enterprise",
+      "ai_ml"
+    ],
+    "checkSize": {
+      "min": 1000000,
+      "max": 25000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$350M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://www.linkedin.com/company/general-innovation-capital",
+    "twitter": null,
+    "firmUrl": "https://generalinnovation.com",
+    "location": "MIAMI, FLORIDA",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A General Innovation Capital Partners Fund I GP, LLC",
+      "N/A GICP Governance Co LLC",
+      "Nicholas Hammerschlag",
+      "Craig Huff"
+    ]
+  },
+  {
+    "id": "tectonic-ventures-parallel-iii",
+    "name": "N/A Tectonic Ventures GP III, LLC",
+    "firm": "Tectonic Ventures Parallel III",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Parallel vehicle for Tectonic Ventures III. Early-stage fund investing in healthcare, fintech, and enterprise SaaS.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "healthtech",
+      "fintech",
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "boston"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [
+      "evolvedMD"
+    ],
+    "fundSize": "$59M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://www.tectonicventures.com",
+    "location": "NEWTON, MASSACHUSETTS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Tectonic Ventures GP III, LLC",
+      "Matthew Rhodes-Kropf",
+      "Juan Leungli"
+    ]
+  },
+  {
+    "id": "climate-venture-capital",
+    "name": "N/A Fund GP, LLC",
+    "firm": "Climate Venture Capital",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Venture capital fund focused on climate technology investments.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "climate",
+      "cleantech"
+    ],
+    "checkSize": {
+      "min": 50000,
+      "max": 1000000
+    },
+    "geography": [
+      "us"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$0M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": null,
+    "location": "LYNNWOOD, WASHINGTON",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Fund GP, LLC",
+      "N/A Belltower Fund Group, Ltd."
+    ]
+  },
+  {
+    "id": "tectonic-ventures-iii",
+    "name": "N/A Tectonic Ventures GP III, LLC",
+    "firm": "Tectonic Ventures III",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Early-stage venture fund with 45+ investments across healthcare, fintech, and enterprise SaaS. Active deployer with 5 portfolio exits.",
+    "stages": [
+      "seed",
+      "series_a",
+      "series_b"
+    ],
+    "sectors": [
+      "healthtech",
+      "fintech",
+      "enterprise",
+      "saas"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "boston"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [
+      "evolvedMD"
+    ],
+    "fundSize": "$59M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": null,
+    "twitter": null,
+    "firmUrl": "https://www.tectonicventures.com",
+    "location": "NEWTON, MASSACHUSETTS",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Tectonic Ventures GP III, LLC",
+      "Matthew Rhodes-Kropf",
+      "Juan Leungli"
+    ]
+  },
+  {
+    "id": "starkiller-capital",
+    "name": "N/A Starkiller Capital GP, LP",
+    "firm": "Starkiller Capital",
+    "title": "Managing Partner",
+    "type": "vc",
+    "photo": null,
+    "thesis": "Digital asset investment management applying quantitative research. Team from DRW, Coinbase, Stripe, Tagomi. Focuses on Bitcoin ecosystem and crypto-native strategies.",
+    "stages": [
+      "seed",
+      "series_a"
+    ],
+    "sectors": [
+      "crypto",
+      "fintech"
+    ],
+    "checkSize": {
+      "min": 250000,
+      "max": 5000000
+    },
+    "geography": [
+      "us",
+      "nyc"
+    ],
+    "recentInvestments": [],
+    "portfolioHighlights": [],
+    "fundSize": "$24M",
+    "activelyDeploying": true,
+    "lastActive": "2025-12",
+    "linkedIn": "https://www.linkedin.com/company/starkiller-capital",
+    "twitter": null,
+    "firmUrl": "https://www.starkiller.capital",
+    "location": "HOLBROOK, NEW YORK",
+    "entity": "firm",
+    "memberCount": null,
+    "keyPeople": [
+      "N/A Starkiller Capital GP, LP",
+      "N/A Starkiller IM, LLC",
+      "Leigh Drogen"
+    ]
   }
 ]
