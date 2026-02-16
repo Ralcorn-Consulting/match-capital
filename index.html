@@ -1001,7 +1001,50 @@ footer .links a:hover{color:var(--text)}
 .analytics-toggle .chevron{transition:transform 0.3s;font-size:0.7rem}
 .analytics-toggle .chevron.open{transform:rotate(90deg)}
 .analytics-panel{overflow:hidden;max-height:0;opacity:0;transition:max-height 0.4s ease,opacity 0.3s ease,margin 0.3s ease;margin-bottom:0}
-.analytics-panel.open{max-height:800px;opacity:1;margin-bottom:24px}
+.analytics-panel.open{max-height:none;opacity:1;margin-bottom:24px}
+
+/* Analytics Tabs */
+.analytics-tabs{display:flex;gap:4px;margin-bottom:16px;border-bottom:1px solid var(--border);padding-bottom:0}
+.analytics-tab{padding:8px 16px;font-size:0.8rem;font-weight:600;color:var(--text-dim);border:none;background:none;cursor:pointer;border-bottom:2px solid transparent;margin-bottom:-1px;transition:all 0.2s}
+.analytics-tab:hover{color:var(--text-muted)}
+.analytics-tab.active{color:var(--accent-light);border-bottom-color:var(--accent)}
+.analytics-tab-content{display:none}
+.analytics-tab-content.active{display:block}
+
+/* Visual Charts */
+.viz-section{margin-top:20px}
+.viz-section h3{font-size:0.78rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:12px}
+.viz-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:20px}
+@media(max-width:768px){.viz-grid{grid-template-columns:1fr}}
+.viz-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:20px;transition:border-color 0.2s}
+.viz-card:hover{border-color:var(--border-hover)}
+.viz-card h4{font-size:0.72rem;font-weight:600;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.05em;margin-bottom:16px}
+.viz-card.full-width{grid-column:1/-1}
+
+/* Sector Heatmap */
+.heatmap-grid{display:grid;gap:3px}
+.heatmap-cell{border-radius:4px;cursor:pointer;transition:all 0.15s;display:flex;align-items:center;justify-content:center;font-size:0.65rem;font-weight:600;color:transparent;min-height:32px;position:relative}
+.heatmap-cell:hover{transform:scale(1.08);z-index:1;color:rgba(255,255,255,0.95);box-shadow:0 2px 8px rgba(0,0,0,0.3)}
+.heatmap-cell.active-filter{outline:2px solid var(--accent-light);outline-offset:1px}
+.heatmap-labels{display:flex;flex-wrap:wrap;gap:4px;margin-top:10px}
+.heatmap-legend{display:flex;align-items:center;gap:6px;margin-top:12px;font-size:0.68rem;color:var(--text-dim)}
+.heatmap-legend-bar{width:120px;height:8px;border-radius:4px;background:linear-gradient(90deg,rgba(99,102,241,0.08),rgba(99,102,241,0.3),rgba(99,102,241,0.6),rgba(99,102,241,0.9))}
+[data-theme="light"] .heatmap-cell:hover{color:rgba(255,255,255,0.95)}
+[data-theme="light"] .heatmap-legend-bar{background:linear-gradient(90deg,rgba(79,70,229,0.06),rgba(79,70,229,0.25),rgba(79,70,229,0.5),rgba(79,70,229,0.85))}
+
+/* Horizontal Bar Chart */
+.hbar-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;cursor:pointer;padding:3px 6px;border-radius:6px;transition:background 0.15s}
+.hbar-row:hover{background:rgba(255,255,255,0.03)}
+[data-theme="light"] .hbar-row:hover{background:rgba(0,0,0,0.02)}
+.hbar-row.active-filter{background:rgba(99,102,241,0.08)}
+.hbar-label{min-width:90px;font-size:0.78rem;color:var(--text-muted);flex-shrink:0;text-align:right;white-space:nowrap}
+.hbar-track{flex:1;height:20px;background:rgba(255,255,255,0.03);border-radius:4px;overflow:hidden;position:relative}
+[data-theme="light"] .hbar-track{background:rgba(0,0,0,0.03)}
+.hbar-fill{height:100%;border-radius:4px;transition:width 0.5s cubic-bezier(0.16,1,0.3,1);display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:0.68rem;font-weight:700;color:rgba(255,255,255,0.9);min-width:24px}
+.hbar-fill.fill-geo{background:linear-gradient(90deg,var(--accent2),#c4b5fd)}
+.hbar-fill.fill-stage{background:linear-gradient(90deg,var(--accent),#93c5fd)}
+.hbar-count{min-width:32px;font-size:0.72rem;color:var(--text-dim);font-weight:600;font-family:var(--font-mono)}
+@media(max-width:768px){.hbar-label{min-width:70px;font-size:0.7rem}.heatmap-cell{min-height:26px;font-size:0.58rem}}
 .stats-counters{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:20px}
 @media(max-width:700px){.stats-counters{grid-template-columns:repeat(2,1fr)}}
 .stat-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:16px;text-align:center;transition:border-color var(--transition-base)}
@@ -1215,8 +1258,22 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
       <span>📊 Database Analytics</span>
     </button>
     <div class="analytics-panel" id="analyticsPanel" role="region" aria-label="Database analytics">
-      <div class="stats-counters" id="statsCounters"></div>
-      <div class="analytics-grid" id="analyticsGrid"></div>
+      <div class="analytics-tabs">
+        <button class="analytics-tab active" onclick="switchAnalyticsTab('summary',this)">📊 Summary</button>
+        <button class="analytics-tab" onclick="switchAnalyticsTab('visual',this)">🗺 Visual Charts</button>
+      </div>
+      <div class="analytics-tab-content active" id="tabSummary">
+        <div class="stats-counters" id="statsCounters"></div>
+        <div class="analytics-grid" id="analyticsGrid"></div>
+      </div>
+      <div class="analytics-tab-content" id="tabVisual">
+        <div class="stats-counters" id="vizStatsCounters"></div>
+        <div class="viz-grid">
+          <div class="viz-card full-width" id="vizSectorHeatmap"><h4>🔥 Sector Heatmap</h4><div id="heatmapContainer"></div></div>
+          <div class="viz-card" id="vizGeoChart"><h4>🌎 Geographic Distribution</h4><div id="geoChartContainer"></div></div>
+          <div class="viz-card" id="vizStageChart"><h4>📈 Stage Distribution</h4><div id="stageChartContainer"></div></div>
+        </div>
+      </div>
     </div>
 
     <div class="filter-bar" id="filterBar">
@@ -2015,6 +2072,8 @@ function renderResults(resetPage=true){
   }else{
     loadMoreContainer.style.display='none';
   }
+  // Update visual charts if tab is visible
+  if(document.getElementById('tabVisual')?.classList.contains('active'))renderVisualCharts();
 }
 
 function loadMore(){
@@ -2913,6 +2972,14 @@ function removeFromCompare(id){
 function closeCompare(){const o=document.getElementById('compareOverlay');o.classList.remove('animate-in','open');document.body.style.overflow=''}
 
 // ===== ANALYTICS =====
+function switchAnalyticsTab(tab,btn){
+  document.querySelectorAll('.analytics-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.analytics-tab-content').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById(tab==='summary'?'tabSummary':'tabVisual').classList.add('active');
+  if(tab==='visual')renderVisualCharts();
+}
+
 function toggleAnalytics(){
   const panel=document.getElementById('analyticsPanel');
   const chevron=document.getElementById('analyticsChevron');
@@ -2923,29 +2990,26 @@ function toggleAnalytics(){
   if(isOpen&&!panel.dataset.rendered){renderAnalytics();panel.dataset.rendered='1'}
 }
 
-function renderAnalytics(){
-  const total=investors.length;
-  // Type breakdown
-  const typeCounts={};investors.forEach(i=>{typeCounts[i.type]=(typeCounts[i.type]||0)+1});
-  // Stage breakdown
-  const stageCounts={};investors.forEach(i=>i.stages.forEach(s=>{stageCounts[s]=(stageCounts[s]||0)+1}));
-  // Geo breakdown
-  const geoCounts={};investors.forEach(i=>i.geography.forEach(g=>{geoCounts[g]=(geoCounts[g]||0)+1}));
-  // Avg check size
-  const avgMin=Math.round(investors.reduce((a,i)=>a+i.checkSize.min,0)/total);
-  const avgMax=Math.round(investors.reduce((a,i)=>a+i.checkSize.max,0)/total);
-  // Active count
-  const activeCount=investors.filter(i=>i.activelyDeploying).length;
-  // Top locations
-  const locCounts={};investors.forEach(i=>{const loc=(i.location||'').split(',')[0].trim();if(loc)locCounts[loc]=(locCounts[loc]||0)+1});
-  const topLocs=Object.entries(locCounts).sort((a,b)=>b[1]-a[1]).slice(0,6);
+function getAnalyticsData(data){
+  const total=data.length;
+  const typeCounts={};data.forEach(i=>{typeCounts[i.type]=(typeCounts[i.type]||0)+1});
+  const stageCounts={};data.forEach(i=>i.stages.forEach(s=>{stageCounts[s]=(stageCounts[s]||0)+1}));
+  const geoCounts={};data.forEach(i=>i.geography.forEach(g=>{geoCounts[g]=(geoCounts[g]||0)+1}));
+  const sectorCounts={};data.forEach(i=>i.sectors.forEach(s=>{sectorCounts[s]=(sectorCounts[s]||0)+1}));
+  const avgMin=total?Math.round(data.reduce((a,i)=>a+i.checkSize.min,0)/total):0;
+  const avgMax=total?Math.round(data.reduce((a,i)=>a+i.checkSize.max,0)/total):0;
+  const activeCount=data.filter(i=>i.activelyDeploying).length;
+  return{total,typeCounts,stageCounts,geoCounts,sectorCounts,avgMin,avgMax,activeCount};
+}
 
-  // Counters
+function renderAnalytics(){
+  const d=getAnalyticsData(investors);
+
   document.getElementById('statsCounters').innerHTML=`
-    <div class="stat-card"><div class="stat-value">${total}</div><div class="stat-label">Total Investors</div></div>
-    <div class="stat-card"><div class="stat-value">${activeCount}</div><div class="stat-label">Actively Deploying</div></div>
-    <div class="stat-card"><div class="stat-value">${fmt(avgMin)}</div><div class="stat-label">Avg Min Check</div></div>
-    <div class="stat-card"><div class="stat-value">${fmt(avgMax)}</div><div class="stat-label">Avg Max Check</div></div>
+    <div class="stat-card"><div class="stat-value">${d.total}</div><div class="stat-label">Total Investors</div></div>
+    <div class="stat-card"><div class="stat-value">${d.activeCount}</div><div class="stat-label">Actively Deploying</div></div>
+    <div class="stat-card"><div class="stat-value">${fmt(d.avgMin)}</div><div class="stat-label">Avg Min Check</div></div>
+    <div class="stat-card"><div class="stat-value">${fmt(d.avgMax)}</div><div class="stat-label">Avg Max Check</div></div>
   `;
 
   const typeOrder=['VC','Angel','Family Office','Corp VC','Angel Group'];
@@ -2960,17 +3024,129 @@ function renderAnalytics(){
     }).join('');
   }
 
-  const maxType=Math.max(...Object.values(typeCounts));
-  const maxStage=Math.max(...Object.values(stageCounts));
-  const geoOrder=Object.keys(geoCounts).sort((a,b)=>geoCounts[b]-geoCounts[a]);
-  const maxGeo=Math.max(...Object.values(geoCounts));
+  const maxType=Math.max(...Object.values(d.typeCounts),1);
+  const maxStage=Math.max(...Object.values(d.stageCounts),1);
+  const geoOrder=Object.keys(d.geoCounts).sort((a,b)=>d.geoCounts[b]-d.geoCounts[a]);
+  const maxGeo=Math.max(...Object.values(d.geoCounts),1);
+  const locCounts={};investors.forEach(i=>{const loc=(i.location||'').split(',')[0].trim();if(loc)locCounts[loc]=(locCounts[loc]||0)+1});
+  const topLocs=Object.entries(locCounts).sort((a,b)=>b[1]-a[1]).slice(0,6);
 
   document.getElementById('analyticsGrid').innerHTML=`
-    <div class="analytics-card"><h4>By Type</h4>${barsHTML(typeCounts,typeOrder,typeColors,maxType)}</div>
-    <div class="analytics-card"><h4>By Stage</h4>${barsHTML(stageCounts,stageOrder,'fill-stage',maxStage)}</div>
-    <div class="analytics-card"><h4>By Geography</h4>${barsHTML(geoCounts,geoOrder,'fill-geo',maxGeo)}</div>
+    <div class="analytics-card"><h4>By Type</h4>${barsHTML(d.typeCounts,typeOrder,typeColors,maxType)}</div>
+    <div class="analytics-card"><h4>By Stage</h4>${barsHTML(d.stageCounts,stageOrder,'fill-stage',maxStage)}</div>
+    <div class="analytics-card"><h4>By Geography</h4>${barsHTML(d.geoCounts,geoOrder,'fill-geo',maxGeo)}</div>
     <div class="analytics-card"><h4>Top Locations</h4>${topLocs.map(([loc,n])=>`<div class="bar-row"><span class="bar-label" style="min-width:100px">${loc}</span><div class="bar-track"><div class="bar-fill fill-stage" style="width:${Math.round(n/topLocs[0][1]*100)}%"></div></div><span class="bar-count">${n}</span></div>`).join('')}</div>
   `;
+}
+
+// ===== VISUAL CHARTS =====
+const GEO_LABELS={us:'United States',global:'Global',eu:'Europe/EU',mid_atlantic:'Mid-Atlantic',dmv:'DC/DMV',asia:'Asia',boston:'Boston',europe:'Europe',sf_bay:'SF Bay Area',nyc:'NYC'};
+const SECTOR_DISPLAY={SaaS:'SaaS',Fintech:'Fintech',HealthTech:'Health',['AI/ML']:'AI/ML',Consumer:'Consumer',Enterprise:'Enterprise',Climate:'Climate',Crypto:'Crypto',Biotech:'Biotech',DeepTech:'Deep',EdTech:'EdTech',Hardware:'HW',Marketplace:'Mktpl',GovTech:'Gov',Cybersecurity:'Cyber',Cleantech:'Clean',PropTech:'Prop',Defense:'Defense',Logistics:'Logis',Energy:'Energy'};
+
+function renderVisualCharts(){
+  const data=lastFiltered&&lastFiltered.length?lastFiltered:investors;
+  const d=getAnalyticsData(data);
+  const isFiltered=lastFiltered&&lastFiltered.length&&lastFiltered.length!==investors.length;
+
+  // Stats counters for visual tab
+  document.getElementById('vizStatsCounters').innerHTML=`
+    <div class="stat-card"><div class="stat-value">${d.total}</div><div class="stat-label">${isFiltered?'Filtered':'Total'} Investors</div></div>
+    <div class="stat-card"><div class="stat-value">${Object.keys(d.sectorCounts).length}</div><div class="stat-label">Sectors</div></div>
+    <div class="stat-card"><div class="stat-value">${Object.keys(d.geoCounts).length}</div><div class="stat-label">Regions</div></div>
+    <div class="stat-card"><div class="stat-value">${d.activeCount}</div><div class="stat-label">Active</div></div>
+  `;
+
+  renderSectorHeatmap(d.sectorCounts);
+  renderGeoChart(d.geoCounts);
+  renderStageChart(d.stageCounts);
+}
+
+function renderSectorHeatmap(sectorCounts){
+  const container=document.getElementById('heatmapContainer');
+  // Sort sectors by count, take top ones
+  const sorted=Object.entries(sectorCounts).sort((a,b)=>b[1]-a[1]);
+  if(!sorted.length){container.innerHTML='<div style="color:var(--text-dim);font-size:0.8rem">No sector data</div>';return}
+  const maxCount=sorted[0][1];
+  // Grid: aim for ~5 columns
+  const cols=Math.min(sorted.length,window.innerWidth<768?3:5);
+  let html=`<div class="heatmap-grid" style="grid-template-columns:repeat(${cols},1fr)">`;
+  sorted.forEach(([sector,count])=>{
+    const intensity=maxCount>0?count/maxCount:0;
+    const isActive=activeFilters.sector.includes(sector);
+    const isDark=document.documentElement.getAttribute('data-theme')!=='light';
+    let bg;
+    if(isDark){
+      const r=Math.round(99+intensity*0);const g=Math.round(102-intensity*40);const b=Math.round(241);
+      bg=`rgba(${r},${g},${b},${0.06+intensity*0.84})`;
+    }else{
+      bg=`rgba(79,70,229,${0.04+intensity*0.76})`;
+    }
+    const label=SECTOR_DISPLAY[sector]||sector.slice(0,6);
+    html+=`<div class="heatmap-cell${isActive?' active-filter':''}" style="background:${bg}" title="${sector}: ${count} investors" onclick="vizFilterSector('${sector.replace(/'/g,"\\'")}')">${label}<br>${count}</div>`;
+  });
+  html+=`</div>`;
+  html+=`<div class="heatmap-legend"><span>Few</span><div class="heatmap-legend-bar"></div><span>Many</span></div>`;
+  container.innerHTML=html;
+}
+
+function renderGeoChart(geoCounts){
+  const container=document.getElementById('geoChartContainer');
+  const sorted=Object.entries(geoCounts).sort((a,b)=>b[1]-a[1]);
+  if(!sorted.length){container.innerHTML='<div style="color:var(--text-dim);font-size:0.8rem">No geo data</div>';return}
+  const maxVal=sorted[0][1];
+  let html='';
+  sorted.forEach(([geo,count])=>{
+    const pct=Math.round((count/maxVal)*100);
+    const isActive=activeFilters.geo.includes(geo);
+    const label=GEO_LABELS[geo]||geo;
+    html+=`<div class="hbar-row${isActive?' active-filter':''}" onclick="vizFilterGeo('${geo}')">
+      <span class="hbar-label">${label}</span>
+      <div class="hbar-track"><div class="hbar-fill fill-geo" style="width:${pct}%">${count}</div></div>
+    </div>`;
+  });
+  container.innerHTML=html;
+}
+
+function renderStageChart(stageCounts){
+  const container=document.getElementById('stageChartContainer');
+  const stageOrder=['Pre-Seed','Seed','Series A','Series B','Growth'];
+  const stages=stageOrder.filter(s=>stageCounts[s]);
+  if(!stages.length){container.innerHTML='<div style="color:var(--text-dim);font-size:0.8rem">No stage data</div>';return}
+  const maxVal=Math.max(...stages.map(s=>stageCounts[s]),1);
+  let html='';
+  stages.forEach(stage=>{
+    const count=stageCounts[stage];
+    const pct=Math.round((count/maxVal)*100);
+    const isActive=activeFilters.stage.includes(stage);
+    html+=`<div class="hbar-row${isActive?' active-filter':''}" onclick="vizFilterStage('${stage}')">
+      <span class="hbar-label">${stage}</span>
+      <div class="hbar-track"><div class="hbar-fill fill-stage" style="width:${pct}%">${count}</div></div>
+    </div>`;
+  });
+  container.innerHTML=html;
+}
+
+function vizFilterSector(sector){
+  const chip=document.querySelector(`.chip[data-filter="sector"][data-value="${sector}"]`);
+  if(chip){chip.click();return}
+  // If no chip exists, toggle manually
+  const idx=activeFilters.sector.indexOf(sector);
+  if(idx>=0)activeFilters.sector.splice(idx,1);else activeFilters.sector.push(sector);
+  renderResults();
+}
+function vizFilterGeo(geo){
+  const chip=document.querySelector(`.chip[data-filter="geo"][data-value="${geo}"]`);
+  if(chip){chip.click();return}
+  const idx=activeFilters.geo.indexOf(geo);
+  if(idx>=0)activeFilters.geo.splice(idx,1);else activeFilters.geo.push(geo);
+  renderResults();
+}
+function vizFilterStage(stage){
+  const chip=document.querySelector(`.chip[data-filter="stage"][data-value="${stage}"]`);
+  if(chip){chip.click();return}
+  const idx=activeFilters.stage.indexOf(stage);
+  if(idx>=0)activeFilters.stage.splice(idx,1);else activeFilters.stage.push(stage);
+  renderResults();
 }
 
 // ===== ONBOARDING =====
