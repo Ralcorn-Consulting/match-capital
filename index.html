@@ -529,6 +529,7 @@ footer .links a:hover{color:var(--text)}
 /* Mobile breakpoint */
 @media(max-width:600px){
   /* === Base & Typography === */
+  html,body{overflow-x:hidden}
   .container{padding:0 14px}
   body{font-size:0.95rem}
 
@@ -569,7 +570,7 @@ footer .links a:hover{color:var(--text)}
   .active-chips{gap:6px;flex-wrap:wrap}
   .active-chip{padding:5px 10px;font-size:0.76rem;min-height:32px;display:inline-flex;align-items:center}
   .filter-row select{min-height:44px;font-size:0.88rem;padding:10px 12px}
-  .filter-row input[type=range]{height:32px}
+  .filter-row input[type=range]{height:44px}
 
   /* === Match Scoring Panel === */
   .match-panel{margin:12px -14px;border-left:none;border-right:none;border-radius:0;padding:0}
@@ -595,7 +596,7 @@ footer .links a:hover{color:var(--text)}
   .investor-card .card-thesis{font-size:0.78rem;-webkit-line-clamp:3}
   .investor-card .avatar{width:42px;height:42px;font-size:0.88rem}
   .investor-card .active-badge{padding:3px 8px;font-size:0.68rem}
-  .compare-btn{width:32px;height:32px;top:10px;right:10px}
+  .compare-btn{width:44px;height:44px;min-width:44px;min-height:44px;top:8px;right:8px;font-size:0.9rem}
   .card-move-btn{opacity:1;padding:5px 10px;font-size:0.72rem;min-height:30px}
   .match-score-badge{padding:3px 8px;font-size:0.7rem}
   .card-notes-bar{padding:6px 10px 4px}
@@ -630,9 +631,11 @@ footer .links a:hover{color:var(--text)}
   .bar-row{font-size:0.76rem}
   .bar-label{min-width:65px;font-size:0.74rem}
 
-  /* === Profile Modal === */
-  .modal{max-height:100vh;max-height:100dvh;border-radius:16px 16px 0 0;width:100%;margin:0;position:fixed;bottom:0}
+  /* === Profile Modal — full-height bottom sheet === */
+  .modal-overlay{padding:0 !important}
   .modal-overlay.open{align-items:flex-end}
+  .modal{max-height:92vh;max-height:92dvh;height:92vh;height:92dvh;border-radius:16px 16px 0 0;width:100%;margin:0;position:fixed;bottom:0;left:0;right:0}
+  .modal::before{content:'';display:block;width:36px;height:4px;background:var(--text-dim);border-radius:4px;margin:10px auto 0;opacity:0.4;flex-shrink:0}
   .modal-close{top:12px;right:12px;width:40px;height:40px;font-size:1.6rem;min-width:40px;min-height:40px}
   .modal-header{padding:20px 16px 0;flex-direction:column;align-items:center;text-align:center;gap:12px}
   .modal-avatar{width:56px;height:56px;font-size:1.3rem}
@@ -729,7 +732,11 @@ footer .links a:hover{color:var(--text)}
 
   /* === Onboarding === */
   .onboarding-banner{padding:16px;margin-bottom:20px}
-  .onboarding-body{grid-template-columns:1fr;gap:8px}
+  .onboarding-body{grid-template-columns:1fr;gap:10px}
+  .onboarding-step{padding:12px;text-align:left;display:flex;flex-direction:row;align-items:flex-start;gap:10px}
+  .onboarding-step .step-icon{font-size:1.3rem;flex-shrink:0}
+  .onboarding-step .step-title{font-size:0.85rem}
+  .onboarding-step .step-desc{font-size:0.78rem;line-height:1.5}
   .onboarding-step{padding:10px 8px}
   .onboarding-step .step-icon{font-size:1.5rem}
   .onboarding-step .step-title{font-size:0.82rem}
