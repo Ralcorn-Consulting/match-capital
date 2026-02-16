@@ -1862,9 +1862,7 @@ function renderResults(){
   const filtered=sortInvestors(filterInvestors());
   lastFiltered=filtered;
   kbFocusIndex=-1;
-  const cols=getGridCols();
-  const visibleEst=Math.min(filtered.length, (Math.ceil(window.innerHeight/(CARD_HEIGHT_EST+CARD_GAP))+VIRTUAL_BUFFER*2)*cols);
-  document.getElementById('resultsCount').textContent=filtered.length+' investor'+(filtered.length!==1?'s':'')+' · '+visibleEst+' rendered';
+  document.getElementById('resultsCount').textContent=filtered.length+' investor'+(filtered.length!==1?'s':'');
   const fc=getActiveFilterCount();
   const badge=document.getElementById('filterBadge');
   const clearBtn=document.getElementById('clearFiltersBtn');
@@ -1872,86 +1870,10 @@ function renderResults(){
   clearBtn.style.display=fc?'inline-block':'none';
   updateFilterUI();
   const grid=document.getElementById('resultsGrid');
-  if(!filtered.length){grid.innerHTML='<div class="no-results"><div class="no-results-icon">🔍</div>No investors match your filters.<div class="no-results-hint">Try removing some filters or broadening your search terms.<br><button class="btn-secondary" onclick="clearAllFilters()" style="margin-top:12px;padding:8px 20px">Clear All Filters</button></div></div>';lastVirtualRange={start:-1,end:-1};return}
-  // Set up virtual scroll
-  setupVirtualScroll(grid,filtered);
-}
-
-function setupVirtualScroll(grid,items){
-  const cols=getGridCols();
-  const totalRows=Math.ceil(items.length/cols);
-  const rowHeight=CARD_HEIGHT_EST+CARD_GAP;
-  const totalHeight=totalRows*rowHeight;
-
-  // Create spacer for total height
-  grid.innerHTML='';
-  grid.style.position='relative';
-  grid.style.minHeight=totalHeight+'px';
-
-  lastVirtualRange={start:-1,end:-1};
-  renderVisibleCards(grid,items);
-
-  // Attach scroll listener (debounced via rAF)
-  if(!grid._virtualScrollHandler){
-    grid._virtualScrollHandler=()=>{
-      if(virtualScrollRAF)return;
-      virtualScrollRAF=requestAnimationFrame(()=>{
-        virtualScrollRAF=null;
-        if(lastFiltered.length)renderVisibleCards(grid,lastFiltered);
-      });
-    };
-    window.addEventListener('scroll',grid._virtualScrollHandler,{passive:true});
-    window.addEventListener('resize',()=>{
-      lastVirtualRange={start:-1,end:-1};
-      if(lastFiltered.length){
-        const g=document.getElementById('resultsGrid');
-        const cols=getGridCols();
-        const totalRows=Math.ceil(lastFiltered.length/cols);
-        g.style.minHeight=(totalRows*(CARD_HEIGHT_EST+CARD_GAP))+'px';
-        renderVisibleCards(g,lastFiltered);
-      }
-    },{passive:true});
-  }
-}
-
-function renderVisibleCards(grid,items){
-  const cols=getGridCols();
-  const rowHeight=CARD_HEIGHT_EST+CARD_GAP;
-  const gridRect=grid.getBoundingClientRect();
-  const viewTop=-gridRect.top;
-  const viewBottom=viewTop+window.innerHeight;
-
-  const startRow=Math.max(0,Math.floor(viewTop/rowHeight)-VIRTUAL_BUFFER);
-  const endRow=Math.min(Math.ceil(items.length/cols)-1,Math.ceil(viewBottom/rowHeight)+VIRTUAL_BUFFER);
-
-  const startIdx=startRow*cols;
-  const endIdx=Math.min((endRow+1)*cols,items.length);
-
-  // Skip if range hasn't changed
-  if(startIdx===lastVirtualRange.start&&endIdx===lastVirtualRange.end)return;
-  lastVirtualRange={start:startIdx,end:endIdx};
-
-  // Render only visible cards with absolute positioning
-  const cards=[];
-  for(let i=startIdx;i<endIdx;i++){
-    const row=Math.floor(i/cols);
-    const col=i%cols;
-    const top=row*rowHeight;
-    // Use CSS grid for horizontal positioning, absolute for vertical
-    cards.push({inv:items[i],idx:i,top,row,col});
-  }
-
-  // Use grid layout but with padding-top spacer approach
-  const topPad=startRow*rowHeight;
-  const bottomPad=Math.max(0,(Math.ceil(items.length/cols)-endRow-1)*rowHeight);
-
-  let html='';
-  if(topPad>0)html+=`<div style="grid-column:1/-1;height:${topPad}px;pointer-events:none" aria-hidden="true"></div>`;
-  html+=cards.map(c=>cardHTML(c.inv,c.idx)).join('');
-  if(bottomPad>0)html+=`<div style="grid-column:1/-1;height:${bottomPad}px;pointer-events:none" aria-hidden="true"></div>`;
-
-  grid.innerHTML=html;
-  grid.style.minHeight=''; // Let spacers handle height
+  if(!filtered.length){grid.innerHTML='<div class="no-results"><div class="no-results-icon">🔍</div>No investors match your filters.<div class="no-results-hint">Try removing some filters or broadening your search terms.<br><button class="btn-secondary" onclick="clearAllFilters()" style="margin-top:12px;padding:8px 20px">Clear All Filters</button></div></div>';return}
+  // Render all cards — ~200 cards is trivial for modern browsers, no virtual scroll needed
+  grid.style.minHeight='';
+  grid.innerHTML=filtered.map((inv,i)=>cardHTML(inv,i)).join('');
 }
 
 function clearAllFilters(){
