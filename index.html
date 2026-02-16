@@ -495,6 +495,31 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .similar-card .sim-overlap{font-size:0.7rem;color:var(--text-dim);margin-bottom:8px}
 .similar-card .sim-link{font-size:0.75rem;color:var(--accent);font-weight:500;transition:color 0.2s}
 .similar-card:hover .sim-link{color:var(--accent2)}
+.similar-card .sim-card-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:8px}
+.similar-card .sim-card-top .sim-avatar{margin:0}
+.sim-score-pill{background:linear-gradient(135deg,var(--accent),var(--accent2));color:#fff;font-size:0.7rem;font-weight:700;padding:2px 8px;border-radius:20px;white-space:nowrap}
+
+/* Find Similar button on cards */
+.find-similar-btn{display:block;width:100%;margin-top:10px;padding:6px 0;background:transparent;border:1px solid var(--border);border-radius:var(--radius-sm);color:var(--text-muted);font-size:0.75rem;cursor:pointer;transition:all 0.2s;opacity:0;pointer-events:none}
+.investor-card:hover .find-similar-btn,.investor-card:focus-within .find-similar-btn{opacity:1;pointer-events:auto}
+.find-similar-btn:hover{border-color:var(--accent);color:var(--accent);background:rgba(99,102,241,0.05)}
+
+/* Similar Panel (full-screen overlay) */
+#similarPanel{display:none;position:fixed;top:0;left:0;right:0;bottom:0;z-index:10000}
+#similarPanel.open{display:flex;align-items:center;justify-content:center}
+.similar-panel-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px)}
+.similar-panel-content{position:relative;background:var(--card);border:1px solid var(--border);border-radius:var(--radius);width:90%;max-width:600px;max-height:85vh;overflow-y:auto;padding:28px;z-index:1;box-shadow:0 20px 60px rgba(0,0,0,0.4)}
+.similar-panel-header h2{font-size:1.2rem;margin:0}
+.similar-panel-list{margin-top:16px;display:flex;flex-direction:column;gap:8px}
+.similar-panel-item{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;background:rgba(255,255,255,0.02);border:1px solid var(--border);border-radius:var(--radius-sm);cursor:pointer;transition:all 0.2s}
+.similar-panel-item:hover{border-color:rgba(99,102,241,0.4);background:var(--card-hover);transform:translateX(4px)}
+.sim-panel-left{display:flex;align-items:center;gap:12px;flex:1;min-width:0}
+.sim-panel-left .sim-avatar{flex-shrink:0}
+.sim-panel-left .sim-name{font-weight:600;font-size:0.9rem}
+.sim-panel-left .sim-firm{font-size:0.78rem;color:var(--text-muted)}
+.sim-reasons{font-size:0.72rem;color:var(--text-dim);margin-top:2px}
+.sim-score-badge{display:flex;align-items:baseline;gap:2px;font-size:1.3rem;font-weight:800;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;flex-shrink:0}
+.sim-score-label{font-size:0.65rem;font-weight:500;opacity:0.7}
 /* Add to list dropdown in modal header */
 .modal-list-dropdown{position:relative;display:inline-block}
 .modal-list-dd-content{position:absolute;top:100%;left:0;margin-top:4px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);padding:6px;z-index:10;box-shadow:0 8px 30px rgba(0,0,0,0.4);min-width:200px;max-height:240px;overflow-y:auto;display:none}
@@ -835,6 +860,11 @@ footer .links a:hover{color:var(--text)}
   .investor-card:active{transform:scale(0.98);transition-duration:0.1s}
   .similar-card:hover{transform:none}
   .similar-card:active{transform:scale(0.98)}
+  .find-similar-btn{opacity:1 !important;pointer-events:auto !important}
+  .similar-panel-content{width:95%;padding:20px;max-height:90vh}
+  .similar-panel-item{padding:12px}
+  .similar-panel-item:hover{transform:none}
+  .sim-score-badge{font-size:1.1rem}
 }
 
 /* Small phone (375px and below) */
@@ -2254,6 +2284,7 @@ function cardHTML(inv,idx){
     <div class="check-size">💰 ${fmt(inv.checkSize.min)} – ${fmt(inv.checkSize.max)}</div>
     ${inv._portfolioMatch?`<div class="portfolio-match-badge">💼 Invested in: ${[...new Set(inv._portfolioMatch)].slice(0,3).join(', ')}</div>`:''}
     <div class="location">${inv.location}</div>
+    <button class="find-similar-btn" onclick="openSimilarPanel('${inv.id}',event)" aria-label="Find investors similar to ${inv.name}">🔍 Find Similar</button>
   </div>`
 }
 
@@ -2313,15 +2344,81 @@ function getPortfolioCount(inv){
 
 function isVerified(inv){return !!(inv.links.linkedin && inv.links.website)}
 
-function findSimilarInvestors(inv){
+function findSimilarInvestors(inv, limit=5){
+  const invGeoSet=new Set(inv.geography||[]);
+  const invStageSet=new Set(inv.stages||[]);
+  const invSectorSet=new Set(inv.sectors||[]);
+  const invCheckMid=(inv.checkSize.min+inv.checkSize.max)/2;
+  const invCheckRange=inv.checkSize.max-inv.checkSize.min||1;
   return investors.map(other=>{
     if(other.id===inv.id)return null;
-    const stageOverlap=inv.stages.filter(s=>other.stages.includes(s));
-    const sectorOverlap=inv.sectors.filter(s=>other.sectors.includes(s));
-    const score=stageOverlap.length+sectorOverlap.length;
-    if(score<2)return null;
-    return{...other,_score:score,_overlap:[...sectorOverlap,...stageOverlap]};
-  }).filter(Boolean).sort((a,b)=>b._score-a._score).slice(0,4);
+    let score=0; const reasons=[];
+    // Stage overlap (max 25pts)
+    const stageOverlap=(other.stages||[]).filter(s=>invStageSet.has(s));
+    const stageScore=invStageSet.size?Math.round((stageOverlap.length/invStageSet.size)*25):0;
+    score+=stageScore;
+    if(stageOverlap.length) reasons.push('Same stage: '+stageOverlap.join(', '));
+    // Sector overlap (max 30pts)
+    const sectorOverlap=(other.sectors||[]).filter(s=>invSectorSet.has(s));
+    const sectorScore=invSectorSet.size?Math.round((sectorOverlap.length/invSectorSet.size)*30):0;
+    score+=sectorScore;
+    if(sectorOverlap.length) reasons.push('Similar sectors: '+sectorOverlap.slice(0,3).join(', '));
+    // Check size similarity (max 20pts)
+    const otherMid=(other.checkSize.min+other.checkSize.max)/2;
+    const checkDiff=Math.abs(invCheckMid-otherMid);
+    const maxCheck=Math.max(invCheckMid,otherMid)||1;
+    const checkScore=Math.round(Math.max(0,(1-checkDiff/maxCheck))*20);
+    score+=checkScore;
+    if(checkScore>=14) reasons.push('Similar check size');
+    // Geography overlap (max 15pts)
+    const geoOverlap=(other.geography||[]).filter(g=>invGeoSet.has(g));
+    const geoScore=invGeoSet.size?Math.round((geoOverlap.length/invGeoSet.size)*15):0;
+    score+=geoScore;
+    if(geoOverlap.length) reasons.push('Same region');
+    // Investor type match (max 10pts)
+    if(other.type===inv.type){score+=10;reasons.push('Same type: '+inv.type);}
+    if(score<15)return null;
+    return{...other,_simScore:score,_simReasons:reasons};
+  }).filter(Boolean).sort((a,b)=>b._simScore-a._simScore).slice(0,limit);
+}
+
+function openSimilarPanel(investorId, evt){
+  if(evt){evt.stopPropagation();evt.preventDefault();}
+  const inv=investors.find(i=>i.id===investorId);if(!inv)return;
+  const similar=findSimilarInvestors(inv,15);
+  const html=`
+    <button class="modal-close" onclick="closeSimilarPanel()" aria-label="Close">×</button>
+    <div class="similar-panel-header">
+      <h2>Investors similar to ${inv.name}</h2>
+      <p style="color:var(--text-muted);font-size:0.85rem;margin-top:4px">${similar.length} matches found based on stage, sector, check size, geography & type</p>
+    </div>
+    <div class="similar-panel-list">
+      ${similar.length?similar.map(s=>`
+        <div class="similar-panel-item" onclick="closeSimilarPanel();openProfile('${s.id}')">
+          <div class="sim-panel-left">
+            <div class="sim-avatar">${s.photo?`<img src="${s.photo}" alt="${s.name}" class="sim-avatar-img" onerror="this.replaceWith(document.createTextNode('${initials(s.name)}'))">`:initials(s.name)}</div>
+            <div>
+              <div class="sim-name">${s.name}</div>
+              <div class="sim-firm">${s.firm||''}</div>
+              <div class="sim-reasons">${s._simReasons.slice(0,3).join(' · ')}</div>
+            </div>
+          </div>
+          <div class="sim-score-badge">${s._simScore}<span class="sim-score-label">/ 100</span></div>
+        </div>`).join(''):'<p style="color:var(--text-dim);text-align:center;padding:40px">No similar investors found.</p>'}
+    </div>`;
+  let panel=document.getElementById('similarPanel');
+  if(!panel){
+    panel=document.createElement('div');panel.id='similarPanel';
+    panel.innerHTML='<div class="similar-panel-overlay" onclick="closeSimilarPanel()"></div><div class="similar-panel-content"></div>';
+    document.body.appendChild(panel);
+  }
+  panel.querySelector('.similar-panel-content').innerHTML=html;
+  panel.classList.add('open');
+  document.body.style.overflow='hidden';
+}
+function closeSimilarPanel(){
+  const panel=document.getElementById('similarPanel');
+  if(panel){panel.classList.remove('open');document.body.style.overflow='';}
 }
 
 function toggleModalListDropdown(e,id){
@@ -2471,16 +2568,18 @@ function openProfile(id){
       <hr class="modal-divider">
       <div class="modal-section"><h3>Similar Investors</h3>
         <div class="similar-grid">
-          ${similar.map(s=>{
-            const overlap=s._overlap.slice(0,3).join(', ');
-            return`<div class="similar-card" onclick="closeModal();setTimeout(()=>openProfile('${s.id}'),200)">
-              <div class="sim-avatar">${s.photo?`<img src="${s.photo}" alt="${s.name}" class="sim-avatar-img" onerror="this.replaceWith(document.createTextNode('${initials(s.name)}'))">`:initials(s.name)}</div>
+          ${similar.map(s=>`<div class="similar-card" onclick="closeModal();setTimeout(()=>openProfile('${s.id}'),200)">
+              <div class="sim-card-top">
+                <div class="sim-avatar">${s.photo?`<img src="${s.photo}" alt="${s.name}" class="sim-avatar-img" onerror="this.replaceWith(document.createTextNode('${initials(s.name)}'))">`:initials(s.name)}</div>
+                <div class="sim-score-pill">${s._simScore}%</div>
+              </div>
               <div class="sim-name">${s.name}</div>
               <div class="sim-firm">${s.firm||''}</div>
-              <div class="sim-overlap">${overlap}</div>
+              <div class="sim-overlap">${s._simReasons.slice(0,2).join(' · ')}</div>
               <span class="sim-link">View Profile →</span>
-            </div>`}).join('')}
+            </div>`).join('')}
         </div>
+        <button class="btn-secondary" style="margin-top:12px;width:100%" onclick="closeSimilarPanel();closeModal();setTimeout(()=>openSimilarPanel('${id}'),250)">See All Similar Investors →</button>
       </div>`:''}
 
       <hr class="modal-divider">
