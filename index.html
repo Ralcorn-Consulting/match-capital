@@ -178,6 +178,21 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .syntax-badge{padding:2px 8px;border-radius:10px;font-size:0.65rem;font-weight:600;font-family:var(--font-mono);background:rgba(99,102,241,0.1);color:var(--accent-light);border:1px solid rgba(99,102,241,0.2);white-space:nowrap}
 [data-theme="light"] .syntax-badge{background:rgba(79,70,229,0.08);color:#4338ca;border-color:rgba(79,70,229,0.2)}
 
+/* Filter Presets */
+.preset-row{display:flex;gap:8px;padding:12px 0 4px;overflow-x:auto;-webkit-overflow-scrolling:touch;scrollbar-width:none;-ms-overflow-style:none}
+.preset-row::-webkit-scrollbar{display:none}
+.preset-btn{flex-shrink:0;padding:7px 16px;border-radius:20px;border:1px solid var(--border);background:rgba(255,255,255,0.02);font-size:0.78rem;font-weight:500;color:var(--text-muted);white-space:nowrap;transition:all var(--transition-spring);cursor:pointer}
+.preset-btn:hover{border-color:rgba(99,102,241,0.3);color:var(--text);background:rgba(99,102,241,0.04)}
+.preset-btn:active{transform:scale(0.95);transition-duration:0.1s}
+.preset-btn.active{background:linear-gradient(135deg,rgba(99,102,241,0.15),rgba(168,85,247,0.1));border-color:rgba(99,102,241,0.4);color:var(--accent-light);box-shadow:0 0 16px rgba(99,102,241,0.1)}
+[data-theme="light"] .preset-btn{background:rgba(0,0,0,0.02)}
+[data-theme="light"] .preset-btn:hover{background:rgba(79,70,229,0.04)}
+[data-theme="light"] .preset-btn.active{background:linear-gradient(135deg,rgba(79,70,229,0.1),rgba(147,51,234,0.08));border-color:rgba(79,70,229,0.3);color:#4338ca}
+@media(max-width:600px){
+  .preset-row{padding:10px 0 2px;gap:6px}
+  .preset-btn{padding:8px 14px;font-size:0.76rem;min-height:36px}
+}
+
 /* Filters — sticky bar */
 .filter-bar{position:sticky;top:60px;z-index:90;background:rgba(7,7,10,0.92);backdrop-filter:blur(16px);margin:0 -24px;padding:0 24px;border-bottom:1px solid transparent;transition:border-color 0.3s,box-shadow 0.3s}
 .filter-bar.stuck{border-bottom-color:var(--border);box-shadow:0 4px 24px rgba(0,0,0,0.3)}
@@ -1198,6 +1213,14 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
     </div>
 
     <div class="filter-bar" id="filterBar">
+      <div class="preset-row" id="presetRow" role="group" aria-label="Filter presets">
+        <button class="preset-btn" data-preset="dcSeed" onclick="togglePreset('dcSeed')">🏛 DC/DMV Seed</button>
+        <button class="preset-btn" data-preset="nycSeriesA" onclick="togglePreset('nycSeriesA')">🗽 NYC Series A</button>
+        <button class="preset-btn" data-preset="govtechImpact" onclick="togglePreset('govtechImpact')">🌍 GovTech / Impact</button>
+        <button class="preset-btn" data-preset="earlyStage" onclick="togglePreset('earlyStage')">🌱 Early Stage</button>
+        <button class="preset-btn" data-preset="growth" onclick="togglePreset('growth')">🚀 Growth</button>
+        <button class="preset-btn" data-preset="westCoast" onclick="togglePreset('westCoast')">🌊 West Coast</button>
+      </div>
       <div class="filter-bar-header" onclick="toggleFilterSection()">
         <span class="filter-bar-toggle open" id="filterToggleChevron" aria-hidden="true">▶</span>
         <h3>Filters <span class="filter-count-badge hidden" id="filterCountBadge">0</span></h3>
@@ -1226,6 +1249,10 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
             <button class="chip" data-filter="sector" data-value="Crypto">Crypto</button>
             <button class="chip" data-filter="sector" data-value="Biotech">Biotech</button>
             <button class="chip" data-filter="sector" data-value="DeepTech">DeepTech</button>
+            <button class="chip" data-filter="sector" data-value="GovTech">GovTech</button>
+            <button class="chip" data-filter="sector" data-value="Cybersecurity">Cybersecurity</button>
+            <button class="chip" data-filter="sector" data-value="Cleantech">Cleantech</button>
+            <button class="chip" data-filter="sector" data-value="PropTech">PropTech</button>
           </div>
           <div class="filter-row" role="group" aria-label="Check size filter">
             <span class="filter-label">Check Size</span>
@@ -1249,7 +1276,13 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
           <div class="filter-row" role="group" aria-label="Geography filter">
             <span class="filter-label">Geography</span>
             <button class="chip" data-filter="geo" data-value="US">US</button>
+            <button class="chip" data-filter="geo" data-value="dmv">DC/DMV</button>
+            <button class="chip" data-filter="geo" data-value="nyc">NYC</button>
+            <button class="chip" data-filter="geo" data-value="sf_bay">SF Bay</button>
+            <button class="chip" data-filter="geo" data-value="boston">Boston</button>
+            <button class="chip" data-filter="geo" data-value="mid_atlantic">Mid-Atlantic</button>
             <button class="chip" data-filter="geo" data-value="EU">EU</button>
+            <button class="chip" data-filter="geo" data-value="europe">Europe</button>
             <button class="chip" data-filter="geo" data-value="Asia">Asia</button>
             <button class="chip" data-filter="geo" data-value="Global">Global</button>
           </div>
@@ -1474,7 +1507,7 @@ let compareIds=[];
 
 // ===== DATA NORMALIZATION =====
 const STAGE_MAP={seed:'Seed','pre-seed':'Pre-Seed','pre_seed':'Pre-Seed',series_a:'Series A',series_b:'Series B',growth:'Growth'};
-const SECTOR_MAP={saas:'SaaS',fintech:'Fintech',healthtech:'HealthTech',ai_ml:'AI/ML',consumer:'Consumer',enterprise:'Enterprise',climate:'Climate',crypto:'Crypto',biotech:'Biotech',deeptech:'DeepTech',edtech:'EdTech',hardware:'Hardware',marketplace:'Marketplace'};
+const SECTOR_MAP={saas:'SaaS',fintech:'Fintech',healthtech:'HealthTech',ai_ml:'AI/ML',consumer:'Consumer',enterprise:'Enterprise',climate:'Climate',crypto:'Crypto',biotech:'Biotech',deeptech:'DeepTech',edtech:'EdTech',hardware:'Hardware',marketplace:'Marketplace',govtech:'GovTech',cybersecurity:'Cybersecurity',cleantech:'Cleantech',proptech:'PropTech',defense:'Defense',logistics:'Logistics',energy:'Energy'};
 const TYPE_MAP={vc:'VC',angel:'Angel',family_office:'Family Office',corp_vc:'Corp VC',angel_group:'Angel Group'};
 const GEO_MAP={us:'US',eu:'EU',asia:'Asia',global:'Global'};
 
@@ -1584,6 +1617,8 @@ document.querySelectorAll('.chip[data-filter]').forEach(c=>{
     c.setAttribute('aria-checked',isActive);
     if(isActive)activeFilters[f].push(v);
     else activeFilters[f]=activeFilters[f].filter(x=>x!==v);
+    // Clear preset highlight when manually changing filters
+    if(activePreset){activePreset=null;document.querySelectorAll('.preset-btn.active').forEach(b=>b.classList.remove('active'))}
     renderResults();
   });
 });
@@ -1962,11 +1997,53 @@ function loadMore(){
 
 function clearAllFilters(){
   activeFilters={stage:[],sector:[],type:[],geo:[],entity:[]};
+  activePreset=null;
   document.querySelectorAll('.chip.active').forEach(c=>c.classList.remove('active'));
+  document.querySelectorAll('.preset-btn.active').forEach(b=>b.classList.remove('active'));
   checkMin.value=0;checkMax.value=25e6;updateCheckDisplay();
   document.getElementById('activityFilter').value='any';
   searchInput.value='';clearBtn.classList.remove('show');
   renderResults();
+}
+
+// ===== FILTER PRESETS =====
+let activePreset=null;
+const FILTER_PRESETS={
+  dcSeed:{stage:['Seed'],geo:['dmv','mid_atlantic']},
+  nycSeriesA:{stage:['Series A'],geo:['nyc']},
+  govtechImpact:{sector:['GovTech','Cleantech','Climate']},
+  earlyStage:{stage:['Pre-Seed','Seed']},
+  growth:{stage:['Series B','Growth']},
+  westCoast:{geo:['sf_bay']}
+};
+function togglePreset(name){
+  if(activePreset===name){
+    // Deactivate — clear filters set by preset
+    activePreset=null;
+    activeFilters={stage:[],sector:[],type:[],geo:[],entity:[]};
+    syncChipsToFilters();
+    document.querySelectorAll('.preset-btn.active').forEach(b=>b.classList.remove('active'));
+    renderResults();
+    return;
+  }
+  // Activate preset
+  activePreset=name;
+  const preset=FILTER_PRESETS[name];
+  activeFilters={stage:[],sector:[],type:[],geo:[],entity:[]};
+  Object.entries(preset).forEach(([k,v])=>{activeFilters[k]=[...v]});
+  syncChipsToFilters();
+  document.querySelectorAll('.preset-btn').forEach(b=>{
+    b.classList.toggle('active',b.dataset.preset===name);
+  });
+  renderResults();
+}
+function syncChipsToFilters(){
+  document.querySelectorAll('.chip[data-filter]').forEach(c=>{
+    const f=c.dataset.filter,v=c.dataset.value;
+    const isActive=activeFilters[f]&&activeFilters[f].includes(v);
+    c.classList.toggle('active',isActive);
+    c.setAttribute('aria-checked',isActive);
+  });
 }
 
 function cardHTML(inv,idx){
@@ -3007,8 +3084,10 @@ function updateFilterUI(){
   let chips=[];
   Object.entries(activeFilters).forEach(([key,vals])=>{
     const labels={stage:'Stage',sector:'Sector',type:'Type',geo:'Geo',entity:'Entity'};
+    const geoLabels={dmv:'DC/DMV',nyc:'NYC',sf_bay:'SF Bay',boston:'Boston',mid_atlantic:'Mid-Atlantic',europe:'Europe'};
     vals.forEach(v=>{
-      chips.push(`<span class="active-chip">${labels[key]}: ${v} <span class="chip-x" onclick="removeFilter('${key}','${v.replace(/'/g,"\\'")}')" title="Remove">×</span></span>`);
+      const display=key==='geo'?(geoLabels[v]||v):v;
+      chips.push(`<span class="active-chip">${labels[key]}: ${display} <span class="chip-x" onclick="removeFilter('${key}','${v.replace(/'/g,"\\'")}')" title="Remove">×</span></span>`);
     });
   });
   if(+checkMin.value>0)chips.push(`<span class="active-chip">Min: ${fmt(+checkMin.value)} <span class="chip-x" onclick="checkMin.value=0;updateCheckDisplay();renderResults()" title="Remove">×</span></span>`);
@@ -3022,6 +3101,7 @@ function removeFilter(key,value){
   activeFilters[key]=activeFilters[key].filter(v=>v!==value);
   // Deactivate matching chip button
   document.querySelectorAll(`.chip[data-filter="${key}"][data-value="${value}"]`).forEach(c=>{c.classList.remove('active');c.setAttribute('aria-checked','false')});
+  if(activePreset){activePreset=null;document.querySelectorAll('.preset-btn.active').forEach(b=>b.classList.remove('active'))}
   renderResults();
 }
 
