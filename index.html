@@ -2,7 +2,7 @@
 <html lang="en" dir="ltr">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>Match Capital — Find the right investors. Skip the noise.</title>
 <meta name="description" content="The most comprehensive investor intelligence tool for founders. Search 150+ investors by stage, sector, check size, geography, and more. Free and open.">
 <meta property="og:type" content="website">
@@ -91,7 +91,7 @@
 #helpBtn{font-weight:700;font-size:1rem;font-family:var(--font-mono,monospace)}
 .shortcuts-overlay{position:fixed;inset:0;z-index:10000;background:rgba(0,0,0,0.6);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;opacity:0;transition:opacity .2s}
 .shortcuts-overlay.open{display:flex;opacity:1}
-.shortcuts-modal{background:var(--card-bg,#1a1a2e);border:1px solid var(--border);border-radius:16px;padding:28px 32px;max-width:520px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,0.4);animation:modalIn .25s ease}
+.shortcuts-modal{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:28px 32px;max-width:520px;width:90%;max-height:80vh;overflow-y:auto;box-shadow:0 24px 64px rgba(0,0,0,0.4);animation:modalIn .25s ease}
 .shortcuts-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
 .shortcuts-header h2{margin:0;font-size:1.25rem;color:var(--text)}
 .shortcuts-close{background:none;border:none;color:var(--text-muted);font-size:1.5rem;cursor:pointer;padding:4px 8px;border-radius:6px}
@@ -157,7 +157,7 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .search-bar:focus-within svg{color:var(--accent-light)}
 .search-bar .clear-btn{position:absolute;right:16px;top:50%;transform:translateY(-50%);color:var(--text-dim);font-size:1.2rem;display:none;transition:color var(--transition-base)}
 .search-bar .clear-btn:hover{color:var(--text)}
-.search-bar .clear-btn.show{display:block}
+.search-bar .clear-btn.show{display:flex;align-items:center;justify-content:center}
 
 /* Search syntax help */
 .search-syntax-help{position:absolute;top:100%;left:0;right:0;margin-top:6px;padding:14px 18px;background:var(--card);border:1px solid var(--border);border-radius:var(--radius-sm);box-shadow:0 8px 30px rgba(0,0,0,0.3);z-index:20;display:none;animation:syntaxFadeIn 0.2s ease}
@@ -572,9 +572,10 @@ footer .links a:hover{color:var(--text)}
   .filter-row input[type=range]{height:32px}
 
   /* === Match Scoring Panel === */
-  .match-panel{margin:0 -14px;padding:0 14px}
-  .match-panel-header{padding:10px 0;min-height:44px}
+  .match-panel{margin:12px -14px;border-left:none;border-right:none;border-radius:0;padding:0}
+  .match-panel-header{padding:10px 14px;min-height:44px}
   .match-panel-header h3{font-size:0.82rem}
+  .match-panel-body{padding:0 14px 14px}
   .match-fields{grid-template-columns:1fr !important;gap:12px}
   .match-field select{min-height:44px;font-size:0.88rem;padding:10px 12px}
   .match-sector-chips{gap:6px}
@@ -681,13 +682,14 @@ footer .links a:hover{color:var(--text)}
   .similar-card{padding:12px}
 
   /* === Compare View === */
-  .compare-bar-inner{flex-direction:column;gap:8px;padding:10px 14px}
+  .compare-bar-inner{flex-direction:column;gap:8px;padding:10px 14px;padding-bottom:max(10px,env(safe-area-inset-bottom))}
   .compare-bar .avatars{flex-wrap:wrap;justify-content:center}
   .compare-bar .mini-chip{padding:5px 10px 5px 5px;margin-left:4px}
   .compare-bar .mini-name{max-width:60px;font-size:0.75rem}
   .compare-bar .bar-actions{width:100%;justify-content:center;gap:8px}
   .compare-bar .bar-actions button{min-height:44px;flex:1}
   .compare-modal{padding:16px;border-radius:16px 16px 0 0;max-height:95vh;max-height:95dvh;margin:0;width:100%}
+  #compareOverlay.open{align-items:flex-end}
   .compare-table{font-size:0.78rem;display:block;overflow-x:auto;-webkit-overflow-scrolling:touch}
   .compare-table th{padding:8px 10px;font-size:0.68rem;min-width:90px}
   .compare-table td{padding:8px 10px;font-size:0.8rem;min-width:120px}
@@ -718,6 +720,7 @@ footer .links a:hover{color:var(--text)}
   .tag-color-picker{gap:6px}
 
   /* === Keyboard Shortcuts Modal === */
+  .shortcuts-overlay.open{align-items:flex-end}
   .shortcuts-modal{width:96%;max-width:100%;padding:20px 16px;max-height:90vh;max-height:90dvh;border-radius:16px 16px 0 0}
   .shortcuts-header h2{font-size:1.1rem}
   .shortcuts-close{min-width:40px;min-height:40px;font-size:1.6rem;display:flex;align-items:center;justify-content:center}
@@ -748,7 +751,7 @@ footer .links a:hover{color:var(--text)}
   .card-move-menu-item{padding:10px 14px;min-height:40px}
 
   /* === PWA Install Banner Mobile === */
-  #pwa-install-banner{bottom:0 !important;left:0 !important;right:0 !important;transform:none !important;border-radius:16px 16px 0 0 !important;width:100% !important;max-width:100% !important;padding:16px !important}
+  #pwa-install-banner{bottom:0 !important;left:0 !important;right:0 !important;transform:none !important;border-radius:16px 16px 0 0 !important;width:100% !important;max-width:100% !important;padding:16px !important;padding-bottom:max(16px,env(safe-area-inset-bottom)) !important}
 
   /* === Touch-friendly interactions === */
   /* Ensure minimum 44px tap targets everywhere */
@@ -1044,6 +1047,10 @@ footer .links a:hover{color:var(--text)}
 
 /* Visually hidden (screen reader only) */
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+
+/* Touch optimization — eliminate 300ms tap delay */
+html{touch-action:manipulation}
+button,a,.chip,.investor-card,.similar-card,.rv-card,.tone-chip,.compare-btn,.tag-color-dot,.user-tag,.list-tab,.share-btn,.outreach-cta{-webkit-tap-highlight-color:transparent}
 </style>
 </head>
 <body>
@@ -2627,8 +2634,10 @@ function openCompare(){
   html+=`</tbody></table>`;
   html+=`<div class="compare-export"><button onclick="copyCompareText(this)">📋 Copy as Text</button><button onclick="exportCompareImage()">📸 Export as Image</button></div>`;
   document.getElementById('compareModal').innerHTML=html;
-  document.getElementById('compareOverlay').classList.add('open');
+  const compareOvl=document.getElementById('compareOverlay');
+  compareOvl.classList.add('open');
   document.body.style.overflow='hidden';
+  requestAnimationFrame(()=>requestAnimationFrame(()=>compareOvl.classList.add('animate-in')));
 }
 
 function copyCompareText(btn){
@@ -2674,7 +2683,7 @@ function removeFromCompare(id){
   if(compareIds.length<2){closeCompare();updateCompareBar();renderResults();return}
   openCompare();updateCompareBar();renderResults();
 }
-function closeCompare(){document.getElementById('compareOverlay').classList.remove('open');document.body.style.overflow=''}
+function closeCompare(){const o=document.getElementById('compareOverlay');o.classList.remove('animate-in','open');document.body.style.overflow=''}
 
 // ===== ANALYTICS =====
 function toggleAnalytics(){
@@ -3240,6 +3249,17 @@ function showOfflineToast(msg){
 // Offline indicator
 window.addEventListener('online',()=>showOfflineToast('You\u2019re back online!'));
 window.addEventListener('offline',()=>showOfflineToast('You\u2019re offline — cached data still available.'));
+
+// ===== MOBILE: COLLAPSE FILTERS BY DEFAULT =====
+(function(){
+  if(window.innerWidth<=600){
+    filtersOpen=false;
+    var fc=document.getElementById('filtersCollapsible');
+    var ch=document.getElementById('filterToggleChevron');
+    if(fc)fc.classList.add('collapsed');
+    if(ch)ch.classList.remove('open');
+  }
+})();
 
 // ===== GO =====
 initOnboarding();
