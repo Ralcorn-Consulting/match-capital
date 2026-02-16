@@ -1343,6 +1343,38 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
 .deal-stat .deal-stat-value{font-size:1.2rem;font-weight:700;color:var(--text);display:block}
 .deal-stat .deal-stat-label{font-size:0.7rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.04em}
 @media(max-width:768px){.deal-item .deal-investor{max-width:120px}.deal-flow-list{max-height:300px}}
+.print-btn{background:var(--surface-alt);color:var(--text-muted);border:1px solid var(--border);padding:8px 14px;border-radius:8px;cursor:pointer;font-size:0.82rem;display:inline-flex;align-items:center;gap:6px;transition:all .2s}.print-btn:hover{background:var(--accent);color:#fff;border-color:var(--accent)}
+@media print{
+  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;color-adjust:exact!important}
+  body{background:#fff!important;color:#111!important;font-size:11pt}
+  :root,[data-theme="dark"]{--bg:#fff!important;--text:#111!important;--text-muted:#555!important;--text-dim:#777!important;--surface:#fff!important;--surface-alt:#f5f5f5!important;--border:#ddd!important;--accent:#6366f1!important}
+  header,footer,.fab,.tour-overlay,.feedback-panel,.nav-actions,.theme-toggle,#themeToggle,.onboarding-tour,.swipe-hint,.filter-presets,.search-section,.hero,.social-proof,.deal-flow,.results-header,.results-grid,.map-container,.analytics-panel,.compare-bar,.similar-panel,.modal-close,.print-btn,.btn-secondary,.compare-btn,.modal-list-dropdown,.share-section,.compare-export,.compare-remove{display:none!important}
+  .modal-overlay{position:static!important;display:block!important;background:transparent!important;overflow:visible!important;padding:0!important}
+  .modal,.compare-modal{position:static!important;max-width:100%!important;width:100%!important;max-height:none!important;overflow:visible!important;box-shadow:none!important;border:none!important;background:#fff!important;margin:0!important;padding:20px!important;border-radius:0!important;transform:none!important}
+  .modal-overlay#modalOverlay.open{display:block!important}
+  .modal-overlay#compareOverlay.open{display:block!important}
+  .modal-overlay:not(.open){display:none!important}
+  .modal-header{border-bottom:2px solid #6366f1!important}
+  .modal-avatar{background:#e8e8ff!important;color:#6366f1!important}
+  .modal-section{break-inside:avoid;page-break-inside:avoid}
+  .tag{background:#f0f0ff!important;color:#333!important;border:1px solid #ccc!important}
+  .type-badge{border:1px solid currentColor!important}
+  .compare-table{width:100%!important;font-size:9pt}
+  .compare-table th,.compare-table td{border:1px solid #ccc!important;padding:6px!important;background:#fff!important;color:#111!important}
+  .compare-table th{background:#f5f5ff!important}
+  .modal-body{max-height:none!important;overflow:visible!important}
+  .modal-divider{border-color:#ddd!important}
+  h2,h3{color:#111!important}
+  a{color:#6366f1!important;text-decoration:underline!important}
+  .badges .type-badge{font-size:9pt!important}
+  .activity-dot{width:8px!important;height:8px!important}
+  @page{margin:0.75in;size:auto}
+  .print-header{display:block!important;text-align:center;margin-bottom:16px;padding-bottom:12px;border-bottom:1px solid #ddd}
+  .print-header h1{font-size:14pt;color:#6366f1;margin:0}
+  .print-header p{font-size:8pt;color:#888;margin:4px 0 0}
+  .print-footer{display:block!important;text-align:center;margin-top:20px;padding-top:10px;border-top:1px solid #ddd;font-size:8pt;color:#888}
+}
+.print-header,.print-footer{display:none}
 </style>
 </head>
 <body>
@@ -2654,6 +2686,7 @@ function openProfile(id){
         <div style="display:flex;gap:8px;margin-top:10px;align-items:center">
           <div class="modal-list-dropdown">
             <button class="btn-secondary" style="padding:8px 14px;font-size:0.82rem" onclick="toggleModalListDropdown(event,'${id}')">📋 Add to List</button>
+          <button class="print-btn" onclick="printProfile()">🖨️ Print</button>
             <div class="modal-list-dd-content" id="modalListDD-${id}"></div>
           </div>
         </div>
@@ -3250,7 +3283,7 @@ function openCompare(){
     html+=`</tr>`;
   });
   html+=`</tbody></table>`;
-  html+=`<div class="compare-export"><button onclick="copyCompareText(this)">📋 Copy as Text</button><button onclick="exportCompareImage()">📸 Export as Image</button></div>`;
+  html+=`<div class="compare-export"><button onclick="copyCompareText(this)">📋 Copy as Text</button><button onclick="exportCompareImage()">📸 Export as Image</button><button class="print-btn" onclick="printCompare()">🖨️ Print</button></div>`;
   document.getElementById('compareModal').innerHTML=html;
   const compareOvl=document.getElementById('compareOverlay');
   compareOvl.classList.add('open');
@@ -3302,6 +3335,33 @@ function removeFromCompare(id){
   openCompare();updateCompareBar();renderResults();
 }
 function closeCompare(){const o=document.getElementById('compareOverlay');o.classList.remove('animate-in','open');document.body.style.overflow=''}
+
+// ===== PRINT =====
+function printProfile(){
+  const ph=document.createElement('div');ph.className='print-header';ph.innerHTML='<h1>Match Capital</h1><p>Investor Profile · matchcapital.ai</p>';
+  const pf=document.createElement('div');pf.className='print-footer';pf.innerHTML='Generated from matchcapital.ai · '+new Date().toLocaleDateString();
+  const modal=document.getElementById('modal');
+  modal.prepend(ph);modal.append(pf);
+  const compareOvl=document.getElementById('compareOverlay');
+  const cWasOpen=compareOvl.classList.contains('open');
+  if(cWasOpen)compareOvl.classList.remove('open');
+  window.print();
+  if(cWasOpen)compareOvl.classList.add('open');
+  ph.remove();pf.remove();
+}
+function printCompare(){
+  const ph=document.createElement('div');ph.className='print-header';ph.innerHTML='<h1>Match Capital</h1><p>Investor Comparison · matchcapital.ai</p>';
+  const pf=document.createElement('div');pf.className='print-footer';pf.innerHTML='Generated from matchcapital.ai · '+new Date().toLocaleDateString();
+  const modal=document.getElementById('compareModal');
+  modal.prepend(ph);modal.append(pf);
+  // Hide profile modal if open so only compare prints
+  const profileOvl=document.getElementById('modalOverlay');
+  const wasOpen=profileOvl.classList.contains('open');
+  if(wasOpen)profileOvl.classList.remove('open');
+  window.print();
+  if(wasOpen)profileOvl.classList.add('open');
+  ph.remove();pf.remove();
+}
 
 // ===== ANALYTICS =====
 function switchAnalyticsTab(tab,btn){
