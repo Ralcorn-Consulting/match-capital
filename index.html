@@ -276,6 +276,12 @@ nav .inner{display:flex;align-items:center;justify-content:space-between;height:
 .clear-filters-btn:active{transform:scale(0.95)}
 .filter-badge{color:var(--accent-light);font-weight:500}
 
+/* Export buttons */
+.export-controls{display:flex;gap:6px}
+.btn-export{padding:5px 12px;border-radius:16px;border:1px solid var(--border);font-size:0.72rem;font-weight:500;color:var(--text-dim);background:transparent;transition:all var(--transition-base);white-space:nowrap;cursor:pointer}
+.btn-export:hover{border-color:rgba(99,102,241,0.3);color:var(--text-muted);background:rgba(99,102,241,0.04)}
+.btn-export:active{transform:scale(0.95)}
+
 /* Investor Card */
 .investor-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;cursor:pointer;transition:all var(--transition-spring);position:relative;overflow:hidden;box-shadow:var(--shadow-card)}
 .investor-card:hover{border-color:rgba(99,102,241,0.25);background:var(--card-hover);transform:translateY(-3px);box-shadow:var(--shadow-card-hover)}
@@ -1382,6 +1388,10 @@ footer{padding-bottom:max(40px,env(safe-area-inset-bottom))}
 
     <div class="results-info" aria-live="polite">
       <span><span id="resultsCount" role="status">0 investors</span><span id="filterBadge" class="filter-badge"></span><button id="clearFiltersBtn" class="clear-filters-btn" onclick="clearAllFilters()" style="display:none" aria-label="Clear all filters">Clear Filters ✕</button></span>
+      <span class="export-controls">
+        <button id="exportCsvBtn" class="btn-export" onclick="exportFiltered('csv')" title="Export filtered investors as CSV" aria-label="Export as CSV">⬇ CSV</button>
+        <button id="exportJsonBtn" class="btn-export" onclick="exportFiltered('json')" title="Export filtered investors as JSON" aria-label="Export as JSON">⬇ JSON</button>
+      </span>
     </div>
     <div class="results-grid" id="resultsGrid" role="list" aria-label="Investor results"></div>
     <div id="loadMoreContainer" class="load-more-container" style="display:none">
@@ -2027,6 +2037,45 @@ function clearAllFilters(){
   document.getElementById('activityFilter').value='any';
   searchInput.value='';clearBtn.classList.remove('show');
   renderResults();
+}
+
+// ===== EXPORT =====
+function exportFiltered(format){
+  if(!lastFiltered||!lastFiltered.length)return;
+  const now=new Date();const dateStr=now.toISOString().slice(0,10);
+  // Build filename context from active filters
+  const parts=['match-capital'];
+  if(activeFilters.stage.length)parts.push(activeFilters.stage.join('-').toLowerCase().replace(/\s+/g,'-'));
+  if(activeFilters.sector.length)parts.push(activeFilters.sector.slice(0,2).join('-').toLowerCase().replace(/[\s/]+/g,'-'));
+  if(activeFilters.type.length)parts.push(activeFilters.type.join('-').toLowerCase().replace(/\s+/g,'-'));
+  if(parts.length===1)parts.push('all-investors');
+  parts.push(dateStr);
+  const filename=parts.join('-');
+
+  let blob;
+  if(format==='json'){
+    blob=new Blob([JSON.stringify(lastFiltered,null,2)],{type:'application/json'});
+    triggerDownload(blob,filename+'.json');
+  }else{
+    const headers=['Name','Firm','Title','Type','Stages','Sectors','Check Min','Check Max','Geography','Location','LinkedIn','Firm URL','Thesis'];
+    const esc=v=>{const s=String(v??'');return s.includes(',')||s.includes('"')||s.includes('\n')?'"'+s.replace(/"/g,'""')+'"':s};
+    const rows=lastFiltered.map(inv=>[
+      esc(inv.name),esc(inv.firm),esc(inv.title||''),esc(inv.type),
+      esc((inv.stages||[]).join('; ')),esc((inv.sectors||[]).join('; ')),
+      inv.checkSize?inv.checkSize.min:'',inv.checkSize?inv.checkSize.max:'',
+      esc((inv.geography||[]).join('; ')),esc(inv.location||''),
+      esc(inv.linkedin||''),esc(inv.firmUrl||inv.website||''),esc(inv.thesis||'')
+    ].join(','));
+    const csv=headers.join(',')+'\n'+rows.join('\n');
+    blob=new Blob([csv],{type:'text/csv;charset=utf-8;'});
+    triggerDownload(blob,filename+'.csv');
+  }
+}
+function triggerDownload(blob,filename){
+  const url=URL.createObjectURL(blob);
+  const a=document.createElement('a');a.href=url;a.download=filename;
+  document.body.appendChild(a);a.click();document.body.removeChild(a);
+  URL.revokeObjectURL(url);
 }
 
 // ===== FILTER PRESETS =====
